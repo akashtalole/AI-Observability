@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metrics and Data Checklist</title>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--ink:#1b2430;--mute:#5b6675;--line:#dfe3ea;--a:#3b5bdb;--ok:#2b8a3e;--barbg:#e9ecf3}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10141b;--card:#171d27;--ink:#e6eaf0;--mute:#98a3b3;--line:#2a3340;--a:#8da2fb;--ok:#69db7c;--barbg:#252d3a}}
+:root[data-theme=dark]{--bg:#10141b;--card:#171d27;--ink:#e6eaf0;--mute:#98a3b3;--line:#2a3340;--a:#8da2fb;--ok:#69db7c;--barbg:#252d3a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:900px;margin:0 auto;padding:24px 16px 48px}h1{font-size:1.6rem;margin:0 0 4px}p.sub{color:var(--mute);margin:0 0 16px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+.tabs button[aria-pressed=true]{background:var(--a);color:#fff;border-color:var(--a)}
+.prog{height:10px;background:var(--barbg);border-radius:6px;overflow:hidden;margin:8px 0 4px}.prog i{display:block;height:100%;background:var(--ok);width:0;transition:width .2s}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:12px}
+h2{font-size:1rem;margin:0 0 8px}label{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.9rem}input{margin-top:4px;accent-color:var(--a)}
+small{color:var(--mute)}.tag{font-size:.7rem;border:1px solid var(--line);border-radius:4px;padding:0 5px;color:var(--mute);margin-left:6px}
+</style>
+</head>
+<body>
+<main>
+<h1>Metrics &amp; data checklist</h1>
+<p class="sub">Choose an application type and tick what you already collect. Progress is stored in your browser only.</p>
+<div class="tabs" id="tabs" role="group" aria-label="Application type"></div>
+<div id="progtxt"><b id="pct">0%</b> <small id="cnt"></small></div>
+<div class="prog"><i id="bar"></i></div>
+<div id="out"></div>
+</main>
+<script>
+const T={
+"Baseline (all apps)":{
+ "Latency":["End-to-end latency p50/p95/p99","Time to first token (TTFT)","Per-stage latency spans","Tool / dependency call latency"],
+ "Cost":["Input/output/cached tokens per request","Cost per request from owned price table","Cost by tenant / feature / model / prompt version","Budget burn-rate alert"],
+ "Quality":["At least one automated quality score on a sample","User feedback captured and linked to trace_id","Refusal / over-refusal rate"],
+ "Reliability":["Error taxonomy (timeout, 429, 5xx, filter, parse)","Fallback / retry rate with served-model attribution","SLOs with burn-rate alerts"],
+ "Governance":["Guardrail / PII verdict logging","Change events (model, prompt, index, config) on charts","Redaction tested; content capture gated","Retention TTLs per tier"]},
+"RAG":{
+ "Retrieval":["Retrieved count and top-1 / mean similarity","Empty / low-score retrieval rate","Doc IDs + scores per request (no text by default)","Index version + embedding model version","Index freshness and ingestion lag","ACL-filter counts and canary tests","Context tokens per request"],
+ "Quality":["Groundedness / faithfulness","Answer relevance","Context precision (and recall on golden set)","Citation accuracy","Abstention accuracy on unanswerable set"],
+ "Cost / latency":["Embedding + rerank cost","Rerank lift vs latency","Cache hit rate and savings"]},
+"Agents":{
+ "Outcome":["Task success rate","Cost per successful task","Human takeover rate"],
+ "Trajectory":["Steps / LLM calls / tokens per task","Loop and stall detection","Plan revisions and goal drift","Termination reason (max steps / budget / timeout)"],
+ "Tools":["Tool selection accuracy","Argument validity","Tool error / timeout rate","Write / destructive action approvals","Prompt-injection via tool output detections"],
+ "Multi-agent":["Handoff count and failures","Ping-pong / deadlock detection"]},
+"Chatbot / copilot":{
+ "Conversation":["Containment / resolution rate","Escalation-to-human rate","Turns to resolution, re-ask rate","Abandonment","Conversation-level goal completion eval"],
+ "UX":["Streaming stall rate","Suggestion acceptance rate (copilots)","CSAT / thumbs / regeneration rate"],
+ "Context":["Context window utilization / truncation","Cost per conversation, tokens by turn index","Intent / topic clusters with success per cluster"]},
+"Tools / MCP / text-to-SQL":{
+ "MCP":["Server inventory and version pinning","Tool description change alerts","Server-side latency and error codes","Traceparent propagation to servers"],
+ "SQL":["SQL validity and execution accuracy","Read-only enforcement and blocked statements","Warehouse cost joined to trace","Result size / PII exposure scan"]},
+"Voice / multimodal / batch":{
+ "Voice":["Turn latency (speech end → first audio)","ASR word error rate (sampled)","Barge-in success, dead-air, talk-over","Cost per minute by component"],
+ "Multimodal":["Image / page counts and token cost","Field-level extraction accuracy"],
+ "Batch":["Throughput and SLA attainment","Per-run summary fact row","Labeled canary slice accuracy","Schema parse / repair rate","Input and label distribution drift"]},
+"Self-hosted models":{
+ "Serving":["TTFT / TPOT / queue time","KV-cache usage and preemptions","GPU util, memory, ECC / XID errors","Tokens/s capacity vs demand headroom","Cost per 1M tokens, GPU idle %"],
+ "Governance":["Model registry + lineage","Eval before/after each fine-tune or runtime upgrade","Canary / adapter version mix"]}
+};
+const K="aiobs-checklist";let st={};try{st=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){}
+let cur=Object.keys(T)[0];
+const $=id=>document.getElementById(id);
+function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+function render(){
+ $("tabs").innerHTML=Object.keys(T).map(k=>`<button aria-pressed="${k==cur}" data-k="${k}">${k}</button>`).join("");
+ document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{cur=b.dataset.k;render()});
+ let n=0,d=0;
+ $("out").innerHTML=Object.entries(T[cur]).map(([g,items])=>`<div class="card"><h2>${g}</h2>`+items.map(t=>{const id=cur+"|"+g+"|"+t;n++;if(st[id])d++;return `<label><input type="checkbox" data-id="${id.replace(/"/g,"&quot;")}"${st[id]?" checked":""}><span>${t}</span></label>`}).join("")+"</div>").join("");
+ document.querySelectorAll("#out input").forEach(i=>i.onchange=()=>{st[i.dataset.id]=i.checked;save();render()});
+ const p=n?Math.round(d/n*100):0;$("pct").textContent=p+"%";$("cnt").textContent=`${d} of ${n} in this view`;$("bar").style.width=p+"%";
+}
+render();
+</script>
+</body>
+</html>

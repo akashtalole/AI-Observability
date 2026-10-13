@@ -1,0 +1,108 @@
+site_name: Enterprise AI Observability Handbook
+site_description: Guidance, architecture, design patterns, build-vs-buy and tooling landscape for observing enterprise AI apps (RAG, agents, chatbots).
+site_url: https://akashtalole.github.io/ai-observability/
+repo_url: https://github.com/akashtalole/ai-observability
+repo_name: akashtalole/ai-observability
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Fundamentals:
+      - Why AI observability: fundamentals/why-ai-observability.md
+      - How it differs from APM: fundamentals/llm-vs-traditional.md
+      - Telemetry model & OpenTelemetry: fundamentals/telemetry-model.md
+  - Architecture:
+      - Reference architecture: architecture/reference-architecture.md
+      - Design patterns: architecture/design-patterns.md
+      - Storage, retention & trends: architecture/storage-and-retention.md
+      - Security, privacy & governance: architecture/security-privacy.md
+  - Build vs Buy:
+      - Decision framework: build-vs-buy/decision-framework.md
+      - Cloud-agnostic: build-vs-buy/cloud-agnostic.md
+      - Cloud-specific: build-vs-buy/cloud-specific.md
+      - Open source: build-vs-buy/open-source.md
+      - TCO model: build-vs-buy/tco.md
+  - Landscape:
+      - Overview: landscape/overview.md
+      - Tool catalog: landscape/catalog.md
+      - Comparison by need: landscape/comparison.md
+  - Metrics & Data:
+      - Metrics catalog: metrics/metrics-catalog.md
+      - Data to collect: metrics/data-to-collect.md
+      - SLOs & alerting: metrics/slos-alerting.md
+      - Evaluation & quality: metrics/evaluation.md
+  - Monitoring by app type:
+      - Overview: monitoring/overview.md
+      - RAG: monitoring/rag.md
+      - Agents & multi-agent: monitoring/agents.md
+      - Chatbots & copilots: monitoring/chatbots.md
+      - Tools, MCP & text-to-SQL: monitoring/tools-mcp-sql.md
+      - Voice, multimodal & batch: monitoring/voice-multimodal-batch.md
+      - Self-hosted & fine-tuned models: monitoring/self-hosted-models.md
+  - RAG deep dive:
+      - Latency, quality & cost over time: rag/rag-observability-playbook.md
+      - Dashboards & queries: rag/dashboards-and-queries.md
+  - Implementation:
+      - Instrumentation guide: implementation/instrumentation.md
+      - Collector & pipeline: implementation/collector-pipeline.md
+      - Evals in CI/CD: implementation/evals-in-ci.md
+  - Operations:
+      - Maturity model: operations/maturity-model.md
+      - Runbooks: operations/runbooks.md
+      - Checklists: operations/checklists.md
+  - Artifacts (HTML): artifacts/index.md
+  - Reference:
+      - Glossary: glossary.md
+      - References: references.md

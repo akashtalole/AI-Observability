@@ -1,0 +1,74 @@
+# Prometheus alert + recording rules for a RAG service.
+# Metric names assume the Collector's spanmetrics / app-emitted metrics shown in examples/otel-collector.yaml
+# and the instrumentation in examples/rag-otel/instrument.py. Adjust names to your pipeline.
+groups:
+  - name: rag-recording
+    interval: 1m
+    rules:
+      - record: rag:requests:rate5m
+        expr: sum by (app) (rate(rag_requests_total[5m]))
+      - record: rag:errors:ratio5m
+        expr: sum by (app) (rate(rag_requests_total{status!="ok"}[5m])) / sum by (app) (rate(rag_requests_total[5m]))
+      - record: rag:ttft_seconds:p95_5m
+        expr: histogram_quantile(0.95, sum by (app, le) (rate(rag_ttft_seconds_bucket[5m])))
+      - record: rag:latency_seconds:p95_5m
+        expr: histogram_quantile(0.95, sum by (app, le) (rate(rag_request_duration_seconds_bucket[5m])))
+      - record: rag:cost_usd:rate1h
+        expr: sum by (app) (increase(rag_cost_usd_total[1h]))
+      - record: rag:groundedness:mean1d
+        expr: sum by (app) (increase(rag_eval_score_sum{metric="groundedness"}[1d])) / sum by (app) (increase(rag_eval_score_count{metric="groundedness"}[1d]))
+
+  - name: rag-alerts
+    rules:
+      - alert: RagErrorBudgetFastBurn
+        expr: |
+          (rag:errors:ratio5m > (14.4 * 0.005))
+          and
+          (sum by (app) (rate(rag_requests_total{status!="ok"}[1h])) / sum by (app) (rate(rag_requests_total[1h])) > (14.4 * 0.005))
+        for: 2m
+        labels: {severity: page}
+        annotations:
+          summary: "{{ $labels.app }} burning 99.5% availability budget at >14x"
+          runbook: "operations/runbooks/#provider-errors-and-rate-limits"
+
+      - alert: RagTTFTHigh
+        expr: rag:ttft_seconds:p95_5m > 2
+        for: 10m
+        labels: {severity: page}
+        annotations:
+          summary: "{{ $labels.app }} TTFT p95 above 2s"
+          runbook: "operations/runbooks/#latency-regression"
+
+      - alert: RagCostSpike
+        expr: rag:cost_usd:rate1h > 3 * quantile_over_time(0.5, rag:cost_usd:rate1h[7d] offset 1d)
+        for: 30m
+        labels: {severity: ticket}
+        annotations:
+          summary: "{{ $labels.app }} hourly spend >3x 7-day median"
+          runbook: "operations/runbooks/#cost-spike"
+
+      - alert: RagGroundednessRegression
+        expr: |
+          rag:groundedness:mean1d < (avg_over_time(rag:groundedness:mean1d[28d] offset 1d) - 0.05)
+          and sum by (app) (increase(rag_eval_score_count{metric="groundedness"}[1d])) > 200
+        for: 6h
+        labels: {severity: ticket}
+        annotations:
+          summary: "{{ $labels.app }} groundedness 0.05 below 28-day baseline (n>200)"
+          runbook: "operations/runbooks/#quality-regression"
+
+      - alert: RagEmptyRetrievalHigh
+        expr: |
+          sum by (app) (rate(rag_retrieval_empty_total[30m])) / sum by (app) (rate(rag_requests_total[30m])) > 0.05
+        for: 30m
+        labels: {severity: ticket}
+        annotations:
+          summary: "{{ $labels.app }} >5% requests with empty retrieval"
+          runbook: "operations/runbooks/#retrieval-degradation"
+
+      - alert: TelemetryEvalBacklog
+        expr: max by (app) (rag_eval_queue_age_seconds) > 1800
+        for: 15m
+        labels: {severity: ticket}
+        annotations:
+          summary: "{{ $labels.app }} online evaluation backlog >30 min"
