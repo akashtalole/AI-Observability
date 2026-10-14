@@ -23,7 +23,8 @@ jobs:
         run: |
           python scripts/gen_dashboards.py
           python scripts/build.py
-          git diff --exit-code || (echo "::error::Generated files are stale - run scripts/gen_dashboards.py and scripts/build.py and commit" && exit 1)
+          # handbook.html is excluded: its HTML differs slightly across Python-Markdown versions
+          git diff --exit-code -- . ':!docs/artifacts/handbook.html' || (echo "::error::Generated files are stale - run scripts/gen_dashboards.py and scripts/build.py and commit" && exit 1)
 
       - name: Docs build (strict)
         run: mkdocs build --strict
