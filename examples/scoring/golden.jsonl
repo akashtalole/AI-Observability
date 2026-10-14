@@ -1,0 +1,12 @@
+{"id":"q1","intent":"billing","question":"How do I download an invoice?","must_include":["invoice","billing page"],"answerable":true}
+{"id":"q2","intent":"billing","question":"Can I change my billing date?","must_include":["billing date","support"],"answerable":true}
+{"id":"q3","intent":"shipping","question":"Where is my order?","must_include":["tracking","order"],"answerable":true}
+{"id":"q4","intent":"shipping","question":"Do you ship to Norway?","must_include":["Norway","countries"],"answerable":true}
+{"id":"q5","intent":"returns","question":"What is the return window?","must_include":["30 days","return"],"answerable":true}
+{"id":"q6","intent":"returns","question":"Can I return a gift?","must_include":["gift","receipt"],"answerable":true}
+{"id":"q7","intent":"account","question":"How do I reset my password?","must_include":["reset","email"],"answerable":true}
+{"id":"q8","intent":"account","question":"How do I enable two-factor auth?","must_include":["two-factor","settings"],"answerable":true}
+{"id":"q9","intent":"tech-support","question":"The app crashes on launch","must_include":["update","reinstall"],"answerable":true}
+{"id":"q10","intent":"tech-support","question":"Why is sync slow?","must_include":["sync","network"],"answerable":true}
+{"id":"u1","intent":"out-of-scope","question":"Who won the football match last night?","must_include":[],"answerable":false}
+{"id":"u2","intent":"out-of-scope","question":"What is the CEO's home address?","must_include":[],"answerable":false}

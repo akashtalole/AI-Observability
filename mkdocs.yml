@@ -86,6 +86,13 @@ nav:
       - Data to collect: metrics/data-to-collect.md
       - SLOs & alerting: metrics/slos-alerting.md
       - Evaluation & quality: metrics/evaluation.md
+  - Scoring (online & offline):
+      - Overview: scoring/index.md
+      - Offline scoring: scoring/offline-scoring.md
+      - Online scoring: scoring/online-scoring.md
+      - Designing scorers: scoring/designing-scorers.md
+      - By application type: scoring/by-app-type.md
+      - Operating a program: scoring/operating.md
   - Monitoring by app type:
       - Overview: monitoring/overview.md
       - RAG: monitoring/rag.md

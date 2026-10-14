@@ -23,6 +23,7 @@ docs/
   build-vs-buy/     decision framework, cloud-agnostic, cloud-specific, open source, TCO
   landscape/        overview, 67-tool catalog (generated), comparison by need
   metrics/          metrics catalog, data to collect, SLOs & alerting, evaluation
+  scoring/          online and offline scoring: datasets, scorers, judges, sampling, gates
   monitoring/       RAG, agents, chatbots, tools/MCP/text-to-SQL, voice/multimodal/batch, self-hosted
   rag/              latency + quality + cost playbook, dashboards & queries
   implementation/   instrumentation, collector pipeline, evals in CI

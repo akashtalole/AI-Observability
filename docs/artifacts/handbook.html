@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -30,6 +30,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <li><strong>I need to know what to collect</strong> — <a href="#p-metrics-metrics-catalog">Metrics catalog</a> and <a href="#p-metrics-data-to-collect">Data to collect</a>.</li>
 <li><strong>I need to pick a tool</strong> — <a href="#p-landscape-overview">Landscape overview</a>, <a href="#p-landscape-catalog">full catalog</a>, <a href="#p-landscape-comparison">comparison by need</a>.</li>
 <li><strong>I monitor agents / chatbots / voice</strong> — <a href="#p-monitoring-overview">Monitoring by app type</a>.</li>
+<li><strong>I need to measure quality</strong> — <a href="#p-scoring-index">Online and offline scoring</a>: datasets, scorers, judges, sampling, gates.</li>
 <li><strong>I want runnable OSS implementations</strong> — <a href="#p-use-cases-index">Use cases on OTel + Prometheus + Grafana + Loki + Tempo</a>: RAG, multi-agent, chatbot.</li>
 <li><strong>I want to build it</strong> — <a href="#p-architecture-reference-architecture">Reference architecture</a> and <a href="#p-implementation-instrumentation">instrumentation guide</a>.</li>
 </ul>
@@ -64,6 +65,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <td>Metrics catalog, data to collect, SLOs/alerts, evaluation</td>
 </tr>
 <tr>
+<td><code>docs/scoring</code></td>
+<td>Online and offline scoring: datasets, scorers, judges, sampling, gates, cost, by app type</td>
+</tr>
+<tr>
 <td><code>docs/monitoring</code></td>
 <td>Per-application-type monitoring: RAG, agents, chatbots, tools/MCP, voice, self-hosted</td>
 </tr>
@@ -89,7 +94,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 </tr>
 <tr>
 <td><code>examples/</code></td>
-<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules</td>
+<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules, offline eval gate and online scorer</td>
 </tr>
 </tbody>
 </table>
@@ -3377,6 +3382,10 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Every alert links to: dashboard, example traces, last change events, runbook (<a href="#p-operations-runbooks">runbooks</a>).</li>
 </ul>
 <p>Prometheus rule examples: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/alerts/ai-slo-alerts.yml"><code>examples/alerts/ai-slo-alerts.yml</code></a>.</p></section><section class="page" id="p-metrics-evaluation"><h1 id="evaluation-quality-measurement">Evaluation &amp; quality measurement</h1>
+<div class="admonition tip">
+<p class="admonition-title">Deeper guidance</p>
+<p>Online vs offline scoring, sampling, judges, gates and operating cost are covered in the <a href="#p-scoring-index">Scoring section</a>.</p>
+</div>
 <p>Quality is the hardest of the three pillars because correctness is not directly observable. Build a <strong>layered</strong> evaluation strategy.</p>
 <h2 id="evaluation-layers">Evaluation layers</h2>
 <table>
@@ -3508,6 +3517,1095 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Keep an <strong>anchor set</strong> re-scored on every judge change.</li>
 <li>Report <strong>confidence intervals</strong>; show sample size on charts.</li>
 <li>Segment by intent/topic — aggregate means hide regressions in important slices.</li>
+</ul></section><section class="page" id="p-scoring-index"><h1 id="online-and-offline-scoring-overview">Online and offline scoring: overview</h1>
+<p><strong>Scoring</strong> turns the behavior of an AI application into numbers you can trend, compare and gate on. There are two complementary modes, and mature teams run both from the same scorers.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Offline scoring</strong></th>
+<th><strong>Online scoring</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Runs on</strong></td>
+<td>A fixed dataset (golden set, regression set, replayed traffic)</td>
+<td>Live production traces</td>
+</tr>
+<tr>
+<td><strong>When</strong></td>
+<td>Before a change ships (CI, nightly), and on demand</td>
+<td>Continuously, after the response is served</td>
+</tr>
+<tr>
+<td><strong>Question answered</strong></td>
+<td>"Is this change safe and better?"</td>
+<td>"Is production healthy right now, and this quarter?"</td>
+</tr>
+<tr>
+<td><strong>Ground truth</strong></td>
+<td>Available (reference answers, expected sources, labels)</td>
+<td>Usually absent: reference-free scorers, user signals</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Controlled, comparable run to run</td>
+<td>The real, shifting distribution</td>
+</tr>
+<tr>
+<td><strong>Cost control</strong></td>
+<td>Run everything; the dataset is bounded</td>
+<td>Sample; tier scorers by cost</td>
+</tr>
+<tr>
+<td><strong>Failure mode</strong></td>
+<td>Dataset goes stale; overfitting to the set</td>
+<td>Biased samples; judge drift; noisy small-n dips</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Pass/fail gate, comparison report</td>
+<td>Score time series, alerts, review queues</td>
+</tr>
+<tr>
+<td><strong>Latency budget</strong></td>
+<td>Minutes to hours</td>
+<td>Seconds to minutes, <strong>off the request path</strong></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph OFF[Offline]
+      G[Golden / regression sets] --&gt; RUN[Run candidate + baseline&lt;br/&gt;same items, pinned config]
+      RUN --&gt; SC1[Scorers]
+      SC1 --&gt; GATE{Gate}
+    end
+    subgraph ON[Online]
+      P[Production traffic] --&gt; S[Sampler&lt;br/&gt;stratified + flagged]
+      S --&gt; SC2[Same scorers]
+      SC2 --&gt; TS[Score time series]
+      TS --&gt; AL[Alerts / drift]
+    end
+    GATE -- pass --&gt; CAN[Canary / shadow]
+    CAN --&gt; P
+    AL --&gt; TRI[Triage + labeling]
+    FB[User feedback] --&gt; TRI
+    TRI --&gt;|promote failures| G</code></pre>
+<p>The loop is the point: <strong>offline gates stop known regressions, online scoring finds the unknown ones, and triage turns production failures into new offline test cases.</strong></p>
+<h2 id="one-scorer-library-two-modes">One scorer library, two modes</h2>
+<p>Write scorers once and run them in both places. Then an online score of 0.82 and an offline score of 0.82 mean the same thing, and you can reconcile them.</p>
+<table>
+<thead>
+<tr>
+<th>Scorer type</th>
+<th>Example</th>
+<th>Offline</th>
+<th>Online</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deterministic</strong></td>
+<td>schema valid, citation present, required facts, banned terms, PII regex, SQL parses</td>
+<td>✅ all items</td>
+<td>✅ 100 %</td>
+<td>~free</td>
+</tr>
+<tr>
+<td><strong>Reference-based</strong></td>
+<td>exact/fuzzy match, required-fact recall, retrieval recall@k, execution accuracy</td>
+<td>✅</td>
+<td>❌ (no reference)</td>
+<td>low</td>
+</tr>
+<tr>
+<td><strong>Heuristic / embedding</strong></td>
+<td>answer-to-context similarity, length, language</td>
+<td>✅</td>
+<td>✅ 100 %</td>
+<td>low</td>
+</tr>
+<tr>
+<td><strong>Model-as-judge (reference-free)</strong></td>
+<td>groundedness, relevance, tone, safety</td>
+<td>✅</td>
+<td>✅ sampled</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><strong>Model-as-judge (reference-aware)</strong></td>
+<td>correctness vs a reference</td>
+<td>✅</td>
+<td>❌</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><strong>Human review</strong></td>
+<td>expert labels, calibration</td>
+<td>✅ small sets</td>
+<td>✅ queue</td>
+<td>high</td>
+</tr>
+<tr>
+<td><strong>User signals</strong></td>
+<td>thumbs, edits, escalation, abandonment</td>
+<td>❌</td>
+<td>✅</td>
+<td>free, sparse, biased</td>
+</tr>
+</tbody>
+</table>
+<h2 id="which-mode-for-which-decision">Which mode for which decision</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ship a prompt, model, retrieval or chunking change?</td>
+<td>Offline gate, then canary with online scoring</td>
+</tr>
+<tr>
+<td>Is the system degrading this week?</td>
+<td>Online score trend vs baseline</td>
+</tr>
+<tr>
+<td>Compare two models or configs fairly</td>
+<td>Offline, paired, same items, repeated runs</td>
+</tr>
+<tr>
+<td>Catch provider-side silent model updates</td>
+<td>Online trend + a nightly offline run on a fixed anchor set</td>
+</tr>
+<tr>
+<td>Find failure modes you did not anticipate</td>
+<td>Online flagged traces, user feedback, clustering</td>
+</tr>
+<tr>
+<td>Prove compliance / audit evidence</td>
+<td>Offline run records + online score history, both versioned</td>
+</tr>
+<tr>
+<td>Calibrate and validate a judge</td>
+<td>Offline, against human labels</td>
+</tr>
+</tbody>
+</table>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="#p-scoring-offline-scoring">Offline scoring</a>: datasets, scorers, comparison statistics, gates, CI.</li>
+<li><a href="#p-scoring-online-scoring">Online scoring</a>: sampling, async scoring, write-back, alerting on noisy signals, shadow and A/B.</li>
+<li><a href="#p-scoring-designing-scorers">Designing scorers</a>: judges, rubrics, calibration, bias, versioning.</li>
+<li><a href="#p-scoring-by-app-type">By application type</a>: RAG, agents, chatbots, extraction, text-to-SQL, copilots.</li>
+<li><a href="#p-scoring-operating">Operating a scoring program</a>: cost, drift, reconciling online and offline, the improvement loop, anti-patterns.</li>
+<li>Runnable code: <a href="https://github.com/akashtalole/ai-observability/tree/main/examples/scoring"><code>examples/scoring/</code></a> and the live online scores in the <a href="#p-use-cases-index">use cases</a>.</li>
+</ul></section><section class="page" id="p-scoring-offline-scoring"><h1 id="offline-scoring">Offline scoring</h1>
+<p>Offline scoring evaluates a system against a <strong>fixed dataset</strong> under controlled conditions. It is your regression test suite and your experiment bench.</p>
+<h2 id="1-build-the-datasets">1. Build the datasets</h2>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Purpose</th>
+<th>Size to start</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Golden set</strong></td>
+<td>Curated, high-quality items with expected outcomes; the release gate</td>
+<td>200-1000</td>
+<td>SMEs + sampled production queries, labeled</td>
+</tr>
+<tr>
+<td><strong>Regression set</strong></td>
+<td>Every past failure, kept forever</td>
+<td>grows</td>
+<td>Promoted from incidents, thumbs-down, escalations</td>
+</tr>
+<tr>
+<td><strong>Adversarial / safety set</strong></td>
+<td>Injection, jailbreak, PII, policy edge cases, unanswerable questions</td>
+<td>100-300</td>
+<td>Red team, OWASP LLM Top 10 patterns</td>
+</tr>
+<tr>
+<td><strong>Anchor set</strong></td>
+<td>Frozen slice re-scored on every judge or model change to keep trends comparable</td>
+<td>50-200</td>
+<td>Subset of golden</td>
+</tr>
+<tr>
+<td><strong>Replay set</strong></td>
+<td>Redacted production traffic for latency/cost realism</td>
+<td>1 day of traffic</td>
+<td>Trace store</td>
+</tr>
+<tr>
+<td><strong>Holdout</strong></td>
+<td>Never used for tuning prompts; detects overfitting</td>
+<td>20 % of golden</td>
+<td>Split once, freeze</td>
+</tr>
+</tbody>
+</table>
+<p>Rules of thumb:</p>
+<ul>
+<li><strong>Stratify</strong> by intent, difficulty, tenant tier, language and channel; report per slice, because averages hide regressions in important slices.</li>
+<li>Include <strong>unanswerable</strong> and <strong>multi-hop</strong> items; test abstention as a first-class behavior.</li>
+<li>Store provenance per item: source, labeler, date, guideline version. Version the dataset (<code>golden@2026-10-14</code>).</li>
+<li>For stochastic systems, run <strong>each item several times</strong> (3-20) and score every run.</li>
+<li>Keep personal data out of datasets; redact production-derived items.</li>
+</ul>
+<h2 id="2-choose-scorers">2. Choose scorers</h2>
+<p>Prefer cheap, deterministic scorers wherever they are valid, and add judges only for what code cannot check (<a href="#p-scoring-designing-scorers">Designing scorers</a>).</p>
+<ul>
+<li><strong>Task-level:</strong> required-fact recall, exact/fuzzy match, execution accuracy, schema validity.</li>
+<li><strong>Component-level</strong> (find <em>where</em> it broke): retrieval recall@k / MRR / nDCG, reranker lift, tool-selection accuracy, argument validity.</li>
+<li><strong>System-level:</strong> groundedness, answer relevance, safety, abstention accuracy, format.</li>
+<li><strong>Operational, scored alongside quality:</strong> latency (p50/p95, TTFT), tokens, cost per request. A "better" answer that is 3× the cost is a trade-off, not a win.</li>
+</ul>
+<h2 id="3-compare-fairly">3. Compare fairly</h2>
+<pre class="mermaid"><code>flowchart LR
+    D[Dataset v1] --&gt; B[Baseline config&lt;br/&gt;pinned model, prompt, index]
+    D --&gt; C[Candidate config]
+    B --&gt; S[Score every run]
+    C --&gt; S
+    S --&gt; P[Paired deltas&lt;br/&gt;same items]
+    P --&gt; CI[Bootstrap CI]
+    CI --&gt; V{Verdict}</code></pre>
+<ul>
+<li><strong>Pin everything</strong> that is not under test: model version, temperature/seed, prompt, index snapshot, tool stubs/recorded responses, judge model and rubric.</li>
+<li><strong>Paired comparison:</strong> compute the per-item difference candidate − baseline, then a bootstrap confidence interval on the mean difference. Paired tests are far more sensitive than comparing two means.</li>
+<li><strong>Decide with intervals, not point estimates.</strong> "+0.02 [-0.02, +0.06]" is not an improvement.</li>
+<li>Report <strong>effect size and sample size</strong> next to every number; use more repeats rather than more adjectives.</li>
+<li>Beware <strong>multiple comparisons</strong>: checking 30 metrics will show a "significant" change by chance. Pre-declare the primary metrics.</li>
+</ul>
+<h2 id="4-gate">4. Gate</h2>
+<p>A gate has four kinds of conditions; fail the build if any is violated.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute floor</td>
+<td>groundedness ≥ 0.85; citation present ≥ 0.90</td>
+</tr>
+<tr>
+<td>No significant regression</td>
+<td>upper bound of CI of delta ≥ −0.02</td>
+</tr>
+<tr>
+<td><strong>Slice protection</strong></td>
+<td>no intent drops more than 0.10</td>
+</tr>
+<tr>
+<td>Hard safety</td>
+<td>0 critical failures on the safety set; PII leak rate = 0</td>
+</tr>
+<tr>
+<td>Operational</td>
+<td>p95 latency ≤ 1.10× baseline; cost ≤ 1.15× baseline</td>
+</tr>
+</tbody>
+</table>
+<p>Runnable reference: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/scoring/offline_eval.py"><code>examples/scoring/offline_eval.py</code></a> implements paired bootstrap, floors, slice protection and cost/latency gates; the exit code is the gate result.</p>
+<pre class="highlight"><code class="language-text">$ python examples/scoring/offline_eval.py
+metric                baseline candidate    delta   95% CI of delta        gate
+required_facts           0.894     0.917   +0.023   [-0.015, +0.060]   ok
+citation_present         0.942     0.967   +0.025   [-0.013, +0.067]   ok
+...
+GATE: PASS
+
+$ python examples/scoring/offline_eval.py --candidate degraded
+GATE: FAIL
+  - required_facts: candidate 0.685 (floor 0.8); delta -0.208 CI [-0.258,-0.158]
+  - slice billing: required_facts 0.89 -&gt; 0.65</code></pre>
+<h2 id="5-wire-it-into-delivery">5. Wire it into delivery</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What runs</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pull request</td>
+<td>Fast subset (≈ 50-100 items) + deterministic scorers</td>
+<td>&lt; 5 min</td>
+</tr>
+<tr>
+<td>Merge / nightly</td>
+<td>Full golden + regression + adversarial, repeats, judges</td>
+<td>&lt; 1-2 h</td>
+</tr>
+<tr>
+<td>Pre-release</td>
+<td>Full + replay set for latency/cost, anchor-set judge check</td>
+<td>hours</td>
+</tr>
+<tr>
+<td>Post-deploy</td>
+<td>Same scorers online on the canary slice (<a href="#p-scoring-online-scoring">Online scoring</a>)</td>
+<td>continuous</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="#p-implementation-evals-in-ci">Evals in CI/CD</a> for a workflow definition.</p>
+<h2 id="6-record-the-run">6. Record the run</h2>
+<p>Every offline run should write a record, so a trend and an audit are possible months later:</p>
+<pre class="highlight"><code class="language-json">{
+  "run_id": "2026-10-14T02:00Z-nightly",
+  "dataset": "golden@2026-10-14", "dataset_items": 600, "repeats": 5,
+  "system": {"git_sha": "a1b2c3d", "prompt": "faq-answer@v8", "model": "large-model-2026-09", "index": "kb-main@2026-10-01"},
+  "judge": {"model": "judge-small-2026-08", "rubric": "groundedness@v3"},
+  "scores": {"groundedness": {"mean": 0.874, "ci95": [0.861, 0.887], "n": 3000}},
+  "slices": {"billing": {"required_facts": 0.89}},
+  "ops": {"latency_p95_s": 3.9, "cost_per_request_usd": 0.0088},
+  "gate": "pass"
+}</code></pre>
+<p>Emit the same fields as metrics (for example <code>eval.offline.score{metric,dataset,config}</code>) so the <strong>offline score history appears on the same Grafana dashboards as online scores</strong>, annotated by release.</p>
+<h2 id="pitfalls">Pitfalls</h2>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Golden set drifts from real traffic</td>
+<td>Refresh monthly from production; track the share of production intents covered</td>
+</tr>
+<tr>
+<td>Overfitting prompts to the golden set</td>
+<td>Frozen holdout; rotate items; watch the holdout-vs-golden gap</td>
+</tr>
+<tr>
+<td>Judge changes break trend continuity</td>
+<td>Version judges; re-score the anchor set on every change</td>
+</tr>
+<tr>
+<td>Flaky gate (single stochastic run)</td>
+<td>Repeats + paired CI; fail only on significant regressions</td>
+</tr>
+<tr>
+<td>Tool/API nondeterminism in agent evals</td>
+<td>Record and replay tool responses; evaluate trajectory <em>and</em> outcome</td>
+</tr>
+<tr>
+<td>Contamination (test items in few-shot or fine-tune data)</td>
+<td>Keep eval items out of prompts and training; hash-check</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-online-scoring"><h1 id="online-scoring">Online scoring</h1>
+<p>Online scoring evaluates <strong>live production traffic</strong>, with no reference answers, so you can see quality as users experience it and catch what the golden set never imagined.</p>
+<h2 id="principles">Principles</h2>
+<ol>
+<li><strong>Never on the request path.</strong> Serve the user first; score asynchronously. A judge outage must not become a user outage.</li>
+<li><strong>Cheap on everything, expensive on a sample.</strong> Deterministic checks and heuristics on 100 %; LLM judges on a stratified sample plus all flagged requests.</li>
+<li><strong>Score, then write back with identity.</strong> Store <code>(trace_id, metric, score, scorer_version, judge_model, ts)</code> so any score can be sliced by any trace attribute: tenant, prompt version, index version, model.</li>
+<li><strong>Read scores with their sample size.</strong> A dip on 12 samples is noise; show n and an interval on every chart.</li>
+<li><strong>Version the scorer.</strong> A change in judge or rubric is a change in the measuring instrument; annotate it and re-score an anchor slice.</li>
+</ol>
+<h2 id="architecture">Architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+    APP[App] --&gt;|trace + metrics| COL[Collector]
+    COL --&gt; TS[(Trace store)]
+    TS --&gt;|selected| Q[Bounded queue]
+    SAM[Sampler] --&gt; Q
+    Q --&gt; W[Scoring workers]
+    W --&gt;|fetch content via governed API| CS[(Content store, redacted)]
+    W --&gt; J[Judges / classifiers]
+    J --&gt; SC[(Score store&lt;br/&gt;+ metrics)]
+    SC --&gt; DASH[Dashboards + alerts]
+    SC --&gt; RQ[Review queue]</code></pre>
+<p>The runnable reference <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/scoring/online_scorer.py"><code>examples/scoring/online_scorer.py</code></a> shows the sampler, bounded queue with load shedding, versioned write-back and interval reporting. The <a href="#p-use-cases-rag">use cases</a> emit the scores as OpenTelemetry histograms (<code>rag_eval_score{metric="groundedness"}</code>) with an <code>eval_queue_age</code> gauge, linked to the original trace.</p>
+<h2 id="what-to-score-and-how-often">What to score, and how often</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Scorers</th>
+<th>Coverage</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T0: inline cheap checks</strong></td>
+<td>schema valid, citation present, length, language, PII regex, banned terms, retrieval empty/low score</td>
+<td>100 %, in-process (microseconds)</td>
+<td>Flag bad responses immediately; drive tail sampling</td>
+</tr>
+<tr>
+<td><strong>T1: async heuristics</strong></td>
+<td>answer-to-context overlap, embedding similarity, toxicity classifier (small model)</td>
+<td>100 % or high sample</td>
+<td>Cheap trend signal</td>
+</tr>
+<tr>
+<td><strong>T2: sampled LLM judge</strong></td>
+<td>groundedness, relevance, task success, policy compliance</td>
+<td>2-10 % stratified + all flagged</td>
+<td>The quality time series</td>
+</tr>
+<tr>
+<td><strong>T3: escalated judge / panel</strong></td>
+<td>strong or multi-judge ensemble on contested items</td>
+<td>flagged + disagreements</td>
+<td>Reduce judge error where it matters</td>
+</tr>
+<tr>
+<td><strong>T4: human</strong></td>
+<td>expert review queue</td>
+<td>small, targeted</td>
+<td>Ground truth and judge calibration</td>
+</tr>
+</tbody>
+</table>
+<p>Cheap flags decide who gets the expensive judge: set <code>eval.flagged=true</code> on the span for empty retrieval, guardrail hits, thumbs-down, slow or costly requests, and use <a href="#p-implementation-collector-pipeline">tail sampling</a> to keep those traces.</p>
+<h2 id="sampling">Sampling</h2>
+<ul>
+<li><strong>Stratify</strong> by <code>app × tenant tier × intent × risk tier</code>. Oversample high-risk and rare strata, otherwise rare intents never get a score.</li>
+<li><strong>Always score</strong> flagged requests (they are your triage queue) <strong>plus a small uniform random slice</strong> that is your unbiased estimator.</li>
+<li><strong>Do not pool the two.</strong> Flagged traces are over-represented in bad outcomes. Report the random slice as the health metric and the flagged slice as a work queue; the demo script prints them separately.</li>
+<li>Re-weight (inverse probability) if you must report a single population-level number from stratified samples.</li>
+<li>Shed load rather than block: a bounded queue, drop-oldest or drop-newest, and <strong>measure what you shed</strong> (<code>eval_shed_total</code>) so coverage stays honest.</li>
+</ul>
+<h2 id="making-noisy-scores-actionable">Making noisy scores actionable</h2>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intervals and minimum n</strong></td>
+<td>Alert only if n ≥ a floor (e.g. 200 per window) and the interval excludes the baseline</td>
+</tr>
+<tr>
+<td><strong>Baseline bands</strong></td>
+<td>Compare to a rolling 28-day median ± MAD, per slice, same hour-of-week</td>
+</tr>
+<tr>
+<td><strong>Sequential tests / CUSUM</strong></td>
+<td>Detect small persistent shifts earlier than fixed thresholds</td>
+</tr>
+<tr>
+<td><strong>Slice-aware alerts</strong></td>
+<td>Alert on the worst important slice, not only the aggregate</td>
+</tr>
+<tr>
+<td><strong>Pair with leading indicators</strong></td>
+<td>Retrieval top-1 score, empty-retrieval rate, index age: they move before judged quality does</td>
+</tr>
+<tr>
+<td><strong>Combine signals</strong></td>
+<td>Quality alert = judge dip <strong>and</strong> retrieval dip <strong>or</strong> thumbs-down rise; fewer false pages</td>
+</tr>
+</tbody>
+</table>
+<p>Example (PromQL) for a sample-size-guarded quality alert, as used in the <a href="https://github.com/akashtalole/ai-observability/blob/main/use-cases/rag/alerts/rag-alerts.yml">RAG rules</a>:</p>
+<pre class="highlight"><code class="language-promql">rag:groundedness:mean5m &lt; 0.8
+and
+sum(increase(rag_eval_score_count{metric="groundedness"}[5m])) &gt;= 5</code></pre>
+<h2 id="online-experiments">Online experiments</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>What it is</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shadow</strong></td>
+<td>Run candidate on a copy of traffic, score it, never show it</td>
+<td>Safe pre-launch comparison on real inputs; costs extra inference</td>
+</tr>
+<tr>
+<td><strong>Canary</strong></td>
+<td>Send a small share to the candidate; auto-compare scores, latency, cost; auto-rollback</td>
+<td>Gradual rollout</td>
+</tr>
+<tr>
+<td><strong>A/B test</strong></td>
+<td>Randomize users; compare scores <strong>and</strong> outcomes (resolution, task success)</td>
+<td>Product decisions</td>
+</tr>
+<tr>
+<td><strong>Interleaving / pairwise judge</strong></td>
+<td>Judge A vs B answers to the same query</td>
+<td>Sensitive comparison with fewer samples</td>
+</tr>
+</tbody>
+</table>
+<p>Always compare <strong>same slice, same scorer version, same period</strong>; randomize at the user or conversation level, not per request, for multi-turn apps.</p>
+<h2 id="user-and-business-signals">User and business signals</h2>
+<p>Thumbs, edits, copy, regeneration, abandonment, escalation, ticket re-open, task completion. They are free and real but <strong>sparse, biased towards extremes, and delayed</strong>. Use them as a triage and calibration input (join to traces by <code>trace_id</code>), not as the only quality metric. Convert implicit signals into scored events (<code>feedback.rating</code>, <code>outcome.resolved</code>) and trend them next to judge scores; disagreement between them points at a bad judge or a bad rubric.</p>
+<h2 id="privacy-and-governance">Privacy and governance</h2>
+<ul>
+<li>Workers fetch content through a <strong>governed, audited API</strong> with redaction; scores and metadata flow to the observability stack, raw content does not.</li>
+<li>Respect data residency and tenant isolation in the scoring path (the judge sees customer content).</li>
+<li>Record scorer versions and judge models in the score record; retain them as audit evidence.</li>
+<li>Judges are LLM calls: apply the same budget, rate limits and failure handling as the product.</li>
+</ul>
+<h2 id="pitfalls">Pitfalls</h2>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Judging 100 % of traffic with a frontier model</td>
+<td>Tiering and sampling; measure judge cost as a first-class metric</td>
+</tr>
+<tr>
+<td>Pooling flagged and random samples</td>
+<td>Report separately; reweight if combined</td>
+</tr>
+<tr>
+<td>Alerting on every score wobble</td>
+<td>Minimum n, intervals, baseline bands</td>
+</tr>
+<tr>
+<td>Judge on the request path</td>
+<td>Async workers, bounded queue, shed and measure</td>
+</tr>
+<tr>
+<td>Silent judge change</td>
+<td>Version judges; anchor-set re-score; annotate dashboards</td>
+</tr>
+<tr>
+<td>Scores that cannot be traced back</td>
+<td>Always write <code>trace_id</code>; link scores, traces, logs</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-designing-scorers"><h1 id="designing-scorers">Designing scorers</h1>
+<p>A scorer maps an input/output (and sometimes context, trace or reference) to a number in [0, 1] or a label. Scorer quality bounds everything built on it.</p>
+<h2 id="pick-the-cheapest-valid-scorer">Pick the cheapest valid scorer</h2>
+<pre class="mermaid"><code>flowchart TD
+    Q{Can code decide it?} -- yes --&gt; D[Deterministic scorer&lt;br/&gt;regex, schema, exact, SQL exec, unit test]
+    Q -- no --&gt; R{Do you have a reference?}
+    R -- yes --&gt; RB[Reference-based&lt;br/&gt;fuzzy match, fact recall, embedding sim]
+    R -- no --&gt; J{Is it a judgment call?}
+    J -- yes --&gt; LJ[Model-as-judge with rubric&lt;br/&gt;calibrated vs humans]
+    J -- needs expertise --&gt; H[Human review]</code></pre>
+<p>Order of preference: <strong>programmatic checks &gt; reference-based &gt; small-model judge &gt; strong-model judge &gt; human</strong>, escalating only where the cheaper tier is not valid. Programmatic checks are exact, free, reproducible and not subject to judge bias.</p>
+<h2 id="model-as-judge-how-to-do-it-well">Model-as-judge: how to do it well</h2>
+<ol>
+<li><strong>Narrow, single-criterion rubrics.</strong> One judge call per criterion (groundedness, relevance, tone). Multi-criterion scores blur and correlate.</li>
+<li><strong>Decompose.</strong> For groundedness: extract atomic claims from the answer, then verify each against the context; score = supported claims ÷ claims. More reliable than "rate 1-10".</li>
+<li><strong>Categorical or binary outputs beat 1-10 scales.</strong> Use labels with definitions (<code>supported / partially / unsupported</code>) and map to numbers; add short reasoning before the verdict.</li>
+<li><strong>Give anchors.</strong> Include 2-4 labeled examples per class in the prompt (few-shot), including borderline cases.</li>
+<li><strong>Control randomness.</strong> Temperature 0, fixed seed where available, pinned model version; for noisy criteria use 3 votes and take the majority or mean.</li>
+<li><strong>Pairwise for comparisons.</strong> "Which answer is better?" is more reliable than absolute scores; randomize order to cancel position bias.</li>
+<li><strong>Use a different model family</strong> from the generator where possible, to reduce self-preference.</li>
+<li><strong>Constrain output</strong> (JSON schema) and validate; treat malformed judge output as a scorer failure, not a low score.</li>
+</ol>
+<h3 id="rubric-template">Rubric template</h3>
+<pre class="highlight"><code class="language-text">Criterion: Groundedness
+Definition: Every factual claim in the ANSWER is supported by the CONTEXT.
+Steps: 1) list the claims, 2) for each claim, quote the supporting context or say "none",
+       3) label each claim supported / unsupported.
+Output JSON: {"claims":[{"text":"...","support":"supported|unsupported","evidence":"..."}],
+              "label":"fully|partially|not_grounded"}
+Mapping: fully=1.0, partially=0.5, not_grounded=0.0
+Do not use outside knowledge. Ignore style and length.</code></pre>
+<h2 id="calibrate-and-validate-the-judge">Calibrate and validate the judge</h2>
+<p>A judge is a measurement instrument. Validate it before trusting it, and again after any change.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Label a calibration set</strong></td>
+<td>100-300 items, ≥ 2 human raters, written guidelines; measure inter-rater agreement first (the ceiling)</td>
+</tr>
+<tr>
+<td><strong>Measure judge-human agreement</strong></td>
+<td>Cohen's κ / Krippendorff's α for labels, Spearman for scores; report per class and per slice</td>
+</tr>
+<tr>
+<td><strong>Check error structure</strong></td>
+<td>False-positive vs false-negative rates; for safety scorers, recall on the positive class matters most</td>
+</tr>
+<tr>
+<td><strong>Probe for bias</strong></td>
+<td>Position (swap order), verbosity (pad answers), self-preference (same-family generator), format, sycophancy to the answer's confidence</td>
+</tr>
+<tr>
+<td><strong>Test sensitivity</strong></td>
+<td>Inject known defects (remove a fact, add a hallucination) and confirm the score drops</td>
+</tr>
+<tr>
+<td><strong>Track drift</strong></td>
+<td>Re-score a fixed anchor set weekly; alert when judge output on it changes</td>
+</tr>
+<tr>
+<td><strong>Record cost and latency</strong></td>
+<td>Judge tokens per score, p95 latency</td>
+</tr>
+</tbody>
+</table>
+<p>Rule of thumb: if judge-human agreement is not close to human-human agreement, fix the rubric before scaling the judge.</p>
+<h2 id="version-everything">Version everything</h2>
+<pre class="highlight"><code class="language-yaml">scorer: groundedness
+version: 3
+judge_model: judge-small-2026-08     # pinned
+prompt_hash: 9f1c2e
+rubric: groundedness@v3
+calibration: {set: calib-2026-09, kappa: 0.78, n: 240}</code></pre>
+<p>Write <code>scorer_version</code> on every score. When it changes: annotate dashboards, re-score the anchor set under old and new versions, and publish the offset so trends stay interpretable.</p>
+<h2 id="metric-choice-by-what-you-measure">Metric choice by what you measure</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scorer</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Format / schema</td>
+<td>JSON schema validation</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>Facts present</td>
+<td>Required-fact recall vs reference</td>
+<td>Reference-based</td>
+</tr>
+<tr>
+<td>Faithfulness to context</td>
+<td>Claim-verification judge or NLI classifier</td>
+<td>Reference-free</td>
+</tr>
+<tr>
+<td>Answer relevance</td>
+<td>Judge ("does it address the question?")</td>
+<td>Reference-free</td>
+</tr>
+<tr>
+<td>Retrieval quality</td>
+<td>recall@k, precision@k, MRR, nDCG vs labeled relevant docs</td>
+<td>Offline needs labels; online use judge for context relevance</td>
+</tr>
+<tr>
+<td>Correctness</td>
+<td>Reference match or judge vs reference</td>
+<td>Offline</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Classifier / judge + deterministic rules</td>
+<td>Optimize recall; track false positives</td>
+</tr>
+<tr>
+<td>Tone / brand</td>
+<td>Judge with rubric</td>
+<td>Calibrate with brand reviewers</td>
+</tr>
+<tr>
+<td>Tool use</td>
+<td>Name + argument match to expected call</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Execution accuracy (result set equals golden result)</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>Task success</td>
+<td>Programmatic end-state check; else judge over trajectory</td>
+<td>Prefer programmatic</td>
+</tr>
+<tr>
+<td>Conversation quality</td>
+<td>Judge over the full transcript</td>
+<td>Sample; cost scales with length</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scorer-anti-patterns">Scorer anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it hurts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One 1-10 "overall quality" judge</td>
+<td>Unstable, uninterpretable, impossible to debug</td>
+</tr>
+<tr>
+<td>Judge sees the reference answer in reference-free mode</td>
+<td>Leaks, inflates scores</td>
+</tr>
+<tr>
+<td>Same model generates and judges</td>
+<td>Self-preference inflates scores</td>
+</tr>
+<tr>
+<td>Comparing scores across judge versions</td>
+<td>Different instruments</td>
+</tr>
+<tr>
+<td>Treating a proxy (word overlap) as groundedness</td>
+<td>Fine as a cheap flag, not as the quality metric</td>
+</tr>
+<tr>
+<td>Never reading the raw judge reasoning</td>
+<td>You miss rubric bugs; sample and read them monthly</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-by-app-type"><h1 id="scoring-by-application-type">Scoring by application type</h1>
+<p>For each type: what to score <strong>offline</strong> (with references), what to score <strong>online</strong> (reference-free), and the <strong>cheap flags</strong> that decide where to spend judge budget.</p>
+<h2 id="rag">RAG</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Retrieval: recall@k, MRR, nDCG against labeled relevant chunks; rerank lift. Answer: required-fact recall, correctness vs reference, citation precision/recall, <strong>abstention accuracy</strong> on unanswerable items. Faithfulness judge. Component-level scores localize failures (retrieval vs generation).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Groundedness (claim verification), answer relevance, context relevance/precision (judge), citation validity (deterministic), user feedback.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Empty/low top-1 retrieval, no citation, answer longer than context supports, index age, ACL-filtered-to-zero.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Quality dips that follow reindex/chunking/embedding changes; staleness; cross-tenant leakage canaries.</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-rag">RAG use case</a> scores <code>groundedness</code>, <code>answer_relevance</code>, <code>context_precision</code> asynchronously and links scores to traces.</p>
+<h2 id="agents-and-multi-agent">Agents and multi-agent</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Outcome</strong>: programmatic end-state checks (file exists, ticket created, DB row correct). <strong>Trajectory</strong>: tool-selection accuracy, argument validity, step efficiency vs reference, loop/recovery behavior. <strong>Safety</strong>: unsafe-action rate, unauthorized tool attempts, injection-resistance suite. Replay recorded tool responses for determinism; run N repeats.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Task success (programmatic where possible, else judge over the trace), cost per <em>successful</em> task, steps per task, tool error rate, approvals denied, injection detections.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Max-step/budget/timeout terminations, repeated identical tool calls, write-tool use, new tool or description change.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Success-rate drops hidden by retries; cost per success rising while cost per call is flat.</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-multi-agent">Multi-agent use case</a>.</p>
+<h2 id="chatbots-and-copilots">Chatbots and copilots</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Scripted multi-turn scenarios with simulated users (goal, persona, constraints); goal completion; policy compliance across turns; consistency/contradiction; escalation appropriateness; refusal correctness (incl. over-refusal set).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td><strong>Conversation-level</strong> judge on a stratified sample of whole conversations; containment/escalation/abandonment; thumbs; acceptance rate (copilots); re-ask rate.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Refusal, fallback (unsupported intent), long context/truncation, stream stall, repeated user rephrasing.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Intent-specific regressions; judge cost scaling with conversation length (judge a summary or a window).</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-chatbot">Chatbot use case</a>.</p>
+<h2 id="extraction-classification-summarization-pipelines">Extraction, classification, summarization pipelines</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Field-level precision/recall/F1 vs labels; schema validity; exact/fuzzy match per field; for summaries: required-point coverage, faithfulness, length.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Schema parse rate and repair rate (100 %), distribution drift of predicted labels, confidence calibration, a continuous labeled <strong>canary slice</strong>.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Parse failures, low confidence, out-of-distribution input length/language.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-to-sql-nl-to-query">Text-to-SQL / NL-to-query</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Execution accuracy</strong> (result set equals golden), valid SQL rate, schema-grounding (no unknown columns), cost of the query (rows scanned).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>SQL validity, read-only enforcement, query cost, user confirmation/edit rate, judge on a sample for semantic correctness.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Parser/binder errors, full-table scans, blocked statements, repair loops.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="voice-agents">Voice agents</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>WER on a labeled audio set, intent accuracy, simulated-call task success, barge-in handling scripts.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Turn latency, sampled ASR WER vs human transcript, dead-air/talk-over rates, call outcome.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="code-assistants">Code assistants</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Unit tests pass</strong> (the best scorer there is), static analysis, security scan, compilation.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Suggestion acceptance and retention (kept after N minutes), test-pass on accepted code where measurable, security-scan hits.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="minimum-viable-scoring-program-any-app">Minimum viable scoring program (any app)</h2>
+<ol>
+<li>Deterministic checks on 100 % of traffic and in CI.</li>
+<li>A 200-item golden set + a regression set, gated in CI with paired CIs.</li>
+<li>One reference-free judge criterion (groundedness or task success), sampled online, calibrated on 100 labeled items.</li>
+<li>User feedback captured with <code>trace_id</code>.</li>
+<li>Scores, versions and sample sizes on the same dashboard as latency and cost.</li>
+</ol></section><section class="page" id="p-scoring-operating"><h1 id="operating-a-scoring-program">Operating a scoring program</h1>
+<h2 id="cost-model">Cost model</h2>
+<pre class="highlight"><code class="language-text">online judge cost/day  = requests/day x sample_rate x judge_calls_per_item x cost_per_judge_call
+offline run cost       = dataset_items x repeats x (system_cost + scorer_cost) x runs/day</code></pre>
+<p>Example: 2 M requests/day, 4 % judged, one judge call at $0.0006 → ≈ $48/day. Judging 100 % with a frontier-model judge at $0.01 → $20,000/day: 400× more, for little extra statistical power.</p>
+<p>Levers: tier scorers (T0-T4), stratified sampling, small-model judges calibrated against a strong judge, cached judge results for identical inputs, shorter judge inputs (claims instead of full documents), batch APIs for offline runs. Track <strong>judge cost per scored item</strong> and <strong>scoring cost as a share of inference spend</strong> as metrics (target under ~5-10 %).</p>
+<h2 id="statistics-you-actually-need">Statistics you actually need</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval for a mean score</td>
+<td>Normal approx. (large n) or bootstrap</td>
+</tr>
+<tr>
+<td>Interval for a pass-rate</td>
+<td>Wilson interval</td>
+</tr>
+<tr>
+<td>Compare two configs on the same items</td>
+<td>Paired bootstrap on per-item differences</td>
+</tr>
+<tr>
+<td>Compare two online arms</td>
+<td>Two-sample test / bootstrap on per-user (not per-request) means</td>
+</tr>
+<tr>
+<td>Sample size for a detectable change</td>
+<td>n ≈ 2(2.8·σ/δ)² per arm for 95 % confidence and 80 % power (δ = smallest change you care about, σ = score std-dev)</td>
+</tr>
+<tr>
+<td>Detect small persistent shifts</td>
+<td>CUSUM / EWMA on the score series</td>
+</tr>
+<tr>
+<td>Many metrics at once</td>
+<td>Pre-declare primary metrics; correct (Holm/Benjamini-Hochberg) for the rest</td>
+</tr>
+</tbody>
+</table>
+<p>Example: with σ = 0.11 and δ = 0.02, n ≈ 2 × (2.8 × 0.11 / 0.02)² ≈ 470 judged items per arm per window. That is why alerts need minimum-n guards and why rare slices need oversampling.</p>
+<h2 id="reconciling-online-and-offline">Reconciling online and offline</h2>
+<p>They disagree for known reasons; investigate rather than pick a winner.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offline high, online low</td>
+<td>Golden set unrepresentative; production distribution shifted; data freshness; real user phrasing</td>
+</tr>
+<tr>
+<td>Offline low, online high</td>
+<td>Reference-based scorer too strict; golden set harder than traffic</td>
+</tr>
+<tr>
+<td>Same scorer, different mean</td>
+<td>Different judge version, prompt, or context truncation between the two paths</td>
+</tr>
+<tr>
+<td>Online dip, offline stable</td>
+<td>Drift in inputs or index, provider-side change, a slice not in the dataset</td>
+</tr>
+<tr>
+<td>Offline gate passes, canary fails</td>
+<td>Missing operational realism (load, tools, latency), caching differences</td>
+</tr>
+</tbody>
+</table>
+<p>Practices: run the <strong>same scorer code and version</strong> in both modes; re-score a sample of production items offline under controlled config; measure the golden-set <strong>coverage of production intents</strong>; alert when coverage falls.</p>
+<h2 id="the-improvement-loop">The improvement loop</h2>
+<pre class="mermaid"><code>flowchart LR
+    ON[Online scores + feedback] --&gt; FLAG[Flagged / low-score traces]
+    FLAG --&gt; TRI[Triage and label]
+    TRI --&gt; CAT[Classify cause&lt;br/&gt;retrieval, prompt, model, tool, data]
+    CAT --&gt; FIX[Fix]
+    TRI --&gt; REG[Add to regression set]
+    REG --&gt; GATE[Offline gate]
+    FIX --&gt; GATE --&gt; CAN[Canary] --&gt; ON</code></pre>
+<p>Weekly: review the lowest-scoring and most-disagreed traces; promote failures to the regression set; refresh 5-10 % of the golden set; review judge-human agreement on a sample; check alert noise.</p>
+<h2 id="governance-and-audit">Governance and audit</h2>
+<ul>
+<li>Keep <strong>score history, scorer versions, dataset versions and gate decisions</strong> as audit evidence (EU AI Act post-market monitoring, NIST AI RMF "Measure", ISO/IEC 42001).</li>
+<li>Tier by risk: high-risk apps get higher sampling, human review queues and stricter gates (<a href="#p-monitoring-overview">risk tiers</a>).</li>
+<li>Restrict who can edit gates and rubrics; changes are reviewed like code.</li>
+</ul>
+<h2 id="anti-patterns">Anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scores without n or intervals</td>
+<td>Always show both</td>
+</tr>
+<tr>
+<td>Gating on a single stochastic run</td>
+<td>Repeats + paired CI</td>
+</tr>
+<tr>
+<td>Optimizing the metric, not the outcome</td>
+<td>Tie scores to business outcomes (resolution, task success, edits) and check correlation periodically</td>
+</tr>
+<tr>
+<td>Static golden set</td>
+<td>Continuous promotion from production</td>
+</tr>
+<tr>
+<td>One aggregate number</td>
+<td>Per-slice reporting and slice-protection gates</td>
+</tr>
+<tr>
+<td>Unowned scorers</td>
+<td>Each scorer has an owner, a version, a calibration record and a review cadence</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checklist">Checklist</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Deterministic checks on 100 % online and offline</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Golden, regression, adversarial, anchor and holdout sets versioned</li>
+<li class="task-list-item"><input type="checkbox" disabled/> CI gate with paired CIs, slice protection, hard safety and ops gates</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Online sampler: stratified + flagged, bounded queue, shed counter</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Judges calibrated (κ reported), pinned, versioned; anchor re-score on change</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Scores written with <code>trace_id</code>, <code>scorer_version</code>, <code>judge_model</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Dashboards show score, n, interval, scorer version and change events</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Alerts guarded by minimum n; slice-aware</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Weekly triage → regression-set promotion</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Scoring cost tracked and capped</li>
 </ul></section><section class="page" id="p-monitoring-overview"><h1 id="monitoring-by-application-type">Monitoring by application type</h1>
 <p>Every AI app shares the latency/quality/cost core, but each pattern has its own failure modes and signature metrics.</p>
 <table>
