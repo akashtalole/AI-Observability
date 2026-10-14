@@ -2,6 +2,9 @@
 
 **Goal:** minimum integration effort and deepest native coverage when the AI workload lives in one cloud.
 
+!!! tip "Deep dive"
+    Detailed coverage of each cloud's OpenTelemetry support, **CloudWatch Omni**, and a step-by-step enterprise rollout is in [Cloud-native observability](../cloud-native/index.md).
+
 !!! note
     Product names and features change quickly. Confirm current capabilities in each provider's documentation (links in [References](../references.md)).
 

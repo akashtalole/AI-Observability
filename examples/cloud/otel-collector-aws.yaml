@@ -1,0 +1,53 @@
+# OpenTelemetry Collector -> Amazon CloudWatch native OTLP endpoints (traces, logs, metrics).
+# Endpoints (HTTP only, no gRPC; SigV4):  https://xray.<region>.amazonaws.com/v1/traces
+#                                         https://logs.<region>.amazonaws.com/v1/logs   (needs x-aws-log-group / x-aws-log-stream)
+#                                         https://monitoring.<region>.amazonaws.com/v1/metrics
+# Prereqs: enable CloudWatch Transaction Search (traces); create the log group/stream; IAM role for the collector
+# (xray:PutTraceSegments, logs:PutLogEvents + CreateLogStream, cloudwatch:PutMetricData as required by your setup).
+# Run on AWS with an IAM role (ECS task role, EKS IRSA / Pod Identity, EC2 profile). Outside AWS prefer IAM Roles Anywhere.
+receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}
+
+processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+  resourcedetection:
+    detectors: [env, ec2, ecs, eks]
+    timeout: 2s
+  batch: {send_batch_size: 512, timeout: 5s}      # stay well under 10,000 spans / 5 MB per request
+
+extensions:
+  sigv4auth/traces:  {region: "${env:AWS_REGION}", service: xray}
+  sigv4auth/logs:    {region: "${env:AWS_REGION}", service: logs}
+  sigv4auth/metrics: {region: "${env:AWS_REGION}", service: monitoring}
+  health_check: {endpoint: 0.0.0.0:13133}
+
+exporters:
+  otlphttp/cw_traces:
+    endpoint: https://xray.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/traces}
+    compression: gzip
+  otlphttp/cw_logs:
+    endpoint: https://logs.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/logs}
+    compression: gzip
+    headers:
+      x-aws-log-group: ${env:CW_LOG_GROUP}
+      x-aws-log-stream: ${env:CW_LOG_STREAM}
+  otlphttp/cw_metrics:
+    endpoint: https://monitoring.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/metrics}
+    compression: gzip
+
+service:
+  extensions: [sigv4auth/traces, sigv4auth/logs, sigv4auth/metrics, health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlphttp/cw_traces]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlphttp/cw_logs]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [otlphttp/cw_metrics]}

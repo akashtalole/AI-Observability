@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -30,6 +30,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <li><strong>I need to know what to collect</strong> — <a href="#p-metrics-metrics-catalog">Metrics catalog</a> and <a href="#p-metrics-data-to-collect">Data to collect</a>.</li>
 <li><strong>I need to pick a tool</strong> — <a href="#p-landscape-overview">Landscape overview</a>, <a href="#p-landscape-catalog">full catalog</a>, <a href="#p-landscape-comparison">comparison by need</a>.</li>
 <li><strong>I monitor agents / chatbots / voice</strong> — <a href="#p-monitoring-overview">Monitoring by app type</a>.</li>
+<li><strong>I run on AWS / Azure / GCP</strong> — <a href="#p-cloud-native-index">Cloud-native observability</a>: OpenTelemetry support, <strong>CloudWatch Omni</strong>, Foundry, Cloud Trace, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</li>
 <li><strong>I need to measure quality</strong> — <a href="#p-scoring-index">Online and offline scoring</a>: datasets, scorers, judges, sampling, gates.</li>
 <li><strong>I want runnable OSS implementations</strong> — <a href="#p-use-cases-index">Use cases on OTel + Prometheus + Grafana + Loki + Tempo</a>: RAG, multi-agent, chatbot.</li>
 <li><strong>I want to build it</strong> — <a href="#p-architecture-reference-architecture">Reference architecture</a> and <a href="#p-implementation-instrumentation">instrumentation guide</a>.</li>
@@ -63,6 +64,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <tr>
 <td><code>docs/metrics</code></td>
 <td>Metrics catalog, data to collect, SLOs/alerts, evaluation</td>
+</tr>
+<tr>
+<td><code>docs/cloud-native</code></td>
+<td>Azure, AWS (incl. CloudWatch Omni) and GCP native observability, OTLP support, enterprise implementation guide</td>
 </tr>
 <tr>
 <td><code>docs/scoring</code></td>
@@ -1145,6 +1150,10 @@ content bytes  = requests × (prompt+context+answer chars) — dominant; gate wi
 <h2 id="when-to-choose">When to choose</h2>
 <p>Multi-cloud or hybrid estates, sovereignty needs, many model providers, or a strategic intent to avoid platform lock-in. See the <a href="#p-build-vs-buy-decision-framework">decision framework</a>.</p></section><section class="page" id="p-build-vs-buy-cloud-specific"><h1 id="cloud-specific-approach">Cloud-specific approach</h1>
 <p><strong>Goal:</strong> minimum integration effort and deepest native coverage when the AI workload lives in one cloud.</p>
+<div class="admonition tip">
+<p class="admonition-title">Deep dive</p>
+<p>Detailed coverage of each cloud's OpenTelemetry support, <strong>CloudWatch Omni</strong>, and a step-by-step enterprise rollout is in <a href="#p-cloud-native-index">Cloud-native observability</a>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Product names and features change quickly. Confirm current capabilities in each provider's documentation (links in <a href="#p-references">References</a>).</p>
@@ -1577,7 +1586,7 @@ Hidden costs (both) =
 </ol>
 <h2 id="decision-hint">Decision hint</h2>
 <p>If observability + eval cost projects above ~10 % of LLM inference spend, or the vendor price curve is superlinear in your growth, evaluate self-hosting the high-volume path (traces, facts) while keeping SaaS for the high-value collaboration features (prompt management, annotation, eval UI).</p></section><section class="page" id="p-landscape-overview"><h1 id="landscape-overview">Landscape overview</h1>
-<p><em>Snapshot: October 2026. Vendor facts change quickly — verify before purchase. The complete list (67 entries) is in the <a href="#p-landscape-catalog">tool catalog</a>; an interactive filterable version is in the <a href="#p-artifacts-index">HTML artifacts</a>.</em></p>
+<p><em>Snapshot: October 2026. Vendor facts change quickly — verify before purchase. The complete list (68 entries) is in the <a href="#p-landscape-catalog">tool catalog</a>; an interactive filterable version is in the <a href="#p-artifacts-index">HTML artifacts</a>.</em></p>
 <pre class="mermaid"><code>mindmap
   root((AI Observability))
     Standards
@@ -1720,7 +1729,7 @@ Hidden costs (both) =
 </ol></section><section class="page" id="p-landscape-catalog"><h1 id="tool-catalog">Tool catalog</h1>
 <!-- GENERATED by scripts/build.py from data/tools.json. Edit the JSON, not this file. -->
 
-<p>67 tools across 10 categories. Snapshot: October 2026 — <strong>licenses, ownership and features change; verify before adopting.</strong> Use the <a href="landscape-explorer.html">interactive explorer</a> to filter.</p>
+<p>68 tools across 10 categories. Snapshot: October 2026 — <strong>licenses, ownership and features change; verify before adopting.</strong> Use the <a href="landscape-explorer.html">interactive explorer</a> to filter.</p>
 <p><code>OTel</code> = ingests/emits OpenTelemetry (Yes / Partial / N/A).</p>
 <h2 id="instrumentation-standards">Instrumentation &amp; standards</h2>
 <table>
@@ -2110,27 +2119,36 @@ Hidden costs (both) =
 <td><a href="https://learn.microsoft.com/azure/ai-foundry/">Azure Monitor / App Insights + Microsoft Foundry</a></td>
 <td>Cloud service</td>
 <td>Proprietary</td>
-<td>OTel tracing, Foundry evaluators, monitoring dashboards, APIM AI gateway.</td>
+<td>OTel tracing in Application Insights, Foundry Observability (Traces, evaluators), native OTLP ingestion paths (Collector with Entra, Azure Monitor Agent, AKS), Microsoft OpenTelemetry distro, APIM AI gateway.</td>
 <td>Native Azure OpenAI/Foundry integration</td>
-<td>Azure-centric</td>
+<td>Azure-centric; OTLP ingestion labelled preview on Learn but GA in a May 2026 announcement: verify</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td><a href="https://aws.amazon.com/cloudwatch/">AWS CloudWatch GenAI Observability / Bedrock AgentCore</a></td>
+<td><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPEndpoint.html">AWS CloudWatch GenAI Observability / Bedrock AgentCore</a></td>
 <td>Cloud service</td>
 <td>Proprietary</td>
-<td>Model invocation logs, GenAI dashboards, agent observability, Guardrails.</td>
-<td>Native Bedrock integration, ADOT/OTel</td>
-<td>AWS-centric</td>
+<td>Model invocation logs, GenAI/agent dashboards, AgentCore Observability, native OTLP endpoints (traces, logs, metrics), Guardrails.</td>
+<td>First-party OTLP for all signals (SigV4); deep Bedrock/AgentCore integration; ADOT</td>
+<td>HTTP-only OTLP with request/series limits; AWS-centric</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><a href="https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/">Amazon CloudWatch Omni</a></td>
+<td>Cloud service</td>
+<td>Proprietary</td>
+<td>AI-first, team/application-centric observability (GA Sep 2026): Spaces, AI investigations with DevOps Agent, agent tracing, 17 built-in evaluators, experiments, IDE extension; OpenTelemetry-based with connectors for other clouds.</td>
+<td>Agent evaluation and experimentation plus AI-assisted triage; existing CloudWatch telemetry appears without reconfiguration</td>
+<td>New; confirm regions, pricing and connector coverage; AI-aware features tied to CloudWatch storage</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td><a href="https://cloud.google.com/vertex-ai">Google Cloud Vertex AI / Cloud Trace &amp; Monitoring</a></td>
 <td>Cloud service</td>
 <td>Proprietary</td>
-<td>Gemini/Agent observability, evaluation service, Model Armor, Cloud Trace.</td>
-<td>OTel-native GCP telemetry; BigQuery export</td>
-<td>GCP-centric</td>
+<td>Telemetry (OTLP) API for Cloud Trace/Monitoring/Logging, Google-built Collector, Vertex AI evaluation, Model Armor, Agent Runtime.</td>
+<td>First-party OTLP endpoint (traces GA, metrics GA Aug 2026); BigQuery export</td>
+<td>Per-signal maturity differs (logs rolling out); GCP-centric</td>
 <td>Yes</td>
 </tr>
 </tbody>
@@ -3517,7 +3535,1421 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Keep an <strong>anchor set</strong> re-scored on every judge change.</li>
 <li>Report <strong>confidence intervals</strong>; show sample size on charts.</li>
 <li>Segment by intent/topic — aggregate means hide regressions in important slices.</li>
-</ul></section><section class="page" id="p-scoring-index"><h1 id="online-and-offline-scoring-overview">Online and offline scoring: overview</h1>
+</ul></section><section class="page" id="p-cloud-native-index"><h1 id="cloud-native-ai-observability-azure-aws-and-gcp">Cloud-native AI observability: Azure, AWS and GCP</h1>
+<p>Each hyperscaler now ships an observability stack for generative AI and agents, and <strong>all three have converged on OpenTelemetry (OTLP)</strong> as the way in. This section covers what each offers, how its OpenTelemetry support really works, the new <strong>Amazon CloudWatch Omni</strong>, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</p>
+<p><em>Snapshot: October 2026. Cloud features move monthly and several are labelled preview in one place and GA in another; every status below says where it came from. </em><em>Verify against the linked vendor docs before committing.</em>**</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Read it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#p-cloud-native-aws">AWS</a></td>
+<td>CloudWatch generative AI observability, AgentCore Observability, native OTLP endpoints (traces/logs/metrics), ADOT, limits</td>
+</tr>
+<tr>
+<td><a href="#p-cloud-native-omni">CloudWatch Omni</a></td>
+<td>The new AI-first, team-and-application-centric experience: Spaces, investigations, agent tracing/evaluation, IDE extension</td>
+</tr>
+<tr>
+<td><a href="#p-cloud-native-azure">Azure</a></td>
+<td>Microsoft Foundry observability, Application Insights, Azure Monitor OTLP ingestion paths, Microsoft OpenTelemetry distro, APIM AI gateway</td>
+</tr>
+<tr>
+<td><a href="#p-cloud-native-gcp">GCP</a></td>
+<td>Cloud Trace / Monitoring / Logging via the Telemetry (OTLP) API, Vertex AI and Agent Runtime, Google-built Collector, GKE managed OTel</td>
+</tr>
+<tr>
+<td><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide</a></td>
+<td>Landing zone, identity, network, residency, Collector tier, sampling, cost, governance, rollout, per-cloud checklists, multi-cloud</td>
+</tr>
+</tbody>
+</table>
+<h2 id="at-a-glance">At a glance</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>AWS</strong></th>
+<th><strong>Azure</strong></th>
+<th><strong>GCP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI/agent platform</strong></td>
+<td>Amazon Bedrock, Bedrock AgentCore</td>
+<td>Microsoft Foundry (agents, models)</td>
+<td>Vertex AI, Agent Runtime (formerly Agent Engine)</td>
+</tr>
+<tr>
+<td><strong>AI-aware observability</strong></td>
+<td>CloudWatch generative AI observability; <strong>CloudWatch Omni</strong> (GA Sep 2026)</td>
+<td>Foundry Observability (Traces, evaluations, monitoring) on Application Insights</td>
+<td>Cloud Trace + Cloud Monitoring + Cloud Logging, Vertex AI evaluation</td>
+</tr>
+<tr>
+<td><strong>OTLP ingestion</strong></td>
+<td>Native HTTP endpoints for <strong>traces, logs, metrics</strong> (SigV4 or bearer token for logs/metrics); no gRPC</td>
+<td>Native OTLP paths: Collector (Entra auth), Azure Monitor Agent, AKS onboarding; plus Microsoft OpenTelemetry distro</td>
+<td>Telemetry API <code>telemetry.googleapis.com</code>: traces GA, metrics GA (Aug 2026), logs rolling out</td>
+</tr>
+<tr>
+<td><strong>GenAI semantic conventions</strong></td>
+<td>ADOT / Strands emit <code>gen_ai.*</code> spans; OpenInference also supported</td>
+<td>Distro emits latest <code>gen_ai.*</code> conventions (opt-in env vars); OpenInference supported</td>
+<td>OTel GenAI instrumentation (e.g. Vertex AI, ADK, LangGraph samples)</td>
+</tr>
+<tr>
+<td><strong>Gateway / metering</strong></td>
+<td>Bedrock invocation logging, inference profiles with cost tags</td>
+<td>API Management AI gateway (token metrics, limits)</td>
+<td>Apigee / Cloud API gateways, Vertex AI usage metrics, Model Armor</td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>Bedrock Guardrails</td>
+<td>Azure AI Content Safety, Foundry guardrails</td>
+<td>Model Armor</td>
+</tr>
+<tr>
+<td><strong>Long-range analytics</strong></td>
+<td>CloudWatch Logs Insights/PromQL, S3 + Athena</td>
+<td>Log Analytics (KQL), export to ADLS/Fabric</td>
+<td>Log sinks to BigQuery, Looker</td>
+</tr>
+<tr>
+<td><strong>Agent trace UI</strong></td>
+<td>CloudWatch GenAI Observability, <strong>Omni Trace Explorer</strong></td>
+<td>Foundry Observability &gt; Traces</td>
+<td>Cloud Trace Explorer</td>
+</tr>
+<tr>
+<td><strong>Multi-cloud intake</strong></td>
+<td>OTLP from anywhere (ADOT outside AWS); <strong>Omni connectors</strong></td>
+<td>Collector with Entra auth works anywhere</td>
+<td>Collector / OTLP from anywhere</td>
+</tr>
+</tbody>
+</table>
+<h2 id="opentelemetry-support-honestly">OpenTelemetry support, honestly</h2>
+<pre class="mermaid"><code>flowchart LR
+    APP[App + OTel SDK&lt;br/&gt;gen_ai.* semconv] --&gt; COL[Your OTel Collector]
+    COL --&gt;|SigV4 OTLP/HTTP| CW[CloudWatch&lt;br/&gt;+ Omni + AgentCore]
+    COL --&gt;|Azure Monitor exporter&lt;br/&gt;or OTLP + Entra| AM[Azure Monitor&lt;br/&gt;App Insights + Foundry]
+    COL --&gt;|OTLP + ADC| GC[Google Cloud&lt;br/&gt;Telemetry API]
+    COL --&gt;|OTLP| OSS[Tempo / Prometheus / Loki&lt;br/&gt;or other vendors]</code></pre>
+<p>What "supports OpenTelemetry" means in practice:</p>
+<ol>
+<li><strong>Ingestion:</strong> can you send OTLP directly? AWS and Google expose first-party OTLP endpoints; Azure offers OTLP via an agent/Collector/AKS path with its own onboarding resources (and the Azure Monitor exporter remains the long-standing route).</li>
+<li><strong>Semantic conventions:</strong> the OTel GenAI conventions are still in <strong>Development</strong>, so each cloud's UI reads a specific version of the attributes. Pin your instrumentation version and test that your spans light up the cloud's AI views.</li>
+<li><strong>Protocol constraints:</strong> AWS endpoints are <strong>HTTP only</strong> (no gRPC) with request/size/series limits; Google's Telemetry API has its own quotas; Azure needs its onboarding resources (Application Insights, data collection configuration).</li>
+<li><strong>Identity:</strong> SigV4 (AWS), Microsoft Entra ID (Azure), Google ADC/IAM (GCP). Your Collector must be able to authenticate; this is the main integration chore.</li>
+<li><strong>What is not portable:</strong> the AI-aware UIs (Omni, Foundry, Vertex) depend on attributes and resource naming conventions specific to each platform even when the transport is OTLP.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">The portable pattern</p>
+<p><strong>Instrument once with OpenTelemetry → send to a Collector you control → fan out.</strong> Each cloud's native backend becomes one exporter. You keep redaction, sampling and routing in your config, and you can add or swap backends (including the <a href="#p-use-cases-index">OSS stack</a>) without touching applications.</p>
+</div>
+<h2 id="choosing-between-native-stacks">Choosing between native stacks</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Lean towards</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One cloud, workloads on its AI platform</td>
+<td>That cloud's native stack + Collector for portability</td>
+</tr>
+<tr>
+<td>Agents on AWS (Bedrock AgentCore, Strands, LangGraph, CrewAI) wanting evaluation and AI-assisted troubleshooting</td>
+<td>CloudWatch GenAI observability / <strong>Omni</strong></td>
+</tr>
+<tr>
+<td>Microsoft ecosystem (Agent Framework, Semantic Kernel, Copilot, Entra)</td>
+<td>Foundry Observability + Application Insights</td>
+</tr>
+<tr>
+<td>Gemini/Vertex AI, BigQuery-centred analytics</td>
+<td>Cloud Trace/Monitoring + BigQuery</td>
+</tr>
+<tr>
+<td>Several clouds</td>
+<td>Collector tier + a neutral analysis plane (Grafana stack, warehouse) and use each native UI for its own workloads; Omni can ingest other clouds via connectors</td>
+</tr>
+<tr>
+<td>Strict evaluation/prompt-management workflows not covered natively</td>
+<td>Add an LLM-native tool (Langfuse, Phoenix, Braintrust…) behind the same Collector</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="#p-build-vs-buy-cloud-specific">Cloud-specific build-vs-buy</a> and the <a href="#p-build-vs-buy-decision-framework">build vs buy framework</a>.</p></section><section class="page" id="p-cloud-native-aws"><h1 id="aws-cloudwatch-agentcore-and-opentelemetry">AWS: CloudWatch, AgentCore and OpenTelemetry</h1>
+<h2 id="the-pieces">The pieces</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CloudWatch generative AI observability</strong> (GA since Oct 2025)</td>
+<td>Out-of-the-box dashboards and trace views for model invocations and agents; deep integration with <strong>Amazon Bedrock AgentCore</strong> (runtime, built-in tools, gateway, memory, identity)</td>
+</tr>
+<tr>
+<td><strong>AgentCore Observability</strong></td>
+<td>Agent/session/trace views, token and latency metrics, errors; works for agents on AgentCore <strong>and</strong> external agents that send OTLP (including on-premises and other clouds)</td>
+</tr>
+<tr>
+<td><strong>CloudWatch Omni</strong> (GA Sep 2026)</td>
+<td>AI-first, team/application-centric experience, agent tracing + evaluation, investigations: see <a href="#p-cloud-native-omni">CloudWatch Omni</a></td>
+</tr>
+<tr>
+<td><strong>Native OTLP endpoints</strong></td>
+<td>Direct OTLP/HTTP ingestion for traces, logs and metrics, SigV4 authenticated</td>
+</tr>
+<tr>
+<td><strong>Application Signals</strong></td>
+<td>Application-level SLOs and service maps on OTel data</td>
+</tr>
+<tr>
+<td><strong>Bedrock model invocation logging</strong></td>
+<td>Request/response logs to CloudWatch Logs or S3 (content controls apply)</td>
+</tr>
+<tr>
+<td><strong>Bedrock Guardrails / evaluations</strong></td>
+<td>Safety verdicts and model/RAG evaluation jobs</td>
+</tr>
+<tr>
+<td><strong>CloudWatch PromQL + high-cardinality metrics</strong></td>
+<td>OTLP-ingested metrics queryable with PromQL; up to 150 labels per datapoint vs 30 dimensions for classic custom metrics</td>
+</tr>
+<tr>
+<td><strong>X-Ray / Transaction Search</strong></td>
+<td>Span storage for trace analytics; must be enabled for the OTLP traces endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="otlp-endpoints-from-the-cloudwatch-docs">OTLP endpoints (from the CloudWatch docs)</h2>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traces</td>
+<td><code>https://xray.&lt;region&gt;.amazonaws.com/v1/traces</code></td>
+<td>SigV4</td>
+<td>Enable <strong>Transaction Search</strong> first; ≤ 10,000 spans and ≤ 5 MB per request; span ≤ 200 KB</td>
+</tr>
+<tr>
+<td>Logs</td>
+<td><code>https://logs.&lt;region&gt;.amazonaws.com/v1/logs</code></td>
+<td>SigV4 <strong>or</strong> bearer token</td>
+<td>Headers <code>x-aws-log-group</code>, <code>x-aws-log-stream</code> required; ≤ 1 MB per event (larger events become large log objects in selected regions); 5,000 TPS per account per Region</td>
+</tr>
+<tr>
+<td>Metrics</td>
+<td><code>https://monitoring.&lt;region&gt;.amazonaws.com/v1/metrics</code></td>
+<td>SigV4 <strong>or</strong> bearer token</td>
+<td>≤ 150 labels, ≤ 1,000 datapoints per request, 500 TPS, new-series creation rate limit (1 M per 10 min)</td>
+</tr>
+</tbody>
+</table>
+<p>Common constraints: <strong>HTTP/1.1 only (no gRPC)</strong>, OTLP 1.x, binary or JSON, <code>gzip</code> or none, timestamps within 2 h in the future and 14 days in the past. The Collector <strong>must use the <code>sigv4authextension</code></strong> (or <code>bearertokenauth</code> for logs/metrics). Verify current limits on the <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPEndpoint.html">OTLP Endpoints page</a>.</p>
+<h3 id="collector-configuration">Collector configuration</h3>
+<p>```yaml title="examples/cloud/otel-collector-aws.yaml"</p>
+<h1 id="opentelemetry-collector-amazon-cloudwatch-native-otlp-endpoints-traces-logs-metrics">OpenTelemetry Collector -&gt; Amazon CloudWatch native OTLP endpoints (traces, logs, metrics).</h1>
+<h1 id="endpoints-http-only-no-grpc-sigv4-httpsxrayamazonawscomv1traces">Endpoints (HTTP only, no gRPC; SigV4):  https://xray.<region>.amazonaws.com/v1/traces</h1>
+<h1 id="httpslogsamazonawscomv1logs-needs-x-aws-log-group-x-aws-log-stream">https://logs.<region>.amazonaws.com/v1/logs   (needs x-aws-log-group / x-aws-log-stream)</h1>
+<h1 id="httpsmonitoringamazonawscomv1metrics">https://monitoring.<region>.amazonaws.com/v1/metrics</h1>
+<h1 id="prereqs-enable-cloudwatch-transaction-search-traces-create-the-log-groupstream-iam-role-for-the-collector">Prereqs: enable CloudWatch Transaction Search (traces); create the log group/stream; IAM role for the collector</h1>
+<h1 id="xrayputtracesegments-logsputlogevents-createlogstream-cloudwatchputmetricdata-as-required-by-your-setup">(xray:PutTraceSegments, logs:PutLogEvents + CreateLogStream, cloudwatch:PutMetricData as required by your setup).</h1>
+<h1 id="run-on-aws-with-an-iam-role-ecs-task-role-eks-irsa-pod-identity-ec2-profile-outside-aws-prefer-iam-roles-anywhere">Run on AWS with an IAM role (ECS task role, EKS IRSA / Pod Identity, EC2 profile). Outside AWS prefer IAM Roles Anywhere.</h1>
+<p>receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}</p>
+<p>processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+  resourcedetection:
+    detectors: [env, ec2, ecs, eks]
+    timeout: 2s
+  batch: {send_batch_size: 512, timeout: 5s}      # stay well under 10,000 spans / 5 MB per request</p>
+<p>extensions:
+  sigv4auth/traces:  {region: "${env:AWS_REGION}", service: xray}
+  sigv4auth/logs:    {region: "${env:AWS_REGION}", service: logs}
+  sigv4auth/metrics: {region: "${env:AWS_REGION}", service: monitoring}
+  health_check: {endpoint: 0.0.0.0:13133}</p>
+<p>exporters:
+  otlphttp/cw_traces:
+    endpoint: https://xray.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/traces}
+    compression: gzip
+  otlphttp/cw_logs:
+    endpoint: https://logs.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/logs}
+    compression: gzip
+    headers:
+      x-aws-log-group: ${env:CW_LOG_GROUP}
+      x-aws-log-stream: ${env:CW_LOG_STREAM}
+  otlphttp/cw_metrics:
+    endpoint: https://monitoring.${env:AWS_REGION}.amazonaws.com
+    auth: {authenticator: sigv4auth/metrics}
+    compression: gzip</p>
+<p>service:
+  extensions: [sigv4auth/traces, sigv4auth/logs, sigv4auth/metrics, health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlphttp/cw_traces]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlphttp/cw_logs]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [otlphttp/cw_metrics]}</p>
+<pre class="highlight"><code>
+Validated with `otelcol-contrib validate` (v0.120.0); not run against a live AWS account.
+
+### Collector-less: ADOT SDK
+
+For agents you can skip the Collector and export directly from the **AWS Distro for OpenTelemetry (ADOT)** SDK, which signs requests with SigV4 (the pattern AWS documents for agents running outside AWS):
+
+```bash
+pip install "aws-opentelemetry-distro&gt;=0.10.0" boto3 "strands-agents[otel]"
+
+export AGENT_OBSERVABILITY_ENABLED=true
+export OTEL_PYTHON_DISTRO=aws_distro
+export OTEL_PYTHON_CONFIGURATOR=aws_configurator
+export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+export OTEL_TRACES_EXPORTER=otlp
+export OTEL_RESOURCE_ATTRIBUTES="service.name=my-agent,aws.log.group.names=/aws/bedrock-agentcore/runtimes/my-agent"
+export OTEL_EXPORTER_OTLP_LOGS_HEADERS="x-aws-log-group=/aws/bedrock-agentcore/runtimes/my-agent,x-aws-log-stream=runtime-logs,x-aws-metric-namespace=bedrock-agentcore"
+
+opentelemetry-instrument python agent.py</code></pre>
+<ul>
+<li><code>service.name</code> becomes the agent name in the dashboard; <code>aws.log.group.names</code> routes telemetry into AgentCore Observability.</li>
+<li>Outside AWS use <strong>IAM Roles Anywhere</strong> rather than long-lived keys. Run a pre-flight <code>sts get-caller-identity</code>: ADOT fails silently on bad credentials.</li>
+<li>One-time per region: <code>aws xray update-trace-segment-destination --destination CloudWatchLogs</code> (Transaction Search).</li>
+<li>Session correlation uses OTel baggage key <code>session.id</code>.</li>
+<li>IAM actions needed in AWS's example: <code>logs:CreateLogGroup/CreateLogStream/PutLogEvents</code>, <code>xray:PutTraceSegments</code>, <code>xray:PutTelemetryRecords</code>, <code>xray:GetSamplingRules</code>, <code>xray:GetSamplingTargets</code>, <code>cloudwatch:PutMetricData</code> (plus <code>bedrock:InvokeModel</code> for the agent itself). Scope them to the specific log groups.</li>
+</ul>
+<p>Source: <a href="https://aws.amazon.com/blogs/machine-learning/monitor-on-premises-and-multi-cloud-ai-agents-with-agentcore-observability/">AgentCore Observability for on-premises and multi-cloud agents</a>.</p>
+<h2 id="genai-conventions-on-aws">GenAI conventions on AWS</h2>
+<p>ADOT auto-instrumentation (and the Strands <code>otel</code> extra) emit spans following the <strong>OpenTelemetry generative AI semantic conventions</strong>: <code>invoke_agent</code>, <code>chat</code>, <code>execute_tool</code>, plus framework spans such as <code>execute_event_loop_cycle</code>, with token usage attributes. OpenInference instrumentation is also supported by Omni. Frameworks named by AWS: Strands Agents, LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Vercel AI SDK (Python and TypeScript).</p>
+<h2 id="metering-and-cost-on-aws">Metering and cost on AWS</h2>
+<ul>
+<li><strong>Application inference profiles</strong> with cost-allocation tags give per-application/tenant Bedrock spend in Cost Explorer.</li>
+<li><strong>Model invocation logging</strong> records tokens and latency per call to CloudWatch Logs/S3; query with Logs Insights, or Athena for long ranges.</li>
+<li>Emit your own cost metric (<code>tokens × your price table</code>) over OTLP metrics with <code>tenant</code>, <code>feature</code>, <code>model</code> labels; the 150-label limit and PromQL make this practical.</li>
+</ul>
+<pre class="highlight"><code class="language-text"># CloudWatch Logs Insights: tokens by model per day (Bedrock invocation logs)
+fields @timestamp, modelId, input.inputTokenCount as tin, output.outputTokenCount as tout
+| stats count() as requests, sum(tin) as in_tokens, sum(tout) as out_tokens by bin(1d), modelId</code></pre>
+<h2 id="long-range-trends-on-aws">Long-range trends on AWS</h2>
+<p>CloudWatch retains metrics for up to 15 months (with decreasing resolution) and logs per retention policy. For multi-month cost/quality trends: export logs/metrics to <strong>S3 (Parquet) + Athena</strong>, or run an analytical store (OpenSearch/ClickHouse/Redshift) fed by the same Collector, using the <a href="#p-architecture-storage-and-retention">wide-fact model</a>.</p>
+<h2 id="strengths-and-watch-outs">Strengths and watch-outs</h2>
+<table>
+<thead>
+<tr>
+<th>Strengths</th>
+<th>Watch-outs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-party OTLP for all three signals; no vendor SDK needed</td>
+<td>HTTP only, SigV4 plumbing, request/series limits to design batching around</td>
+</tr>
+<tr>
+<td>Deep Bedrock/AgentCore integration; AI-aware views and evaluators</td>
+<td>Transaction Search + log/metric namespaces are prerequisites; costs scale with span/log volume</td>
+</tr>
+<tr>
+<td>Omni adds investigations, agent evaluation, multi-account/multi-cloud view</td>
+<td>New (GA Sep 2026): check regional availability, pricing and feature depth for your use</td>
+</tr>
+<tr>
+<td>IAM, KMS, VPC endpoints, org-wide controls</td>
+<td>AWS-centric; cross-cloud comparisons still need a neutral analysis plane</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-cloud-native-omni"><h1 id="amazon-cloudwatch-omni">Amazon CloudWatch Omni</h1>
+<p><strong>Amazon CloudWatch Omni</strong> (generally available, announced 22 September 2026) is AWS's AI-first observability experience. It re-organizes CloudWatch around <strong>teams and the applications they own</strong> instead of AWS resource types, adds <strong>agent observability, evaluation and experimentation</strong>, and uses AI agents to speed investigations. It is built on OpenTelemetry.</p>
+<div class="admonition info">
+<p class="admonition-title">Sources and confidence</p>
+<p>Based on AWS's launch posts (<a href="https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/">agents/generative AI</a>, <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-collaborative-ai-powered-observability-for-your-applications/">applications</a>) and the <a href="https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-cloudwatch-omni-ai/">What's New entry</a>. Pricing, regional availability and some limits were not in the pages reviewed: check the CloudWatch pricing page and documentation. Details below may change.</p>
+</div>
+<h2 id="what-it-is">What it is</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Off-console experience</strong></td>
+<td>Operators use a standalone web app (a dedicated URL per organization, SSO through IAM Identity Center, so Okta/Entra ID users need no AWS console access). Developers use an <strong>IDE extension</strong> for <strong>VS Code and Kiro</strong> (<code>AmazonWebServices.amazon-cloudwatch-omni</code>)</td>
+</tr>
+<tr>
+<td><strong>Spaces</strong></td>
+<td>A Space groups the applications a team owns plus their telemetry (logs, metrics, traces, alarms). Admins define Spaces per team and environment. A Space <strong>points at existing CloudWatch data without moving it</strong></td>
+</tr>
+<tr>
+<td><strong>Application-centric topology</strong></td>
+<td>Services and dependencies are discovered from telemetry and AWS Config resource discovery; the topology updates as services deploy</td>
+</tr>
+<tr>
+<td><strong>Dynamic views, SLO-driven alarms</strong></td>
+<td>You declare targets (availability, latency budgets, error thresholds); Omni adjusts alarms as the system changes; live SLO/health views replace static dashboards</td>
+</tr>
+<tr>
+<td><strong>Investigation sessions</strong></td>
+<td>Opened with topology, correlated signals (for example recent deployments) and an initial analysis; <strong>AWS DevOps Agent</strong> joins, correlates signals, traces root-cause paths through the dependency graph and keeps history; sessions are shareable; natural-language questions over telemetry</td>
+</tr>
+<tr>
+<td><strong>Connectors</strong></td>
+<td>Bring telemetry from other environments into the same Spaces and investigations (AWS's materials describe multi-cloud, including Azure workloads)</td>
+</tr>
+<tr>
+<td><strong>OpenTelemetry in</strong></td>
+<td>Telemetry already sent to CloudWatch appears with no reconfiguration; other OTel workloads send to an OTLP endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agent-observability-evaluation-and-experimentation">Agent observability, evaluation and experimentation</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trace Explorer</strong></td>
+<td>Hierarchical timeline of LLM calls, tool invocations and reasoning steps with inputs, outputs, token usage and latency per span; <strong>compare mode</strong> (two traces side by side)</td>
+</tr>
+<tr>
+<td><strong>Ask Assistant</strong></td>
+<td>An agent that analyzes traces and answers questions about agent behavior</td>
+</tr>
+<tr>
+<td><strong>Session Explorer</strong></td>
+<td>Multi-turn conversation histories</td>
+</tr>
+<tr>
+<td><strong>Agent Topology</strong></td>
+<td>Sub-agents, tools and connections visualized</td>
+</tr>
+<tr>
+<td><strong>Evaluators</strong></td>
+<td>17 built-in (for example coherence, helpfulness, faithfulness, routing correctness, correctness, retrieval quality, tool selection), plus third-party integrations (AutoEval, DeepEval)</td>
+</tr>
+<tr>
+<td><strong>Playground, Experiments</strong></td>
+<td>Side-by-side prompt/model comparison; compare agent variants</td>
+</tr>
+<tr>
+<td><strong>Golden datasets, regression detection</strong></td>
+<td>Build datasets from traces; detect regressions: the <a href="#p-scoring-offline-scoring">offline-scoring loop</a> built in</td>
+</tr>
+<tr>
+<td><strong>Prompt management</strong></td>
+<td>Versioned prompt configurations with rollback</td>
+</tr>
+<tr>
+<td><strong>Frameworks</strong></td>
+<td>Strands, LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Vercel AI SDK; native for Bedrock AgentCore; agents may run on Lambda, ECS, EKS or other clouds. Instrumentation via <strong>OpenInference</strong> and <strong>ADOT</strong></td>
+</tr>
+<tr>
+<td><strong>Developer onboarding</strong></td>
+<td>"Auto-instrument with Kiro", sample project, local-first data store; <strong>cloud login optional</strong> to send telemetry to CloudWatch; assistants such as Kiro, Claude Code and Codex integrate</td>
+</tr>
+</tbody>
+</table>
+<p>The IDE extension is free and works without an AWS account for local development; sending/storing telemetry in CloudWatch is billed per CloudWatch pricing.</p>
+<h2 id="how-omni-maps-to-this-handbook">How Omni maps to this handbook</h2>
+<table>
+<thead>
+<tr>
+<th>Handbook concept</th>
+<th>In Omni</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OTel</a></td>
+<td>OTLP ingest; OpenInference/ADOT instrumentation; <code>gen_ai</code> spans</td>
+</tr>
+<tr>
+<td><a href="#p-scoring-online-scoring">Online scoring</a></td>
+<td>Built-in evaluators on traces; regression detection</td>
+</tr>
+<tr>
+<td><a href="#p-scoring-offline-scoring">Offline scoring</a></td>
+<td>Experiments, golden datasets from traces, Playground</td>
+</tr>
+<tr>
+<td><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a></td>
+<td>Declared targets with automatic alarm tuning</td>
+</tr>
+<tr>
+<td><a href="#p-operations-runbooks">Runbooks</a></td>
+<td>Investigation sessions with DevOps Agent; shared history</td>
+</tr>
+<tr>
+<td>Change events</td>
+<td>Correlated recent deployments inside investigations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adopting-omni-practical-path">Adopting Omni (practical path)</h2>
+<ol>
+<li><strong>Keep OTel at the edge.</strong> Instrument with OpenTelemetry (ADOT or OpenInference) and route via your Collector, so Omni is a destination, not a dependency (<a href="#p-cloud-native-implementation-guide">implementation guide</a>).</li>
+<li><strong>Existing CloudWatch customers:</strong> use "Try CloudWatch Omni" in the CloudWatch console; existing telemetry, alarms, dashboards and APIs keep working unchanged.</li>
+<li><strong>Define Spaces</strong> that mirror team ownership (one Space per product team × environment) and align naming with your tagging standard (<code>app</code>, <code>team</code>, <code>env</code>, <code>tenant</code>).</li>
+<li><strong>Send agent telemetry</strong> with <code>gen_ai.*</code> spans and stable <code>service.name</code> per agent; verify the agent appears in Trace Explorer and Agent Topology.</li>
+<li><strong>Turn on evaluators</strong> for a sampled slice; calibrate against human labels before alerting on them (<a href="#p-scoring-designing-scorers">Designing scorers</a>).</li>
+<li><strong>Declare SLOs</strong> (availability, latency, plus your own quality metric) and review the auto-tuned alarms.</li>
+<li><strong>Governance:</strong> decide who may see content (redaction at the Collector), which accounts feed which Spaces, retention, and whether DevOps Agent investigation access matches your change-management policy.</li>
+<li><strong>Multi-cloud:</strong> pilot connectors with one non-AWS workload; compare against a neutral plane (Grafana/warehouse) before standardizing.</li>
+</ol>
+<h2 id="where-omni-fits-and-where-it-does-not">Where Omni fits and where it does not</h2>
+<table>
+<thead>
+<tr>
+<th>Good fit</th>
+<th>Think twice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS-centred estates with Bedrock/AgentCore agents; teams that want AI-assisted triage and built-in evaluation</td>
+<td>Strict data-residency or air-gap requirements not covered by region availability</td>
+</tr>
+<tr>
+<td>Org-wide, team-oriented views over many accounts and Regions</td>
+<td>Heavy reliance on custom evaluation workflows or prompt registries you already run elsewhere</td>
+</tr>
+<tr>
+<td>Developers who want observability inside the IDE loop</td>
+<td>Need for open, queryable raw data for months-long FinOps analytics: still export to S3/Athena or a warehouse</td>
+</tr>
+<tr>
+<td>Reducing time to first useful dashboard</td>
+<td>Pricing at high span/log volume: model it with the <a href="#p-build-vs-buy-tco">TCO sketch</a> before rollout</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Lock-in note</p>
+<p>Transport is open (OTLP) but the AI-aware features depend on attribute conventions and CloudWatch storage. Keep your Collector and exporters portable, store prompts/datasets in your own repo, and export golden datasets so you can leave.</p>
+</div></section><section class="page" id="p-cloud-native-azure"><h1 id="azure-foundry-application-insights-and-opentelemetry">Azure: Foundry, Application Insights and OpenTelemetry</h1>
+<h2 id="the-pieces">The pieces</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Microsoft Foundry Observability</strong></td>
+<td><strong>Observability &gt; Traces</strong> (agent runs: LLM calls, tool invocations, decision flow), evaluations and monitoring for agents and models. Traces are stored in <strong>Application Insights</strong> using OpenTelemetry semantic conventions</td>
+</tr>
+<tr>
+<td><strong>Application Insights / Azure Monitor</strong></td>
+<td>Trace, metric and log storage, Log Analytics (KQL), alerts, Workbooks, Managed Grafana</td>
+</tr>
+<tr>
+<td><strong>Azure Monitor OTLP ingestion</strong></td>
+<td>Native OTLP paths: <strong>OpenTelemetry Collector</strong> (sends to Azure Monitor endpoints with <strong>Microsoft Entra</strong> authentication, usable anywhere), <strong>Azure Monitor Agent</strong> (VMs, VMSS, Arc-enabled servers), <strong>AKS onboarding</strong> (autoinstrumentation/autoconfiguration). Traces, metrics and logs</td>
+</tr>
+<tr>
+<td><strong>Microsoft OpenTelemetry distro</strong> (<code>microsoft-opentelemetry</code>)</td>
+<td>One call, <code>use_microsoft_opentelemetry(...)</code>, enables Azure Monitor export plus framework instrumentation (LangChain/LangGraph, Agent Framework) and adds agent identity attributes</td>
+</tr>
+<tr>
+<td><strong>Native framework tracing</strong></td>
+<td>Microsoft Agent Framework and Semantic Kernel emit traces automatically when tracing is enabled for a Foundry project</td>
+</tr>
+<tr>
+<td><strong>API Management AI gateway</strong></td>
+<td>Token metering and limits, semantic caching, load balancing across model deployments</td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>Azure AI Content Safety, Foundry guardrails and evaluators</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Status labels differ between pages</p>
+<p>Microsoft's docs describe OTLP ingestion in Azure Monitor as <strong>preview</strong> (Learn page dated May 2026) while a Tech Community post (May 2026) announces direct OTLP ingestion as <strong>generally available</strong>. Foundry states tracing is <strong>GA for prompt and hosted agents</strong>, <strong>preview for workflow and external agents</strong>. Confirm the current status on Learn before production use.</p>
+</div>
+<h2 id="which-ingestion-path">Which ingestion path</h2>
+<table>
+<thead>
+<tr>
+<th>Your workload</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agents on Foundry (hosted/prompt)</td>
+<td>Connect Application Insights to the Foundry project; traces flow automatically</td>
+</tr>
+<tr>
+<td>Microsoft Agent Framework / Semantic Kernel</td>
+<td>Built-in; no extra packages when project tracing is enabled</td>
+</tr>
+<tr>
+<td>LangChain / LangGraph / OpenAI Agents SDK anywhere</td>
+<td>Microsoft OpenTelemetry distro (Python) or OpenInference instrumentors; set the Application Insights connection string</td>
+</tr>
+<tr>
+<td>AKS workloads</td>
+<td>AKS OTLP onboarding (autoconfiguration works for apps already instrumented with OTel)</td>
+</tr>
+<tr>
+<td>VMs / Arc servers</td>
+<td>Azure Monitor Agent receiving OTLP locally</td>
+</tr>
+<tr>
+<td>Multi-cloud / on-prem, central control</td>
+<td>Your <strong>OpenTelemetry Collector</strong> → Azure Monitor (Entra auth) or the <code>azuremonitor</code> exporter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instrumenting-an-agent-from-microsofts-foundry-docs">Instrumenting an agent (from Microsoft's Foundry docs)</h2>
+<pre class="highlight"><code class="language-python">from microsoft.opentelemetry import use_microsoft_opentelemetry
+
+use_microsoft_opentelemetry(
+    enable_azure_monitor=True,          # connection string from APPLICATIONINSIGHTS_CONNECTION_STRING
+    sampling_ratio=1.0,
+    instrumentation_options={
+        "langchain": {"enabled": True, "agent_id": "support-agent-v3", "agent_name": "Support agent"},
+    },
+)</code></pre>
+<pre class="highlight"><code class="language-bash">pip install microsoft-opentelemetry langchain langgraph langchain-openai azure-identity
+export APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=...;IngestionEndpoint=..."</code></pre>
+<p><strong>Content capture is a development switch.</strong> Prompts, tool arguments and outputs are captured only when you enable it:</p>
+<pre class="highlight"><code class="language-bash"># development only; leave unset in production
+export OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=SPAN_AND_EVENT
+export OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
+export AZURE_EXPERIMENTAL_ENABLE_GENAI_TRACING=true</code></pre>
+<p>Note the opt-in to the <em>latest experimental</em> GenAI conventions: attribute names can change between releases, so pin versions.</p>
+<h2 id="collector-configuration">Collector configuration</h2>
+<p>```yaml title="examples/cloud/otel-collector-azure.yaml"</p>
+<h1 id="opentelemetry-collector-azure-monitor-application-insights-the-foundry-tracing-backend">OpenTelemetry Collector -&gt; Azure Monitor / Application Insights (the Foundry tracing backend).</h1>
+<h1 id="uses-the-contrib-azuremonitor-exporter-with-an-application-insights-connection-string-store-it-in-key-vault-and">Uses the contrib <code>azuremonitor</code> exporter with an Application Insights connection string (store it in Key Vault and</h1>
+<h1 id="inject-as-an-env-var-azure-monitor-also-offers-native-otlp-ingestion-paths-azure-monitor-agent-aks-onboarding-and-the">inject as an env var). Azure Monitor also offers native OTLP ingestion paths (Azure Monitor Agent, AKS onboarding, and the</h1>
+<h1 id="collector-with-microsoft-entra-authentication-check-the-current-microsoft-learn-status-preview-vs-ga-before-using-them">Collector with Microsoft Entra authentication) - check the current Microsoft Learn status (preview vs GA) before using them</h1>
+<h1 id="for-production-and-follow-their-exact-endpointauth-settings">for production, and follow their exact endpoint/auth settings.</h1>
+<p>receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}</p>
+<p>processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  # Prompt/completion content must stay off in production (Foundry docs: content recording is for development only).
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+      - {key: gen_ai.input.messages, action: delete}
+      - {key: gen_ai.output.messages, action: delete}
+  resourcedetection: {detectors: [env, azure], timeout: 2s}
+  batch: {send_batch_size: 1024, timeout: 5s}</p>
+<p>exporters:
+  azuremonitor:
+    connection_string: ${env:APPLICATIONINSIGHTS_CONNECTION_STRING}</p>
+<p>extensions:
+  health_check: {endpoint: 0.0.0.0:13133}</p>
+<p>service:
+  extensions: [health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [azuremonitor]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [azuremonitor]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [azuremonitor]}</p>
+<pre class="highlight"><code>
+Validated with `otelcol-contrib validate` (v0.120.0); not run against a live subscription. For the native OTLP path with Entra authentication, follow Microsoft's current "Ingest OTLP data into Azure Monitor with OTel Collector" page for exact endpoint and role settings.
+
+## Permissions and access
+
+* **Contributor** (or higher) on the Application Insights resource for trace ingestion (Foundry docs).
+* Viewers need access to the connected Application Insights resource; for KQL add **Log Analytics Reader**, and **Privileged Monitoring Data Reader** if the tables are protected.
+* Use managed identity/`DefaultAzureCredential` for model calls; keep connection strings in **Key Vault**.
+* Private networking: Azure Private Link scopes (AMPLS) for Monitor ingestion and query.
+
+## Metering and cost on Azure
+
+* **APIM AI gateway** emits token metrics per consumer/product/deployment (the cleanest source for chargeback) and enforces token limits.
+* Application Insights data is billed by ingestion and retention: use sampling (adaptive or ratio), retention tiers and basic-logs tables for high-volume diagnostic data; see [Storage &amp; retention](../architecture/storage-and-retention.md).
+* Export to **ADLS/Fabric** for long-range FinOps and quality trends.
+
+```kusto
+// Tokens and p95 latency per model per day (App Insights; adjust property names to your telemetry)
+AppDependencies
+| where Name startswith "chat"
+| extend model = tostring(Properties["gen_ai.request.model"]),
+         tin = toint(Properties["gen_ai.usage.input_tokens"]),
+         tout = toint(Properties["gen_ai.usage.output_tokens"])
+| summarize requests = count(), p95_ms = percentile(DurationMs, 95), in_tokens = sum(tin), out_tokens = sum(tout)
+  by bin(TimeGenerated, 1d), model</code></pre>
+<h2 id="strengths-and-watch-outs">Strengths and watch-outs</h2>
+<table>
+<thead>
+<tr>
+<th>Strengths</th>
+<th>Watch-outs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native agent tracing for Microsoft frameworks; Entra identity end to end</td>
+<td>Status labels (preview vs GA) vary by feature; check per component</td>
+</tr>
+<tr>
+<td>Application Insights + Log Analytics: powerful KQL, Workbooks, Grafana</td>
+<td>OTLP onboarding needs Azure resources (App Insights, collection configuration) and Entra roles</td>
+</tr>
+<tr>
+<td>APIM AI gateway for metering and governance</td>
+<td>Python-first for some tracing integrations (LangChain/LangGraph)</td>
+</tr>
+<tr>
+<td>Private Link, RBAC, Policy, compliance inheritance</td>
+<td>Cross-cloud views still need a neutral plane</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-cloud-native-gcp"><h1 id="gcp-cloud-observability-vertex-ai-and-opentelemetry">GCP: Cloud Observability, Vertex AI and OpenTelemetry</h1>
+<h2 id="the-pieces">The pieces</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Telemetry (OTLP) API</strong> <code>telemetry.googleapis.com</code></td>
+<td>Google's first-party OTLP endpoint in front of Cloud Trace, Cloud Monitoring and Cloud Logging. Own quotas, separate from the older Monitoring/Logging APIs</td>
+</tr>
+<tr>
+<td><strong>Cloud Trace</strong></td>
+<td>Trace storage and Explorer; <strong>OTLP trace ingestion is the recommended path</strong> (announced Sep 2025) with larger limits than the legacy API (attribute value 64 KiB, up to 1024 attributes/span)</td>
+</tr>
+<tr>
+<td><strong>Cloud Monitoring</strong></td>
+<td>Metrics; the Telemetry API for <strong>OTLP metric ingestion reached GA on 5 Aug 2026</strong> (Monitoring release notes)</td>
+</tr>
+<tr>
+<td><strong>Cloud Logging</strong></td>
+<td>Logs; the Ops Agent (≥ 2.71.0, Sep 2026) can export metrics, logs and traces through the Telemetry API. Confirm GA status for direct OTLP logs</td>
+</tr>
+<tr>
+<td><strong>Google-built OpenTelemetry Collector</strong></td>
+<td>Google-maintained Collector distribution with Google exporters/auth preconfigured; deployable on Cloud Run/GKE</td>
+</tr>
+<tr>
+<td><strong>Managed OpenTelemetry for GKE</strong></td>
+<td>Managed collection for workloads on GKE</td>
+</tr>
+<tr>
+<td><strong>Vertex AI / Agent Runtime</strong> (formerly Agent Engine)</td>
+<td>Model and agent platform; agents export OTel spans via a configured OTLP trace exporter in the agent process</td>
+</tr>
+<tr>
+<td><strong>Vertex AI evaluation, Model Armor</strong></td>
+<td>Quality evaluation services; prompt/response protection and verdicts</td>
+</tr>
+<tr>
+<td><strong>BigQuery + Looker</strong></td>
+<td>Long-range analytics via log/billing exports</td>
+</tr>
+</tbody>
+</table>
+<h2 id="otlp-details-to-design-around">OTLP details to design around</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><code>telemetry.googleapis.com</code> (gRPC/HTTP via standard OTLP exporters)</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Google identity (Application Default Credentials, workload identity); the Collector uses <code>googleclientauth</code></td>
+</tr>
+<tr>
+<td>Project routing</td>
+<td><code>x-goog-user-project</code> / <code>gcp.project_id</code> resource attribute; enable the API: <code>gcloud services enable telemetry.googleapis.com</code></td>
+</tr>
+<tr>
+<td>Regions</td>
+<td>Log and trace data may be moved between regions by the backend; <strong>metric data is stored only when its location label matches the endpoint's region or a zone within it</strong></td>
+</tr>
+<tr>
+<td>Quotas</td>
+<td>Telemetry API has its own quotas; migrate alerts/charts on API usage to <code>telemetry.googleapis.com</code></td>
+</tr>
+<tr>
+<td>Cloud Trace Explorer filters</td>
+<td>Uses OTel semantic conventions; <code>service.name</code> identifies the service</td>
+</tr>
+</tbody>
+</table>
+<p>Check the <a href="https://docs.cloud.google.com/stackdriver/docs/reference/telemetry/overview">Telemetry API overview</a> and the <a href="https://docs.cloud.google.com/monitoring/docs/release-notes">Monitoring release notes</a> for current signal-by-signal status.</p>
+<h2 id="collector-configuration">Collector configuration</h2>
+<p>```yaml title="examples/cloud/otel-collector-gcp.yaml"</p>
+<h1 id="opentelemetry-collector-google-cloud-telemetry-otlp-api-at-telemetrygoogleapiscom-cloud-trace-cloud-monitoring">OpenTelemetry Collector -&gt; Google Cloud Telemetry (OTLP) API at telemetry.googleapis.com (Cloud Trace, Cloud Monitoring,</h1>
+<h1 id="cloud-logging-auth-application-default-credentials-via-the-googleclientauth-extension-workload-identity-on-gkecloud-run">Cloud Logging). Auth: Application Default Credentials via the googleclientauth extension (workload identity on GKE/Cloud Run).</h1>
+<h1 id="status-as-of-the-doc-date-otlp-traces-ga-otlp-metrics-via-the-telemetry-api-ga-aug-2026-release-notes-logs-via-the">Status as of the doc date: OTLP traces GA; OTLP metrics via the Telemetry API GA (Aug 2026 release notes); logs via the</h1>
+<h1 id="telemetry-api-are-rolling-out-eg-ops-agent-2710-verify-current-status-and-quotas-they-are-separate-from-the">Telemetry API are rolling out (e.g. Ops Agent &gt;= 2.71.0) - verify current status and quotas (they are separate from the</h1>
+<h1 id="monitoringlogging-api-quotas-google-also-ships-a-google-built-opentelemetry-collector-with-this-wired-up">Monitoring/Logging API quotas). Google also ships a Google-Built OpenTelemetry Collector with this wired up.</h1>
+<p>receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}</p>
+<p>processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+  resourcedetection: {detectors: [env, gcp], timeout: 2s}
+  batch: {send_batch_size: 1024, timeout: 5s}</p>
+<p>extensions:
+  googleclientauth: {}
+  health_check: {endpoint: 0.0.0.0:13133}</p>
+<p>exporters:
+  otlp/gcp:
+    endpoint: telemetry.googleapis.com:443
+    auth: {authenticator: googleclientauth}
+    headers:
+      x-goog-user-project: ${env:GOOGLE_CLOUD_PROJECT}</p>
+<p>service:
+  extensions: [googleclientauth, health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlp/gcp]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [otlp/gcp]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlp/gcp]}</p>
+<pre class="highlight"><code>
+Validated with `otelcol-contrib validate` (v0.120.0); not run against a live project. Exact headers, endpoint form and metric label requirements should follow Google's current Telemetry API documentation.
+
+## Instrumenting a Vertex AI / LangGraph agent
+
+Google's LangGraph guide sends traces through the Telemetry API using the OTLP gRPC exporter and the Vertex AI instrumentation:
+
+```bash
+pip install opentelemetry-sdk opentelemetry-exporter-otlp-proto-grpc opentelemetry-instrumentation-vertexai
+gcloud services enable telemetry.googleapis.com cloudtrace.googleapis.com monitoring.googleapis.com \
+  logging.googleapis.com aiplatform.googleapis.com</code></pre>
+<p>For agents hosted on <strong>Agent Runtime</strong>, configure an OTLP trace exporter inside the agent process (a third-party integration guide describes this; confirm against Google's Agent Runtime docs).</p>
+<h2 id="metering-and-cost-on-gcp">Metering and cost on GCP</h2>
+<ul>
+<li><strong>Billing export to BigQuery</strong> gives cost per project/label; use labels per application and tenant.</li>
+<li>Emit your own token/cost metrics through OTLP metrics (<code>tenant</code>, <code>feature</code>, <code>model</code> labels), keeping label cardinality in check.</li>
+<li><strong>Log sinks to BigQuery</strong> retain request metadata for months for trend analysis; join with billing export for cost per answer.</li>
+</ul>
+<h2 id="strengths-and-watch-outs">Strengths and watch-outs</h2>
+<table>
+<thead>
+<tr>
+<th>Strengths</th>
+<th>Watch-outs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single first-party OTLP endpoint; larger trace limits</td>
+<td>Per-signal maturity differs (traces GA first, metrics GA Aug 2026, logs rolling out)</td>
+</tr>
+<tr>
+<td>Strong BigQuery integration for trends and FinOps</td>
+<td>Metric region/location rules; separate Telemetry API quotas</td>
+</tr>
+<tr>
+<td>Google-built Collector and managed GKE OTel reduce ops</td>
+<td>Fewer agent-specific UI affordances than Foundry/Omni; pair with an eval tool if needed</td>
+</tr>
+<tr>
+<td>IAM, VPC-SC, CMEK</td>
+<td>GCP-centric; cross-cloud views need a neutral plane</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-cloud-native-implementation-guide"><h1 id="enterprise-implementation-guide-cloud-native-ai-observability">Enterprise implementation guide: cloud-native AI observability</h1>
+<p>How to roll out observability for enterprise AI apps (RAG, agents, chatbots) on <strong>AWS, Azure and GCP</strong>, using each cloud's native stack with <strong>OpenTelemetry as the portable layer</strong>. Written for platform, SRE, security and AI teams.</p>
+<h2 id="1-principles">1. Principles</h2>
+<ol>
+<li><strong>OpenTelemetry at the edge, native backend behind it.</strong> Applications emit OTel only; a Collector tier you own handles redaction, sampling, enrichment and routing to the cloud-native backend(s).</li>
+<li><strong>One telemetry contract for all clouds.</strong> Same span names, attributes and metric names everywhere (<a href="#4-the-telemetry-contract">contract</a>); the cloud-specific parts are exporters and identity.</li>
+<li><strong>Metadata by default, content by exception.</strong> Capture IDs, counts, scores and versions; gate prompts/responses behind policy, redaction and short retention.</li>
+<li><strong>Central visibility, local ownership.</strong> Workload accounts/subscriptions/projects send to a central observability plane; teams see their own slice.</li>
+<li><strong>Measure all three pillars.</strong> Latency, quality (scores) and cost on every dashboard (<a href="#p-rag-rag-observability-playbook">RAG playbook</a>, <a href="#p-scoring-index">scoring</a>).</li>
+<li><strong>Telemetry must not break the app</strong>, and <strong>its own health is monitored</strong>.</li>
+</ol>
+<h2 id="2-reference-architecture">2. Reference architecture</h2>
+<pre class="mermaid"><code>flowchart TB
+    subgraph W1[Workload account / subscription / project - team A]
+      A1[AI app + OTel SDK] --&gt; C1[Collector agent&lt;br/&gt;sidecar / DaemonSet]
+    end
+    subgraph W2[Workload account - team B]
+      A2[Agents + OTel SDK] --&gt; C2[Collector agent]
+    end
+    subgraph SH[Shared network / platform]
+      G[Collector gateway tier&lt;br/&gt;HA, tail sampling, redaction,&lt;br/&gt;routing, rate limits]
+    end
+    subgraph OBS[Central observability account / subscription / project]
+      N1[(Native backend&lt;br/&gt;CloudWatch + Omni | Azure Monitor + Foundry | Cloud Trace/Monitoring/Logging)]
+      LAKE[(Long-range store&lt;br/&gt;S3+Athena | ADLS/Fabric | BigQuery)]
+      DASH[Dashboards, alerts, SLOs]
+    end
+    C1 --&gt; G
+    C2 --&gt; G
+    G --&gt;|native OTLP or exporter| N1
+    G --&gt;|batch export| LAKE
+    N1 --&gt; DASH
+    LAKE --&gt; DASH
+    G -.optional.-&gt; X[Second backend:&lt;br/&gt;OSS stack or LLM-native tool]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Role</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SDK in the app</strong></td>
+<td>Spans, metrics, logs with the contract</td>
+<td>Auto-instrumentation + thin wrapper (<a href="#p-implementation-instrumentation">Instrumentation guide</a>)</td>
+</tr>
+<tr>
+<td><strong>Collector agent</strong> (optional)</td>
+<td>Local buffering, resource detection</td>
+<td>Sidecar (ECS/ACA/Cloud Run), DaemonSet (EKS/AKS/GKE)</td>
+</tr>
+<tr>
+<td><strong>Collector gateway</strong></td>
+<td>Redact, tail-sample, enrich, route, authenticate to the cloud</td>
+<td>≥ 2 replicas; load-balance by <code>trace_id</code> in front of tail sampling</td>
+</tr>
+<tr>
+<td><strong>Native backend</strong></td>
+<td>Storage, UI, alerts, AI-aware views</td>
+<td>Per cloud (<a href="#p-cloud-native-aws">AWS</a>, <a href="#p-cloud-native-azure">Azure</a>, <a href="#p-cloud-native-gcp">GCP</a>)</td>
+</tr>
+<tr>
+<td><strong>Long-range store</strong></td>
+<td>Months of facts/rollups for FinOps and trend</td>
+<td><a href="#p-architecture-storage-and-retention">Storage &amp; retention</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-phased-rollout">3. Phased rollout</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Weeks</th>
+<th>Deliverables</th>
+<th>Exit criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0. Decide</strong></td>
+<td>0-2</td>
+<td>Backend per cloud, multi-cloud pattern (<a href="#9-multi-cloud-patterns">§9</a>), data-classification and retention policy, owners, ADR</td>
+<td>Signed ADR; security/privacy sign-off on content policy</td>
+</tr>
+<tr>
+<td><strong>1. Foundations</strong></td>
+<td>2-6</td>
+<td>Landing zone (<a href="#5-landing-zone-checklists">§5</a>), Collector gateway, identity, private connectivity, telemetry contract + CI check</td>
+<td>Synthetic app visible end to end in each cloud with the contract passing</td>
+</tr>
+<tr>
+<td><strong>2. First workloads</strong></td>
+<td>6-10</td>
+<td>1-2 apps instrumented; latency/cost dashboards; SLOs; alerts to on-call</td>
+<td>Pilot team debugs a real incident from traces</td>
+</tr>
+<tr>
+<td><strong>3. Quality</strong></td>
+<td>8-14</td>
+<td>Online evaluators on a sample, golden set + CI gate (<a href="#p-scoring-index">scoring</a>), feedback capture</td>
+<td>Quality time series with sample sizes and an alert</td>
+</tr>
+<tr>
+<td><strong>4. Scale-out</strong></td>
+<td>12-24</td>
+<td>Templates/modules, onboarding automation, tenant/cost attribution, long-range store</td>
+<td>New app onboarded in &lt; 1 day</td>
+</tr>
+<tr>
+<td><strong>5. Optimize</strong></td>
+<td>20+</td>
+<td>Sampling/retention tuning, canary/rollback automation, FinOps reports, multi-cloud single pane</td>
+<td>Observability cost ≤ target share of AI spend</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-the-telemetry-contract">4. The telemetry contract</h2>
+<p>Define it once (OpenTelemetry terms) and enforce it in CI. Full attribute guidance: <a href="#p-fundamentals-telemetry-model">Telemetry model</a>, <a href="#p-metrics-data-to-collect">Data to collect</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resource</strong></td>
+<td><code>service.name</code>, <code>service.version</code>, <code>deployment.environment</code>, cloud attributes (<code>cloud.provider</code>, <code>cloud.account.id</code>/<code>cloud.region</code> via resource detection), <code>app.team</code>, <code>app.cost_center</code></td>
+</tr>
+<tr>
+<td><strong>Request / agent root span</strong></td>
+<td><code>app.tenant.id</code>, <code>app.feature</code>, <code>app.release.id</code>, <code>gen_ai.conversation.id</code>, <code>cost.usd.total</code></td>
+</tr>
+<tr>
+<td><strong>Model call span</strong> (<code>chat</code>)</td>
+<td><code>gen_ai.operation.name</code>, <code>gen_ai.request.model</code>, <code>gen_ai.response.model</code>, <code>gen_ai.usage.input_tokens</code>, <code>gen_ai.usage.output_tokens</code>, <code>app.prompt.id</code>, <code>app.prompt.version</code></td>
+</tr>
+<tr>
+<td><strong>Retrieval span</strong></td>
+<td><code>rag.index.version</code>, <code>rag.embedding.model</code>, <code>rag.retrieval.count</code>, <code>rag.retrieval.top1_score</code> (IDs, not text)</td>
+</tr>
+<tr>
+<td><strong>Agent / tool spans</strong></td>
+<td><code>gen_ai.agent.name</code>, <code>gen_ai.tool.name</code>, <code>tool.side_effect</code>, step index, termination reason</td>
+</tr>
+<tr>
+<td><strong>Forbidden by default</strong></td>
+<td><code>gen_ai.prompt</code>, <code>gen_ai.completion</code>, message bodies, auth headers</td>
+</tr>
+</tbody>
+</table>
+<p>Pin the OpenTelemetry <strong>GenAI semantic-convention version</strong> you target. The conventions are in <em>Development</em>; Azure's distro, for example, uses an explicit opt-in (<code>OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental</code>).</p>
+<p>Enforce it with a contract test in every service's pipeline: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/cloud/check_telemetry_contract.py"><code>examples/cloud/check_telemetry_contract.py</code></a> (in-memory exporter, fails on missing attributes and content leaks):</p>
+<pre class="highlight"><code class="language-text">$ python examples/cloud/check_telemetry_contract.py --break
+  VIOLATION: chat model-x: missing gen_ai.usage.output_tokens
+  VIOLATION: chat model-x: forbidden attribute gen_ai.prompt
+CONTRACT: FAIL</code></pre>
+<h2 id="5-landing-zone-checklists">5. Landing zone checklists</h2>
+<h3 id="aws">AWS</h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Central observability account (AWS Organizations); cross-account observability for CloudWatch; Omni Spaces mapped to teams (<a href="#p-cloud-native-omni">Omni</a>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>CloudWatch Transaction Search enabled</strong> per region (<code>aws xray update-trace-segment-destination --destination CloudWatchLogs</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Log groups/streams for the OTLP logs endpoint (<code>x-aws-log-group</code> / <code>x-aws-log-stream</code>); retention set; KMS key</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Collector IAM role (IRSA / EKS Pod Identity / ECS task role) scoped to PutTraceSegments, PutLogEvents, PutMetricData as needed; <strong>IAM Roles Anywhere</strong> for non-AWS callers</li>
+<li class="task-list-item"><input type="checkbox" disabled/> VPC interface endpoints for CloudWatch/X-Ray/Logs; egress via NAT only where required</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Bedrock invocation logging destination + application inference profiles with cost-allocation tags</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Bedrock Guardrails configured; verdicts emitted as metrics/spans</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Quotas reviewed: logs 5,000 TPS/region, metrics 500 TPS and series-creation rate, 10,000 spans/request</li>
+</ul>
+<h3 id="azure">Azure</h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Application Insights (workspace-based) per environment connected to Foundry projects; central Log Analytics workspace strategy</li>
+<li class="task-list-item"><input type="checkbox" disabled/> OTLP ingestion path chosen (Collector with Entra auth / Azure Monitor Agent / AKS onboarding); data collection resources created; current preview/GA status confirmed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> RBAC: Contributor on App Insights for ingestion, Log Analytics Reader / Privileged Monitoring Data Reader for query; managed identities for the Collector</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Private Link scope (AMPLS) for ingestion/query; Key Vault for connection strings</li>
+<li class="task-list-item"><input type="checkbox" disabled/> APIM AI gateway in front of model endpoints: token metrics, limits, semantic cache</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Content recording <strong>off</strong> in production (<code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT</code> unset); sampling and retention tiers configured</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Azure Policy: require diagnostic settings, tags (<code>app</code>, <code>team</code>, <code>cost_center</code>)</li>
+</ul>
+<h3 id="gcp">GCP</h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Central observability project; metrics scopes for multi-project views</li>
+<li class="task-list-item"><input type="checkbox" disabled/> APIs enabled: <code>telemetry.googleapis.com</code>, <code>cloudtrace</code>, <code>monitoring</code>, <code>logging</code>, <code>aiplatform</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Workload identity (GKE) / service accounts for the Collector with trace/metric/log writer roles; <code>googleclientauth</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Telemetry API quotas reviewed; alerts moved from legacy API usage to the new endpoint</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Metric location labels aligned with the endpoint region (metrics are stored only when location matches)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Log sinks to BigQuery; billing export with labels; VPC Service Controls where required; CMEK</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Model Armor policies; verdicts emitted as telemetry</li>
+</ul>
+<h2 id="6-collector-tier-patterns-by-platform">6. Collector tier: patterns by platform</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Agent tier</th>
+<th>Gateway tier</th>
+<th>Identity to cloud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS ECS/Fargate</strong></td>
+<td>Sidecar container</td>
+<td>ECS service behind NLB</td>
+<td>Task role (SigV4)</td>
+</tr>
+<tr>
+<td><strong>AWS EKS</strong></td>
+<td>DaemonSet</td>
+<td>Deployment (≥ 2) + <code>loadbalancing</code> exporter</td>
+<td>IRSA / Pod Identity</td>
+</tr>
+<tr>
+<td><strong>Azure AKS / Container Apps</strong></td>
+<td>DaemonSet / sidecar</td>
+<td>Deployment (≥ 2)</td>
+<td>Managed identity / workload identity (Entra)</td>
+</tr>
+<tr>
+<td><strong>GKE / Cloud Run</strong></td>
+<td>DaemonSet / sidecar; or Google-built Collector</td>
+<td>Deployment (≥ 2)</td>
+<td>Workload identity (ADC)</td>
+</tr>
+<tr>
+<td><strong>VMs / on-prem</strong></td>
+<td>Host agent (Azure Monitor Agent, Ops Agent, ADOT/OTel Collector)</td>
+<td>Central gateway</td>
+<td>IAM Roles Anywhere / Arc / federated identity</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway configuration (all clouds), starting from the <a href="#p-implementation-collector-pipeline">reference Collector</a>:</p>
+<ul>
+<li><code>memory_limiter</code> first, <code>batch</code> last; batches under the target's per-request limits (AWS: ≤ 10,000 spans / 5 MB).</li>
+<li><strong>Metrics before sampling</strong> (<code>spanmetrics</code>), then redaction, then <strong>tail sampling</strong>: keep 100 % of errors, slow, flagged and low-score traces; sample the rest at 1-10 %.</li>
+<li><code>resourcedetection</code> to add cloud/account/region; <code>attributes</code>/<code>transform</code> to enforce the tagging standard.</li>
+<li>Persistent sending queues and retry; alert on drops (<code>otelcol_exporter_send_failed_*</code>).</li>
+<li>Per-cloud configs: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/cloud/otel-collector-aws.yaml">AWS</a>, <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/cloud/otel-collector-azure.yaml">Azure</a>, <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/cloud/otel-collector-gcp.yaml">GCP</a>.</li>
+</ul>
+<h2 id="7-instrumentation-matrix">7. Instrumentation matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Framework / runtime</th>
+<th>AWS</th>
+<th>Azure</th>
+<th>GCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strands</strong></td>
+<td>ADOT + <code>strands-agents[otel]</code> (native)</td>
+<td>Collector → Azure Monitor</td>
+<td>OTLP → Telemetry API</td>
+</tr>
+<tr>
+<td><strong>LangChain / LangGraph</strong></td>
+<td>ADOT or OpenInference → CloudWatch/Omni</td>
+<td><strong>Microsoft OpenTelemetry distro</strong> (<code>langchain</code> option)</td>
+<td><code>opentelemetry-instrumentation-vertexai</code> + OTLP (Google LangGraph guide)</td>
+</tr>
+<tr>
+<td><strong>Microsoft Agent Framework / Semantic Kernel</strong></td>
+<td>OTLP → CloudWatch</td>
+<td><strong>Native</strong> with Foundry tracing</td>
+<td>OTLP → Telemetry API</td>
+</tr>
+<tr>
+<td><strong>CrewAI / OpenAI Agents SDK / Vercel AI SDK</strong></td>
+<td>ADOT/OpenInference (supported by Omni)</td>
+<td>OTel instrumentors + Azure Monitor exporter / distro</td>
+<td>OTel instrumentors + OTLP</td>
+</tr>
+<tr>
+<td><strong>Direct provider SDKs</strong></td>
+<td>OpenLLMetry/OpenInference/OpenLIT</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td><strong>Hosted agent runtimes</strong></td>
+<td>Bedrock AgentCore (native)</td>
+<td>Foundry hosted agents (native)</td>
+<td>Agent Runtime (OTLP exporter in process)</td>
+</tr>
+</tbody>
+</table>
+<p>Keep a <strong>wrapper library</strong> so every team emits the same contract regardless of framework.</p>
+<h2 id="8-quality-safety-and-cost-in-a-cloud-native-stack">8. Quality, safety and cost in a cloud-native stack</h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>AWS</th>
+<th>Azure</th>
+<th>GCP</th>
+<th>Neutral layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Online scoring</strong></td>
+<td>Omni evaluators on traces</td>
+<td>Foundry evaluators</td>
+<td>Vertex AI evaluation</td>
+<td>Own judge workers writing <code>*.eval.score</code> metrics (<a href="#p-scoring-online-scoring">online scoring</a>)</td>
+</tr>
+<tr>
+<td><strong>Offline gates</strong></td>
+<td>Omni experiments/golden datasets</td>
+<td>Foundry evaluation runs</td>
+<td>Vertex evaluation</td>
+<td>CI gate (<a href="#p-scoring-offline-scoring">offline scoring</a>)</td>
+</tr>
+<tr>
+<td><strong>Safety verdicts</strong></td>
+<td>Bedrock Guardrails</td>
+<td>Content Safety</td>
+<td>Model Armor</td>
+<td>Emit as metrics/spans with <code>category</code>/<code>action</code></td>
+</tr>
+<tr>
+<td><strong>Metering</strong></td>
+<td>Bedrock logs + inference profiles</td>
+<td>APIM token metrics</td>
+<td>Vertex usage + billing export</td>
+<td>Own price table → <code>cost.usd.*</code></td>
+</tr>
+<tr>
+<td><strong>Long-range</strong></td>
+<td>S3 + Athena</td>
+<td>ADLS/Fabric</td>
+<td>BigQuery</td>
+<td><a href="#p-architecture-storage-and-retention">Wide-fact table</a></td>
+</tr>
+</tbody>
+</table>
+<p>Use native evaluators for speed, but <strong>record scorer version and judge model</strong> on every score and keep your calibration set (<a href="#p-scoring-designing-scorers">Designing scorers</a>); otherwise scores are not comparable across clouds or over time.</p>
+<h2 id="9-multi-cloud-patterns">9. Multi-cloud patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How</th>
+<th>Pros</th>
+<th>Cons</th>
+<th>Fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. Native per cloud + neutral aggregator</strong></td>
+<td>Each cloud's workloads go to its native backend; the Collector also exports to a shared OSS stack/warehouse for cross-cloud views</td>
+<td>Best native UX per cloud; true cross-cloud analysis</td>
+<td>Two places to look; cost of dual ingest</td>
+<td>Most large enterprises</td>
+</tr>
+<tr>
+<td><strong>B. Single native pane (e.g. Omni with connectors)</strong></td>
+<td>Ingest other clouds into one provider's UI</td>
+<td>One UI, AI-assisted investigation across clouds</td>
+<td>Depends on connector coverage and pricing; lock-in to one UI</td>
+<td>AWS-centric estates with a few outside workloads</td>
+</tr>
+<tr>
+<td><strong>C. Everything to one neutral stack</strong></td>
+<td>Collector → Tempo/Prometheus/Loki/ClickHouse (or a vendor) in every cloud</td>
+<td>Maximum portability and cost control</td>
+<td>You run it; lose native AI-aware UIs</td>
+<td>Platform-engineering-led orgs, sovereign requirements (<a href="#p-use-cases-index">OSS use cases</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>Cross-cloud trace propagation: use W3C <code>traceparent</code> over every hop (gateways, queues, MCP/tool calls). Inject the same <code>app.*</code> attributes in each cloud so queries and dashboards port unchanged. Keep tenant and region residency rules in Collector routing (EU tenants → EU backends).</p>
+<h2 id="10-security-privacy-and-governance">10. Security, privacy and governance</h2>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Content policy</strong></td>
+<td>Default no content; allow-list apps/tenants/environments with time-boxed capture; redaction in the gateway (<a href="#p-architecture-security-privacy">Security &amp; privacy</a>)</td>
+</tr>
+<tr>
+<td><strong>Encryption</strong></td>
+<td>KMS / Key Vault / Cloud KMS keys on log, trace and lake storage; TLS to endpoints</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>PrivateLink / Private Link / Private Service Connect to telemetry endpoints; egress allow-lists for Collectors</td>
+</tr>
+<tr>
+<td><strong>Access</strong></td>
+<td>Team-scoped views (Omni Spaces, Azure RBAC per workspace/resource, GCP metrics scopes and IAM conditions); break-glass for raw content; audit access</td>
+</tr>
+<tr>
+<td><strong>Retention</strong></td>
+<td>Tiered TTLs enforced by the platform (log-group retention, Log Analytics table plans, bucket lifecycle); erasure by pseudonymous ID</td>
+</tr>
+<tr>
+<td><strong>Residency</strong></td>
+<td>Region-pinned backends; Collector routing rules; verify where each service stores data (for example GCP metric location rules)</td>
+</tr>
+<tr>
+<td><strong>Compliance evidence</strong></td>
+<td>Retain score history, scorer/dataset versions, change events and incident records (<a href="#p-scoring-operating">Operating a scoring program</a>)</td>
+</tr>
+<tr>
+<td><strong>Credentials</strong></td>
+<td>No long-lived keys; workload identity everywhere; secrets in vault; rotate bearer tokens if used</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-cost-control">11. Cost control</h2>
+<ul>
+<li><strong>Know the unit prices.</strong> CloudWatch bills ingestion/storage/queries by signal; App Insights by GB and retention; Cloud Trace/Monitoring/Logging by usage. Model them with the <a href="#p-build-vs-buy-tco">TCO sketch</a>.</li>
+<li><strong>Sample traces, not metrics.</strong> Metrics and the per-request fact row cover 100 %; traces 1-10 % plus all errors/slow/flagged.</li>
+<li><strong>Cap cardinality:</strong> <code>tenant</code> only for bounded lists; no <code>user_id</code>/<code>trace_id</code> on metric labels; mind AWS's 150-label and new-series limits and Azure/GCP custom-metric limits.</li>
+<li><strong>Tier storage:</strong> hot (days) → warm facts (13-24 months) → cold lake; shorter retention for content.</li>
+<li><strong>Budget the judges:</strong> evaluation cost as a share of inference spend; sample and tier scorers.</li>
+<li><strong>Alert on observability spend</strong> itself, and on Collector drop rates (cost savings must not be silent data loss).</li>
+</ul>
+<h2 id="12-testing-and-validation">12. Testing and validation</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Where</th>
+<th>What it proves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Telemetry contract test</strong></td>
+<td>CI per service</td>
+<td>Required attributes present; no forbidden content</td>
+</tr>
+<tr>
+<td><strong>Collector config validation</strong></td>
+<td>CI</td>
+<td><code>otelcol validate</code> for each cloud config</td>
+</tr>
+<tr>
+<td><strong>Synthetic canary</strong></td>
+<td>Production</td>
+<td>A scripted request per app every minute: trace appears in the backend within N minutes, metrics and logs correlate</td>
+</tr>
+<tr>
+<td><strong>Failure injection</strong></td>
+<td>Staging</td>
+<td>Exporter down → app unaffected, queue bounded, drop metric increments, alert fires</td>
+</tr>
+<tr>
+<td><strong>Redaction fixtures</strong></td>
+<td>CI</td>
+<td>Seeded PII/secrets never reach any exporter</td>
+</tr>
+<tr>
+<td><strong>Limits test</strong></td>
+<td>Staging</td>
+<td>Large spans/batches stay under endpoint limits; high-cardinality label guard works</td>
+</tr>
+<tr>
+<td><strong>Dashboard/alert as code</strong></td>
+<td>CI</td>
+<td>Queries return data against the canary; no <code>no data</code> panels</td>
+</tr>
+<tr>
+<td><strong>Game day</strong></td>
+<td>Quarterly</td>
+<td>Run a <a href="#p-operations-runbooks">runbook</a> from alert to root cause using only the new tooling</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13-operating-model">13. Operating model</h2>
+<ul>
+<li><strong>Ownership:</strong> platform team owns Collectors, contract, backends and cost; product teams own SLOs, dashboards, scorers and golden sets.</li>
+<li><strong>SLOs:</strong> availability, latency (TTFT and end-to-end), quality (score with minimum n), cost per successful task (<a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a>).</li>
+<li><strong>Change events</strong> (deploy, prompt, model, index, guardrail policy) written to the observability plane from CI/CD.</li>
+<li><strong>Cadence:</strong> weekly triage of flagged traces → regression set; monthly trend and cost review; quarterly contract/semconv version review and provider-status re-check.</li>
+</ul>
+<h2 id="14-anti-patterns">14. Anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it hurts</th>
+<th>Instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App code calls a cloud SDK directly for telemetry</td>
+<td>Lock-in; inconsistent attributes</td>
+<td>OTel SDK + Collector</td>
+</tr>
+<tr>
+<td>One global backend and one global access role</td>
+<td>Cross-team data exposure</td>
+<td>Spaces / RBAC / metrics scopes per team</td>
+</tr>
+<tr>
+<td>Content capture left on after debugging</td>
+<td>PII exposure, storage bill</td>
+<td>Time-boxed flags, redaction tests</td>
+</tr>
+<tr>
+<td>Different attribute names per cloud/team</td>
+<td>No cross-cloud dashboards</td>
+<td>One contract, enforced in CI</td>
+</tr>
+<tr>
+<td>Trusting a "GA" label on a feature without reading limits</td>
+<td>Surprises at scale</td>
+<td>Check quotas, regions and status per signal</td>
+</tr>
+<tr>
+<td>Relying only on native evaluators with no calibration</td>
+<td>Untrustworthy scores</td>
+<td>Version and calibrate every scorer</td>
+</tr>
+<tr>
+<td>No second path out</td>
+<td>Lock-in at the UI/storage layer</td>
+<td>Keep Collector fan-out and a long-range export</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-decision-record-template">15. Decision record template</h2>
+<pre class="highlight"><code class="language-markdown"># ADR: AI observability backend for &lt;cloud/estate&gt;
+Context: workloads, data classes, regions, existing tooling, team skills
+Options: native only / native + neutral aggregator / neutral only
+Evaluation: bake-off results on real traces (setup effort, trace fidelity for agents, evaluators, SQL/PromQL access, cost at 3x)
+Decision: ...
+Consequences: lock-in surface, exit plan (Collector fan-out, dataset/prompt export), cost model, owners
+Review date: ... (re-check preview/GA status, pricing, semconv version)</code></pre></section><section class="page" id="p-scoring-index"><h1 id="online-and-offline-scoring-overview">Online and offline scoring: overview</h1>
 <p><strong>Scoring</strong> turns the behavior of an AI application into numbers you can trend, compare and gate on. There are two complementary modes, and mature teams run both from the same scorers.</p>
 <table>
 <thead>
@@ -7466,7 +8898,7 @@ jobs:
 </tr>
 <tr>
 <td><a href="landscape-explorer.html">Landscape explorer</a></td>
-<td>Search and filter 67 tools by category, model, license, OTel support</td>
+<td>Search and filter 68 tools by category, model, license, OTel support</td>
 </tr>
 <tr>
 <td><a href="rag-dashboard-demo.html">RAG dashboard demo</a></td>
@@ -7628,6 +9060,12 @@ jobs:
 <li>Vertex AI generative AI evaluation: <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview">https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview</a></li>
 <li>MLflow Tracing: <a href="https://mlflow.org/docs/latest/genai/tracing/">https://mlflow.org/docs/latest/genai/tracing/</a></li>
 </ul>
+<h2 id="cloud-native-observability-verify-current-status">Cloud-native observability (verify current status)</h2>
+<ul>
+<li>AWS: <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPEndpoint.html">CloudWatch OTLP endpoints</a> · <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/">Introducing Amazon CloudWatch Omni (agents)</a> · <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-collaborative-ai-powered-observability-for-your-applications/">Omni (applications)</a> · <a href="https://aws.amazon.com/blogs/machine-learning/monitor-on-premises-and-multi-cloud-ai-agents-with-agentcore-observability/">AgentCore Observability for on-prem and multi-cloud agents</a></li>
+<li>Azure: <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/containers/opentelemetry-summary">OpenTelemetry ingestion options</a> · <a href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-framework">Configure tracing for AI agent frameworks (Foundry)</a> · <a href="https://techcommunity.microsoft.com/blog/azureobservabilityblog/direct-opentelemetry-ingestion-into-azure-monitor-is-now-generally-available/4524044">Direct OpenTelemetry ingestion GA announcement</a></li>
+<li>GCP: <a href="https://cloud.google.com/blog/products/management-tools/opentelemetry-now-in-google-cloud-observability">OpenTelemetry now in Google Cloud Observability</a> · <a href="https://docs.cloud.google.com/stackdriver/docs/reference/telemetry/overview">Telemetry (OTLP) API overview</a> · <a href="https://docs.cloud.google.com/monitoring/docs/release-notes">Monitoring release notes</a> · <a href="https://docs.cloud.google.com/stackdriver/docs/instrumentation/ai-agent-langgraph">Instrument a LangGraph agent with OpenTelemetry</a></li>
+</ul>
 <h2 id="evaluation">Evaluation</h2>
 <ul>
 <li><a href="https://docs.ragas.io">Ragas</a>, <a href="https://deepeval.com">DeepEval</a>, <a href="https://www.trulens.org">TruLens</a>, <a href="https://www.promptfoo.dev">promptfoo</a>, <a href="https://inspect.aisi.org.uk">Inspect AI</a></li>
@@ -7645,6 +9083,9 @@ jobs:
 <ul>
 <li>ClickHouse announced the Langfuse acquisition in January 2026; Langfuse states the project remains open source.</li>
 <li>Helicone was reported to have joined Mintlify (March 2026) and moved to maintenance mode.</li>
+<li>CloudWatch Omni reached GA in September 2026 (AWS posts dated 22 Sep); pricing and regions were not in the pages reviewed.</li>
+<li>Azure Monitor OTLP ingestion: Learn labels it preview while a May 2026 Tech Community post announces GA; Foundry tracing is GA for prompt/hosted agents, preview for workflow/external agents.</li>
+<li>Google OTLP: traces GA (Sep 2025); Telemetry API metrics GA (5 Aug 2026 release notes); logs via the Ops Agent from v2.71.0 (Sep 2026), direct-OTLP logs GA unconfirmed.</li>
 <li>Arize ownership reports conflict between sources — confirm directly with the vendor.</li>
 </ul></section></main>
 <script type="module">

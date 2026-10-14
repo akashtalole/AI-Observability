@@ -5,7 +5,7 @@ Self-contained HTML pages (no build step, no dependencies) — open directly, sh
 | Artifact | What it does |
 |---|---|
 | [Build vs Buy decision tool](build-vs-buy-decision-tool.html) | Adjust weights and scores for SaaS / OSS self-host / Cloud-native / APM / Hybrid; see ranked results |
-| [Landscape explorer](landscape-explorer.html) | Search and filter 67 tools by category, model, license, OTel support |
+| [Landscape explorer](landscape-explorer.html) | Search and filter 68 tools by category, model, license, OTel support |
 | [RAG dashboard demo](rag-dashboard-demo.html) | Interactive latency / quality / cost dashboard with range selector (1 h → 12 months), change-event markers and anomaly flags (synthetic data) |
 | [Metrics & data checklist](metrics-checklist.html) | Tickable checklist of metrics to collect per app type; progress saved locally |
 | [Failure scenario playbook](scenario-playbook.html) | 14 simulated faults across RAG / multi-agent / chatbot: what changes, what you see, which alert fires, where to look (generated from `data/scenarios.json`) |

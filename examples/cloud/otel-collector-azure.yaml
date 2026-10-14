@@ -1,0 +1,36 @@
+# OpenTelemetry Collector -> Azure Monitor / Application Insights (the Foundry tracing backend).
+# Uses the contrib `azuremonitor` exporter with an Application Insights connection string (store it in Key Vault and
+# inject as an env var). Azure Monitor also offers native OTLP ingestion paths (Azure Monitor Agent, AKS onboarding, and the
+# Collector with Microsoft Entra authentication) - check the current Microsoft Learn status (preview vs GA) before using them
+# for production, and follow their exact endpoint/auth settings.
+receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}
+
+processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  # Prompt/completion content must stay off in production (Foundry docs: content recording is for development only).
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+      - {key: gen_ai.input.messages, action: delete}
+      - {key: gen_ai.output.messages, action: delete}
+  resourcedetection: {detectors: [env, azure], timeout: 2s}
+  batch: {send_batch_size: 1024, timeout: 5s}
+
+exporters:
+  azuremonitor:
+    connection_string: ${env:APPLICATIONINSIGHTS_CONNECTION_STRING}
+
+extensions:
+  health_check: {endpoint: 0.0.0.0:13133}
+
+service:
+  extensions: [health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [azuremonitor]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [azuremonitor]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [azuremonitor]}

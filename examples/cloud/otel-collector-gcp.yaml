@@ -1,0 +1,37 @@
+# OpenTelemetry Collector -> Google Cloud Telemetry (OTLP) API at telemetry.googleapis.com (Cloud Trace, Cloud Monitoring,
+# Cloud Logging). Auth: Application Default Credentials via the googleclientauth extension (workload identity on GKE/Cloud Run).
+# Status as of the doc date: OTLP traces GA; OTLP metrics via the Telemetry API GA (Aug 2026 release notes); logs via the
+# Telemetry API are rolling out (e.g. Ops Agent >= 2.71.0) - verify current status and quotas (they are separate from the
+# Monitoring/Logging API quotas). Google also ships a Google-Built OpenTelemetry Collector with this wired up.
+receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}
+
+processors:
+  memory_limiter: {check_interval: 1s, limit_percentage: 80, spike_limit_percentage: 25}
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+  resourcedetection: {detectors: [env, gcp], timeout: 2s}
+  batch: {send_batch_size: 1024, timeout: 5s}
+
+extensions:
+  googleclientauth: {}
+  health_check: {endpoint: 0.0.0.0:13133}
+
+exporters:
+  otlp/gcp:
+    endpoint: telemetry.googleapis.com:443
+    auth: {authenticator: googleclientauth}
+    headers:
+      x-goog-user-project: ${env:GOOGLE_CLOUD_PROJECT}
+
+service:
+  extensions: [googleclientauth, health_check]
+  pipelines:
+    traces:  {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlp/gcp]}
+    metrics: {receivers: [otlp], processors: [memory_limiter, resourcedetection, batch], exporters: [otlp/gcp]}
+    logs:    {receivers: [otlp], processors: [memory_limiter, attributes/redact, resourcedetection, batch], exporters: [otlp/gcp]}

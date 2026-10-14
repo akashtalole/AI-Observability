@@ -1,6 +1,6 @@
 # Landscape overview
 
-*Snapshot: October 2026. Vendor facts change quickly — verify before purchase. The complete list (67 entries) is in the [tool catalog](catalog.md); an interactive filterable version is in the [HTML artifacts](../artifacts/index.md).*
+*Snapshot: October 2026. Vendor facts change quickly — verify before purchase. The complete list (68 entries) is in the [tool catalog](catalog.md); an interactive filterable version is in the [HTML artifacts](../artifacts/index.md).*
 
 ```mermaid
 mindmap
