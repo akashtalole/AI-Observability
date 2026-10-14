@@ -1,5 +1,8 @@
 # Monitoring chatbots & copilots
 
+!!! tip "Run it"
+    A runnable chatbot implementation (containment, escalation, refusals, context utilization) is in [Use case: Chatbot](../use-cases/chatbot.md).
+
 ## Session-level view
 
 Chatbots are multi-turn. Correlate turns via `conversation_id` and evaluate **conversations**, not only single turns.

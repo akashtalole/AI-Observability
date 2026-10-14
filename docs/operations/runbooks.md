@@ -44,6 +44,34 @@ Each alert should link to one of these. First move for any incident: **check the
 4. Re-run retrieval golden set; compare recall@k with last good index.
 5. Roll back index alias; fix ingestion; reindex.
 
+## Agent runaway or loops
+
+1. Confirm: steps-per-task p95, loop detections, terminations by reason (`max_steps`, `budget_exceeded`, `timeout`, `loop`), cost per task.
+2. Open a few traces of terminated tasks (`span.loop.detected = true`): which tool and arguments repeat? Is the tool returning an error or an empty result the agent keeps retrying?
+3. Check recent change events: prompt/tool-description edits, new tool, model switch, framework upgrade.
+4. Mitigate: tighten hard limits (max steps, per-task USD budget, wall clock), add a loop breaker (same tool + args ≥ 3 → replan or stop), disable the offending tool, route to a different model.
+5. Verify cost per *successful* task returns to baseline; add the failing trajectory to the regression suite.
+
+## Tool dependency failing
+
+1. Which tool (`agent_tool_calls_total{status="error"}` by `tool`)? Compare with the dependency's own health.
+2. Check retries/replans: failures amplify cost through plan revisions.
+3. Mitigate: circuit-break the tool, fall back to an alternate source, return a typed error the agent can reason about, cache stable results.
+
+## Conversation quality or containment drop
+
+1. Slice containment by intent and channel: one intent, or all?
+2. Compare refusals (over-refusal), fallbacks (unsupported intents), goal-completion judge score, thumbs-down.
+3. Check change events (prompt, model, retrieval/index, guardrail policy) and provider health.
+4. Read 10-20 escalated or abandoned conversations (redacted) and classify the cause.
+5. Mitigate: roll back prompt/model/guardrail policy; adjust thresholds; extend intent coverage; add failing cases to the golden set.
+
+## Context window pressure
+
+1. Context utilization p95, truncation events, tokens by turn index.
+2. Mitigate: summarize or window history, cap retrieved context, compress tool outputs, move long-term state to memory.
+3. Re-check cost per conversation and answer quality after the change.
+
 ## Safety / guardrail incident
 
 1. Contain: tighten guardrail, disable affected feature/tool, block abusive tenant/user.

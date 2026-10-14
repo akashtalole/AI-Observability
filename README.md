@@ -28,10 +28,17 @@ docs/
   implementation/   instrumentation, collector pipeline, evals in CI
   operations/       maturity model, runbooks, checklists
   artifacts/        interactive HTML artifacts (see below)
+use-cases/         runnable OSS implementations (OTel + Prometheus + Grafana + Loki + Tempo): RAG, multi-agent, chatbot
 examples/           OTel instrumentation, Collector config, ClickHouse schema + queries, Prometheus alerts
 data/tools.json     single source of truth for the tool catalog and explorer
 scripts/build.py    generates catalog.md, landscape-explorer.html, handbook.html
+scripts/gen_dashboards.py     generates the Grafana dashboards in use-cases/
+scripts/verify_dashboards.py  runs every dashboard query against a live Grafana
 ```
+
+## Use cases (open-source implementations)
+
+`use-cases/` contains a docker-compose stack (OpenTelemetry Collector, Prometheus, Tempo, Loki, Grafana) and three instrumented demo apps with dashboards, alert rules and failure-scenario simulators: **RAG**, **multi-agent** and **chatbot**. See [use-cases/README.md](use-cases/README.md) and the docs site section *Use cases (OSS stack)*.
 
 ## HTML artifacts (`docs/artifacts/`, also deployed with the site)
 

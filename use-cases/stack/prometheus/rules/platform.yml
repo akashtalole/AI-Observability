@@ -1,0 +1,19 @@
+# Health of the observability pipeline itself - telemetry loss must never be silent.
+groups:
+  - name: telemetry-pipeline
+    rules:
+      - alert: OtelCollectorExportFailing
+        expr: sum by (exporter) (rate(otelcol_exporter_send_failed_spans[5m]) + rate(otelcol_exporter_send_failed_metric_points[5m]) + rate(otelcol_exporter_send_failed_log_records[5m])) > 0
+        for: 5m
+        labels: {severity: ticket, service: telemetry}
+        annotations: {summary: "Collector exporter {{ $labels.exporter }} is failing - telemetry is being dropped or queued"}
+      - alert: OtelCollectorRefusingData
+        expr: sum(rate(otelcol_receiver_refused_spans[5m]) + rate(otelcol_receiver_refused_metric_points[5m])) > 0
+        for: 5m
+        labels: {severity: ticket, service: telemetry}
+        annotations: {summary: "Collector is refusing incoming telemetry (memory_limiter backpressure?)"}
+      - alert: OtelCollectorQueueNearFull
+        expr: max by (exporter) (otelcol_exporter_queue_size / otelcol_exporter_queue_capacity) > 0.8
+        for: 5m
+        labels: {severity: ticket, service: telemetry}
+        annotations: {summary: "Collector exporter queue {{ $labels.exporter }} >80% full"}

@@ -56,6 +56,9 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
 
 nav:
   - Home: index.md
@@ -91,6 +94,13 @@ nav:
       - Tools, MCP & text-to-SQL: monitoring/tools-mcp-sql.md
       - Voice, multimodal & batch: monitoring/voice-multimodal-batch.md
       - Self-hosted & fine-tuned models: monitoring/self-hosted-models.md
+  - Use cases (OSS stack):
+      - Overview & quick start: use-cases/index.md
+      - The shared stack: use-cases/stack.md
+      - RAG: use-cases/rag.md
+      - Multi-agent: use-cases/multi-agent.md
+      - Chatbot: use-cases/chatbot.md
+      - Adapting to your app: use-cases/adapting.md
   - RAG deep dive:
       - Latency, quality & cost over time: rag/rag-observability-playbook.md
       - Dashboards & queries: rag/dashboards-and-queries.md
