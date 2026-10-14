@@ -45,7 +45,9 @@ def setup(service: str, *, console: bool = False, env: str | None = None, extra:
         **(extra or {}),
     })
     views = [
-        View(instrument_type=Histogram, aggregation=ExplicitBucketHistogramAggregation(LATENCY_BUCKETS)),
+        # Only duration histograms (unit "s") get latency buckets; a unit-less catch-all would ALSO match the score/count
+        # histograms below and emit two bucket sets for one metric, which corrupts histogram_quantile().
+        View(instrument_type=Histogram, instrument_unit="s", aggregation=ExplicitBucketHistogramAggregation(LATENCY_BUCKETS)),
         View(instrument_type=Histogram, instrument_name="*.score", aggregation=ExplicitBucketHistogramAggregation(SCORE_BUCKETS)),
         View(instrument_type=Histogram, instrument_name="*.utilization", aggregation=ExplicitBucketHistogramAggregation(SCORE_BUCKETS)),
         View(instrument_type=Histogram, instrument_name="*.top1_score", aggregation=ExplicitBucketHistogramAggregation(SCORE_BUCKETS)),

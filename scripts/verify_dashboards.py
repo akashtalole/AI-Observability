@@ -14,7 +14,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-SUBS = {"$tenant": ".*", "$task_type": ".*", "$intent": ".*"}
+SUBS = {"$tenant": ".*", "$task_type": ".*", "$intent": ".*", "$service": ".+", "$min_dur": "0s", "$outcome": "&& duration >= 0s"}
 
 
 def call(url: str, body: dict | None = None, auth: str | None = None):
@@ -56,13 +56,36 @@ def main() -> int:
                         e = e.replace(k, v)
                     q.update(expr=e, instant=t.get("instant", False), range=t.get("range", True), legendFormat=t.get("legendFormat", ""))
                 elif ds["type"] == "loki":
-                    q.update(expr=t["expr"], queryType="range", maxLines=5)
+                    e = t["expr"]
+                    for k, v in SUBS.items():
+                        e = e.replace(k, v)
+                    e = e.replace('trace_id="$traceId"', 'trace_id=~".+"')
+                    q.update(expr=e, queryType="range", maxLines=5)
                 elif ds["type"] == "tempo":
                     # The Tempo plugin runs TraceQL search in the browser, so check it through the datasource proxy.
                     total += 1
                     try:
-                        qs = urllib.parse.urlencode({"q": t["query"], "limit": 5})
-                        res = call(f"{a.grafana}/api/datasources/proxy/uid/{ds['uid']}/api/search?{qs}", auth=a.auth)
+                        query = t["query"]
+                        for k, v in SUBS.items():
+                            query = query.replace(k, v)
+                        base = f"{a.grafana}/api/datasources/proxy/uid/{ds['uid']}"
+                        if query.strip() in ("$traceId", "$traceB", "$trace_id"):      # trace-by-ID panel: use a recent real trace
+                            found = call(f"{base}/api/search?" + urllib.parse.urlencode({"q": '{ resource.service.name != "" }', "limit": 1}), auth=a.auth).get("traces", [])
+                            if not found:
+                                empty += 1; print(f"  empty  {p['title']} (no traces yet)"); continue
+                            call(f"{base}/api/traces/{found[0]['traceID']}", auth=a.auth)
+                            print(f"  ok     {p['title']} (trace by ID resolved)"); continue
+                        if "$session" in query:
+                            sid = ""
+                            r = call(f"{base}/api/search?" + urllib.parse.urlencode({"q": '{ span.gen_ai.conversation.id != "" } | select(span.gen_ai.conversation.id)', "limit": 1}), auth=a.auth)
+                            for tr in r.get("traces", []):
+                                for ss in tr.get("spanSets", []) or [tr.get("spanSet", {})]:
+                                    for sp in ss.get("spans", []):
+                                        for at in sp.get("attributes", []):
+                                            if at["key"] == "gen_ai.conversation.id":
+                                                sid = at["value"].get("stringValue", "")
+                            query = query.replace("$session", sid)
+                        res = call(f"{base}/api/search?" + urllib.parse.urlencode({"q": query, "limit": 5}), auth=a.auth)
                         n = len(res.get("traces", []))
                         if n == 0:
                             empty += 1; print(f"  empty  {p['title']} (TraceQL valid, no matching traces)")

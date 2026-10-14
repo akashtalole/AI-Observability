@@ -22,6 +22,7 @@ jobs:
       - name: Generated files are up to date
         run: |
           python scripts/gen_dashboards.py
+          python scripts/gen_omni_dashboards.py
           python scripts/build.py
           # handbook.html is excluded: its HTML differs slightly across Python-Markdown versions
           git diff --exit-code -- . ':!docs/artifacts/handbook.html' || (echo "::error::Generated files are stale - run scripts/gen_dashboards.py and scripts/build.py and commit" && exit 1)

@@ -49,6 +49,7 @@ services:
       - ../rag/dashboards:/var/lib/grafana/dashboards/rag:ro
       - ../multi-agent/dashboards:/var/lib/grafana/dashboards/multi-agent:ro
       - ../chatbot/dashboards:/var/lib/grafana/dashboards/chatbot:ro
+      - ../omni-style/dashboards:/var/lib/grafana/dashboards/omni-style:ro
       - ./grafana/dashboards:/var/lib/grafana/dashboards/platform:ro
     ports: ["3000:3000"]
     depends_on: [prometheus, tempo, loki]
