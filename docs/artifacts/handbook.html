@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a><a href="#p-ai-and-observability-meta-observability">Meta-observability: observing the AI that observes</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -30,6 +30,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <li><strong>I need to know what to collect</strong> — <a href="#p-metrics-metrics-catalog">Metrics catalog</a> and <a href="#p-metrics-data-to-collect">Data to collect</a>.</li>
 <li><strong>I need to pick a tool</strong> — <a href="#p-landscape-overview">Landscape overview</a>, <a href="#p-landscape-catalog">full catalog</a>, <a href="#p-landscape-comparison">comparison by need</a>.</li>
 <li><strong>I monitor agents / chatbots / voice</strong> — <a href="#p-monitoring-overview">Monitoring by app type</a>.</li>
+<li><strong>I'm unsure whether I need AI <em>for</em> observability or observability <em>for</em> AI</strong> — <a href="#p-ai-and-observability-index">the distinction and how they meet</a>.</li>
 <li><strong>I run on AWS / Azure / GCP</strong> — <a href="#p-cloud-native-index">Cloud-native observability</a>: OpenTelemetry support, <strong>CloudWatch Omni</strong>, Foundry, Cloud Trace, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</li>
 <li><strong>I need to measure quality</strong> — <a href="#p-scoring-index">Online and offline scoring</a>: datasets, scorers, judges, sampling, gates.</li>
 <li><strong>I want runnable OSS implementations</strong> — <a href="#p-use-cases-index">Use cases on OTel + Prometheus + Grafana + Loki + Tempo</a>: RAG, multi-agent, chatbot.</li>
@@ -66,6 +67,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <td>Metrics catalog, data to collect, SLOs/alerts, evaluation</td>
 </tr>
 <tr>
+<td><code>docs/ai-and-observability</code></td>
+<td>AI for observability (AIOps / AI SRE) vs observability for AI, evaluation of AI assistants, meta-observability</td>
+</tr>
+<tr>
 <td><code>docs/cloud-native</code></td>
 <td>Azure, AWS (incl. CloudWatch Omni) and GCP native observability, OTLP support, enterprise implementation guide</td>
 </tr>
@@ -99,7 +104,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 </tr>
 <tr>
 <td><code>examples/</code></td>
-<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules, offline eval gate and online scorer</td>
+<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules, offline eval gate, online scorer, anomaly-baseline comparison</td>
 </tr>
 </tbody>
 </table>
@@ -107,6 +112,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <p class="admonition-title">Fast-moving space</p>
 <p>Vendors, licenses and ownership in this market change quickly (acquisitions, relicensing, product shutdowns), and the OpenTelemetry GenAI conventions are still in <em>Development</em> status. Every tool fact here carries an "as of" date — <strong>verify against vendor docs before committing</strong>. See <a href="#p-references">References</a>.</p>
 </div></section><section class="page" id="p-fundamentals-why-ai-observability"><h1 id="why-ai-observability">Why AI observability</h1>
+<div class="admonition note">
+<p class="admonition-title">Two different things</p>
+<p>This handbook is mainly about <strong>observability <em>for</em> AI</strong> (observing AI applications). Using AI to <em>do</em> observability is a separate topic: see <a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a>.</p>
+</div>
 <p>Traditional monitoring answers <em>"is the service up and fast?"</em>. For AI applications that is necessary but not sufficient: a RAG app can return HTTP 200 in 800 ms with a <strong>confidently wrong, ungrounded or unsafe answer</strong>, at <strong>ten times the expected cost</strong>.</p>
 <h2 id="the-three-pillars-for-ai-latency-quality-cost">The three pillars for AI: latency, quality, cost</h2>
 <pre class="mermaid"><code>flowchart LR
@@ -3535,7 +3544,595 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Keep an <strong>anchor set</strong> re-scored on every judge change.</li>
 <li>Report <strong>confidence intervals</strong>; show sample size on charts.</li>
 <li>Segment by intent/topic — aggregate means hide regressions in important slices.</li>
-</ul></section><section class="page" id="p-cloud-native-index"><h1 id="cloud-native-ai-observability-azure-aws-and-gcp">Cloud-native AI observability: Azure, AWS and GCP</h1>
+</ul></section><section class="page" id="p-ai-and-observability-index"><h1 id="ai-for-observability-vs-observability-for-ai">AI for observability vs observability for AI</h1>
+<p>Two phrases that sound alike and are easy to conflate:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Observability <em>for</em> AI</strong></th>
+<th><strong>AI <em>for</em> observability</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direction</strong></td>
+<td>Observe AI systems</td>
+<td>Use AI to do observability work</td>
+</tr>
+<tr>
+<td><strong>Subject</strong></td>
+<td>LLM apps, RAG, agents, chatbots, models</td>
+<td>Your telemetry, incidents, alerts, dashboards, on-call</td>
+</tr>
+<tr>
+<td><strong>Question</strong></td>
+<td>"Is my AI application fast, correct, safe and affordable?"</td>
+<td>"Can AI help me detect, triage, explain and fix problems faster?"</td>
+</tr>
+<tr>
+<td><strong>Typical outputs</strong></td>
+<td>Traces of prompts/tools, token and cost metrics, quality scores, guardrail verdicts</td>
+<td>Anomaly alerts, correlated incident timelines, root-cause hypotheses, natural-language queries, generated runbooks/PRs</td>
+</tr>
+<tr>
+<td><strong>Data it needs</strong></td>
+<td>Telemetry about the AI workload (with content policy)</td>
+<td>Telemetry about <strong>any</strong> workload, plus topology, deploys, tickets, runbooks</td>
+</tr>
+<tr>
+<td><strong>New problem it creates</strong></td>
+<td>Non-deterministic behavior needs evaluation, not just status codes</td>
+<td>The helper is itself non-deterministic, can be wrong, and has access to production data</td>
+</tr>
+<tr>
+<td><strong>Who owns it</strong></td>
+<td>Platform + AI/ML + product teams</td>
+<td>SRE / platform / observability team</td>
+</tr>
+<tr>
+<td><strong>Success metric</strong></td>
+<td>Latency, quality, cost, safety SLOs for the AI app</td>
+<td>MTTD, MTTR, alert noise, investigation accuracy, toil saved</td>
+</tr>
+<tr>
+<td><strong>Core of this handbook</strong></td>
+<td>Almost everything: <a href="#p-fundamentals-telemetry-model">telemetry model</a>, <a href="#p-metrics-metrics-catalog">metrics</a>, <a href="#p-scoring-index">scoring</a>, <a href="#p-use-cases-index">use cases</a></td>
+<td><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a>, this section</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph A[Observability FOR AI]
+      APP[AI apps: RAG, agents, chatbots] --&gt; TEL[Telemetry: traces, tokens, scores, cost]
+    end
+    subgraph B[AI FOR observability]
+      AGENT[AI SRE / copilot / anomaly models] --&gt; ACT[Detect, correlate, explain, act]
+    end
+    TEL --&gt; OBS[(Observability platform)]
+    OTHER[All other services + infra] --&gt; OBS
+    OBS --&gt; AGENT
+    ACT --&gt;|findings, changes| HUM[Humans on call]
+    AGENT -.is itself an AI system.-&gt; META[Meta-observability:&lt;br/&gt;observe the observer]
+    META --&gt; OBS</code></pre>
+<h2 id="the-four-combinations">The four combinations</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Observed system is <strong>not AI</strong></th>
+<th>Observed system <strong>is AI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No AI in the loop</strong></td>
+<td>Classic APM / SRE</td>
+<td><strong>Observability for AI</strong> (the bulk of this handbook)</td>
+</tr>
+<tr>
+<td><strong>AI in the loop</strong></td>
+<td><strong>AI for observability</strong> on conventional services (AIOps)</td>
+<td>Both at once: AI helping observe AI. Highest leverage, and highest risk of circular reasoning</td>
+</tr>
+</tbody>
+</table>
+<p>Most enterprises will live in the bottom-right quadrant within a year: AI apps in production <em>and</em> AI assistants triaging their incidents. That is why the boundary matters.</p>
+<h2 id="why-you-must-keep-them-separate-in-your-thinking">Why you must keep them separate in your thinking</h2>
+<ol>
+<li><strong>Different failure modes.</strong> An AI app fails by being plausibly wrong; an AI SRE agent fails by being confidently wrong about <em>your infrastructure</em>, possibly with the ability to change it.</li>
+<li><strong>Different data rights.</strong> Observability for AI deals with user content and prompts; AI for observability reads logs, configs, tickets and secrets-adjacent data across the estate.</li>
+<li><strong>Different evaluation.</strong> The first needs <a href="#p-scoring-index">scorers and golden sets</a> for answers; the second needs replayed incidents, accuracy of root-cause hypotheses and action safety.</li>
+<li><strong>Different blast radius.</strong> A bad chatbot answer harms one user; a bad automated remediation can take down a region.</li>
+<li><strong>Different buyers and budgets.</strong> Platform/AI teams vs SRE/operations; don't let one purchase silently define the other.</li>
+</ol>
+<h2 id="where-the-two-meet-and-what-to-watch">Where the two meet (and what to watch)</h2>
+<ul>
+<li><strong>AI observing AI.</strong> Using an LLM judge to score another LLM's answers (<a href="#p-scoring-online-scoring">online scoring</a>) is AI-for-observability applied to observability-for-AI. Calibrate the judge, avoid same-model self-grading, version it.</li>
+<li><strong>AI SRE investigating AI-app incidents.</strong> It needs the AI-specific context: prompt/model/index versions, retrieval health, eval scores, change events. Without them it will blame infrastructure for what is a prompt regression. Give it the <a href="#p-cloud-native-implementation-guide">telemetry contract</a>.</li>
+<li><strong>Observing the observers.</strong> Every AI SRE agent, copilot and judge is an AI application and needs the same tracing, cost, quality and safety visibility: see <a href="#p-ai-and-observability-meta-observability">Meta-observability</a>.</li>
+<li><strong>Shared plumbing.</strong> OpenTelemetry, a Collector tier, a long-range store, a runbook library: the same foundations serve both.</li>
+</ul>
+<h2 id="reading-guide">Reading guide</h2>
+<table>
+<thead>
+<tr>
+<th>If you are…</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An AI/ML or platform engineer shipping AI apps</td>
+<td>The rest of the handbook, starting at <a href="#p-fundamentals-why-ai-observability">Why AI observability</a></td>
+</tr>
+<tr>
+<td>An SRE/observability lead evaluating AI assistants</td>
+<td><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a></td>
+</tr>
+<tr>
+<td>Responsible for both, or for governance</td>
+<td><a href="#p-ai-and-observability-meta-observability">Meta-observability</a> and the <a href="#p-cloud-native-index">cloud-native guide</a></td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-ai-and-observability-ai-for-observability"><h1 id="ai-for-observability">AI for observability</h1>
+<p>Using AI (statistical models, ML, LLMs, agents) to help detect, understand and resolve problems in any system. Also called <strong>AIOps</strong> or <strong>AI SRE</strong> when it extends to incident response.</p>
+<div class="admonition info">
+<p class="admonition-title">Product facts</p>
+<p>Vendor products in this space launched and renamed quickly in 2025-2026, and many public comparisons are written by competitors. Statuses below are from vendor announcements and secondary reviews as of October 2026. <strong>Verify GA/preview status, pricing and accuracy claims with the vendor and your own pilot.</strong></p>
+</div>
+<h2 id="what-ai-can-do-for-observability">What AI can do for observability</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Typical technique</th>
+<th>Maturity</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anomaly detection</strong></td>
+<td>Seasonal baselines, robust statistics, CUSUM, forecasting, unsupervised ML</td>
+<td>High (proven)</td>
+<td>Fewer static-threshold pages, earlier shifts</td>
+</tr>
+<tr>
+<td><strong>Alert noise reduction</strong></td>
+<td>Dedup, grouping by topology/time, suppression, correlation</td>
+<td>High</td>
+<td>Less fatigue</td>
+</tr>
+<tr>
+<td><strong>Change correlation</strong></td>
+<td>Join deploy/config/prompt/model events to metric shifts</td>
+<td>High</td>
+<td>Fast "what changed?"</td>
+</tr>
+<tr>
+<td><strong>Causal / topology RCA</strong></td>
+<td>Dependency graph + causal reasoning (e.g. Dynatrace Davis-style causal AI)</td>
+<td>Medium-high</td>
+<td>Root-cause candidates through the service graph</td>
+</tr>
+<tr>
+<td><strong>Natural-language querying</strong></td>
+<td>LLM translating questions to PromQL/LogQL/KQL/SQL/TraceQL</td>
+<td>Medium</td>
+<td>Lower barrier; needs validation of generated queries</td>
+</tr>
+<tr>
+<td><strong>Investigation agents ("AI SRE")</strong></td>
+<td>LLM agents forming and testing hypotheses against live telemetry, tickets, code, runbooks (e.g. AWS DevOps Agent, Datadog's Bits investigation, Azure SRE Agent, Google Cloud Assist investigations, CloudWatch Omni investigations)</td>
+<td>Medium (GA in several clouds in 2026; quality varies)</td>
+<td>Faster triage, shared incident timelines</td>
+</tr>
+<tr>
+<td><strong>Summarization</strong></td>
+<td>LLM summaries of incidents, traces, logs, postmortems</td>
+<td>Medium-high</td>
+<td>Handoffs, status updates</td>
+</tr>
+<tr>
+<td><strong>Remediation</strong></td>
+<td>Runbook automation, suggested fixes/PRs, auto-rollback</td>
+<td>Low-medium, high risk</td>
+<td>Lower MTTR, only with guardrails</td>
+</tr>
+<tr>
+<td><strong>Instrumentation assistance</strong></td>
+<td>LLM agents adding OTel instrumentation (for example "auto-instrument with Kiro")</td>
+<td>Medium</td>
+<td>Faster onboarding; review the generated code</td>
+</tr>
+<tr>
+<td><strong>Capacity/cost forecasting</strong></td>
+<td>Time-series forecasting</td>
+<td>High</td>
+<td>Budgeting, headroom alerts</td>
+</tr>
+<tr>
+<td><strong>Log/trace clustering</strong></td>
+<td>Embeddings, template mining</td>
+<td>Medium-high</td>
+<td>Find unknown unknowns</td>
+</tr>
+</tbody>
+</table>
+<h2 id="maturity-ladder-climb-it-in-order">Maturity ladder: climb it in order</h2>
+<pre class="mermaid"><code>flowchart LR
+    L0[0 Manual&lt;br/&gt;static thresholds] --&gt; L1[1 Statistical baselines&lt;br/&gt;seasonality, MAD, CUSUM]
+    L1 --&gt; L2[2 Correlation&lt;br/&gt;grouping, change events, topology]
+    L2 --&gt; L3[3 Assisted&lt;br/&gt;NL query, summaries, hypotheses]
+    L3 --&gt; L4[4 Agentic investigation&lt;br/&gt;read-only tools, evidence cited]
+    L4 --&gt; L5[5 Supervised action&lt;br/&gt;human-approved remediation]
+    L5 --&gt; L6[6 Autonomous&lt;br/&gt;narrow, reversible, audited]</code></pre>
+<p><strong>Rule:</strong> each rung must beat the one below it on <em>your</em> history before you adopt it. Most teams get most of the value from rungs 1-3.</p>
+<h3 id="runnable-baseline-statistics-before-llms">Runnable baseline: statistics before LLMs</h3>
+<p><a href="https://github.com/akashtalole/ai-observability/blob/main/examples/aiops/anomaly_baseline.py"><code>examples/aiops/anomaly_baseline.py</code></a> compares detectors on an hourly cost series with daily/weekly seasonality and three injected incidents (level shift, spike, slow drift):</p>
+<pre class="highlight"><code class="language-text">static threshold 1.3x   alerts= 30  detected=3/3  false alerts=23  mean delay=  7.0 h
+static threshold 1.6x   alerts=  5  detected=3/3  false alerts= 0  mean delay= 24.7 h
+seasonal baseline + MAD alerts=  1  detected=1/3  false alerts= 0  mean delay=  2.0 h
+seasonal baseline + CUSUM alerts= 3 detected=3/3  false alerts= 0  mean delay= 15.0 h</code></pre>
+<p>Reading it honestly: a low threshold pages constantly, a high one is late, MAD is fast on spikes but misses slow shifts, CUSUM catches shifts sooner than the high threshold with no false alerts. The gains are real but <strong>modest and incident-shape dependent</strong>, and they need no training data. That is the bar any ML/LLM feature has to clear on your own incident history. The same detectors apply to AI-app quality and cost series (groundedness, cost per request).</p>
+<h2 id="architecture-for-ai-assistants-over-observability-data">Architecture for AI assistants over observability data</h2>
+<pre class="mermaid"><code>flowchart TB
+    subgraph DATA[Governed data plane]
+      MET[(Metrics)] --- TR[(Traces)] --- LG[(Logs)]
+      CH[(Change events / deploys)] --- TOP[(Topology / CMDB)] --- RB[(Runbooks, past incidents)]
+    end
+    subgraph TOOLS[Tool layer - read-only by default]
+      Q[Query tools: PromQL / LogQL / TraceQL / SQL&lt;br/&gt;with validation, limits, timeouts]
+      CTX[Context tools: deploys, owners, SLOs, docs]
+      ACTT[Action tools: restart, rollback, scale, flag&lt;br/&gt;approval-gated]
+    end
+    AG[AI agent / copilot&lt;br/&gt;planning + evidence citing]
+    HUM[Human on call]
+    DATA --&gt; Q
+    DATA --&gt; CTX
+    Q --&gt; AG
+    CTX --&gt; AG
+    AG --&gt;|proposed action| ACTT
+    ACTT --&gt;|approval| HUM
+    AG --&gt;|findings + citations| HUM
+    AG --&gt; AUD[(Audit log + traces of the agent)]</code></pre>
+<p>Design rules:</p>
+<ol>
+<li><strong>Read-only first.</strong> Start with query/context tools only. Add actions one at a time, each with its own risk review.</li>
+<li><strong>Evidence or it did not happen.</strong> Every claim in an investigation must cite a query/result/trace the human can open. Reject answers without citations.</li>
+<li><strong>Constrain query generation.</strong> Validate generated PromQL/LogQL/SQL (syntax, cost, time range, row limits), run with timeouts and read-only credentials.</li>
+<li><strong>Least-privilege identity.</strong> The agent gets scoped, short-lived credentials per tool; tenant and data-classification boundaries apply to it as to any user.</li>
+<li><strong>Context quality beats model size.</strong> Topology, ownership, SLOs, change events and clean runbooks are what make investigations correct. Garbage metadata means confident nonsense.</li>
+<li><strong>Human approval for state changes</strong>, with a diff/plan shown and a rollback path; start with reversible, low-blast-radius actions.</li>
+<li><strong>Everything the agent does is logged and traced</strong> (<a href="#p-ai-and-observability-meta-observability">meta-observability</a>).</li>
+</ol>
+<h2 id="data-governance">Data governance</h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sensitive data in telemetry</strong> (prompts, PII, secrets)</td>
+<td>Redact at the Collector before any AI assistant can read it; apply the <a href="#p-architecture-security-privacy">content policy</a> to the assistant's access</td>
+</tr>
+<tr>
+<td><strong>Where the model runs</strong></td>
+<td>Vendor-hosted vs your cloud account vs self-hosted; check residency, retention, "no training on customer data"</td>
+</tr>
+<tr>
+<td><strong>Cross-tenant leakage</strong></td>
+<td>Assistant queries inherit the user's/tenant's authorization, never a superuser</td>
+</tr>
+<tr>
+<td><strong>Prompt injection via telemetry</strong></td>
+<td>Logs, error messages and ticket text are untrusted input to the agent: treat as data, strip instructions, constrain tools</td>
+</tr>
+<tr>
+<td><strong>Audit</strong></td>
+<td>Immutable record of questions, queries, evidence, proposed and executed actions, approver</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evaluating-an-ai-for-observability-tool-pilot-design">Evaluating an AI-for-observability tool (pilot design)</h2>
+<p>You need evaluation too, and it looks different from app evaluation.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Build an incident corpus</strong></td>
+<td>30-100 past incidents with ground truth: root cause, timeline, the signals that revealed it, the fix. Include hard and ambiguous ones, and some "no action needed" cases</td>
+</tr>
+<tr>
+<td><strong>Replay</strong></td>
+<td>Give the tool the telemetry/context as of the incident time (read-only snapshot or replay environment); measure what it concludes</td>
+</tr>
+<tr>
+<td><strong>Score</strong></td>
+<td>Top-1/top-3 <strong>root-cause accuracy</strong>; <strong>evidence validity</strong> (are citations real and supportive?); time to first useful hypothesis; <strong>false-confidence rate</strong> (wrong answers stated confidently); unsafe-action proposals; investigation cost</td>
+</tr>
+<tr>
+<td><strong>Compare to baselines</strong></td>
+<td>A senior SRE with normal tools, and the statistical/correlation rungs below it</td>
+</tr>
+<tr>
+<td><strong>Shadow mode</strong></td>
+<td>Run on live incidents without acting; humans grade usefulness afterward</td>
+</tr>
+<tr>
+<td><strong>Measure outcomes</strong></td>
+<td>MTTD, MTTR, escalations avoided, alert volume, on-call satisfaction, and <strong>errors introduced</strong></td>
+</tr>
+<tr>
+<td><strong>Segment</strong></td>
+<td>By incident type, service tier, data quality; averages hide where it fails</td>
+</tr>
+</tbody>
+</table>
+<p>Use the <a href="#p-scoring-index">scoring</a> discipline: paired comparisons, intervals, calibrated judges for subjective grades, versioned rubrics, and re-run when the vendor updates the model.</p>
+<h2 id="cost-roi-and-procurement">Cost, ROI and procurement</h2>
+<ul>
+<li>Pricing models vary: per agent-second or "agent unit", per investigation, credit-based, seat-based, or bundled. Model cost per incident and per month at your incident volume, including <strong>runaway or looping agent</strong> scenarios.</li>
+<li>ROI is toil and MTTR, but count <strong>verification time</strong>: if engineers must recheck every claim, the saving shrinks. Track "accepted without edits" rate.</li>
+<li>Beware bundling: an assistant that only works well with one vendor's data layer is a lock-in decision. Prefer tools that consume OpenTelemetry-native data and expose their tool interfaces (for example via MCP) so you can swap.</li>
+<li>Check SLAs for the assistant itself: on-call must still work when it is down.</li>
+</ul>
+<h2 id="landscape-by-category-october-2026">Landscape (by category, October 2026)</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cloud-native investigation agents</strong></td>
+<td>AWS DevOps Agent (reported GA Mar 2026; inside <a href="#p-cloud-native-omni">CloudWatch Omni</a> sessions), Azure SRE Agent, Google Gemini Cloud Assist investigations</td>
+<td>Deep access to the provider's telemetry and resources; provider-centric</td>
+</tr>
+<tr>
+<td><strong>APM/observability platform AI</strong></td>
+<td>Datadog (Bits AI investigation), Dynatrace (Davis causal AI; SRE agent workflows reported in preview), New Relic, Grafana, Elastic, Splunk</td>
+<td>Best when your data already lives there</td>
+</tr>
+<tr>
+<td><strong>Dedicated AI SRE vendors</strong></td>
+<td>Several startups; consolidating quickly</td>
+<td>Verify viability and data handling; ask for incident-replay results</td>
+</tr>
+<tr>
+<td><strong>Incident-management AI</strong></td>
+<td>PagerDuty and similar: triage, summaries, runbook automation</td>
+<td>Integrates paging and workflow</td>
+</tr>
+<tr>
+<td><strong>Open-source / DIY</strong></td>
+<td>LLM + MCP servers for Prometheus/Loki/Tempo/Grafana + your runbooks</td>
+<td>Control and portability; you own evaluation and safety</td>
+</tr>
+<tr>
+<td><strong>Anomaly/forecasting libraries</strong></td>
+<td>Prophet-style forecasting, robust-statistics libraries, Grafana/Prometheus ML features</td>
+<td>Cheap, explainable first step</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anti-patterns">Anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it hurts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buying an "AI SRE" before fixing telemetry, ownership and runbooks</td>
+<td>Garbage in, confident garbage out</td>
+</tr>
+<tr>
+<td>Letting the agent act on production on day one</td>
+<td>Unbounded blast radius; no trust yet</td>
+</tr>
+<tr>
+<td>Trusting accuracy numbers from vendor demos</td>
+<td>Different incidents, curated data</td>
+</tr>
+<tr>
+<td>Unvalidated generated queries against production stores</td>
+<td>Expensive scans, wrong answers</td>
+</tr>
+<tr>
+<td>One super-user credential for the agent</td>
+<td>Cross-tenant exposure, privilege escalation by prompt injection</td>
+</tr>
+<tr>
+<td>No baseline comparison</td>
+<td>You cannot tell if AI beats a CUSUM and a good dashboard</td>
+</tr>
+<tr>
+<td>Using AI to alert on AI quality with no calibration</td>
+<td>Circular: an uncalibrated judge pages you about its own noise</td>
+</tr>
+<tr>
+<td>Treating its output as ground truth in postmortems</td>
+<td>Humans own root cause; the agent's hypothesis is input</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adoption-checklist">Adoption checklist</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Telemetry contract, change events, topology and ownership data in place</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Statistical baselines and alert grouping deployed first (rungs 1-2)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Incident corpus built; baseline human performance measured</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Pilot in read-only shadow mode; scored on accuracy, evidence validity, false confidence</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Data-access, residency and redaction reviewed; least-privilege tool identities</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Action tools approval-gated, reversible, audited</li>
+<li class="task-list-item"><input type="checkbox" disabled/> The assistant itself is traced, costed and alerted (<a href="#p-ai-and-observability-meta-observability">meta-observability</a>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Exit plan: tools and data remain portable</li>
+</ul></section><section class="page" id="p-ai-and-observability-meta-observability"><h1 id="meta-observability-observing-the-ai-that-observes">Meta-observability: observing the AI that observes</h1>
+<p>Every AI feature you add to your observability stack (LLM judges, anomaly models, investigation agents, query assistants, summarizers) is an <strong>AI application with production access</strong>. It needs the same observability you apply to your product's AI, plus guardrails appropriate to its privileges.</p>
+<h2 id="what-to-observe-about-observability-ai">What to observe about observability AI</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Latency</th>
+<th>Quality</th>
+<th>Cost</th>
+<th>Safety</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLM judges / scorers</strong></td>
+<td>Queue age, judge p95</td>
+<td>Calibration vs humans (κ), anchor-set drift, score variance</td>
+<td>Tokens per score, share of inference spend</td>
+<td>Judge sees customer content: access logs</td>
+</tr>
+<tr>
+<td><strong>Anomaly / forecast models</strong></td>
+<td>Evaluation latency</td>
+<td>Precision/recall vs labeled incidents, alert acceptance rate, false-alert rate</td>
+<td>Compute</td>
+<td>Alert storms from model bugs</td>
+</tr>
+<tr>
+<td><strong>Query assistants (NL → PromQL/LogQL/SQL)</strong></td>
+<td>Time to result</td>
+<td>Query validity, result correctness on a golden set, repair loops</td>
+<td>Warehouse/TSDB cost of generated queries</td>
+<td>Blocked statements, row/time limits hit</td>
+</tr>
+<tr>
+<td><strong>Investigation agents</strong></td>
+<td>Time to first hypothesis, steps</td>
+<td>Root-cause accuracy, <strong>evidence validity</strong>, false-confidence rate, human acceptance</td>
+<td>Cost per investigation, runaway guard hits</td>
+<td>Actions proposed/approved/denied, unauthorized tool attempts</td>
+</tr>
+<tr>
+<td><strong>Summarizers</strong></td>
+<td>Latency</td>
+<td>Faithfulness to the incident record</td>
+<td>Tokens</td>
+<td>Leakage of sensitive details into channels</td>
+</tr>
+<tr>
+<td><strong>Auto-remediation</strong></td>
+<td>Time to act</td>
+<td>Success rate, rollback rate, regressions introduced</td>
+<td>n/a</td>
+<td>Blast radius, approvals, kill-switch use</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reuse-the-same-patterns">Reuse the same patterns</h2>
+<ul>
+<li><strong>Trace every agent run</strong> (<code>invoke_agent</code> → <code>chat</code> → <code>execute_tool</code>) with the <a href="#p-monitoring-agents">agent monitoring</a> metrics: steps, loops, tool errors, budget terminations, approvals.</li>
+<li><strong>Score it</strong> online and offline: <a href="#p-ai-and-observability-ai-for-observability">replayed-incident corpus</a> as the golden set, sampled live investigations graded by humans.</li>
+<li><strong>Alert on the assistant's health</strong>: error rate, latency, spend, loop detections, injection detections, plus "assistant unavailable" so on-call falls back to manual runbooks.</li>
+<li><strong>Version everything</strong>: model, prompt, tool definitions, runbook corpus; write change events so a change in assistant behavior can be explained.</li>
+</ul>
+<h2 id="avoid-circularity">Avoid circularity</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Same model family generates and judges</strong></td>
+<td>Different family for judges; calibrate on human labels</td>
+</tr>
+<tr>
+<td><strong>AI alerts on AI quality using an uncalibrated judge</strong></td>
+<td>Gate alerting on calibration status; show n and intervals</td>
+</tr>
+<tr>
+<td><strong>Assistant diagnoses an AI-app incident without AI context</strong></td>
+<td>Feed it versions, retrieval health, eval scores, change events</td>
+</tr>
+<tr>
+<td><strong>Telemetry the agent reads is shaped by the agent's own actions</strong></td>
+<td>Mark agent-caused changes (<code>actor=ai-agent</code>) in change events</td>
+</tr>
+<tr>
+<td><strong>Single provider for app model, judge and SRE agent</strong></td>
+<td>An outage or silent model change hits all three at once; diversify or at least monitor correlation</td>
+</tr>
+<tr>
+<td><strong>Observability outage hides the AI outage</strong></td>
+<td>Independent health checks and synthetic canaries outside the same pipeline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="governance">Governance</h2>
+<ul>
+<li>Register assistants in the <strong>AI inventory</strong> with owner, risk tier, data accessed, tools, and approval authority.</li>
+<li>Treat tool access like IAM: reviewed, time-bound, logged. Re-certify periodically.</li>
+<li>Keep a <strong>kill switch</strong> (disable actions; fall back to read-only; fall back to humans) tested in game days.</li>
+<li>Retain audit trails (questions, evidence, actions, approver) per your compliance requirements.</li>
+<li>Fold the assistants into your incident process: postmortems should note when AI helped, misled, or acted.</li>
+</ul>
+<h2 id="a-minimal-meta-observability-dashboard">A minimal meta-observability dashboard</h2>
+<table>
+<thead>
+<tr>
+<th>Panel</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Investigations per day, time to first hypothesis</td>
+<td>Adoption and responsiveness</td>
+</tr>
+<tr>
+<td>Human acceptance / edit rate; evidence-validity sample score</td>
+<td>Is it trusted <em>and</em> right?</td>
+</tr>
+<tr>
+<td>Root-cause accuracy on replay set (weekly re-run)</td>
+<td>Regression detection after vendor/model updates</td>
+</tr>
+<tr>
+<td>False-confidence rate</td>
+<td>The most dangerous failure</td>
+</tr>
+<tr>
+<td>Cost per investigation; runaway-guard hits</td>
+<td>Budget</td>
+</tr>
+<tr>
+<td>Actions proposed / approved / denied / rolled back</td>
+<td>Safety</td>
+</tr>
+<tr>
+<td>Judge calibration (κ) and anchor-set drift</td>
+<td>Trustworthy quality metrics</td>
+</tr>
+<tr>
+<td>Assistant availability and fallback usage</td>
+<td>Resilience</td>
+</tr>
+</tbody>
+</table>
+<p>These are the same building blocks as the <a href="#p-use-cases-multi-agent">use-case dashboards</a>; an investigation agent is a multi-agent system and can be instrumented with the same contract.</p></section><section class="page" id="p-cloud-native-index"><h1 id="cloud-native-ai-observability-azure-aws-and-gcp">Cloud-native AI observability: Azure, AWS and GCP</h1>
 <p>Each hyperscaler now ships an observability stack for generative AI and agents, and <strong>all three have converged on OpenTelemetry (OTLP)</strong> as the way in. This section covers what each offers, how its OpenTelemetry support really works, the new <strong>Amazon CloudWatch Omni</strong>, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</p>
 <p><em>Snapshot: October 2026. Cloud features move monthly and several are labelled preview in one place and GA in another; every status below says where it came from. </em><em>Verify against the linked vendor docs before committing.</em>**</p>
 <table>

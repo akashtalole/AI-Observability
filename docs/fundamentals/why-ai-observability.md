@@ -1,5 +1,8 @@
 # Why AI observability
 
+!!! note "Two different things"
+    This handbook is mainly about **observability *for* AI** (observing AI applications). Using AI to *do* observability is a separate topic: see [AI for observability vs observability for AI](../ai-and-observability/index.md).
+
 Traditional monitoring answers *"is the service up and fast?"*. For AI applications that is necessary but not sufficient: a RAG app can return HTTP 200 in 800 ms with a **confidently wrong, ungrounded or unsafe answer**, at **ten times the expected cost**.
 
 ## The three pillars for AI: latency, quality, cost

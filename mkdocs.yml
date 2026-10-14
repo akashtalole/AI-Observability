@@ -86,6 +86,10 @@ nav:
       - Data to collect: metrics/data-to-collect.md
       - SLOs & alerting: metrics/slos-alerting.md
       - Evaluation & quality: metrics/evaluation.md
+  - AI for vs of observability:
+      - Overview & distinctions: ai-and-observability/index.md
+      - AI for observability: ai-and-observability/ai-for-observability.md
+      - Meta-observability: ai-and-observability/meta-observability.md
   - Cloud-native (AWS, Azure, GCP):
       - Overview & OTel support: cloud-native/index.md
       - AWS CloudWatch & AgentCore: cloud-native/aws.md
