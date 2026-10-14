@@ -1,5 +1,8 @@
 # Open-source approach
 
+!!! tip "Hands-on"
+    The [use cases](../use-cases/index.md) implement archetype **B** (OTel Collector + Prometheus/Tempo/Loki/Grafana) end to end, including dashboards, alert rules and failure simulators.
+
 **Goal:** maximum control, transparent cost, and no per-event vendor pricing — in exchange for operating the platform.
 
 ## Archetypes

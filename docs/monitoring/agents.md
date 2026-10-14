@@ -1,5 +1,8 @@
 # Monitoring agents & multi-agent systems
 
+!!! tip "Run it"
+    A runnable multi-agent implementation (supervisor + sub-agents, tools, loops, budgets, approvals) with dashboards and alerts is in [Use case: Multi-agent](../use-cases/multi-agent.md).
+
 Agents plan, call tools, observe results and iterate. Cost, latency and failure are **path-dependent**, so you must observe *trajectories*, not just single calls.
 
 ## Trace model

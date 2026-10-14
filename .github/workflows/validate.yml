@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt -r use-cases/requirements.txt
+
+      - name: Generated files are up to date
+        run: |
+          python scripts/gen_dashboards.py
+          python scripts/build.py
+          # handbook.html is excluded: its HTML differs slightly across Python-Markdown versions
+          git diff --exit-code -- . ':!docs/artifacts/handbook.html' || (echo "::error::Generated files are stale - run scripts/gen_dashboards.py and scripts/build.py and commit" && exit 1)
+
+      - name: Docs build (strict)
+        run: mkdocs build --strict
+
+      - name: Demo apps smoke test (console exporter)
+        run: |
+          python use-cases/rag/app/rag_app.py --console --duration 5 --rps 3 > /dev/null
+          python use-cases/multi-agent/app/agent_app.py --console --duration 5 --rps 1 > /dev/null
+          python use-cases/chatbot/app/chatbot_app.py --console --duration 5 --rps 1 > /dev/null
+
+      - name: Validate Prometheus rules
+        run: |
+          docker run --rm --entrypoint promtool -v "$PWD/use-cases:/uc:ro" prom/prometheus:v3.2.1 \
+            check rules /uc/rag/alerts/rag-alerts.yml /uc/multi-agent/alerts/agent-alerts.yml \
+            /uc/chatbot/alerts/chatbot-alerts.yml /uc/stack/prometheus/rules/platform.yml
+
+      - name: Validate OpenTelemetry Collector config
+        run: |
+          docker run --rm -v "$PWD/use-cases/stack/otel-collector.yaml:/etc/otelcol.yaml:ro" \
+            otel/opentelemetry-collector-contrib:0.120.0 validate --config=/etc/otelcol.yaml
+
+      - name: Validate docker compose
+        run: docker compose -f use-cases/stack/docker-compose.yml config -q

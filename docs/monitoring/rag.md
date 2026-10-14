@@ -1,5 +1,8 @@
 # Monitoring RAG applications
 
+!!! tip "Run it"
+    A runnable implementation on OpenTelemetry, Prometheus, Grafana, Loki and Tempo, with dashboards, alerts and fault scenarios, is in [Use case: RAG](../use-cases/rag.md).
+
 Full walkthrough with dashboards and queries: [RAG observability playbook](../rag/rag-observability-playbook.md). This page is the monitoring checklist.
 
 ## Pipeline and where to measure

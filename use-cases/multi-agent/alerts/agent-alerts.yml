@@ -1,0 +1,85 @@
+# DEMO WINDOWS: rate/quantile windows are short (3m) so scenarios fire within minutes. In production use 5-15m windows plus
+# multi-window burn rates (see docs/metrics/slos-alerting.md).
+# Recording + alerting rules for the multi-agent use case (service_name="research-agents").
+groups:
+  - name: agent-recording
+    interval: 15s
+    rules:
+      - record: agent:tasks:rate3m
+        expr: sum(rate(agent_tasks_total{service_name="research-agents"}[3m]))
+      - record: agent:task_success_ratio:rate3m
+        expr: sum(rate(agent_tasks_total{service_name="research-agents",outcome="success"}[3m])) / sum(rate(agent_tasks_total{service_name="research-agents"}[3m]))
+      - record: agent:cost_per_task_usd:rate3m
+        expr: sum(rate(agent_cost_usd_total{service_name="research-agents"}[3m])) / sum(rate(agent_tasks_total{service_name="research-agents"}[3m]))
+      - record: agent:steps_per_task:p95_3m
+        expr: histogram_quantile(0.95, sum by (le) (rate(agent_task_steps_bucket{service_name="research-agents"}[3m])))
+      - record: agent:task_duration_seconds:p95_3m
+        expr: histogram_quantile(0.95, sum by (le) (rate(agent_task_duration_seconds_bucket{service_name="research-agents"}[3m])))
+      - record: agent:tool_error_ratio:rate3m
+        expr: (sum(rate(agent_tool_calls_total{service_name="research-agents",status="error"}[3m])) or vector(0)) / sum(rate(agent_tool_calls_total{service_name="research-agents",status!="denied"}[3m]))
+      - record: agent:cost_per_task_usd:ratio_1d
+        expr: sum(increase(agent_cost_usd_total{service_name="research-agents"}[1d])) / sum(increase(agent_tasks_total{service_name="research-agents"}[1d]))
+      - record: agent:task_success_ratio:ratio_1d
+        expr: sum(increase(agent_tasks_total{service_name="research-agents",outcome="success"}[1d])) / sum(increase(agent_tasks_total{service_name="research-agents"}[1d]))
+
+  - name: agent-alerts
+    rules:
+      - alert: AgentTaskSuccessLow
+        expr: agent:task_success_ratio:rate3m < 0.7 and agent:tasks:rate3m > 0.05
+        for: 1m
+        labels: {severity: page, service: research-agents}
+        annotations:
+          summary: "Agent task success {{ $value | humanizePercentage }} (<70%)"
+          description: "Check terminations by reason, tool error ratio and recent change events."
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#agent-runaway-or-loops"
+      - alert: AgentRunawaySteps
+        expr: agent:steps_per_task:p95_3m > 23      # hard limit is 25; healthy demo p95 is ~19-20. Loops are stopped by the loop guard first, so no demo scenario reaches this.
+        for: 1m
+        labels: {severity: page, service: research-agents}
+        annotations:
+          summary: "p95 steps per task {{ $value | printf \"%.0f\" }} (hard limit 25) - agents are running away"
+          description: "Likely loops or plan thrash. Cost risk. Max-steps/budget guards should be terminating tasks."
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#agent-runaway-or-loops"
+      - alert: AgentLoopsDetected
+        expr: sum(increase(agent_loops_detected_total{service_name="research-agents"}[3m])) > 5
+        for: 0m
+        labels: {severity: ticket, service: research-agents}
+        annotations:
+          summary: "{{ $value | printf \"%.0f\" }} repeated identical tool calls in 5m"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#agent-runaway-or-loops"
+      - alert: AgentCostPerTaskSpike
+        expr: agent:cost_per_task_usd:rate3m > 2.5 * quantile_over_time(0.5, agent:cost_per_task_usd:rate3m[30m])
+        for: 1m
+        labels: {severity: ticket, service: research-agents}
+        annotations:
+          summary: "Cost/task {{ $value | printf \"%.4f\" }} USD is >2.5x its 30m median"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#cost-spike"
+      - alert: AgentBudgetExceededTerminations
+        expr: sum(increase(agent_terminations_total{service_name="research-agents",reason="budget_exceeded"}[3m])) > 0
+        for: 0m
+        labels: {severity: ticket, service: research-agents}
+        annotations:
+          summary: "Tasks hit the per-task USD budget (context bloat or revision cycles)"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#agent-runaway-or-loops"
+      - alert: AgentToolErrorRateHigh
+        expr: agent:tool_error_ratio:rate3m > 0.1
+        for: 2m
+        labels: {severity: ticket, service: research-agents}
+        annotations:
+          summary: "Tool error ratio {{ $value | humanizePercentage }} (>10%) - check the failing dependency (search/web_fetch)"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#tool-dependency-failing"
+      - alert: AgentTaskLatencyHigh
+        expr: agent:task_duration_seconds:p95_3m > 45
+        for: 1m
+        labels: {severity: ticket, service: research-agents}
+        annotations:
+          summary: "Task duration p95 {{ $value | humanizeDuration }}"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression"
+      - alert: AgentInjectionMissed
+        expr: sum(increase(agent_guardrail_events_total{service_name="research-agents",action="missed"}[10m])) > 0
+        for: 0m
+        labels: {severity: page, service: research-agents}
+        annotations:
+          summary: "Indirect prompt injection reached the agent undetected (write tool attempted)"
+          description: "Review the trace (guardrail.injection_detected=false) and approval decisions; consider disabling web_fetch."
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#safety--guardrail-incident"

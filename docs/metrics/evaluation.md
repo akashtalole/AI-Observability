@@ -1,5 +1,8 @@
 # Evaluation & quality measurement
 
+!!! tip "Deeper guidance"
+    Online vs offline scoring, sampling, judges, gates and operating cost are covered in the [Scoring section](../scoring/index.md).
+
 Quality is the hardest of the three pillars because correctness is not directly observable. Build a **layered** evaluation strategy.
 
 ## Evaluation layers

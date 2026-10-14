@@ -1,0 +1,103 @@
+# DEMO WINDOWS: rate/quantile windows are short (2m) so scenarios fire within minutes. In production use 5-15m windows plus
+# multi-window burn rates (see docs/metrics/slos-alerting.md).
+# Recording + alerting rules for the RAG use case (service_name="support-rag").
+# `for:` durations are short so the demo scenarios fire quickly; use 5-15m+ in production.
+groups:
+  - name: rag-recording
+    interval: 15s
+    rules:
+      - record: rag:requests:rate2m
+        expr: sum(rate(rag_requests_total{service_name="support-rag"}[2m]))
+      - record: rag:error_ratio:rate2m
+        expr: (sum(rate(rag_requests_total{service_name="support-rag",status="error"}[2m])) or vector(0)) / sum(rate(rag_requests_total{service_name="support-rag"}[2m]))
+      - record: rag:error_ratio:rate10m
+        expr: (sum(rate(rag_requests_total{service_name="support-rag",status="error"}[10m])) or vector(0)) / sum(rate(rag_requests_total{service_name="support-rag"}[10m]))
+      - record: rag:ttft_seconds:p95_2m
+        expr: histogram_quantile(0.95, sum by (le) (rate(rag_ttft_seconds_bucket{service_name="support-rag"}[2m])))
+      - record: rag:latency_seconds:p95_2m
+        expr: histogram_quantile(0.95, sum by (le) (rate(rag_request_duration_seconds_bucket{service_name="support-rag"}[2m])))
+      - record: rag:cost_per_request_usd:rate2m
+        expr: sum(rate(rag_cost_usd_total{service_name="support-rag"}[2m])) / sum(rate(rag_requests_total{service_name="support-rag"}[2m]))
+      - record: rag:groundedness:mean2m
+        expr: sum(rate(rag_eval_score_sum{service_name="support-rag",metric="groundedness"}[2m])) / sum(rate(rag_eval_score_count{service_name="support-rag",metric="groundedness"}[2m]))
+      - record: rag:retrieval_unhealthy_ratio:rate2m
+        expr: (sum(rate(rag_retrieval_empty_total{service_name="support-rag"}[2m])) or vector(0)) / sum(rate(rag_requests_total{service_name="support-rag"}[2m]))
+      - record: rag:retrieval_top1:p50_2m
+        expr: histogram_quantile(0.5, sum by (le) (rate(rag_retrieval_top1_score_bucket{service_name="support-rag"}[2m])))
+      # Slow-moving rollups for month-over-month trend panels (cheap to query over long ranges)
+      - record: rag:cost_per_request_usd:ratio_1d
+        expr: sum(increase(rag_cost_usd_total{service_name="support-rag"}[1d])) / sum(increase(rag_requests_total{service_name="support-rag"}[1d]))
+      - record: rag:latency_seconds:p95_1d
+        expr: histogram_quantile(0.95, sum by (le) (increase(rag_request_duration_seconds_bucket{service_name="support-rag"}[1d])))
+      - record: rag:groundedness:mean_1d
+        expr: sum(increase(rag_eval_score_sum{service_name="support-rag",metric="groundedness"}[1d])) / sum(increase(rag_eval_score_count{service_name="support-rag",metric="groundedness"}[1d]))
+
+  - name: rag-alerts
+    rules:
+      - alert: RagErrorBudgetFastBurn            # 99.5% SLO, multi-window burn rate (demo: 2m>14.4x and 10m>3x; production: 5m & 1h >14.4x, 30m & 6h >6x)
+        expr: rag:error_ratio:rate2m > (14.4 * 0.005) and rag:error_ratio:rate10m > (3 * 0.005)
+        for: 1m
+        labels: {severity: page, service: support-rag}
+        annotations:
+          summary: "RAG is burning its 99.5% availability budget at >14x"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#provider-errors-and-rate-limits"
+      - alert: RagTTFTHigh
+        expr: rag:ttft_seconds:p95_2m > 2
+        for: 1m
+        labels: {severity: page, service: support-rag}
+        annotations:
+          summary: "RAG TTFT p95 {{ $value | humanizeDuration }} (SLO 2s)"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression"
+      - alert: RagLatencyHigh
+        expr: rag:latency_seconds:p95_2m > 8
+        for: 2m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "RAG end-to-end p95 above 8s"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression"
+      - alert: RagCostPerRequestSpike
+        expr: rag:cost_per_request_usd:rate2m > 2 * quantile_over_time(0.5, rag:cost_per_request_usd:rate2m[30m])
+        for: 1m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "RAG cost/request {{ $value | printf \"%.4f\" }} USD, >2x its 30m median (context bloat? retries? model change?)"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#cost-spike"
+      - alert: RagGroundednessLow
+        expr: rag:groundedness:mean2m < 0.8 and sum(increase(rag_eval_score_count{service_name="support-rag",metric="groundedness"}[2m])) >= 5
+        for: 1m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "RAG groundedness {{ $value | printf \"%.2f\" }} (<0.80) with enough scored samples"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#quality-regression"
+      - alert: RagRetrievalDegraded
+        expr: rag:retrieval_unhealthy_ratio:rate2m > 0.05
+        for: 1m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "{{ $value | humanizePercentage }} of requests have empty/low-score retrieval"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#retrieval-degradation"
+      - alert: RagIndexStale
+        expr: max(rag_index_age_seconds{service_name="support-rag"}) > 48 * 3600
+        for: 1m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "Newest indexed document is {{ $value | humanizeDuration }} old"
+          runbook: "https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#retrieval-degradation"
+      - alert: RagRetryStorm
+        expr: sum(rate(rag_llm_retries_total{service_name="support-rag"}[2m])) / sum(rate(rag_requests_total{service_name="support-rag"}[2m])) > 0.2
+        for: 1m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "LLM retries on >20% of requests (hidden latency + cost)"
+      - alert: RagEvalBacklog
+        expr: max(rag_eval_queue_age_seconds{service_name="support-rag"}) > 120
+        for: 2m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "Online evaluation backlog {{ $value | humanizeDuration }} - quality signals are stale"
+      - alert: RagNoTraffic
+        expr: rag:requests:rate2m == 0 or absent(rag:requests:rate2m)
+        for: 5m
+        labels: {severity: ticket, service: support-rag}
+        annotations:
+          summary: "No RAG requests (or telemetry) for 5 minutes"

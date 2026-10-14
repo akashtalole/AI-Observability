@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -30,6 +30,8 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <li><strong>I need to know what to collect</strong> — <a href="#p-metrics-metrics-catalog">Metrics catalog</a> and <a href="#p-metrics-data-to-collect">Data to collect</a>.</li>
 <li><strong>I need to pick a tool</strong> — <a href="#p-landscape-overview">Landscape overview</a>, <a href="#p-landscape-catalog">full catalog</a>, <a href="#p-landscape-comparison">comparison by need</a>.</li>
 <li><strong>I monitor agents / chatbots / voice</strong> — <a href="#p-monitoring-overview">Monitoring by app type</a>.</li>
+<li><strong>I need to measure quality</strong> — <a href="#p-scoring-index">Online and offline scoring</a>: datasets, scorers, judges, sampling, gates.</li>
+<li><strong>I want runnable OSS implementations</strong> — <a href="#p-use-cases-index">Use cases on OTel + Prometheus + Grafana + Loki + Tempo</a>: RAG, multi-agent, chatbot.</li>
 <li><strong>I want to build it</strong> — <a href="#p-architecture-reference-architecture">Reference architecture</a> and <a href="#p-implementation-instrumentation">instrumentation guide</a>.</li>
 </ul>
 </div>
@@ -63,6 +65,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <td>Metrics catalog, data to collect, SLOs/alerts, evaluation</td>
 </tr>
 <tr>
+<td><code>docs/scoring</code></td>
+<td>Online and offline scoring: datasets, scorers, judges, sampling, gates, cost, by app type</td>
+</tr>
+<tr>
 <td><code>docs/monitoring</code></td>
 <td>Per-application-type monitoring: RAG, agents, chatbots, tools/MCP, voice, self-hosted</td>
 </tr>
@@ -79,12 +85,16 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <td>Maturity model, runbooks, checklists</td>
 </tr>
 <tr>
+<td><code>use-cases/</code></td>
+<td>Runnable open-source implementations: docker-compose stack, instrumented RAG / multi-agent / chatbot apps, Grafana dashboards, alert rules</td>
+</tr>
+<tr>
 <td><code>docs/artifacts</code></td>
 <td>Interactive <strong>HTML artifacts</strong> (decision tool, landscape explorer, RAG dashboard demo, single-file handbook)</td>
 </tr>
 <tr>
 <td><code>examples/</code></td>
-<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules</td>
+<td>Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules, offline eval gate and online scorer</td>
 </tr>
 </tbody>
 </table>
@@ -1301,6 +1311,10 @@ content bytes  = requests × (prompt+context+answer chars) — dominant; gate wi
 <li>Export long-range wide facts to the cloud's warehouse (BigQuery / Fabric / Athena-Redshift) for cost and trend analysis.</li>
 <li>Layer a dedicated eval/prompt tool (OSS or SaaS) if native evaluators are not enough.</li>
 </ol></section><section class="page" id="p-build-vs-buy-open-source"><h1 id="open-source-approach">Open-source approach</h1>
+<div class="admonition tip">
+<p class="admonition-title">Hands-on</p>
+<p>The <a href="#p-use-cases-index">use cases</a> implement archetype <strong>B</strong> (OTel Collector + Prometheus/Tempo/Loki/Grafana) end to end, including dashboards, alert rules and failure simulators.</p>
+</div>
 <p><strong>Goal:</strong> maximum control, transparent cost, and no per-event vendor pricing — in exchange for operating the platform.</p>
 <h2 id="archetypes">Archetypes</h2>
 <table>
@@ -3368,6 +3382,10 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Every alert links to: dashboard, example traces, last change events, runbook (<a href="#p-operations-runbooks">runbooks</a>).</li>
 </ul>
 <p>Prometheus rule examples: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/alerts/ai-slo-alerts.yml"><code>examples/alerts/ai-slo-alerts.yml</code></a>.</p></section><section class="page" id="p-metrics-evaluation"><h1 id="evaluation-quality-measurement">Evaluation &amp; quality measurement</h1>
+<div class="admonition tip">
+<p class="admonition-title">Deeper guidance</p>
+<p>Online vs offline scoring, sampling, judges, gates and operating cost are covered in the <a href="#p-scoring-index">Scoring section</a>.</p>
+</div>
 <p>Quality is the hardest of the three pillars because correctness is not directly observable. Build a <strong>layered</strong> evaluation strategy.</p>
 <h2 id="evaluation-layers">Evaluation layers</h2>
 <table>
@@ -3499,6 +3517,1095 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Keep an <strong>anchor set</strong> re-scored on every judge change.</li>
 <li>Report <strong>confidence intervals</strong>; show sample size on charts.</li>
 <li>Segment by intent/topic — aggregate means hide regressions in important slices.</li>
+</ul></section><section class="page" id="p-scoring-index"><h1 id="online-and-offline-scoring-overview">Online and offline scoring: overview</h1>
+<p><strong>Scoring</strong> turns the behavior of an AI application into numbers you can trend, compare and gate on. There are two complementary modes, and mature teams run both from the same scorers.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Offline scoring</strong></th>
+<th><strong>Online scoring</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Runs on</strong></td>
+<td>A fixed dataset (golden set, regression set, replayed traffic)</td>
+<td>Live production traces</td>
+</tr>
+<tr>
+<td><strong>When</strong></td>
+<td>Before a change ships (CI, nightly), and on demand</td>
+<td>Continuously, after the response is served</td>
+</tr>
+<tr>
+<td><strong>Question answered</strong></td>
+<td>"Is this change safe and better?"</td>
+<td>"Is production healthy right now, and this quarter?"</td>
+</tr>
+<tr>
+<td><strong>Ground truth</strong></td>
+<td>Available (reference answers, expected sources, labels)</td>
+<td>Usually absent: reference-free scorers, user signals</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Controlled, comparable run to run</td>
+<td>The real, shifting distribution</td>
+</tr>
+<tr>
+<td><strong>Cost control</strong></td>
+<td>Run everything; the dataset is bounded</td>
+<td>Sample; tier scorers by cost</td>
+</tr>
+<tr>
+<td><strong>Failure mode</strong></td>
+<td>Dataset goes stale; overfitting to the set</td>
+<td>Biased samples; judge drift; noisy small-n dips</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Pass/fail gate, comparison report</td>
+<td>Score time series, alerts, review queues</td>
+</tr>
+<tr>
+<td><strong>Latency budget</strong></td>
+<td>Minutes to hours</td>
+<td>Seconds to minutes, <strong>off the request path</strong></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph OFF[Offline]
+      G[Golden / regression sets] --&gt; RUN[Run candidate + baseline&lt;br/&gt;same items, pinned config]
+      RUN --&gt; SC1[Scorers]
+      SC1 --&gt; GATE{Gate}
+    end
+    subgraph ON[Online]
+      P[Production traffic] --&gt; S[Sampler&lt;br/&gt;stratified + flagged]
+      S --&gt; SC2[Same scorers]
+      SC2 --&gt; TS[Score time series]
+      TS --&gt; AL[Alerts / drift]
+    end
+    GATE -- pass --&gt; CAN[Canary / shadow]
+    CAN --&gt; P
+    AL --&gt; TRI[Triage + labeling]
+    FB[User feedback] --&gt; TRI
+    TRI --&gt;|promote failures| G</code></pre>
+<p>The loop is the point: <strong>offline gates stop known regressions, online scoring finds the unknown ones, and triage turns production failures into new offline test cases.</strong></p>
+<h2 id="one-scorer-library-two-modes">One scorer library, two modes</h2>
+<p>Write scorers once and run them in both places. Then an online score of 0.82 and an offline score of 0.82 mean the same thing, and you can reconcile them.</p>
+<table>
+<thead>
+<tr>
+<th>Scorer type</th>
+<th>Example</th>
+<th>Offline</th>
+<th>Online</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deterministic</strong></td>
+<td>schema valid, citation present, required facts, banned terms, PII regex, SQL parses</td>
+<td>✅ all items</td>
+<td>✅ 100 %</td>
+<td>~free</td>
+</tr>
+<tr>
+<td><strong>Reference-based</strong></td>
+<td>exact/fuzzy match, required-fact recall, retrieval recall@k, execution accuracy</td>
+<td>✅</td>
+<td>❌ (no reference)</td>
+<td>low</td>
+</tr>
+<tr>
+<td><strong>Heuristic / embedding</strong></td>
+<td>answer-to-context similarity, length, language</td>
+<td>✅</td>
+<td>✅ 100 %</td>
+<td>low</td>
+</tr>
+<tr>
+<td><strong>Model-as-judge (reference-free)</strong></td>
+<td>groundedness, relevance, tone, safety</td>
+<td>✅</td>
+<td>✅ sampled</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><strong>Model-as-judge (reference-aware)</strong></td>
+<td>correctness vs a reference</td>
+<td>✅</td>
+<td>❌</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><strong>Human review</strong></td>
+<td>expert labels, calibration</td>
+<td>✅ small sets</td>
+<td>✅ queue</td>
+<td>high</td>
+</tr>
+<tr>
+<td><strong>User signals</strong></td>
+<td>thumbs, edits, escalation, abandonment</td>
+<td>❌</td>
+<td>✅</td>
+<td>free, sparse, biased</td>
+</tr>
+</tbody>
+</table>
+<h2 id="which-mode-for-which-decision">Which mode for which decision</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ship a prompt, model, retrieval or chunking change?</td>
+<td>Offline gate, then canary with online scoring</td>
+</tr>
+<tr>
+<td>Is the system degrading this week?</td>
+<td>Online score trend vs baseline</td>
+</tr>
+<tr>
+<td>Compare two models or configs fairly</td>
+<td>Offline, paired, same items, repeated runs</td>
+</tr>
+<tr>
+<td>Catch provider-side silent model updates</td>
+<td>Online trend + a nightly offline run on a fixed anchor set</td>
+</tr>
+<tr>
+<td>Find failure modes you did not anticipate</td>
+<td>Online flagged traces, user feedback, clustering</td>
+</tr>
+<tr>
+<td>Prove compliance / audit evidence</td>
+<td>Offline run records + online score history, both versioned</td>
+</tr>
+<tr>
+<td>Calibrate and validate a judge</td>
+<td>Offline, against human labels</td>
+</tr>
+</tbody>
+</table>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="#p-scoring-offline-scoring">Offline scoring</a>: datasets, scorers, comparison statistics, gates, CI.</li>
+<li><a href="#p-scoring-online-scoring">Online scoring</a>: sampling, async scoring, write-back, alerting on noisy signals, shadow and A/B.</li>
+<li><a href="#p-scoring-designing-scorers">Designing scorers</a>: judges, rubrics, calibration, bias, versioning.</li>
+<li><a href="#p-scoring-by-app-type">By application type</a>: RAG, agents, chatbots, extraction, text-to-SQL, copilots.</li>
+<li><a href="#p-scoring-operating">Operating a scoring program</a>: cost, drift, reconciling online and offline, the improvement loop, anti-patterns.</li>
+<li>Runnable code: <a href="https://github.com/akashtalole/ai-observability/tree/main/examples/scoring"><code>examples/scoring/</code></a> and the live online scores in the <a href="#p-use-cases-index">use cases</a>.</li>
+</ul></section><section class="page" id="p-scoring-offline-scoring"><h1 id="offline-scoring">Offline scoring</h1>
+<p>Offline scoring evaluates a system against a <strong>fixed dataset</strong> under controlled conditions. It is your regression test suite and your experiment bench.</p>
+<h2 id="1-build-the-datasets">1. Build the datasets</h2>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Purpose</th>
+<th>Size to start</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Golden set</strong></td>
+<td>Curated, high-quality items with expected outcomes; the release gate</td>
+<td>200-1000</td>
+<td>SMEs + sampled production queries, labeled</td>
+</tr>
+<tr>
+<td><strong>Regression set</strong></td>
+<td>Every past failure, kept forever</td>
+<td>grows</td>
+<td>Promoted from incidents, thumbs-down, escalations</td>
+</tr>
+<tr>
+<td><strong>Adversarial / safety set</strong></td>
+<td>Injection, jailbreak, PII, policy edge cases, unanswerable questions</td>
+<td>100-300</td>
+<td>Red team, OWASP LLM Top 10 patterns</td>
+</tr>
+<tr>
+<td><strong>Anchor set</strong></td>
+<td>Frozen slice re-scored on every judge or model change to keep trends comparable</td>
+<td>50-200</td>
+<td>Subset of golden</td>
+</tr>
+<tr>
+<td><strong>Replay set</strong></td>
+<td>Redacted production traffic for latency/cost realism</td>
+<td>1 day of traffic</td>
+<td>Trace store</td>
+</tr>
+<tr>
+<td><strong>Holdout</strong></td>
+<td>Never used for tuning prompts; detects overfitting</td>
+<td>20 % of golden</td>
+<td>Split once, freeze</td>
+</tr>
+</tbody>
+</table>
+<p>Rules of thumb:</p>
+<ul>
+<li><strong>Stratify</strong> by intent, difficulty, tenant tier, language and channel; report per slice, because averages hide regressions in important slices.</li>
+<li>Include <strong>unanswerable</strong> and <strong>multi-hop</strong> items; test abstention as a first-class behavior.</li>
+<li>Store provenance per item: source, labeler, date, guideline version. Version the dataset (<code>golden@2026-10-14</code>).</li>
+<li>For stochastic systems, run <strong>each item several times</strong> (3-20) and score every run.</li>
+<li>Keep personal data out of datasets; redact production-derived items.</li>
+</ul>
+<h2 id="2-choose-scorers">2. Choose scorers</h2>
+<p>Prefer cheap, deterministic scorers wherever they are valid, and add judges only for what code cannot check (<a href="#p-scoring-designing-scorers">Designing scorers</a>).</p>
+<ul>
+<li><strong>Task-level:</strong> required-fact recall, exact/fuzzy match, execution accuracy, schema validity.</li>
+<li><strong>Component-level</strong> (find <em>where</em> it broke): retrieval recall@k / MRR / nDCG, reranker lift, tool-selection accuracy, argument validity.</li>
+<li><strong>System-level:</strong> groundedness, answer relevance, safety, abstention accuracy, format.</li>
+<li><strong>Operational, scored alongside quality:</strong> latency (p50/p95, TTFT), tokens, cost per request. A "better" answer that is 3× the cost is a trade-off, not a win.</li>
+</ul>
+<h2 id="3-compare-fairly">3. Compare fairly</h2>
+<pre class="mermaid"><code>flowchart LR
+    D[Dataset v1] --&gt; B[Baseline config&lt;br/&gt;pinned model, prompt, index]
+    D --&gt; C[Candidate config]
+    B --&gt; S[Score every run]
+    C --&gt; S
+    S --&gt; P[Paired deltas&lt;br/&gt;same items]
+    P --&gt; CI[Bootstrap CI]
+    CI --&gt; V{Verdict}</code></pre>
+<ul>
+<li><strong>Pin everything</strong> that is not under test: model version, temperature/seed, prompt, index snapshot, tool stubs/recorded responses, judge model and rubric.</li>
+<li><strong>Paired comparison:</strong> compute the per-item difference candidate − baseline, then a bootstrap confidence interval on the mean difference. Paired tests are far more sensitive than comparing two means.</li>
+<li><strong>Decide with intervals, not point estimates.</strong> "+0.02 [-0.02, +0.06]" is not an improvement.</li>
+<li>Report <strong>effect size and sample size</strong> next to every number; use more repeats rather than more adjectives.</li>
+<li>Beware <strong>multiple comparisons</strong>: checking 30 metrics will show a "significant" change by chance. Pre-declare the primary metrics.</li>
+</ul>
+<h2 id="4-gate">4. Gate</h2>
+<p>A gate has four kinds of conditions; fail the build if any is violated.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute floor</td>
+<td>groundedness ≥ 0.85; citation present ≥ 0.90</td>
+</tr>
+<tr>
+<td>No significant regression</td>
+<td>upper bound of CI of delta ≥ −0.02</td>
+</tr>
+<tr>
+<td><strong>Slice protection</strong></td>
+<td>no intent drops more than 0.10</td>
+</tr>
+<tr>
+<td>Hard safety</td>
+<td>0 critical failures on the safety set; PII leak rate = 0</td>
+</tr>
+<tr>
+<td>Operational</td>
+<td>p95 latency ≤ 1.10× baseline; cost ≤ 1.15× baseline</td>
+</tr>
+</tbody>
+</table>
+<p>Runnable reference: <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/scoring/offline_eval.py"><code>examples/scoring/offline_eval.py</code></a> implements paired bootstrap, floors, slice protection and cost/latency gates; the exit code is the gate result.</p>
+<pre class="highlight"><code class="language-text">$ python examples/scoring/offline_eval.py
+metric                baseline candidate    delta   95% CI of delta        gate
+required_facts           0.894     0.917   +0.023   [-0.015, +0.060]   ok
+citation_present         0.942     0.967   +0.025   [-0.013, +0.067]   ok
+...
+GATE: PASS
+
+$ python examples/scoring/offline_eval.py --candidate degraded
+GATE: FAIL
+  - required_facts: candidate 0.685 (floor 0.8); delta -0.208 CI [-0.258,-0.158]
+  - slice billing: required_facts 0.89 -&gt; 0.65</code></pre>
+<h2 id="5-wire-it-into-delivery">5. Wire it into delivery</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What runs</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pull request</td>
+<td>Fast subset (≈ 50-100 items) + deterministic scorers</td>
+<td>&lt; 5 min</td>
+</tr>
+<tr>
+<td>Merge / nightly</td>
+<td>Full golden + regression + adversarial, repeats, judges</td>
+<td>&lt; 1-2 h</td>
+</tr>
+<tr>
+<td>Pre-release</td>
+<td>Full + replay set for latency/cost, anchor-set judge check</td>
+<td>hours</td>
+</tr>
+<tr>
+<td>Post-deploy</td>
+<td>Same scorers online on the canary slice (<a href="#p-scoring-online-scoring">Online scoring</a>)</td>
+<td>continuous</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="#p-implementation-evals-in-ci">Evals in CI/CD</a> for a workflow definition.</p>
+<h2 id="6-record-the-run">6. Record the run</h2>
+<p>Every offline run should write a record, so a trend and an audit are possible months later:</p>
+<pre class="highlight"><code class="language-json">{
+  "run_id": "2026-10-14T02:00Z-nightly",
+  "dataset": "golden@2026-10-14", "dataset_items": 600, "repeats": 5,
+  "system": {"git_sha": "a1b2c3d", "prompt": "faq-answer@v8", "model": "large-model-2026-09", "index": "kb-main@2026-10-01"},
+  "judge": {"model": "judge-small-2026-08", "rubric": "groundedness@v3"},
+  "scores": {"groundedness": {"mean": 0.874, "ci95": [0.861, 0.887], "n": 3000}},
+  "slices": {"billing": {"required_facts": 0.89}},
+  "ops": {"latency_p95_s": 3.9, "cost_per_request_usd": 0.0088},
+  "gate": "pass"
+}</code></pre>
+<p>Emit the same fields as metrics (for example <code>eval.offline.score{metric,dataset,config}</code>) so the <strong>offline score history appears on the same Grafana dashboards as online scores</strong>, annotated by release.</p>
+<h2 id="pitfalls">Pitfalls</h2>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Golden set drifts from real traffic</td>
+<td>Refresh monthly from production; track the share of production intents covered</td>
+</tr>
+<tr>
+<td>Overfitting prompts to the golden set</td>
+<td>Frozen holdout; rotate items; watch the holdout-vs-golden gap</td>
+</tr>
+<tr>
+<td>Judge changes break trend continuity</td>
+<td>Version judges; re-score the anchor set on every change</td>
+</tr>
+<tr>
+<td>Flaky gate (single stochastic run)</td>
+<td>Repeats + paired CI; fail only on significant regressions</td>
+</tr>
+<tr>
+<td>Tool/API nondeterminism in agent evals</td>
+<td>Record and replay tool responses; evaluate trajectory <em>and</em> outcome</td>
+</tr>
+<tr>
+<td>Contamination (test items in few-shot or fine-tune data)</td>
+<td>Keep eval items out of prompts and training; hash-check</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-online-scoring"><h1 id="online-scoring">Online scoring</h1>
+<p>Online scoring evaluates <strong>live production traffic</strong>, with no reference answers, so you can see quality as users experience it and catch what the golden set never imagined.</p>
+<h2 id="principles">Principles</h2>
+<ol>
+<li><strong>Never on the request path.</strong> Serve the user first; score asynchronously. A judge outage must not become a user outage.</li>
+<li><strong>Cheap on everything, expensive on a sample.</strong> Deterministic checks and heuristics on 100 %; LLM judges on a stratified sample plus all flagged requests.</li>
+<li><strong>Score, then write back with identity.</strong> Store <code>(trace_id, metric, score, scorer_version, judge_model, ts)</code> so any score can be sliced by any trace attribute: tenant, prompt version, index version, model.</li>
+<li><strong>Read scores with their sample size.</strong> A dip on 12 samples is noise; show n and an interval on every chart.</li>
+<li><strong>Version the scorer.</strong> A change in judge or rubric is a change in the measuring instrument; annotate it and re-score an anchor slice.</li>
+</ol>
+<h2 id="architecture">Architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+    APP[App] --&gt;|trace + metrics| COL[Collector]
+    COL --&gt; TS[(Trace store)]
+    TS --&gt;|selected| Q[Bounded queue]
+    SAM[Sampler] --&gt; Q
+    Q --&gt; W[Scoring workers]
+    W --&gt;|fetch content via governed API| CS[(Content store, redacted)]
+    W --&gt; J[Judges / classifiers]
+    J --&gt; SC[(Score store&lt;br/&gt;+ metrics)]
+    SC --&gt; DASH[Dashboards + alerts]
+    SC --&gt; RQ[Review queue]</code></pre>
+<p>The runnable reference <a href="https://github.com/akashtalole/ai-observability/blob/main/examples/scoring/online_scorer.py"><code>examples/scoring/online_scorer.py</code></a> shows the sampler, bounded queue with load shedding, versioned write-back and interval reporting. The <a href="#p-use-cases-rag">use cases</a> emit the scores as OpenTelemetry histograms (<code>rag_eval_score{metric="groundedness"}</code>) with an <code>eval_queue_age</code> gauge, linked to the original trace.</p>
+<h2 id="what-to-score-and-how-often">What to score, and how often</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Scorers</th>
+<th>Coverage</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T0: inline cheap checks</strong></td>
+<td>schema valid, citation present, length, language, PII regex, banned terms, retrieval empty/low score</td>
+<td>100 %, in-process (microseconds)</td>
+<td>Flag bad responses immediately; drive tail sampling</td>
+</tr>
+<tr>
+<td><strong>T1: async heuristics</strong></td>
+<td>answer-to-context overlap, embedding similarity, toxicity classifier (small model)</td>
+<td>100 % or high sample</td>
+<td>Cheap trend signal</td>
+</tr>
+<tr>
+<td><strong>T2: sampled LLM judge</strong></td>
+<td>groundedness, relevance, task success, policy compliance</td>
+<td>2-10 % stratified + all flagged</td>
+<td>The quality time series</td>
+</tr>
+<tr>
+<td><strong>T3: escalated judge / panel</strong></td>
+<td>strong or multi-judge ensemble on contested items</td>
+<td>flagged + disagreements</td>
+<td>Reduce judge error where it matters</td>
+</tr>
+<tr>
+<td><strong>T4: human</strong></td>
+<td>expert review queue</td>
+<td>small, targeted</td>
+<td>Ground truth and judge calibration</td>
+</tr>
+</tbody>
+</table>
+<p>Cheap flags decide who gets the expensive judge: set <code>eval.flagged=true</code> on the span for empty retrieval, guardrail hits, thumbs-down, slow or costly requests, and use <a href="#p-implementation-collector-pipeline">tail sampling</a> to keep those traces.</p>
+<h2 id="sampling">Sampling</h2>
+<ul>
+<li><strong>Stratify</strong> by <code>app × tenant tier × intent × risk tier</code>. Oversample high-risk and rare strata, otherwise rare intents never get a score.</li>
+<li><strong>Always score</strong> flagged requests (they are your triage queue) <strong>plus a small uniform random slice</strong> that is your unbiased estimator.</li>
+<li><strong>Do not pool the two.</strong> Flagged traces are over-represented in bad outcomes. Report the random slice as the health metric and the flagged slice as a work queue; the demo script prints them separately.</li>
+<li>Re-weight (inverse probability) if you must report a single population-level number from stratified samples.</li>
+<li>Shed load rather than block: a bounded queue, drop-oldest or drop-newest, and <strong>measure what you shed</strong> (<code>eval_shed_total</code>) so coverage stays honest.</li>
+</ul>
+<h2 id="making-noisy-scores-actionable">Making noisy scores actionable</h2>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intervals and minimum n</strong></td>
+<td>Alert only if n ≥ a floor (e.g. 200 per window) and the interval excludes the baseline</td>
+</tr>
+<tr>
+<td><strong>Baseline bands</strong></td>
+<td>Compare to a rolling 28-day median ± MAD, per slice, same hour-of-week</td>
+</tr>
+<tr>
+<td><strong>Sequential tests / CUSUM</strong></td>
+<td>Detect small persistent shifts earlier than fixed thresholds</td>
+</tr>
+<tr>
+<td><strong>Slice-aware alerts</strong></td>
+<td>Alert on the worst important slice, not only the aggregate</td>
+</tr>
+<tr>
+<td><strong>Pair with leading indicators</strong></td>
+<td>Retrieval top-1 score, empty-retrieval rate, index age: they move before judged quality does</td>
+</tr>
+<tr>
+<td><strong>Combine signals</strong></td>
+<td>Quality alert = judge dip <strong>and</strong> retrieval dip <strong>or</strong> thumbs-down rise; fewer false pages</td>
+</tr>
+</tbody>
+</table>
+<p>Example (PromQL) for a sample-size-guarded quality alert, as used in the <a href="https://github.com/akashtalole/ai-observability/blob/main/use-cases/rag/alerts/rag-alerts.yml">RAG rules</a>:</p>
+<pre class="highlight"><code class="language-promql">rag:groundedness:mean5m &lt; 0.8
+and
+sum(increase(rag_eval_score_count{metric="groundedness"}[5m])) &gt;= 5</code></pre>
+<h2 id="online-experiments">Online experiments</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>What it is</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shadow</strong></td>
+<td>Run candidate on a copy of traffic, score it, never show it</td>
+<td>Safe pre-launch comparison on real inputs; costs extra inference</td>
+</tr>
+<tr>
+<td><strong>Canary</strong></td>
+<td>Send a small share to the candidate; auto-compare scores, latency, cost; auto-rollback</td>
+<td>Gradual rollout</td>
+</tr>
+<tr>
+<td><strong>A/B test</strong></td>
+<td>Randomize users; compare scores <strong>and</strong> outcomes (resolution, task success)</td>
+<td>Product decisions</td>
+</tr>
+<tr>
+<td><strong>Interleaving / pairwise judge</strong></td>
+<td>Judge A vs B answers to the same query</td>
+<td>Sensitive comparison with fewer samples</td>
+</tr>
+</tbody>
+</table>
+<p>Always compare <strong>same slice, same scorer version, same period</strong>; randomize at the user or conversation level, not per request, for multi-turn apps.</p>
+<h2 id="user-and-business-signals">User and business signals</h2>
+<p>Thumbs, edits, copy, regeneration, abandonment, escalation, ticket re-open, task completion. They are free and real but <strong>sparse, biased towards extremes, and delayed</strong>. Use them as a triage and calibration input (join to traces by <code>trace_id</code>), not as the only quality metric. Convert implicit signals into scored events (<code>feedback.rating</code>, <code>outcome.resolved</code>) and trend them next to judge scores; disagreement between them points at a bad judge or a bad rubric.</p>
+<h2 id="privacy-and-governance">Privacy and governance</h2>
+<ul>
+<li>Workers fetch content through a <strong>governed, audited API</strong> with redaction; scores and metadata flow to the observability stack, raw content does not.</li>
+<li>Respect data residency and tenant isolation in the scoring path (the judge sees customer content).</li>
+<li>Record scorer versions and judge models in the score record; retain them as audit evidence.</li>
+<li>Judges are LLM calls: apply the same budget, rate limits and failure handling as the product.</li>
+</ul>
+<h2 id="pitfalls">Pitfalls</h2>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Judging 100 % of traffic with a frontier model</td>
+<td>Tiering and sampling; measure judge cost as a first-class metric</td>
+</tr>
+<tr>
+<td>Pooling flagged and random samples</td>
+<td>Report separately; reweight if combined</td>
+</tr>
+<tr>
+<td>Alerting on every score wobble</td>
+<td>Minimum n, intervals, baseline bands</td>
+</tr>
+<tr>
+<td>Judge on the request path</td>
+<td>Async workers, bounded queue, shed and measure</td>
+</tr>
+<tr>
+<td>Silent judge change</td>
+<td>Version judges; anchor-set re-score; annotate dashboards</td>
+</tr>
+<tr>
+<td>Scores that cannot be traced back</td>
+<td>Always write <code>trace_id</code>; link scores, traces, logs</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-designing-scorers"><h1 id="designing-scorers">Designing scorers</h1>
+<p>A scorer maps an input/output (and sometimes context, trace or reference) to a number in [0, 1] or a label. Scorer quality bounds everything built on it.</p>
+<h2 id="pick-the-cheapest-valid-scorer">Pick the cheapest valid scorer</h2>
+<pre class="mermaid"><code>flowchart TD
+    Q{Can code decide it?} -- yes --&gt; D[Deterministic scorer&lt;br/&gt;regex, schema, exact, SQL exec, unit test]
+    Q -- no --&gt; R{Do you have a reference?}
+    R -- yes --&gt; RB[Reference-based&lt;br/&gt;fuzzy match, fact recall, embedding sim]
+    R -- no --&gt; J{Is it a judgment call?}
+    J -- yes --&gt; LJ[Model-as-judge with rubric&lt;br/&gt;calibrated vs humans]
+    J -- needs expertise --&gt; H[Human review]</code></pre>
+<p>Order of preference: <strong>programmatic checks &gt; reference-based &gt; small-model judge &gt; strong-model judge &gt; human</strong>, escalating only where the cheaper tier is not valid. Programmatic checks are exact, free, reproducible and not subject to judge bias.</p>
+<h2 id="model-as-judge-how-to-do-it-well">Model-as-judge: how to do it well</h2>
+<ol>
+<li><strong>Narrow, single-criterion rubrics.</strong> One judge call per criterion (groundedness, relevance, tone). Multi-criterion scores blur and correlate.</li>
+<li><strong>Decompose.</strong> For groundedness: extract atomic claims from the answer, then verify each against the context; score = supported claims ÷ claims. More reliable than "rate 1-10".</li>
+<li><strong>Categorical or binary outputs beat 1-10 scales.</strong> Use labels with definitions (<code>supported / partially / unsupported</code>) and map to numbers; add short reasoning before the verdict.</li>
+<li><strong>Give anchors.</strong> Include 2-4 labeled examples per class in the prompt (few-shot), including borderline cases.</li>
+<li><strong>Control randomness.</strong> Temperature 0, fixed seed where available, pinned model version; for noisy criteria use 3 votes and take the majority or mean.</li>
+<li><strong>Pairwise for comparisons.</strong> "Which answer is better?" is more reliable than absolute scores; randomize order to cancel position bias.</li>
+<li><strong>Use a different model family</strong> from the generator where possible, to reduce self-preference.</li>
+<li><strong>Constrain output</strong> (JSON schema) and validate; treat malformed judge output as a scorer failure, not a low score.</li>
+</ol>
+<h3 id="rubric-template">Rubric template</h3>
+<pre class="highlight"><code class="language-text">Criterion: Groundedness
+Definition: Every factual claim in the ANSWER is supported by the CONTEXT.
+Steps: 1) list the claims, 2) for each claim, quote the supporting context or say "none",
+       3) label each claim supported / unsupported.
+Output JSON: {"claims":[{"text":"...","support":"supported|unsupported","evidence":"..."}],
+              "label":"fully|partially|not_grounded"}
+Mapping: fully=1.0, partially=0.5, not_grounded=0.0
+Do not use outside knowledge. Ignore style and length.</code></pre>
+<h2 id="calibrate-and-validate-the-judge">Calibrate and validate the judge</h2>
+<p>A judge is a measurement instrument. Validate it before trusting it, and again after any change.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Label a calibration set</strong></td>
+<td>100-300 items, ≥ 2 human raters, written guidelines; measure inter-rater agreement first (the ceiling)</td>
+</tr>
+<tr>
+<td><strong>Measure judge-human agreement</strong></td>
+<td>Cohen's κ / Krippendorff's α for labels, Spearman for scores; report per class and per slice</td>
+</tr>
+<tr>
+<td><strong>Check error structure</strong></td>
+<td>False-positive vs false-negative rates; for safety scorers, recall on the positive class matters most</td>
+</tr>
+<tr>
+<td><strong>Probe for bias</strong></td>
+<td>Position (swap order), verbosity (pad answers), self-preference (same-family generator), format, sycophancy to the answer's confidence</td>
+</tr>
+<tr>
+<td><strong>Test sensitivity</strong></td>
+<td>Inject known defects (remove a fact, add a hallucination) and confirm the score drops</td>
+</tr>
+<tr>
+<td><strong>Track drift</strong></td>
+<td>Re-score a fixed anchor set weekly; alert when judge output on it changes</td>
+</tr>
+<tr>
+<td><strong>Record cost and latency</strong></td>
+<td>Judge tokens per score, p95 latency</td>
+</tr>
+</tbody>
+</table>
+<p>Rule of thumb: if judge-human agreement is not close to human-human agreement, fix the rubric before scaling the judge.</p>
+<h2 id="version-everything">Version everything</h2>
+<pre class="highlight"><code class="language-yaml">scorer: groundedness
+version: 3
+judge_model: judge-small-2026-08     # pinned
+prompt_hash: 9f1c2e
+rubric: groundedness@v3
+calibration: {set: calib-2026-09, kappa: 0.78, n: 240}</code></pre>
+<p>Write <code>scorer_version</code> on every score. When it changes: annotate dashboards, re-score the anchor set under old and new versions, and publish the offset so trends stay interpretable.</p>
+<h2 id="metric-choice-by-what-you-measure">Metric choice by what you measure</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Scorer</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Format / schema</td>
+<td>JSON schema validation</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>Facts present</td>
+<td>Required-fact recall vs reference</td>
+<td>Reference-based</td>
+</tr>
+<tr>
+<td>Faithfulness to context</td>
+<td>Claim-verification judge or NLI classifier</td>
+<td>Reference-free</td>
+</tr>
+<tr>
+<td>Answer relevance</td>
+<td>Judge ("does it address the question?")</td>
+<td>Reference-free</td>
+</tr>
+<tr>
+<td>Retrieval quality</td>
+<td>recall@k, precision@k, MRR, nDCG vs labeled relevant docs</td>
+<td>Offline needs labels; online use judge for context relevance</td>
+</tr>
+<tr>
+<td>Correctness</td>
+<td>Reference match or judge vs reference</td>
+<td>Offline</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>Classifier / judge + deterministic rules</td>
+<td>Optimize recall; track false positives</td>
+</tr>
+<tr>
+<td>Tone / brand</td>
+<td>Judge with rubric</td>
+<td>Calibrate with brand reviewers</td>
+</tr>
+<tr>
+<td>Tool use</td>
+<td>Name + argument match to expected call</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Execution accuracy (result set equals golden result)</td>
+<td>Deterministic</td>
+</tr>
+<tr>
+<td>Task success</td>
+<td>Programmatic end-state check; else judge over trajectory</td>
+<td>Prefer programmatic</td>
+</tr>
+<tr>
+<td>Conversation quality</td>
+<td>Judge over the full transcript</td>
+<td>Sample; cost scales with length</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scorer-anti-patterns">Scorer anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it hurts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One 1-10 "overall quality" judge</td>
+<td>Unstable, uninterpretable, impossible to debug</td>
+</tr>
+<tr>
+<td>Judge sees the reference answer in reference-free mode</td>
+<td>Leaks, inflates scores</td>
+</tr>
+<tr>
+<td>Same model generates and judges</td>
+<td>Self-preference inflates scores</td>
+</tr>
+<tr>
+<td>Comparing scores across judge versions</td>
+<td>Different instruments</td>
+</tr>
+<tr>
+<td>Treating a proxy (word overlap) as groundedness</td>
+<td>Fine as a cheap flag, not as the quality metric</td>
+</tr>
+<tr>
+<td>Never reading the raw judge reasoning</td>
+<td>You miss rubric bugs; sample and read them monthly</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-scoring-by-app-type"><h1 id="scoring-by-application-type">Scoring by application type</h1>
+<p>For each type: what to score <strong>offline</strong> (with references), what to score <strong>online</strong> (reference-free), and the <strong>cheap flags</strong> that decide where to spend judge budget.</p>
+<h2 id="rag">RAG</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Retrieval: recall@k, MRR, nDCG against labeled relevant chunks; rerank lift. Answer: required-fact recall, correctness vs reference, citation precision/recall, <strong>abstention accuracy</strong> on unanswerable items. Faithfulness judge. Component-level scores localize failures (retrieval vs generation).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Groundedness (claim verification), answer relevance, context relevance/precision (judge), citation validity (deterministic), user feedback.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Empty/low top-1 retrieval, no citation, answer longer than context supports, index age, ACL-filtered-to-zero.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Quality dips that follow reindex/chunking/embedding changes; staleness; cross-tenant leakage canaries.</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-rag">RAG use case</a> scores <code>groundedness</code>, <code>answer_relevance</code>, <code>context_precision</code> asynchronously and links scores to traces.</p>
+<h2 id="agents-and-multi-agent">Agents and multi-agent</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Outcome</strong>: programmatic end-state checks (file exists, ticket created, DB row correct). <strong>Trajectory</strong>: tool-selection accuracy, argument validity, step efficiency vs reference, loop/recovery behavior. <strong>Safety</strong>: unsafe-action rate, unauthorized tool attempts, injection-resistance suite. Replay recorded tool responses for determinism; run N repeats.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Task success (programmatic where possible, else judge over the trace), cost per <em>successful</em> task, steps per task, tool error rate, approvals denied, injection detections.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Max-step/budget/timeout terminations, repeated identical tool calls, write-tool use, new tool or description change.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Success-rate drops hidden by retries; cost per success rising while cost per call is flat.</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-multi-agent">Multi-agent use case</a>.</p>
+<h2 id="chatbots-and-copilots">Chatbots and copilots</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Scripted multi-turn scenarios with simulated users (goal, persona, constraints); goal completion; policy compliance across turns; consistency/contradiction; escalation appropriateness; refusal correctness (incl. over-refusal set).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td><strong>Conversation-level</strong> judge on a stratified sample of whole conversations; containment/escalation/abandonment; thumbs; acceptance rate (copilots); re-ask rate.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Refusal, fallback (unsupported intent), long context/truncation, stream stall, repeated user rephrasing.</td>
+</tr>
+<tr>
+<td><strong>Watch for</strong></td>
+<td>Intent-specific regressions; judge cost scaling with conversation length (judge a summary or a window).</td>
+</tr>
+</tbody>
+</table>
+<p>Live example: <a href="#p-use-cases-chatbot">Chatbot use case</a>.</p>
+<h2 id="extraction-classification-summarization-pipelines">Extraction, classification, summarization pipelines</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>Field-level precision/recall/F1 vs labels; schema validity; exact/fuzzy match per field; for summaries: required-point coverage, faithfulness, length.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Schema parse rate and repair rate (100 %), distribution drift of predicted labels, confidence calibration, a continuous labeled <strong>canary slice</strong>.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Parse failures, low confidence, out-of-distribution input length/language.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-to-sql-nl-to-query">Text-to-SQL / NL-to-query</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Execution accuracy</strong> (result set equals golden), valid SQL rate, schema-grounding (no unknown columns), cost of the query (rows scanned).</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>SQL validity, read-only enforcement, query cost, user confirmation/edit rate, judge on a sample for semantic correctness.</td>
+</tr>
+<tr>
+<td><strong>Cheap flags</strong></td>
+<td>Parser/binder errors, full-table scans, blocked statements, repair loops.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="voice-agents">Voice agents</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td>WER on a labeled audio set, intent accuracy, simulated-call task success, barge-in handling scripts.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Turn latency, sampled ASR WER vs human transcript, dead-air/talk-over rates, call outcome.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="code-assistants">Code assistants</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scorers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline</strong></td>
+<td><strong>Unit tests pass</strong> (the best scorer there is), static analysis, security scan, compilation.</td>
+</tr>
+<tr>
+<td><strong>Online</strong></td>
+<td>Suggestion acceptance and retention (kept after N minutes), test-pass on accepted code where measurable, security-scan hits.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="minimum-viable-scoring-program-any-app">Minimum viable scoring program (any app)</h2>
+<ol>
+<li>Deterministic checks on 100 % of traffic and in CI.</li>
+<li>A 200-item golden set + a regression set, gated in CI with paired CIs.</li>
+<li>One reference-free judge criterion (groundedness or task success), sampled online, calibrated on 100 labeled items.</li>
+<li>User feedback captured with <code>trace_id</code>.</li>
+<li>Scores, versions and sample sizes on the same dashboard as latency and cost.</li>
+</ol></section><section class="page" id="p-scoring-operating"><h1 id="operating-a-scoring-program">Operating a scoring program</h1>
+<h2 id="cost-model">Cost model</h2>
+<pre class="highlight"><code class="language-text">online judge cost/day  = requests/day x sample_rate x judge_calls_per_item x cost_per_judge_call
+offline run cost       = dataset_items x repeats x (system_cost + scorer_cost) x runs/day</code></pre>
+<p>Example: 2 M requests/day, 4 % judged, one judge call at $0.0006 → ≈ $48/day. Judging 100 % with a frontier-model judge at $0.01 → $20,000/day: 400× more, for little extra statistical power.</p>
+<p>Levers: tier scorers (T0-T4), stratified sampling, small-model judges calibrated against a strong judge, cached judge results for identical inputs, shorter judge inputs (claims instead of full documents), batch APIs for offline runs. Track <strong>judge cost per scored item</strong> and <strong>scoring cost as a share of inference spend</strong> as metrics (target under ~5-10 %).</p>
+<h2 id="statistics-you-actually-need">Statistics you actually need</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval for a mean score</td>
+<td>Normal approx. (large n) or bootstrap</td>
+</tr>
+<tr>
+<td>Interval for a pass-rate</td>
+<td>Wilson interval</td>
+</tr>
+<tr>
+<td>Compare two configs on the same items</td>
+<td>Paired bootstrap on per-item differences</td>
+</tr>
+<tr>
+<td>Compare two online arms</td>
+<td>Two-sample test / bootstrap on per-user (not per-request) means</td>
+</tr>
+<tr>
+<td>Sample size for a detectable change</td>
+<td>n ≈ 2(2.8·σ/δ)² per arm for 95 % confidence and 80 % power (δ = smallest change you care about, σ = score std-dev)</td>
+</tr>
+<tr>
+<td>Detect small persistent shifts</td>
+<td>CUSUM / EWMA on the score series</td>
+</tr>
+<tr>
+<td>Many metrics at once</td>
+<td>Pre-declare primary metrics; correct (Holm/Benjamini-Hochberg) for the rest</td>
+</tr>
+</tbody>
+</table>
+<p>Example: with σ = 0.11 and δ = 0.02, n ≈ 2 × (2.8 × 0.11 / 0.02)² ≈ 470 judged items per arm per window. That is why alerts need minimum-n guards and why rare slices need oversampling.</p>
+<h2 id="reconciling-online-and-offline">Reconciling online and offline</h2>
+<p>They disagree for known reasons; investigate rather than pick a winner.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offline high, online low</td>
+<td>Golden set unrepresentative; production distribution shifted; data freshness; real user phrasing</td>
+</tr>
+<tr>
+<td>Offline low, online high</td>
+<td>Reference-based scorer too strict; golden set harder than traffic</td>
+</tr>
+<tr>
+<td>Same scorer, different mean</td>
+<td>Different judge version, prompt, or context truncation between the two paths</td>
+</tr>
+<tr>
+<td>Online dip, offline stable</td>
+<td>Drift in inputs or index, provider-side change, a slice not in the dataset</td>
+</tr>
+<tr>
+<td>Offline gate passes, canary fails</td>
+<td>Missing operational realism (load, tools, latency), caching differences</td>
+</tr>
+</tbody>
+</table>
+<p>Practices: run the <strong>same scorer code and version</strong> in both modes; re-score a sample of production items offline under controlled config; measure the golden-set <strong>coverage of production intents</strong>; alert when coverage falls.</p>
+<h2 id="the-improvement-loop">The improvement loop</h2>
+<pre class="mermaid"><code>flowchart LR
+    ON[Online scores + feedback] --&gt; FLAG[Flagged / low-score traces]
+    FLAG --&gt; TRI[Triage and label]
+    TRI --&gt; CAT[Classify cause&lt;br/&gt;retrieval, prompt, model, tool, data]
+    CAT --&gt; FIX[Fix]
+    TRI --&gt; REG[Add to regression set]
+    REG --&gt; GATE[Offline gate]
+    FIX --&gt; GATE --&gt; CAN[Canary] --&gt; ON</code></pre>
+<p>Weekly: review the lowest-scoring and most-disagreed traces; promote failures to the regression set; refresh 5-10 % of the golden set; review judge-human agreement on a sample; check alert noise.</p>
+<h2 id="governance-and-audit">Governance and audit</h2>
+<ul>
+<li>Keep <strong>score history, scorer versions, dataset versions and gate decisions</strong> as audit evidence (EU AI Act post-market monitoring, NIST AI RMF "Measure", ISO/IEC 42001).</li>
+<li>Tier by risk: high-risk apps get higher sampling, human review queues and stricter gates (<a href="#p-monitoring-overview">risk tiers</a>).</li>
+<li>Restrict who can edit gates and rubrics; changes are reviewed like code.</li>
+</ul>
+<h2 id="anti-patterns">Anti-patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scores without n or intervals</td>
+<td>Always show both</td>
+</tr>
+<tr>
+<td>Gating on a single stochastic run</td>
+<td>Repeats + paired CI</td>
+</tr>
+<tr>
+<td>Optimizing the metric, not the outcome</td>
+<td>Tie scores to business outcomes (resolution, task success, edits) and check correlation periodically</td>
+</tr>
+<tr>
+<td>Static golden set</td>
+<td>Continuous promotion from production</td>
+</tr>
+<tr>
+<td>One aggregate number</td>
+<td>Per-slice reporting and slice-protection gates</td>
+</tr>
+<tr>
+<td>Unowned scorers</td>
+<td>Each scorer has an owner, a version, a calibration record and a review cadence</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checklist">Checklist</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Deterministic checks on 100 % online and offline</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Golden, regression, adversarial, anchor and holdout sets versioned</li>
+<li class="task-list-item"><input type="checkbox" disabled/> CI gate with paired CIs, slice protection, hard safety and ops gates</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Online sampler: stratified + flagged, bounded queue, shed counter</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Judges calibrated (κ reported), pinned, versioned; anchor re-score on change</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Scores written with <code>trace_id</code>, <code>scorer_version</code>, <code>judge_model</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Dashboards show score, n, interval, scorer version and change events</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Alerts guarded by minimum n; slice-aware</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Weekly triage → regression-set promotion</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Scoring cost tracked and capped</li>
 </ul></section><section class="page" id="p-monitoring-overview"><h1 id="monitoring-by-application-type">Monitoring by application type</h1>
 <p>Every AI app shares the latency/quality/cost core, but each pattern has its own failure modes and signature metrics.</p>
 <table>
@@ -3598,6 +4705,10 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 </tr>
 </tbody>
 </table></section><section class="page" id="p-monitoring-rag"><h1 id="monitoring-rag-applications">Monitoring RAG applications</h1>
+<div class="admonition tip">
+<p class="admonition-title">Run it</p>
+<p>A runnable implementation on OpenTelemetry, Prometheus, Grafana, Loki and Tempo, with dashboards, alerts and fault scenarios, is in <a href="#p-use-cases-rag">Use case: RAG</a>.</p>
+</div>
 <p>Full walkthrough with dashboards and queries: <a href="#p-rag-rag-observability-playbook">RAG observability playbook</a>. This page is the monitoring checklist.</p>
 <h2 id="pipeline-and-where-to-measure">Pipeline and where to measure</h2>
 <pre class="mermaid"><code>flowchart LR
@@ -3750,6 +4861,10 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Build the golden set from real queries; include unanswerable and adversarial ones.</li>
 <li>Re-run golden set on every index rebuild, chunking change, embedding change and model/prompt change.</li>
 </ul></section><section class="page" id="p-monitoring-agents"><h1 id="monitoring-agents-multi-agent-systems">Monitoring agents &amp; multi-agent systems</h1>
+<div class="admonition tip">
+<p class="admonition-title">Run it</p>
+<p>A runnable multi-agent implementation (supervisor + sub-agents, tools, loops, budgets, approvals) with dashboards and alerts is in <a href="#p-use-cases-multi-agent">Use case: Multi-agent</a>.</p>
+</div>
 <p>Agents plan, call tools, observe results and iterate. Cost, latency and failure are <strong>path-dependent</strong>, so you must observe <em>trajectories</em>, not just single calls.</p>
 <h2 id="trace-model">Trace model</h2>
 <pre class="mermaid"><code>flowchart TB
@@ -3846,6 +4961,10 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 </ul>
 <h2 id="dashboards">Dashboards</h2>
 <p>Task funnel (started → completed → verified), step-count distribution, cost-per-task by agent version, tool error heatmap, top failing trajectories (click-through to trace), approval queue.</p></section><section class="page" id="p-monitoring-chatbots"><h1 id="monitoring-chatbots-copilots">Monitoring chatbots &amp; copilots</h1>
+<div class="admonition tip">
+<p class="admonition-title">Run it</p>
+<p>A runnable chatbot implementation (containment, escalation, refusals, context utilization) is in <a href="#p-use-cases-chatbot">Use case: Chatbot</a>.</p>
+</div>
 <h2 id="session-level-view">Session-level view</h2>
 <p>Chatbots are multi-turn. Correlate turns via <code>conversation_id</code> and evaluate <strong>conversations</strong>, not only single turns.</p>
 <table>
@@ -4178,7 +5297,1359 @@ ticket when burn_rate(3d) &gt; 1</code></pre>
 <li>Monitor <strong>adapter/version mix</strong> across replicas to detect partial rollouts.</li>
 </ul>
 <h2 id="capacity-planning">Capacity planning</h2>
-<p>Plot demand (tokens/s) vs capacity at SLO (max tokens/s while TTFT p95 within target). Alert on headroom &lt; 20 %; autoscale on queue depth or KV-cache pressure rather than CPU/GPU utilization alone.</p></section><section class="page" id="p-rag-rag-observability-playbook"><h1 id="rag-playbook-latency-quality-cost-over-any-time-range">RAG playbook: latency, quality &amp; cost over any time range</h1>
+<p>Plot demand (tokens/s) vs capacity at SLO (max tokens/s while TTFT p95 within target). Alert on headroom &lt; 20 %; autoscale on queue depth or KV-cache pressure rather than CPU/GPU utilization alone.</p></section><section class="page" id="p-use-cases-index"><h1 id="use-cases-implementations-on-the-open-source-stack">Use cases: implementations on the open-source stack</h1>
+<p>Runnable reference implementations of the handbook's guidance using <strong>OpenTelemetry, Prometheus, Grafana, Loki and Tempo</strong> — no vendor SDKs, no API keys. Each use case ships an instrumented demo app, dashboards, alert rules and a runbook-linked failure-scenario simulator.</p>
+<table>
+<thead>
+<tr>
+<th>Use case</th>
+<th>Service</th>
+<th>What it demonstrates</th>
+<th>Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RAG</strong></td>
+<td><code>support-rag</code></td>
+<td>Per-stage latency, TTFT, cost per request, online quality scores, retrieval health, index freshness, cache, retries/fallbacks</td>
+<td><a href="#p-use-cases-rag">RAG</a></td>
+</tr>
+<tr>
+<td><strong>Multi-agent</strong></td>
+<td><code>research-agents</code></td>
+<td>Task success, steps, trajectories, tool errors, handoffs, loops, budgets, approvals, indirect prompt injection</td>
+<td><a href="#p-use-cases-multi-agent">Multi-agent</a></td>
+</tr>
+<tr>
+<td><strong>Chatbot</strong></td>
+<td><code>support-chatbot</code></td>
+<td>Containment, escalation, abandonment, TTFT, refusal vs over-refusal, context utilization, cost per conversation</td>
+<td><a href="#p-use-cases-chatbot">Chatbot</a></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Apps[Demo apps - OTel SDK]
+      A1[support-rag]
+      A2[research-agents]
+      A3[support-chatbot]
+    end
+    C[OpenTelemetry Collector&lt;br/&gt;redact - spanmetrics - tail sampling]
+    T[(Tempo&lt;br/&gt;traces)]
+    P[(Prometheus&lt;br/&gt;metrics + rules)]
+    L[(Loki&lt;br/&gt;logs)]
+    G[Grafana&lt;br/&gt;dashboards - alerts - explore]
+    A1 &amp; A2 &amp; A3 -- OTLP gRPC --&gt; C
+    C -- OTLP --&gt; T
+    C -- remote write + exemplars --&gt; P
+    C -- OTLP/HTTP --&gt; L
+    P --&gt; G
+    T --&gt; G
+    L --&gt; G</code></pre>
+<h2 id="quick-start">Quick start</h2>
+<pre class="highlight"><code class="language-bash">pip install -r use-cases/requirements.txt
+
+# 1. Start the stack (needs Docker)
+docker compose -f use-cases/stack/docker-compose.yml up -d
+
+# 2. Start any demo app; --cycle rotates failure scenarios every N seconds
+python use-cases/rag/app/rag_app.py              --rps 3   --cycle 240 &amp;
+python use-cases/multi-agent/app/agent_app.py    --rps 0.7 --cycle 240 &amp;
+python use-cases/chatbot/app/chatbot_app.py      --rps 0.6 --cycle 240 &amp;
+
+# 3. Open Grafana (anonymous admin, demo only): http://localhost:3000
+#    Folders: rag / multi-agent / chatbot / platform</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Choosing <code>--cycle</code></p>
+<p>Make each phase longer than the alert rule window plus its <code>for:</code> duration (demo rules use 2-3 minute windows and <code>for: 1m</code>), otherwise the fault ends before its alert can fire. 240 s works for all three apps.</p>
+</div>
+<p>No Docker? The apps run standalone and print their telemetry: <code>python use-cases/rag/app/rag_app.py --console --duration 10</code>.</p>
+<h2 id="one-request-all-three-signals">One request, all three signals</h2>
+<p>The point of the stack is <strong>correlation</strong>: every pivot below is wired in the provisioned Grafana datasources.</p>
+<pre class="mermaid"><code>flowchart LR
+    M["Metric panel&lt;br/&gt;p95 TTFT spikes"] -- exemplar --&gt; TR["Trace in Tempo&lt;br/&gt;chat large-model span slow"]
+    TR -- "trace to logs" --&gt; LG["Loki logs for that trace_id&lt;br/&gt;llm call failed, attempt 2"]
+    LG -- "derived field" --&gt; TR
+    TR -- "trace to metrics" --&gt; M</code></pre>
+<ol>
+<li><strong>Metrics → trace:</strong> histogram panels show exemplar dots; click one to open the exact slow request in Tempo.</li>
+<li><strong>Trace → logs:</strong> the trace view links to Loki filtered by <code>trace_id</code> (logs carry it as structured metadata).</li>
+<li><strong>Logs → trace:</strong> a <code>trace_id</code> field in any log line is a link back to Tempo.</li>
+<li><strong>Trace → metrics:</strong> span metrics (<code>traces_span_metrics_*</code>, computed from 100 % of spans before sampling) give RED per model, agent or tool.</li>
+</ol>
+<h2 id="what-was-verified">What was verified</h2>
+<p>These configurations were run for real: the Collector, Prometheus, Loki, Tempo and Grafana 11 were started with the files in this repo (natively, since the build sandbox has no Docker daemon), the three apps ran through full scenario cycles, <code>otelcol validate</code> and <code>promtool check rules</code> passed, all 7 dashboards were provisioned, <code>scripts/verify_dashboards.py</code> executed every panel query through Grafana's API with <strong>0 errors</strong>, and fault scenarios were pinned one at a time to calibrate alert thresholds against real values. Calibration was completed for the RAG faults and several agent/chatbot faults; the remaining scenarios (agent <code>injection</code>, <code>slow-tool</code>, <code>runaway-loop</code>; chatbot <code>slow-model</code>) were not re-run after the final threshold changes, so expect to tune thresholds for your traffic. The Docker Compose file itself was not executed.</p>
+<h2 id="map-to-the-handbook">Map to the handbook</h2>
+<table>
+<thead>
+<tr>
+<th>Handbook guidance</th>
+<th>Where it is implemented here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#p-metrics-metrics-catalog">Metrics catalog</a></td>
+<td>Metric names per use case, listed on each page</td>
+</tr>
+<tr>
+<td><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a></td>
+<td><code>*/alerts/*.yml</code>: multi-window burn rate, baseline-relative spikes, minimum-sample guards</td>
+</tr>
+<tr>
+<td><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a></td>
+<td><code>stack/otel-collector.yaml</code>: metrics before sampling, redaction, tail sampling</td>
+</tr>
+<tr>
+<td><a href="#p-architecture-storage-and-retention">Storage &amp; retention</a></td>
+<td>Tempo 14 d / Loki 14 d / Prometheus 90 d + daily recording rules; path to Mimir/ClickHouse in <a href="#p-use-cases-stack">the stack page</a></td>
+</tr>
+<tr>
+<td><a href="#p-operations-runbooks">Runbooks</a></td>
+<td>Alert annotations link to the matching runbook section</td>
+</tr>
+<tr>
+<td><a href="#p-architecture-security-privacy">Security &amp; privacy</a></td>
+<td>Apps emit IDs, lengths and scores only; Collector deletes <code>gen_ai.prompt</code>/<code>completion</code> as a safety net</td>
+</tr>
+</tbody>
+</table></section><section class="page" id="p-use-cases-stack"><h1 id="the-shared-stack">The shared stack</h1>
+<p>One small stack serves every use case. Source: <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/stack"><code>use-cases/stack/</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>Version in compose</th>
+<th>Retention (demo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenTelemetry Collector (contrib)</strong></td>
+<td>Single ingest point: redact, derive span metrics, tail-sample, fan out</td>
+<td>0.120.0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Prometheus</strong></td>
+<td>Metrics store, recording + alerting rules, exemplar storage, remote-write receiver</td>
+<td>3.2.1</td>
+<td>90 d</td>
+</tr>
+<tr>
+<td><strong>Tempo</strong></td>
+<td>Trace store (TraceQL search, trace-to-logs/metrics)</td>
+<td>2.7.1</td>
+<td>14 d</td>
+</tr>
+<tr>
+<td><strong>Loki</strong></td>
+<td>Log store via native OTLP ingestion; <code>trace_id</code> as structured metadata</td>
+<td>3.4.2</td>
+<td>14 d</td>
+</tr>
+<tr>
+<td><strong>Grafana</strong></td>
+<td>Dashboards, Explore, correlations</td>
+<td>11.5.2</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<p>Ports: Grafana <code>3000</code>, Prometheus <code>9090</code>, Collector OTLP <code>4317</code> (gRPC) / <code>4318</code> (HTTP).</p>
+<h2 id="collector-pipeline">Collector pipeline</h2>
+<pre class="mermaid"><code>flowchart LR
+    R[otlp receiver] --&gt; M1[memory_limiter] --&gt; RD[attributes/redact] --&gt; B1[batch]
+    B1 --&gt; SM{{spanmetrics connector}}
+    B1 --&gt; FW{{forward connector}}
+    FW --&gt; TS[tail_sampling] --&gt; B2[batch] --&gt; TEMPO[(Tempo)]
+    SM --&gt; PRW[prometheusremotewrite] --&gt; PROM[(Prometheus)]
+    R --&gt; MP[metrics pipeline] --&gt; PRW
+    R --&gt; LP[logs pipeline] --&gt; LOKI[(Loki)]</code></pre>
+<p>Design choices (all from the handbook's <a href="#p-implementation-collector-pipeline">pipeline guidance</a>):</p>
+<ul>
+<li><strong>Metrics before sampling.</strong> <code>spanmetrics</code> sees 100 % of spans, so rates and percentiles are unbiased; only the <em>trace bodies</em> are sampled.</li>
+<li><strong>Tail sampling keeps what matters:</strong> every error, every slow (&gt;8 s) trace, every trace flagged by cheap deterministic checks (<code>eval.flagged</code>), plus a baseline slice (25 % in the demo; use 1–10 % in production).</li>
+<li><strong>Redaction as a safety net</strong>, not the primary control. Apps already send IDs, lengths, scores and versions only.</li>
+<li><strong>Exemplars on:</strong> histogram buckets carry <code>trace_id</code>, which is what makes a latency panel clickable.</li>
+<li><strong>Self-observability:</strong> the Collector exposes its own metrics on <code>:8888</code>; <code>platform.yml</code> alerts on export failures, refused data and queue saturation.</li>
+</ul>
+<p>```yaml title="use-cases/stack/otel-collector.yaml"</p>
+<h1 id="reference-opentelemetry-collector-for-the-open-source-ai-observability-stack">Reference OpenTelemetry Collector for the open-source AI observability stack.</h1>
+<h1 id="traces-tempo-spanmetrics-prometheus-computed-from-100-of-spans">traces  -&gt; Tempo            (+ spanmetrics -&gt; Prometheus, computed from 100% of spans)</h1>
+<h1 id="metrics-prometheus-remote-write-exemplars-on">metrics -&gt; Prometheus       (remote write, exemplars on)</h1>
+<h1 id="logs-loki-native-otlp-endpoint">logs    -&gt; Loki             (native OTLP endpoint)</h1>
+<h1 id="hostnames-default-to-docker-compose-service-names-override-with-env-vars-for-a-native-run">Hostnames default to docker-compose service names; override with env vars for a native run.</h1>
+<p>receivers:
+  otlp:
+    protocols:
+      grpc: {endpoint: 0.0.0.0:4317}
+      http: {endpoint: 0.0.0.0:4318}</p>
+<p>processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_percentage: 80
+    spike_limit_percentage: 25
+  batch:
+    send_batch_size: 4096
+    timeout: 2s
+  # Never ship raw content or credentials. Apps emit IDs/lengths/scores only; this is the safety net.
+  attributes/redact:
+    actions:
+      - {key: gen_ai.prompt, action: delete}
+      - {key: gen_ai.completion, action: delete}
+      - {key: http.request.header.authorization, action: delete}
+      - {key: app.user.email, action: hash}
+  # Keep every error/slow/low-quality trace, 25% of the rest (demo value; use 1-10% in production).
+  tail_sampling:
+    decision_wait: 5s
+    num_traces: 50000
+    policies:
+      - {name: errors, type: status_code, status_code: {status_codes: [ERROR]}}
+      - {name: slow, type: latency, latency: {threshold_ms: 8000}}
+      - {name: flagged, type: string_attribute, string_attribute: {key: eval.flagged, values: ["true"]}}
+      - {name: baseline, type: probabilistic, probabilistic: {sampling_percentage: 25}}</p>
+<p>connectors:
+  forward/sampled: {}
+  spanmetrics:
+    histogram:
+      explicit:
+        buckets: [100ms, 250ms, 500ms, 1s, 2s, 4s, 8s, 16s, 32s]
+    dimensions:
+      - {name: gen_ai.request.model}
+      - {name: gen_ai.operation.name}
+      - {name: gen_ai.agent.name}
+      - {name: gen_ai.tool.name}
+      - {name: app.feature}
+    exemplars: {enabled: true}</p>
+<p>exporters:
+  otlp/tempo:
+    endpoint: ${env:TEMPO_ENDPOINT:-tempo:4317}
+    tls: {insecure: true}
+  prometheusremotewrite:
+    endpoint: ${env:PROM_REMOTE_WRITE:-http://prometheus:9090/api/v1/write}
+    resource_to_telemetry_conversion: {enabled: true}   # service.name, deployment.environment -&gt; labels
+    send_metadata: true
+  otlphttp/loki:
+    endpoint: ${env:LOKI_OTLP_ENDPOINT:-http://loki:3100/otlp}
+  debug:
+    verbosity: basic</p>
+<p>extensions:
+  health_check: {endpoint: 0.0.0.0:13133}</p>
+<p>service:
+  extensions: [health_check]
+  telemetry:
+    metrics: {level: basic, address: 0.0.0.0:8888}   # collector self-metrics (scraped by Prometheus)
+  pipelines:
+    traces/in:                       # 100% of spans -&gt; RED metrics; then hand over to the sampler
+      receivers: [otlp]
+      processors: [memory_limiter, attributes/redact, batch]
+      exporters: [spanmetrics, forward/sampled]
+    traces/sampled:                  # tail-sample, then store in Tempo
+      receivers: [forward/sampled]
+      processors: [tail_sampling, batch]
+      exporters: [otlp/tempo]
+    metrics:
+      receivers: [otlp, spanmetrics]
+      processors: [memory_limiter, batch]
+      exporters: [prometheusremotewrite]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, attributes/redact, batch]
+      exporters: [otlphttp/loki]</p>
+<pre class="highlight"><code>
+## Prometheus
+
+Metrics arrive by **remote write** from the Collector (`--web.enable-remote-write-receiver`). With `resource_to_telemetry_conversion`, OTel resource attributes become labels: `service_name`, `deployment_environment`, `service_namespace`. OTel dotted metric names become Prometheus names: counter `rag.requests` → `rag_requests_total`, histogram `rag.ttft` (unit `s`) → `rag_ttft_seconds_bucket`.
+
+```yaml title="use-cases/stack/prometheus/prometheus.yml"
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - /etc/prometheus/rules/*/*.yml
+
+scrape_configs:
+  - job_name: otel-collector          # collector self-metrics (drops, queue, export failures)
+    static_configs: [{targets: ["otel-collector:8888"]}]
+  - job_name: prometheus
+    static_configs: [{targets: ["localhost:9090"]}]
+  - job_name: tempo
+    static_configs: [{targets: ["tempo:3200"]}]
+  - job_name: loki
+    static_configs: [{targets: ["loki:3100"]}]
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Collector self-metric names</p>
+<p>Collector v0.120 exposes self-metrics <strong>without</strong> the <code>_total</code> suffix (for example <code>otelcol_receiver_refused_spans</code>). Names have changed between Collector releases; check <code>curl :8888/metrics</code> after upgrading.</p>
+</div>
+<h2 id="tempo-and-loki">Tempo and Loki</h2>
+<p>```yaml title="use-cases/stack/tempo/tempo.yaml"
+stream_over_http_enabled: true
+server:
+  http_listen_port: 3200
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc: {endpoint: 0.0.0.0:4317}
+storage:
+  trace:
+    backend: local
+    wal: {path: /var/tempo/wal}
+    local: {path: /var/tempo/blocks}
+compactor:
+  compaction:
+    block_retention: 336h      # 14 days of full traces (hot tier); aggregates live in Prometheus/ClickHouse</p>
+<pre class="highlight"><code>
+```yaml title="use-cases/stack/loki/loki.yaml"
+auth_enabled: false
+server:
+  http_listen_port: 3100
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  storage:
+    filesystem: {chunks_directory: /loki/chunks, rules_directory: /loki/rules}
+  replication_factor: 1
+  ring:
+    kvstore: {store: inmemory}
+schema_config:
+  configs:
+    - from: 2024-01-01
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index: {prefix: index_, period: 24h}
+limits_config:
+  allow_structured_metadata: true     # trace_id etc. stored as structured metadata, not labels
+  retention_period: 336h
+compactor:
+  working_directory: /loki/compactor
+  retention_enabled: true
+  delete_request_store: filesystem
+</code></pre>
+<p>Loki's OTLP endpoint indexes only a handful of resource attributes as labels (<code>service_name</code>, <code>deployment_environment</code>, …); everything else, including <code>trace_id</code>, <code>severity</code> and your <code>extra={...}</code> fields, is <strong>structured metadata</strong>: filterable with <code>| trace_id="…"</code> without exploding label cardinality.</p>
+<h2 id="grafana-provisioning">Grafana provisioning</h2>
+<p>Datasources are wired for the correlations described on the <a href="#p-use-cases-index">overview</a>.</p>
+<p>```yaml title="use-cases/stack/grafana/provisioning/datasources/datasources.yaml"
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    uid: prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    jsonData:
+      exemplarTraceIdDestinations:
+        - {name: trace_id, datasourceUid: tempo}
+  - name: Tempo
+    uid: tempo
+    type: tempo
+    access: proxy
+    url: http://tempo:3200
+    jsonData:
+      tracesToLogsV2:
+        datasourceUid: loki
+        filterByTraceID: true
+        spanStartTimeShift: "-5m"
+        spanEndTimeShift: "5m"
+      tracesToMetrics:
+        datasourceUid: prometheus
+      nodeGraph: {enabled: true}
+      streamingEnabled: {search: true}
+  - name: Loki
+    uid: loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    jsonData:
+      derivedFields:
+        - name: TraceID
+          matcherType: label
+          matcherRegex: trace_id
+          url: "$${__value.raw}"
+          datasourceUid: tempo</p>
+<p>```</p>
+<p>Dashboards are <strong>generated</strong> by <a href="https://github.com/akashtalole/ai-observability/blob/main/scripts/gen_dashboards.py"><code>scripts/gen_dashboards.py</code></a> (JSON committed) so panels stay consistent. Every dashboard:</p>
+<ul>
+<li>KPI tiles use <code>$__range</code>, so the same tile answers "last 5 minutes" and "last 90 days"; a second row shows the <strong>change vs the previous period of equal length</strong> via <code>offset $__range</code>.</li>
+<li>Time series use <code>$__rate_interval</code>, so resolution adapts to the range.</li>
+<li>Overlay <strong>change events</strong> as annotations (the demo reads "scenario change" log lines from Loki; in production, write deploy / prompt / model / index events from CI/CD).</li>
+<li>End with logs and TraceQL tables for triage.</li>
+</ul>
+<h2 id="long-range-trends-months">Long-range trends (months)</h2>
+<p>Out of the box this stack keeps <strong>90 days</strong> of metrics and <strong>14 days</strong> of traces and logs. To reach the handbook's 6–18 month goal:</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Months of metrics, same Grafana/PromQL</td>
+<td>Replace/extend Prometheus with <strong>Mimir</strong>, <strong>Thanos</strong> or <strong>VictoriaMetrics</strong> (remote-write target is one env var in the Collector)</td>
+</tr>
+<tr>
+<td>Cheap long-range aggregates</td>
+<td>Keep the <strong>daily recording rules</strong> (<code>rag:*:ratio_1d</code>, …): they are tiny and drive the <code>*-trends</code> dashboards</td>
+</tr>
+<tr>
+<td>High-cardinality slicing (tenant × prompt × index)</td>
+<td>Add a <strong>ClickHouse</strong> exporter and the wide-fact table from <a href="#p-architecture-storage-and-retention">Storage &amp; retention</a></td>
+</tr>
+<tr>
+<td>Trace/log retention beyond days</td>
+<td>Object-store backends for Tempo/Loki (S3/GCS/Azure) with compactor retention</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scaling-and-hardening-checklist">Scaling and hardening checklist</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Run the Collector as agent + gateway tiers; use the load-balancing exporter (key: <code>trace_id</code>) in front of tail sampling.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Persistent queues on Collector exporters; alert on <code>OtelCollectorExportFailing</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Replace anonymous Grafana admin with SSO and RBAC; scope data sources per team/tenant.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Move Tempo/Loki/Prometheus to object storage and HA; or adopt Grafana Cloud / managed equivalents.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Lower tail-sampling baseline to 1–10 %.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Put alert rules in Grafana Alerting or Alertmanager with routing to PagerDuty/Slack (the demo only evaluates rules).</li>
+</ul></section><section class="page" id="p-use-cases-rag"><h1 id="use-case-rag">Use case: RAG</h1>
+<p><strong>Service <code>support-rag</code></strong>: an enterprise knowledge assistant (embed → vector search → rerank → generate → guardrails) with a semantic cache, retry/fallback, and asynchronous online evaluation.
+Code: <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/rag"><code>use-cases/rag/</code></a> · Handbook theory: <a href="#p-rag-rag-observability-playbook">RAG playbook</a>, <a href="#p-monitoring-rag">RAG monitoring</a>.</p>
+<p><strong>Goal:</strong> see latency, quality and cost of the RAG app across any time range, catch regressions early, and track months of trends.</p>
+<pre class="highlight"><code class="language-bash">python use-cases/rag/app/rag_app.py --rps 3 --cycle 240          # rotates: normal, fault, normal, fault ...
+python use-cases/rag/app/rag_app.py --scenario bad-index         # or pin one fault
+python use-cases/rag/app/rag_app.py --console --duration 10      # print telemetry, no stack needed</code></pre>
+<h2 id="trace-anatomy">Trace anatomy</h2>
+<pre class="mermaid"><code>flowchart TB
+    R["rag.request (SERVER)&lt;br/&gt;app.*, rag.index.version, cost.usd.total"] --&gt; G1[rag.guardrail_in]
+    R --&gt; RT["rag.retrieve&lt;br/&gt;top1_score, retrieval.count, doc_ids"]
+    RT --&gt; E[rag.embed]
+    RT --&gt; V[rag.vector_search]
+    RT --&gt; RR[rag.rerank]
+    R --&gt; L["chat large-model (CLIENT)&lt;br/&gt;gen_ai.usage.*, ttft_ms&lt;br/&gt;x N on retry / fallback"]
+    R --&gt; G2[rag.guardrail_out]
+    R -. async, span link .-&gt; EV["rag.evaluate&lt;br/&gt;eval.groundedness / relevance / context_precision"]</code></pre>
+<ul>
+<li>Every root span carries the <strong>change-attribution versions</strong>: <code>app.release.id</code>, <code>app.prompt.version</code>, <code>rag.index.version</code>, <code>rag.embedding.model</code>, <code>gen_ai.response.model</code>.</li>
+<li>Retrieval spans store <strong>doc IDs and scores, never chunk text</strong>. Query length is recorded, not the query.</li>
+<li>Cheap deterministic checks (empty or low-similarity retrieval) set <code>eval.flagged=true</code>, so the <strong>tail sampler keeps those traces</strong> at 100 %.</li>
+<li>The LLM judge runs <strong>off the request path</strong> in a worker and links back to the original trace.</li>
+</ul>
+<h2 id="metrics">Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>OTel name</th>
+<th>Prometheus name</th>
+<th>Key labels</th>
+<th>Answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rag.requests</code></td>
+<td><code>rag_requests_total</code></td>
+<td><code>status</code> (ok/error/blocked), <code>tenant</code>, <code>feature</code></td>
+<td>Volume, error ratio, availability SLO</td>
+</tr>
+<tr>
+<td><code>rag.request.duration</code></td>
+<td><code>rag_request_duration_seconds_*</code></td>
+<td><code>tenant</code>, <code>feature</code>, <code>status</code></td>
+<td>End-to-end p50/p95/p99</td>
+</tr>
+<tr>
+<td><code>rag.ttft</code></td>
+<td><code>rag_ttft_seconds_*</code></td>
+<td><code>model</code>, <code>tenant</code></td>
+<td>Time to first token (UX)</td>
+</tr>
+<tr>
+<td><code>rag.stage.duration</code></td>
+<td><code>rag_stage_duration_seconds_*</code></td>
+<td><code>stage</code></td>
+<td>Which stage is slow</td>
+</tr>
+<tr>
+<td><code>rag.tokens</code></td>
+<td><code>rag_tokens_total</code></td>
+<td><code>direction</code>, <code>model</code>, <code>tenant</code></td>
+<td>Token usage</td>
+</tr>
+<tr>
+<td><code>rag.cost.usd</code></td>
+<td><code>rag_cost_usd_total</code></td>
+<td><code>model</code>, <code>tenant</code>, <code>feature</code></td>
+<td>Spend and cost per request</td>
+</tr>
+<tr>
+<td><code>rag.context_tokens</code></td>
+<td><code>rag_context_tokens_*</code></td>
+<td></td>
+<td>Context bloat</td>
+</tr>
+<tr>
+<td><code>rag.retrieval.top1_score</code></td>
+<td><code>rag_retrieval_top1_score_*</code></td>
+<td></td>
+<td>Retrieval confidence</td>
+</tr>
+<tr>
+<td><code>rag.retrieval.empty</code></td>
+<td><code>rag_retrieval_empty_total</code></td>
+<td><code>kind</code> (empty/low_score)</td>
+<td>Coverage gaps</td>
+</tr>
+<tr>
+<td><code>rag.eval.score</code></td>
+<td><code>rag_eval_score_*</code></td>
+<td><code>metric</code> (groundedness, answer_relevance, context_precision)</td>
+<td><strong>Quality</strong></td>
+</tr>
+<tr>
+<td><code>rag.eval.queue_age</code></td>
+<td><code>rag_eval_queue_age_seconds</code></td>
+<td></td>
+<td>Staleness of quality signal</td>
+</tr>
+<tr>
+<td><code>rag.index.age</code></td>
+<td><code>rag_index_age_seconds</code></td>
+<td></td>
+<td>Index freshness</td>
+</tr>
+<tr>
+<td><code>rag.llm.retries</code> / <code>rag.llm.fallbacks</code></td>
+<td><code>rag_llm_retries_total</code> / <code>…_fallbacks_total</code></td>
+<td><code>error_type</code>, <code>to</code></td>
+<td>Hidden latency/cost</td>
+</tr>
+<tr>
+<td><code>rag.cache.lookups</code></td>
+<td><code>rag_cache_lookups_total</code></td>
+<td><code>result</code></td>
+<td>Cache value</td>
+</tr>
+<tr>
+<td><code>rag.guardrail.events</code></td>
+<td><code>rag_guardrail_events_total</code></td>
+<td><code>category</code>, <code>action</code>, <code>direction</code></td>
+<td>Safety</td>
+</tr>
+<tr>
+<td><code>rag.feedback</code></td>
+<td><code>rag_feedback_total</code></td>
+<td><code>rating</code>, <code>feature</code></td>
+<td>User signal</td>
+</tr>
+</tbody>
+</table>
+<p>Resource labels added by the Collector: <code>service_name</code>, <code>deployment_environment</code>, <code>service_namespace</code>.</p>
+<h2 id="dashboards">Dashboards</h2>
+<p>Folder <strong>rag</strong> in Grafana (JSON in <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/rag/dashboards"><code>use-cases/rag/dashboards/</code></a>):</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RAG: Latency, Quality &amp; Cost</strong></td>
+<td>KPI tiles for the selected range, Δ vs the previous period, then rows for Latency, Quality, Cost, Logs &amp; traces. Variable: <code>tenant</code></td>
+</tr>
+<tr>
+<td><strong>RAG: Trends (weeks to months)</strong></td>
+<td>Daily recording rules: p95, cost/request, groundedness, week-over-week deltas</td>
+</tr>
+</tbody>
+</table>
+<p>Reading the main dashboard:</p>
+<ol>
+<li><strong>Top rows:</strong> change vs previous period turns red when p95 latency or cost/request rises &gt;5 % or groundedness drops.</li>
+<li><strong>Latency:</strong> if p95 rises, compare <em>Stage latency p95</em> and <em>Time spent per stage</em>: <code>llm</code> dominating means provider/model; <code>vector_search</code>/<code>rerank</code> means retrieval infrastructure.</li>
+<li><strong>Quality:</strong> read scores next to <em>Scored samples per minute</em>. A dip on thin samples is noise.</li>
+<li><strong>Cost:</strong> <em>Context tokens</em> and <em>tokens in vs out</em> explain most cost moves; <em>cost by tenant/feature</em> finds the owner.</li>
+<li><strong>Triage:</strong> click an exemplar dot, a TraceQL row, or a <code>trace_id</code> in the logs.</li>
+</ol>
+<h2 id="alerts">Alerts</h2>
+<p><a href="https://github.com/akashtalole/ai-observability/blob/main/use-cases/rag/alerts/rag-alerts.yml"><code>use-cases/rag/alerts/rag-alerts.yml</code></a>; every alert links to a <a href="#p-operations-runbooks">runbook</a> section.</p>
+<table>
+<thead>
+<tr>
+<th>Alert</th>
+<th>Signal</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RagErrorBudgetFastBurn</code></td>
+<td>Error ratio, multi-window burn rate on a 99.5 % SLO (demo: 2 m &gt; 14.4× and 10 m &gt; 3× budget)</td>
+<td>Availability</td>
+</tr>
+<tr>
+<td><code>RagTTFTHigh</code> / <code>RagLatencyHigh</code></td>
+<td>TTFT p95 &gt; 2 s; end-to-end p95 &gt; 8 s</td>
+<td>UX / SLO</td>
+</tr>
+<tr>
+<td><code>RagCostPerRequestSpike</code></td>
+<td>Cost/request &gt; 2× its 30-minute median</td>
+<td>Context bloat, retries, model change</td>
+</tr>
+<tr>
+<td><code>RagGroundednessLow</code></td>
+<td>Groundedness &lt; 0.8 <strong>and</strong> ≥ 5 scored samples</td>
+<td>Quality, with a minimum-sample guard</td>
+</tr>
+<tr>
+<td><code>RagRetrievalDegraded</code></td>
+<td>Empty/low-score retrieval &gt; 5 %</td>
+<td>Leading indicator of quality loss</td>
+</tr>
+<tr>
+<td><code>RagIndexStale</code></td>
+<td>Newest document &gt; 48 h old</td>
+<td>Outdated answers</td>
+</tr>
+<tr>
+<td><code>RagRetryStorm</code></td>
+<td>Retries on &gt; 20 % of requests</td>
+<td>Hidden latency and cost</td>
+</tr>
+<tr>
+<td><code>RagEvalBacklog</code></td>
+<td>Oldest unevaluated trace &gt; 2 min</td>
+<td>Quality signal is stale</td>
+</tr>
+<tr>
+<td><code>RagNoTraffic</code></td>
+<td>No requests (or no telemetry) 5 min</td>
+<td>Pipeline or app down</td>
+</tr>
+</tbody>
+</table>
+<h2 id="failure-scenarios">Failure scenarios</h2>
+<!-- GENERATED by scripts/build.py from data/scenarios.json. Edit the JSON. -->
+
+<p>Run with <code>--cycle 240</code> to alternate healthy phases and these faults, or pin one with <code>--scenario NAME</code>. The alerts listed are the ones each fault is designed to trigger; thresholds are calibrated to the demo traffic.</p>
+<h3 id="slow-llm-provider-latency-degradation"><code>slow-llm</code>: Provider latency degradation</h3>
+<p><strong>What changes:</strong> LLM latency x3.2 (TTFT and decode)</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>TTFT p95 and end-to-end p95 rise</li>
+<li>Stage latency: <code>llm</code> dominates, retrieval unchanged</li>
+<li>Quality and cost per request unchanged</li>
+</ul>
+<p><strong>Alerts:</strong> <code>RagTTFTHigh</code>, <code>RagLatencyHigh</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Latency row -&gt; Stage latency p95</li>
+<li>Click a TTFT exemplar -&gt; <code>chat large-model</code> span is slow</li>
+<li>TraceQL: <code>{ resource.service.name = "support-rag" &amp;&amp; duration &gt; 6s }</code></li>
+</ul>
+<h3 id="bad-index-bad-reindex-stale-index"><code>bad-index</code>: Bad reindex / stale index</h3>
+<p><strong>What changes:</strong> Top-1 similarity -0.30, empty retrieval 12%, groundedness -0.22, index age 60 h</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Top-1 similarity p50 drops; empty / low-score retrieval ratio rises</li>
+<li>Groundedness (judge) falls; thumbs-down rises</li>
+<li>Index freshness panel crosses 48 h</li>
+<li>Latency and cost look normal: only quality tells you</li>
+</ul>
+<p><strong>Alerts:</strong> <code>RagRetrievalDegraded</code>, <code>RagGroundednessLow</code>, <code>RagIndexStale</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#retrieval-degradation">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Quality row (top-1, empty ratio, freshness)</li>
+<li>TraceQL: <code>{ span.eval.flagged = true }</code> (kept at 100% by the tail sampler)</li>
+<li>Logs: <code>|= "weak retrieval" | index_version="…"</code></li>
+</ul>
+<h3 id="cost-spike-context-bloat"><code>cost-spike</code>: Context bloat</h3>
+<p><strong>What changes:</strong> Context tokens x4.5</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Cost per request and spend per hour jump (about 3x)</li>
+<li>Context tokens p50/p95 and input tokens rise</li>
+<li>Quality roughly unchanged</li>
+</ul>
+<p><strong>Alerts:</strong> <code>RagCostPerRequestSpike</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#cost-spike">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Cost row -&gt; Context tokens, tokens in vs out</li>
+<li>Cost by tenant / feature to find the owner</li>
+<li>Compare <code>rag.context.tokens</code> on a spike trace vs a normal one</li>
+</ul>
+<h3 id="provider-errors-429-5xx-storm"><code>provider-errors</code>: 429 / 5xx storm</h3>
+<p><strong>What changes:</strong> Provider error rate 50% per call (3 attempts, fallback to small model on the 2nd)</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Error ratio rises; retries and fallbacks per request rise</li>
+<li>Requests served by <code>small-model</code> (cost down, quality down)</li>
+<li>Latency up from retry back-off</li>
+</ul>
+<p><strong>Alerts:</strong> <code>RagErrorBudgetFastBurn</code>, <code>RagRetryStorm</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#provider-errors-and-rate-limits">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Error ratio, retries &amp; fallbacks</li>
+<li>Logs: <code>|= "llm call failed"</code> (error_type, attempt)</li>
+<li>TraceQL: <code>{ name =~ "chat .*" &amp;&amp; status = error }</code></li>
+</ul>
+<h2 id="query-cookbook">Query cookbook</h2>
+<pre class="highlight"><code class="language-promql"># p95 TTFT by model, over whatever range the dashboard shows
+histogram_quantile(0.95, sum by (le, model) (rate(rag_ttft_seconds_bucket[$__rate_interval])))
+
+# cost per request, last 30 days, and vs the 30 days before
+sum(increase(rag_cost_usd_total[30d])) / sum(increase(rag_requests_total[30d]))
+  / (sum(increase(rag_cost_usd_total[30d] offset 30d)) / sum(increase(rag_requests_total[30d] offset 30d))) - 1
+
+# share of answers scored as ungrounded (&lt; 0.7)
+1 - sum(rate(rag_eval_score_bucket{metric="groundedness",le="0.7"}[1h])) / sum(rate(rag_eval_score_count{metric="groundedness"}[1h]))
+
+# which tenant drives spend
+topk(5, sum by (tenant) (increase(rag_cost_usd_total[7d])))</code></pre>
+<pre class="highlight"><code class="language-logql"># warnings and errors with trace correlation
+{service_name="support-rag"} | detected_level=~"warn|error"
+
+# weak retrieval events for one index version
+{service_name="support-rag"} |= "weak retrieval" | index_version="2026-10-01"
+
+# error logs per minute
+sum(count_over_time({service_name="support-rag"} | detected_level="error" [1m]))</code></pre>
+<pre class="highlight"><code class="language-traceql">{ resource.service.name = "support-rag" &amp;&amp; name = "rag.request" &amp;&amp; duration &gt; 6s }
+{ resource.service.name = "support-rag" &amp;&amp; span.eval.flagged = true }
+{ resource.service.name = "support-rag" &amp;&amp; name =~ "chat .*" &amp;&amp; status = error }
+{ span.rag.retrieval.top1_score &lt; 0.35 }</code></pre>
+<h2 id="taking-it-to-production">Taking it to production</h2>
+<ul>
+<li>Replace the simulated stages with real client calls; keep the span and attribute names.</li>
+<li>Auto-instrument model and vector DB clients (OpenLLMetry / OpenLIT / OpenInference), keep the manual <code>rag.*</code> stage spans.</li>
+<li>Make the price table a versioned config; recompute historical cost when prices change.</li>
+<li>Stratify evaluation sampling by tenant tier and intent; add all flagged and thumbs-down traces.</li>
+<li>Emit deploy / prompt / index / model-change events for the dashboard annotations.</li>
+<li>See <a href="#p-use-cases-adapting">Adapting to your app</a>.</li>
+</ul></section><section class="page" id="p-use-cases-multi-agent"><h1 id="use-case-multi-agent">Use case: Multi-agent</h1>
+<p><strong>Service <code>research-agents</code></strong>: a supervisor that plans and hands off to <code>researcher</code>, <code>analyst</code>, <code>writer</code> and <code>reviewer</code> agents, which call tools (<code>search</code>, <code>kb_lookup</code>, <code>web_fetch</code>, <code>run_code</code>, <code>send_email</code>). Includes human approval for write tools, loop detection, and step/budget/timeout limits.
+Code: <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/multi-agent"><code>use-cases/multi-agent/</code></a> · Theory: <a href="#p-monitoring-agents">Monitoring agents</a>.</p>
+<p>Agents make cost, latency and failure <strong>path-dependent</strong>: the same task can take 6 steps or 25. So you observe <em>trajectories</em>, not single calls.</p>
+<pre class="highlight"><code class="language-bash">python use-cases/multi-agent/app/agent_app.py --rps 0.7 --cycle 240
+python use-cases/multi-agent/app/agent_app.py --scenario runaway-loop
+python use-cases/multi-agent/app/agent_app.py --console --duration 15</code></pre>
+<h2 id="trace-anatomy-one-trace-per-task">Trace anatomy (one trace per task)</h2>
+<pre class="mermaid"><code>flowchart TB
+    S["invoke_agent supervisor&lt;br/&gt;task.type, outcome, steps, cost.usd.total, termination_reason"] --&gt; P["chat large-model&lt;br/&gt;plan"]
+    S --&gt; W1["invoke_agent researcher (handoff)"]
+    W1 --&gt; C1[chat small-model]
+    W1 --&gt; T1["execute_tool search&lt;br/&gt;tool.args_hash, side_effect"]
+    W1 --&gt; T2[execute_tool web_fetch]
+    S --&gt; W2[invoke_agent analyst]
+    S --&gt; W3[invoke_agent writer]
+    S --&gt; W4["invoke_agent reviewer"]
+    W4 -. rejected -&gt; revise .-&gt; W3</code></pre>
+<ul>
+<li>Span kinds follow the OTel GenAI agent conventions: <code>invoke_agent</code>, <code>chat</code>, <code>execute_tool</code>, with <code>gen_ai.agent.name</code> and <code>gen_ai.tool.name</code>.</li>
+<li>Tool arguments are <strong>hashed</strong> (<code>tool.args_hash</code>), never recorded: enough to detect loops, safe for privacy.</li>
+<li>Failed or abandoned tasks set <code>eval.flagged=true</code>, so the tail sampler <strong>keeps every bad trajectory</strong>.</li>
+</ul>
+<h2 id="metrics">Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>OTel name</th>
+<th>Prometheus name</th>
+<th>Key labels</th>
+<th>Answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent.tasks</code></td>
+<td><code>agent_tasks_total</code></td>
+<td><code>outcome</code> (success/failed/abandoned), <code>task_type</code></td>
+<td>Success rate</td>
+</tr>
+<tr>
+<td><code>agent.task.duration</code></td>
+<td><code>agent_task_duration_seconds_*</code></td>
+<td><code>outcome</code>, <code>task_type</code></td>
+<td>Time to complete</td>
+</tr>
+<tr>
+<td><code>agent.task.steps</code></td>
+<td><code>agent_task_steps_*</code></td>
+<td><code>task_type</code></td>
+<td>Efficiency / runaway</td>
+</tr>
+<tr>
+<td><code>agent.task.cost</code></td>
+<td><code>agent_task_cost_*</code></td>
+<td><code>task_type</code></td>
+<td>Cost per task (histogram, USD)</td>
+</tr>
+<tr>
+<td><code>agent.cost.usd</code>, <code>agent.tokens</code></td>
+<td><code>agent_cost_usd_total</code>, <code>agent_tokens_total</code></td>
+<td><code>agent</code>, <code>model</code>, <code>direction</code></td>
+<td>Which agent spends</td>
+</tr>
+<tr>
+<td><code>agent.llm.calls</code>, <code>agent.llm.duration</code></td>
+<td><code>agent_llm_calls_total</code>, <code>agent_llm_duration_seconds_*</code></td>
+<td><code>agent</code>, <code>model</code></td>
+<td>Reasoning load</td>
+</tr>
+<tr>
+<td><code>agent.tool.calls</code>, <code>agent.tool.duration</code></td>
+<td><code>agent_tool_calls_total</code>, <code>agent_tool_duration_seconds_*</code></td>
+<td><code>tool</code>, <code>status</code> (ok/error/denied), <code>agent</code></td>
+<td>Tool health</td>
+</tr>
+<tr>
+<td><code>agent.handoffs</code></td>
+<td><code>agent_handoffs_total</code></td>
+<td><code>from</code>, <code>to</code></td>
+<td>Coordination pattern</td>
+</tr>
+<tr>
+<td><code>agent.loops.detected</code></td>
+<td><code>agent_loops_detected_total</code></td>
+<td><code>agent</code>, <code>tool</code></td>
+<td>Same tool + args repeated ≥ 3×</td>
+</tr>
+<tr>
+<td><code>agent.terminations</code></td>
+<td><code>agent_terminations_total</code></td>
+<td><code>reason</code> (max_steps, budget_exceeded, timeout, loop)</td>
+<td>Guardrails firing</td>
+</tr>
+<tr>
+<td><code>agent.approvals</code></td>
+<td><code>agent_approvals_total</code></td>
+<td><code>decision</code>, <code>tool</code>, <code>agent</code></td>
+<td>Human-in-the-loop on side effects</td>
+</tr>
+<tr>
+<td><code>agent.guardrail.events</code></td>
+<td><code>agent_guardrail_events_total</code></td>
+<td><code>category</code>, <code>action</code> (blocked/missed)</td>
+<td>Indirect prompt injection</td>
+</tr>
+<tr>
+<td><code>agent.plan.revisions</code></td>
+<td><code>agent_plan_revisions_total</code></td>
+<td><code>cause</code> (tool_failure, rejected)</td>
+<td>Plan thrash</td>
+</tr>
+<tr>
+<td><code>agent.active_tasks</code></td>
+<td><code>agent_active_tasks</code></td>
+<td></td>
+<td>In-flight work</td>
+</tr>
+</tbody>
+</table>
+<p>Span-derived RED metrics (<code>traces_span_metrics_calls_total</code>, <code>traces_span_metrics_duration_milliseconds_*</code>) come from the Collector's <code>spanmetrics</code> connector with <code>gen_ai_agent_name</code> and <code>gen_ai_tool_name</code> dimensions, giving per-agent and per-tool rate/error/duration from 100 % of spans.</p>
+<h2 id="dashboards">Dashboards</h2>
+<p>Folder <strong>multi-agent</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multi-agent: Tasks, Trajectories &amp; Cost</strong></td>
+<td>Selected-range KPIs + Δ, then Outcomes &amp; efficiency, Agents/tools/handoffs, Safety &amp; governance, Logs &amp; traces. Variable: <code>task_type</code></td>
+</tr>
+<tr>
+<td><strong>Multi-agent: Trends</strong></td>
+<td>Daily success rate and cost per task, week-over-week</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">The number to manage</p>
+<p><strong>Cost per successful task</strong>, not cost per call. Read <em>Cost per task</em> beside <em>Task success rate</em>: a cheaper agent that fails more is more expensive per outcome.</p>
+</div>
+<h2 id="alerts">Alerts</h2>
+<p><a href="https://github.com/akashtalole/ai-observability/blob/main/use-cases/multi-agent/alerts/agent-alerts.yml"><code>use-cases/multi-agent/alerts/agent-alerts.yml</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Alert</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AgentTaskSuccessLow</code></td>
+<td>Success &lt; 70 % with traffic</td>
+</tr>
+<tr>
+<td><code>AgentRunawaySteps</code></td>
+<td>p95 steps per task &gt; 23 (hard limit 25; healthy p95 ≈ 19-20). Safety net: in the demo the loop guard stops loops first, so no scenario reaches it</td>
+</tr>
+<tr>
+<td><code>AgentLoopsDetected</code></td>
+<td>&gt; 5 repeated identical tool calls in 5 min</td>
+</tr>
+<tr>
+<td><code>AgentCostPerTaskSpike</code></td>
+<td>Cost/task &gt; 2.5× its 30-minute median</td>
+</tr>
+<tr>
+<td><code>AgentBudgetExceededTerminations</code></td>
+<td>Any task hit the per-task USD budget</td>
+</tr>
+<tr>
+<td><code>AgentToolErrorRateHigh</code></td>
+<td>Tool error ratio &gt; 10 % (healthy ≈ 1-2 %)</td>
+</tr>
+<tr>
+<td><code>AgentTaskLatencyHigh</code></td>
+<td>Task p95 duration &gt; 45 s</td>
+</tr>
+<tr>
+<td><code>AgentInjectionMissed</code></td>
+<td>Indirect injection reached the agent undetected (<strong>page</strong>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="failure-scenarios">Failure scenarios</h2>
+<!-- GENERATED by scripts/build.py from data/scenarios.json. Edit the JSON. -->
+
+<p>Run with <code>--cycle 240</code> to alternate healthy phases and these faults, or pin one with <code>--scenario NAME</code>. The alerts listed are the ones each fault is designed to trigger; thresholds are calibrated to the demo traffic.</p>
+<h3 id="tool-flaky-search-fetch-dependency-failing"><code>tool-flaky</code>: Search / fetch dependency failing</h3>
+<p><strong>What changes:</strong> <code>search</code> and <code>web_fetch</code> fail 35% of calls</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Tool error ratio by tool rises (search, web_fetch)</li>
+<li>Plan revisions (cause: tool_failure) and extra LLM calls</li>
+<li>Success rate falls; cost per task rises</li>
+</ul>
+<p><strong>Alerts:</strong> <code>AgentToolErrorRateHigh</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#tool-dependency-failing">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Tool error ratio by tool; Plan revisions</li>
+<li>TraceQL: <code>{ span.gen_ai.tool.name = "search" &amp;&amp; status = error }</code></li>
+<li>Logs: <code>|= "tool call failed"</code></li>
+</ul>
+<h3 id="cost-spike-context-bloat-revision-cycles"><code>cost-spike</code>: Context bloat + revision cycles</h3>
+<p><strong>What changes:</strong> Context x4, reviewer rejects 40% of drafts</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Cost per task spikes; p95 cost climbs</li>
+<li>Tasks end with <code>budget_exceeded</code> terminations</li>
+<li>Plan revisions (cause: rejected) and steps per task rise</li>
+</ul>
+<p><strong>Alerts:</strong> <code>AgentCostPerTaskSpike</code>, <code>AgentBudgetExceededTerminations</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#cost-spike">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Cost per task, Spend by agent, Terminations by reason</li>
+<li>TraceQL: <code>{ name = "invoke_agent supervisor" &amp;&amp; span.app.task.termination_reason = "budget_exceeded" }</code></li>
+</ul>
+<h3 id="injection-indirect-prompt-injection-via-tool-output"><code>injection</code>: Indirect prompt injection via tool output</h3>
+<p><strong>What changes:</strong> 25% of <code>web_fetch</code> results carry injected instructions; 80% detected</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Guardrail events: <code>blocked</code> and <code>missed</code> (the <code>missed</code> ones are the dangerous ones)</li>
+<li>Write-tool approvals requested for <code>send_email</code>, some denied</li>
+<li>Warnings in logs; latency and cost unchanged</li>
+</ul>
+<p><strong>Alerts:</strong> <code>AgentInjectionMissed</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#safety--guardrail-incident">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Safety &amp; governance row</li>
+<li>TraceQL: <code>{ span.tool.side_effect = "write" &amp;&amp; span.approval.granted = false }</code></li>
+<li>Logs: <code>|= "indirect prompt injection"</code></li>
+</ul>
+<h3 id="slow-tool-tool-latency-regression"><code>slow-tool</code>: Tool latency regression</h3>
+<p><strong>What changes:</strong> Tool latency x6</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Tool latency p95 and task duration p95 rise</li>
+<li>Some tasks hit the timeout</li>
+<li>Cost per task roughly unchanged</li>
+</ul>
+<p><strong>Alerts:</strong> <code>AgentTaskLatencyHigh</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Tool latency p95; Task duration</li>
+<li>TraceQL: <code>{ name = "invoke_agent supervisor" &amp;&amp; duration &gt; 30s }</code> and look for the long <code>execute_tool</code> span</li>
+</ul>
+<h3 id="runaway-loop-agent-loop-on-repeated-tool-calls"><code>runaway-loop</code>: Agent loop on repeated tool calls</h3>
+<p><strong>What changes:</strong> 45% of tasks repeat the same search with the same arguments</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Loop detections; terminations with reason <code>loop</code> / <code>max_steps</code></li>
+<li>Steps per task p95 climbs towards the hard limit</li>
+<li>Success rate falls; wasted cost</li>
+</ul>
+<p><strong>Alerts:</strong> <code>AgentLoopsDetected</code>, <code>AgentTaskSuccessLow</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#agent-runaway-or-loops">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Loop detections, Terminations by reason, Steps per task</li>
+<li>TraceQL: <code>{ span.loop.detected = true }</code> shows the repeated <code>tool.args_hash</code></li>
+</ul>
+<h2 id="query-cookbook">Query cookbook</h2>
+<pre class="highlight"><code class="language-promql"># cost per *successful* task (reconcile cost with outcomes)
+sum(increase(agent_cost_usd_total[1d])) / sum(increase(agent_tasks_total{outcome="success"}[1d]))
+
+# which tool is failing
+sum by (tool) (rate(agent_tool_calls_total{status="error"}[5m])) / sum by (tool) (rate(agent_tool_calls_total{status!="denied"}[5m]))
+
+# how often each guard stops a task
+sum by (reason) (increase(agent_terminations_total[1h]))
+
+# handoff graph weights
+sum by (from, to) (increase(agent_handoffs_total[1h]))</code></pre>
+<pre class="highlight"><code class="language-traceql">{ resource.service.name = "research-agents" &amp;&amp; name = "invoke_agent supervisor" &amp;&amp; span.app.task.outcome != "success" }
+{ span.loop.detected = true }
+{ span.tool.side_effect = "write" &amp;&amp; span.approval.granted = false }
+{ resource.service.name = "research-agents" &amp;&amp; span.gen_ai.tool.name = "web_fetch" &amp;&amp; status = error }</code></pre>
+<pre class="highlight"><code class="language-logql">{service_name="research-agents"} |= "task terminated"
+{service_name="research-agents"} |= "indirect prompt injection"</code></pre>
+<h2 id="taking-it-to-production">Taking it to production</h2>
+<ul>
+<li>Put <strong>hard limits</strong> in the framework (max steps, tokens, wall clock, USD) and emit <code>agent.terminations</code> when they trigger; alert on the <em>rate</em> of terminations.</li>
+<li>Use your orchestrator's callbacks (LangGraph, OpenAI Agents SDK, Semantic Kernel, AutoGen, CrewAI, …) or its OTel support to create <code>invoke_agent</code> / <code>execute_tool</code> spans; keep the attributes above.</li>
+<li>Evaluate trajectories offline (tool choice, step efficiency vs a reference) and outcomes online; see <a href="#p-metrics-evaluation">Evaluation</a>.</li>
+<li>Treat tool outputs as untrusted: log injection verdicts, require approval for side effects, record denials.</li>
+<li>See <a href="#p-use-cases-adapting">Adapting to your app</a>.</li>
+</ul></section><section class="page" id="p-use-cases-chatbot"><h1 id="use-case-chatbot">Use case: Chatbot</h1>
+<p><strong>Service <code>support-chatbot</code></strong>: a customer-support assistant with multi-turn sessions across web, mobile and WhatsApp, intent routing, a guardrail that can refuse, escalation to humans, and streaming answers.
+Code: <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/chatbot"><code>use-cases/chatbot/</code></a> · Theory: <a href="#p-monitoring-chatbots">Monitoring chatbots</a>.</p>
+<p>Chatbots are judged per <strong>conversation</strong>, not per request. The metrics here are the ones a support leader asks about: containment, escalation, abandonment, and cost per conversation, next to the engineering ones.</p>
+<pre class="highlight"><code class="language-bash">python use-cases/chatbot/app/chatbot_app.py --rps 0.6 --cycle 240
+python use-cases/chatbot/app/chatbot_app.py --scenario over-refusal
+python use-cases/chatbot/app/chatbot_app.py --console --duration 15</code></pre>
+<h2 id="telemetry-design">Telemetry design</h2>
+<ul>
+<li>One <strong>trace per turn</strong> (<code>chat.turn</code> → <code>chat &lt;model&gt;</code>), correlated into a conversation by <code>gen_ai.conversation.id</code>. A <strong>session</strong> (the conversation) is a <em>metric</em> (<code>chat.sessions</code>) with a final outcome, so you never need to stitch traces to compute containment.</li>
+<li>No message text is recorded: only message length, intent label, channel, turn index, context utilization and scores.</li>
+<li>Streaming stalls and truncations are explicit events, because they show up in user abandonment before they show up in error rates.</li>
+</ul>
+<h2 id="metrics">Metrics</h2>
+<table>
+<thead>
+<tr>
+<th>OTel name</th>
+<th>Prometheus name</th>
+<th>Key labels</th>
+<th>Answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chat.sessions</code></td>
+<td><code>chat_sessions_total</code></td>
+<td><code>outcome</code> (resolved/escalated/abandoned), <code>intent</code>, <code>channel</code></td>
+<td><strong>Containment</strong>, escalation, abandonment</td>
+</tr>
+<tr>
+<td><code>chat.session.turns</code></td>
+<td><code>chat_session_turns_*</code></td>
+<td><code>outcome</code></td>
+<td>Turns to resolution</td>
+</tr>
+<tr>
+<td><code>chat.turns</code></td>
+<td><code>chat_turns_total</code></td>
+<td><code>status</code>, <code>intent</code>, <code>channel</code></td>
+<td>Turn volume, error ratio</td>
+</tr>
+<tr>
+<td><code>chat.turn.duration</code></td>
+<td><code>chat_turn_duration_seconds_*</code></td>
+<td><code>intent</code></td>
+<td>Turn latency</td>
+</tr>
+<tr>
+<td><code>chat.ttft</code></td>
+<td><code>chat_ttft_seconds_*</code></td>
+<td><code>channel</code></td>
+<td>Perceived responsiveness</td>
+</tr>
+<tr>
+<td><code>chat.stream.stalls</code></td>
+<td><code>chat_stream_stalls_total</code></td>
+<td></td>
+<td>Mid-answer pauses</td>
+</tr>
+<tr>
+<td><code>chat.intents</code></td>
+<td><code>chat_intents_total</code></td>
+<td><code>intent</code>, <code>channel</code></td>
+<td>Intent mix, input drift</td>
+</tr>
+<tr>
+<td><code>chat.fallbacks</code></td>
+<td><code>chat_fallbacks_total</code></td>
+<td></td>
+<td>Unsupported intents</td>
+</tr>
+<tr>
+<td><code>chat.guardrail.events</code></td>
+<td><code>chat_guardrail_events_total</code></td>
+<td><code>category</code>, <code>action</code>, <code>intent</code></td>
+<td>Refusals, over-refusal</td>
+</tr>
+<tr>
+<td><code>chat.context.utilization</code></td>
+<td><code>chat_context_utilization_*</code></td>
+<td></td>
+<td>Context window pressure (0..1)</td>
+</tr>
+<tr>
+<td><code>chat.context.truncations</code></td>
+<td><code>chat_context_truncations_total</code></td>
+<td></td>
+<td>History loss</td>
+</tr>
+<tr>
+<td><code>chat.tokens</code>, <code>chat.cost.usd</code></td>
+<td><code>chat_tokens_total</code>, <code>chat_cost_usd_total</code></td>
+<td><code>direction</code>, <code>intent</code></td>
+<td>Cost per conversation</td>
+</tr>
+<tr>
+<td><code>chat.eval.score</code></td>
+<td><code>chat_eval_score_*</code></td>
+<td><code>metric</code> (goal_completion, policy_compliance)</td>
+<td>Conversation-level quality</td>
+</tr>
+<tr>
+<td><code>chat.feedback</code></td>
+<td><code>chat_feedback_total</code></td>
+<td><code>rating</code>, <code>intent</code></td>
+<td>User signal</td>
+</tr>
+<tr>
+<td><code>chat.active_sessions</code></td>
+<td><code>chat_active_sessions</code></td>
+<td></td>
+<td>Concurrency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dashboards">Dashboards</h2>
+<p>Folder <strong>chatbot</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chatbot: Conversations, Quality &amp; Cost</strong></td>
+<td>Containment/escalation/abandonment, Δ vs previous period, containment <strong>by intent</strong> (aggregates hide regressions), TTFT by channel, refusals, context utilization, cost per conversation. Variable: <code>intent</code></td>
+</tr>
+<tr>
+<td><strong>Chatbot: Trends</strong></td>
+<td>Daily containment, week-over-week</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alerts">Alerts</h2>
+<p><a href="https://github.com/akashtalole/ai-observability/blob/main/use-cases/chatbot/alerts/chatbot-alerts.yml"><code>use-cases/chatbot/alerts/chatbot-alerts.yml</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Alert</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ChatTTFTHigh</code></td>
+<td>TTFT p95 &gt; 1.5 s</td>
+</tr>
+<tr>
+<td><code>ChatTurnErrors</code></td>
+<td>&gt; 5 % of turns failing</td>
+</tr>
+<tr>
+<td><code>ChatContainmentDrop</code></td>
+<td>Containment &lt; 60 % (healthy demo traffic ≈ 80 %)</td>
+</tr>
+<tr>
+<td><code>ChatEscalationSpike</code></td>
+<td>Escalation &gt; 25 % (healthy ≈ 12 %)</td>
+</tr>
+<tr>
+<td><code>ChatOverRefusal</code></td>
+<td>Guardrail refusing &gt; 8 % of turns</td>
+</tr>
+<tr>
+<td><code>ChatContextNearLimit</code></td>
+<td>Context utilization p95 &gt; 30 % (demo window is small; use ~80 % in production)</td>
+</tr>
+<tr>
+<td><code>ChatGoalCompletionLow</code></td>
+<td>Judge goal-completion &lt; 0.75 <strong>and</strong> ≥ 8 scored conversations</td>
+</tr>
+<tr>
+<td><code>ChatCostPerSessionSpike</code></td>
+<td>Cost/conversation &gt; 1.5× its 30-minute median</td>
+</tr>
+</tbody>
+</table>
+<h2 id="failure-scenarios">Failure scenarios</h2>
+<!-- GENERATED by scripts/build.py from data/scenarios.json. Edit the JSON. -->
+
+<p>Run with <code>--cycle 240</code> to alternate healthy phases and these faults, or pin one with <code>--scenario NAME</code>. The alerts listed are the ones each fault is designed to trigger; thresholds are calibrated to the demo traffic.</p>
+<h3 id="slow-model-model-latency-streaming-stalls"><code>slow-model</code>: Model latency + streaming stalls</h3>
+<p><strong>What changes:</strong> Model latency x3.5, 8% of streams stall mid-answer</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>TTFT p95 rises; stalls per turn rise</li>
+<li>Abandonment rises, containment falls a little</li>
+</ul>
+<p><strong>Alerts:</strong> <code>ChatTTFTHigh</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#latency-regression">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: TTFT by channel; Turn error ratio &amp; streaming stalls</li>
+<li>TraceQL: <code>{ span.stream.stalled = true }</code></li>
+</ul>
+<h3 id="hallucinating-quality-regression"><code>hallucinating</code>: Quality regression</h3>
+<p><strong>What changes:</strong> Probability that a conversation is solvable -0.40</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Containment falls; escalation and thumbs-down rise</li>
+<li>Goal-completion judge score falls</li>
+<li>Latency, errors and cost look normal</li>
+</ul>
+<p><strong>Alerts:</strong> <code>ChatContainmentDrop</code>, <code>ChatEscalationSpike</code>, <code>ChatGoalCompletionLow</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#conversation-quality-or-containment-drop">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Containment by intent; Conversation-level eval scores</li>
+<li>Read escalated conversations (redacted), check recent prompt/model changes</li>
+</ul>
+<h3 id="over-refusal-guardrail-too-strict"><code>over-refusal</code>: Guardrail too strict</h3>
+<p><strong>What changes:</strong> 22% of turns refused by the guardrail</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Refusals per turn rise; escalation rises, containment falls</li>
+<li>Policy-compliance score dips; quality score otherwise fine</li>
+</ul>
+<p><strong>Alerts:</strong> <code>ChatOverRefusal</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#conversation-quality-or-containment-drop">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Guardrail refusals by intent</li>
+<li>TraceQL: <code>{ span.guardrail.refused = true }</code></li>
+<li>Review a sample of refused turns for false positives</li>
+</ul>
+<h3 id="long-context-history-bloat"><code>long-context</code>: History bloat</h3>
+<p><strong>What changes:</strong> Context size x5</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Context utilization p95 rises; truncation events</li>
+<li>Cost per conversation rises</li>
+</ul>
+<p><strong>Alerts:</strong> <code>ChatContextNearLimit</code>, <code>ChatCostPerSessionSpike</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#context-window-pressure">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Context window utilization; Cost per conversation</li>
+<li>TraceQL: <code>{ span.context.truncated = true }</code></li>
+</ul>
+<h3 id="outage-provider-errors"><code>outage</code>: Provider errors</h3>
+<p><strong>What changes:</strong> 35% of model calls fail</p>
+<p><strong>What you see</strong></p>
+<ul>
+<li>Turn error ratio rises; abandonment rises</li>
+<li>Containment falls</li>
+</ul>
+<p><strong>Alerts:</strong> <code>ChatTurnErrors</code> · <a href="https://github.com/akashtalole/ai-observability/blob/main/docs/operations/runbooks.md#provider-errors-and-rate-limits">runbook</a></p>
+<p><strong>Investigate</strong></p>
+<ul>
+<li>Dashboard: Turn error ratio</li>
+<li>Logs: <code>|= "model call failed"</code></li>
+<li>TraceQL: <code>{ status = error }</code></li>
+</ul>
+<h2 id="query-cookbook">Query cookbook</h2>
+<pre class="highlight"><code class="language-promql"># containment by intent
+sum by (intent) (rate(chat_sessions_total{outcome="resolved"}[1h])) / sum by (intent) (rate(chat_sessions_total[1h]))
+
+# cost per resolved conversation (not per conversation)
+sum(increase(chat_cost_usd_total[1d])) / sum(increase(chat_sessions_total{outcome="resolved"}[1d]))
+
+# over-refusal rate
+sum(rate(chat_guardrail_events_total{action="refused"}[5m])) / sum(rate(chat_turns_total[5m]))
+
+# fastest-growing intents (input drift)
+topk(3, sum by (intent) (rate(chat_intents_total[1d])) / sum by (intent) (rate(chat_intents_total[1d] offset 7d)))</code></pre>
+<pre class="highlight"><code class="language-traceql">{ resource.service.name = "support-chatbot" &amp;&amp; span.guardrail.refused = true }
+{ resource.service.name = "support-chatbot" &amp;&amp; span.stream.stalled = true }
+{ resource.service.name = "support-chatbot" &amp;&amp; name = "chat.turn" &amp;&amp; span.context.truncated = true }</code></pre>
+<h2 id="taking-it-to-production">Taking it to production</h2>
+<ul>
+<li>Emit <code>chat.sessions</code> from your session manager on close/timeout, with the final outcome.</li>
+<li>Define <strong>resolution</strong> carefully (explicit confirmation, no re-contact within N days, judge score): it is the KPI everything else supports.</li>
+<li>Add a conversation-level judge on a stratified sample; calibrate against human review.</li>
+<li>For regulated data, tokenize user IDs, redact content before any storage, and keep content out of telemetry (see <a href="#p-architecture-security-privacy">Security &amp; privacy</a>).</li>
+<li>See <a href="#p-use-cases-adapting">Adapting to your app</a>.</li>
+</ul></section><section class="page" id="p-use-cases-adapting"><h1 id="adapting-the-use-cases-to-your-app">Adapting the use cases to your app</h1>
+<p>The demo apps simulate model and vector DB calls so they run anywhere; the <strong>telemetry contract</strong> (span names, attributes, metric names, labels) is what you carry over.</p>
+<h2 id="checklist">Checklist</h2>
+<ol>
+<li><strong>Keep the names.</strong> Dashboards and alerts key on <code>service_name</code> and the metric names on each use-case page. Rename the service via <code>setup("your-service")</code>, then search/replace <code>service_name="support-rag"</code> in the rules and <code>gen_dashboards.py</code>.</li>
+<li><strong>Instrument your real calls.</strong> Replace the <code>time.sleep</code> stand-ins with client calls. Frameworks that already emit OTel (or OpenLLMetry / OpenLIT / OpenInference auto-instrumentation) can supply the <code>chat</code> / <code>embeddings</code> spans; keep the manual stage spans and <code>app.*</code> / <code>rag.*</code> attributes.</li>
+<li><strong>Own the price table.</strong> Cost = tokens × versioned price; record <code>app.price_table.version</code>.</li>
+<li><strong>Wire change events.</strong> Replace the "scenario change" log annotation with deploy / prompt / model / index events from CI/CD (a log line to Loki or a Prometheus annotation series).</li>
+<li><strong>Decide your quality signals</strong> (judge, rubric, sample rate) and write them as <code>*.eval.score{metric=…}</code> histograms.</li>
+<li><strong>Tune thresholds from your own baselines.</strong> The demo thresholds fit synthetic traffic; derive yours from 2-4 weeks of data, or use baseline-relative rules like <code>&gt; 2× 30-minute median</code>.</li>
+<li><strong>Lengthen windows.</strong> Demo rules use 2-3 minute windows so scenarios fire quickly; use 5-15 minute windows and multi-window burn rates in production (<a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a>).</li>
+<li><strong>Move off the laptop stack.</strong> See the hardening and long-range retention list on <a href="#p-use-cases-stack">the stack page</a>.</li>
+</ol>
+<h2 id="mapping-to-other-frameworks">Mapping to other frameworks</h2>
+<table>
+<thead>
+<tr>
+<th>You use…</th>
+<th>Do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LangChain / LangGraph, LlamaIndex, Semantic Kernel, AutoGen, CrewAI</td>
+<td>Enable the framework's OTel/OpenInference/OpenLLMetry instrumentation; add a callback that records the metrics above</td>
+</tr>
+<tr>
+<td>Provider SDK only (OpenAI, Anthropic, Bedrock, Vertex, Azure)</td>
+<td>Use OpenLLMetry/OpenLIT/OpenInference instrumentors for <code>chat</code> spans; add your own stage spans</td>
+</tr>
+<tr>
+<td>A gateway (LiteLLM, Kong, APIM, Envoy AI Gateway)</td>
+<td>Take tokens/cost/latency/errors from its OTel metrics and join to app traces by <code>traceparent</code></td>
+</tr>
+<tr>
+<td>Java / Node / Go / .NET</td>
+<td>Same OTel conventions; copy the metric and attribute names, not the Python</td>
+</tr>
+<tr>
+<td>Existing Datadog / Dynatrace / New Relic</td>
+<td>Keep the Collector; add that vendor's exporter next to (or instead of) Prometheus/Tempo/Loki</td>
+</tr>
+</tbody>
+</table>
+<h2 id="swapping-backends-later">Swapping backends later</h2>
+<p>Because the apps speak only OTLP to the Collector, you can add or replace backends without touching application code: point <code>otlp/tempo</code> at another OTLP endpoint, change <code>prometheusremotewrite</code> to Mimir/Thanos/VictoriaMetrics/Grafana Cloud, add a ClickHouse or vendor exporter. That is the portability argument from the <a href="#p-build-vs-buy-decision-framework">build-vs-buy framework</a> in practice.</p>
+<h2 id="extending">Extending</h2>
+<ul>
+<li>New use case (voice, text-to-SQL, batch pipeline): copy a folder under <code>use-cases/</code>, add a dashboard function in <code>scripts/gen_dashboards.py</code>, add a rules file, and mount them in <code>stack/docker-compose.yml</code>.</li>
+<li>Verify before committing: <code>python scripts/verify_dashboards.py</code> runs every panel query through Grafana's API against a live stack and fails on errors.</li>
+</ul></section><section class="page" id="p-rag-rag-observability-playbook"><h1 id="rag-playbook-latency-quality-cost-over-any-time-range">RAG playbook: latency, quality &amp; cost over any time range</h1>
 <p><strong>Goal:</strong> full visibility into latency, quality and cost of the RAG app across any time range, catching issues early and tracking trends over months.</p>
 <h2 id="the-recipe-in-seven-steps">The recipe in seven steps</h2>
 <pre class="mermaid"><code>flowchart LR
@@ -4885,6 +7356,34 @@ jobs:
 <li>Re-run retrieval golden set; compare recall@k with last good index.</li>
 <li>Roll back index alias; fix ingestion; reindex.</li>
 </ol>
+<h2 id="agent-runaway-or-loops">Agent runaway or loops</h2>
+<ol>
+<li>Confirm: steps-per-task p95, loop detections, terminations by reason (<code>max_steps</code>, <code>budget_exceeded</code>, <code>timeout</code>, <code>loop</code>), cost per task.</li>
+<li>Open a few traces of terminated tasks (<code>span.loop.detected = true</code>): which tool and arguments repeat? Is the tool returning an error or an empty result the agent keeps retrying?</li>
+<li>Check recent change events: prompt/tool-description edits, new tool, model switch, framework upgrade.</li>
+<li>Mitigate: tighten hard limits (max steps, per-task USD budget, wall clock), add a loop breaker (same tool + args ≥ 3 → replan or stop), disable the offending tool, route to a different model.</li>
+<li>Verify cost per <em>successful</em> task returns to baseline; add the failing trajectory to the regression suite.</li>
+</ol>
+<h2 id="tool-dependency-failing">Tool dependency failing</h2>
+<ol>
+<li>Which tool (<code>agent_tool_calls_total{status="error"}</code> by <code>tool</code>)? Compare with the dependency's own health.</li>
+<li>Check retries/replans: failures amplify cost through plan revisions.</li>
+<li>Mitigate: circuit-break the tool, fall back to an alternate source, return a typed error the agent can reason about, cache stable results.</li>
+</ol>
+<h2 id="conversation-quality-or-containment-drop">Conversation quality or containment drop</h2>
+<ol>
+<li>Slice containment by intent and channel: one intent, or all?</li>
+<li>Compare refusals (over-refusal), fallbacks (unsupported intents), goal-completion judge score, thumbs-down.</li>
+<li>Check change events (prompt, model, retrieval/index, guardrail policy) and provider health.</li>
+<li>Read 10-20 escalated or abandoned conversations (redacted) and classify the cause.</li>
+<li>Mitigate: roll back prompt/model/guardrail policy; adjust thresholds; extend intent coverage; add failing cases to the golden set.</li>
+</ol>
+<h2 id="context-window-pressure">Context window pressure</h2>
+<ol>
+<li>Context utilization p95, truncation events, tokens by turn index.</li>
+<li>Mitigate: summarize or window history, cap retrieved context, compress tool outputs, move long-term state to memory.</li>
+<li>Re-check cost per conversation and answer quality after the change.</li>
+</ol>
 <h2 id="safety-guardrail-incident">Safety / guardrail incident</h2>
 <ol>
 <li>Contain: tighten guardrail, disable affected feature/tool, block abusive tenant/user.</li>
@@ -4978,6 +7477,10 @@ jobs:
 <td>Tickable checklist of metrics to collect per app type; progress saved locally</td>
 </tr>
 <tr>
+<td><a href="scenario-playbook.html">Failure scenario playbook</a></td>
+<td>14 simulated faults across RAG / multi-agent / chatbot: what changes, what you see, which alert fires, where to look (generated from <code>data/scenarios.json</code>)</td>
+</tr>
+<tr>
 <td><a href="handbook.html">Single-file handbook</a></td>
 <td>The whole handbook rendered as one printable HTML document</td>
 </tr>
@@ -4985,7 +7488,7 @@ jobs:
 </table>
 <div class="admonition info">
 <p class="admonition-title">Generated files</p>
-<p><code>landscape-explorer.html</code> and <code>handbook.html</code> are generated by <code>python scripts/build.py</code> from <code>data/tools.json</code> and the Markdown sources — edit those, not the HTML. The CI workflow regenerates them on every deploy.</p>
+<p><code>landscape-explorer.html</code>, <code>scenario-playbook.html</code> and <code>handbook.html</code> are generated by <code>python scripts/build.py</code> from <code>data/tools.json</code> and the Markdown sources — edit those, not the HTML. The CI workflow regenerates them on every deploy.</p>
 </div>
 <div class="grid cards">
 <ul>
@@ -4993,6 +7496,7 @@ jobs:
 <li><a href="landscape-explorer.html">:material-magnify: <strong>Landscape explorer</strong></a></li>
 <li><a href="rag-dashboard-demo.html">:material-chart-line: <strong>RAG dashboard demo</strong></a></li>
 <li><a href="metrics-checklist.html">:material-checkbox-marked-outline: <strong>Metrics checklist</strong></a></li>
+<li><a href="scenario-playbook.html">:material-alert-circle-outline: <strong>Scenario playbook</strong></a></li>
 <li><a href="handbook.html">:material-book-open-variant: <strong>Handbook (single file)</strong></a></li>
 </ul>
 </div></section><section class="page" id="p-glossary"><h1 id="glossary">Glossary</h1>

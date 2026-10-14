@@ -1,0 +1,282 @@
+[
+ {
+  "use_case": "rag",
+  "name": "slow-llm",
+  "title": "Provider latency degradation",
+  "injected": "LLM latency x3.2 (TTFT and decode)",
+  "symptoms": [
+   "TTFT p95 and end-to-end p95 rise",
+   "Stage latency: `llm` dominates, retrieval unchanged",
+   "Quality and cost per request unchanged"
+  ],
+  "alerts": [
+   "RagTTFTHigh",
+   "RagLatencyHigh"
+  ],
+  "investigate": [
+   "Dashboard: Latency row -> Stage latency p95",
+   "Click a TTFT exemplar -> `chat large-model` span is slow",
+   "TraceQL: `{ resource.service.name = \"support-rag\" && duration > 6s }`"
+  ],
+  "runbook": "latency-regression"
+ },
+ {
+  "use_case": "rag",
+  "name": "bad-index",
+  "title": "Bad reindex / stale index",
+  "injected": "Top-1 similarity -0.30, empty retrieval 12%, groundedness -0.22, index age 60 h",
+  "symptoms": [
+   "Top-1 similarity p50 drops; empty / low-score retrieval ratio rises",
+   "Groundedness (judge) falls; thumbs-down rises",
+   "Index freshness panel crosses 48 h",
+   "Latency and cost look normal: only quality tells you"
+  ],
+  "alerts": [
+   "RagRetrievalDegraded",
+   "RagGroundednessLow",
+   "RagIndexStale"
+  ],
+  "investigate": [
+   "Dashboard: Quality row (top-1, empty ratio, freshness)",
+   "TraceQL: `{ span.eval.flagged = true }` (kept at 100% by the tail sampler)",
+   "Logs: `|= \"weak retrieval\" | index_version=\"…\"`"
+  ],
+  "runbook": "retrieval-degradation"
+ },
+ {
+  "use_case": "rag",
+  "name": "cost-spike",
+  "title": "Context bloat",
+  "injected": "Context tokens x4.5",
+  "symptoms": [
+   "Cost per request and spend per hour jump (about 3x)",
+   "Context tokens p50/p95 and input tokens rise",
+   "Quality roughly unchanged"
+  ],
+  "alerts": [
+   "RagCostPerRequestSpike"
+  ],
+  "investigate": [
+   "Dashboard: Cost row -> Context tokens, tokens in vs out",
+   "Cost by tenant / feature to find the owner",
+   "Compare `rag.context.tokens` on a spike trace vs a normal one"
+  ],
+  "runbook": "cost-spike"
+ },
+ {
+  "use_case": "rag",
+  "name": "provider-errors",
+  "title": "429 / 5xx storm",
+  "injected": "Provider error rate 50% per call (3 attempts, fallback to small model on the 2nd)",
+  "symptoms": [
+   "Error ratio rises; retries and fallbacks per request rise",
+   "Requests served by `small-model` (cost down, quality down)",
+   "Latency up from retry back-off"
+  ],
+  "alerts": [
+   "RagErrorBudgetFastBurn",
+   "RagRetryStorm"
+  ],
+  "investigate": [
+   "Dashboard: Error ratio, retries & fallbacks",
+   "Logs: `|= \"llm call failed\"` (error_type, attempt)",
+   "TraceQL: `{ name =~ \"chat .*\" && status = error }`"
+  ],
+  "runbook": "provider-errors-and-rate-limits"
+ },
+ {
+  "use_case": "multi-agent",
+  "name": "tool-flaky",
+  "title": "Search / fetch dependency failing",
+  "injected": "`search` and `web_fetch` fail 35% of calls",
+  "symptoms": [
+   "Tool error ratio by tool rises (search, web_fetch)",
+   "Plan revisions (cause: tool_failure) and extra LLM calls",
+   "Success rate falls; cost per task rises"
+  ],
+  "alerts": [
+   "AgentToolErrorRateHigh"
+  ],
+  "investigate": [
+   "Dashboard: Tool error ratio by tool; Plan revisions",
+   "TraceQL: `{ span.gen_ai.tool.name = \"search\" && status = error }`",
+   "Logs: `|= \"tool call failed\"`"
+  ],
+  "runbook": "tool-dependency-failing"
+ },
+ {
+  "use_case": "multi-agent",
+  "name": "cost-spike",
+  "title": "Context bloat + revision cycles",
+  "injected": "Context x4, reviewer rejects 40% of drafts",
+  "symptoms": [
+   "Cost per task spikes; p95 cost climbs",
+   "Tasks end with `budget_exceeded` terminations",
+   "Plan revisions (cause: rejected) and steps per task rise"
+  ],
+  "alerts": [
+   "AgentCostPerTaskSpike",
+   "AgentBudgetExceededTerminations"
+  ],
+  "investigate": [
+   "Dashboard: Cost per task, Spend by agent, Terminations by reason",
+   "TraceQL: `{ name = \"invoke_agent supervisor\" && span.app.task.termination_reason = \"budget_exceeded\" }`"
+  ],
+  "runbook": "cost-spike"
+ },
+ {
+  "use_case": "multi-agent",
+  "name": "injection",
+  "title": "Indirect prompt injection via tool output",
+  "injected": "25% of `web_fetch` results carry injected instructions; 80% detected",
+  "symptoms": [
+   "Guardrail events: `blocked` and `missed` (the `missed` ones are the dangerous ones)",
+   "Write-tool approvals requested for `send_email`, some denied",
+   "Warnings in logs; latency and cost unchanged"
+  ],
+  "alerts": [
+   "AgentInjectionMissed"
+  ],
+  "investigate": [
+   "Dashboard: Safety & governance row",
+   "TraceQL: `{ span.tool.side_effect = \"write\" && span.approval.granted = false }`",
+   "Logs: `|= \"indirect prompt injection\"`"
+  ],
+  "runbook": "safety--guardrail-incident"
+ },
+ {
+  "use_case": "multi-agent",
+  "name": "slow-tool",
+  "title": "Tool latency regression",
+  "injected": "Tool latency x6",
+  "symptoms": [
+   "Tool latency p95 and task duration p95 rise",
+   "Some tasks hit the timeout",
+   "Cost per task roughly unchanged"
+  ],
+  "alerts": [
+   "AgentTaskLatencyHigh"
+  ],
+  "investigate": [
+   "Dashboard: Tool latency p95; Task duration",
+   "TraceQL: `{ name = \"invoke_agent supervisor\" && duration > 30s }` and look for the long `execute_tool` span"
+  ],
+  "runbook": "latency-regression"
+ },
+ {
+  "use_case": "multi-agent",
+  "name": "runaway-loop",
+  "title": "Agent loop on repeated tool calls",
+  "injected": "45% of tasks repeat the same search with the same arguments",
+  "symptoms": [
+   "Loop detections; terminations with reason `loop` / `max_steps`",
+   "Steps per task p95 climbs towards the hard limit",
+   "Success rate falls; wasted cost"
+  ],
+  "alerts": [
+   "AgentLoopsDetected",
+   "AgentTaskSuccessLow"
+  ],
+  "investigate": [
+   "Dashboard: Loop detections, Terminations by reason, Steps per task",
+   "TraceQL: `{ span.loop.detected = true }` shows the repeated `tool.args_hash`"
+  ],
+  "runbook": "agent-runaway-or-loops"
+ },
+ {
+  "use_case": "chatbot",
+  "name": "slow-model",
+  "title": "Model latency + streaming stalls",
+  "injected": "Model latency x3.5, 8% of streams stall mid-answer",
+  "symptoms": [
+   "TTFT p95 rises; stalls per turn rise",
+   "Abandonment rises, containment falls a little"
+  ],
+  "alerts": [
+   "ChatTTFTHigh"
+  ],
+  "investigate": [
+   "Dashboard: TTFT by channel; Turn error ratio & streaming stalls",
+   "TraceQL: `{ span.stream.stalled = true }`"
+  ],
+  "runbook": "latency-regression"
+ },
+ {
+  "use_case": "chatbot",
+  "name": "hallucinating",
+  "title": "Quality regression",
+  "injected": "Probability that a conversation is solvable -0.40",
+  "symptoms": [
+   "Containment falls; escalation and thumbs-down rise",
+   "Goal-completion judge score falls",
+   "Latency, errors and cost look normal"
+  ],
+  "alerts": [
+   "ChatContainmentDrop",
+   "ChatEscalationSpike",
+   "ChatGoalCompletionLow"
+  ],
+  "investigate": [
+   "Dashboard: Containment by intent; Conversation-level eval scores",
+   "Read escalated conversations (redacted), check recent prompt/model changes"
+  ],
+  "runbook": "conversation-quality-or-containment-drop"
+ },
+ {
+  "use_case": "chatbot",
+  "name": "over-refusal",
+  "title": "Guardrail too strict",
+  "injected": "22% of turns refused by the guardrail",
+  "symptoms": [
+   "Refusals per turn rise; escalation rises, containment falls",
+   "Policy-compliance score dips; quality score otherwise fine"
+  ],
+  "alerts": [
+   "ChatOverRefusal"
+  ],
+  "investigate": [
+   "Dashboard: Guardrail refusals by intent",
+   "TraceQL: `{ span.guardrail.refused = true }`",
+   "Review a sample of refused turns for false positives"
+  ],
+  "runbook": "conversation-quality-or-containment-drop"
+ },
+ {
+  "use_case": "chatbot",
+  "name": "long-context",
+  "title": "History bloat",
+  "injected": "Context size x5",
+  "symptoms": [
+   "Context utilization p95 rises; truncation events",
+   "Cost per conversation rises"
+  ],
+  "alerts": [
+   "ChatContextNearLimit",
+   "ChatCostPerSessionSpike"
+  ],
+  "investigate": [
+   "Dashboard: Context window utilization; Cost per conversation",
+   "TraceQL: `{ span.context.truncated = true }`"
+  ],
+  "runbook": "context-window-pressure"
+ },
+ {
+  "use_case": "chatbot",
+  "name": "outage",
+  "title": "Provider errors",
+  "injected": "35% of model calls fail",
+  "symptoms": [
+   "Turn error ratio rises; abandonment rises",
+   "Containment falls"
+  ],
+  "alerts": [
+   "ChatTurnErrors"
+  ],
+  "investigate": [
+   "Dashboard: Turn error ratio",
+   "Logs: `|= \"model call failed\"`",
+   "TraceQL: `{ status = error }`"
+  ],
+  "runbook": "provider-errors-and-rate-limits"
+ }
+]
