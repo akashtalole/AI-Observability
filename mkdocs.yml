@@ -118,6 +118,7 @@ nav:
       - RAG: use-cases/rag.md
       - Multi-agent: use-cases/multi-agent.md
       - Chatbot: use-cases/chatbot.md
+      - Omni-style Grafana dashboards: use-cases/omni-style-dashboards.md
       - Adapting to your app: use-cases/adapting.md
   - RAG deep dive:
       - Latency, quality & cost over time: rag/rag-observability-playbook.md

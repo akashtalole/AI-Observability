@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a><a href="#p-ai-and-observability-meta-observability">Meta-observability: observing the AI that observes</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a><a href="#p-ai-and-observability-meta-observability">Meta-observability: observing the AI that observes</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-omni-style-dashboards">Omni-style Grafana dashboards</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -7543,6 +7543,7 @@ python use-cases/chatbot/app/chatbot_app.py      --rps 0.6 --cycle 240 &amp;
 <p>connectors:
   forward/sampled: {}
   spanmetrics:
+    metrics_flush_interval: 15s      # default 60s is too coarse for rate() over 1-minute windows
     histogram:
       explicit:
         buckets: [100ms, 250ms, 500ms, 1s, 2s, 4s, 8s, 16s, 32s]
@@ -8628,7 +8629,170 @@ topk(3, sum by (intent) (rate(chat_intents_total[1d])) / sum by (intent) (rate(c
 <li>Add a conversation-level judge on a stratified sample; calibrate against human review.</li>
 <li>For regulated data, tokenize user IDs, redact content before any storage, and keep content out of telemetry (see <a href="#p-architecture-security-privacy">Security &amp; privacy</a>).</li>
 <li>See <a href="#p-use-cases-adapting">Adapting to your app</a>.</li>
-</ul></section><section class="page" id="p-use-cases-adapting"><h1 id="adapting-the-use-cases-to-your-app">Adapting the use cases to your app</h1>
+</ul></section><section class="page" id="p-use-cases-omni-style-dashboards"><h1 id="omni-style-grafana-dashboards">Omni-style Grafana dashboards</h1>
+<p>Six Grafana dashboards that reproduce the <strong>working surfaces of Amazon CloudWatch Omni's agent observability</strong> on the open-source stack (OpenTelemetry Collector, Prometheus, Tempo, Loki, Grafana). They read the data the three <a href="#p-use-cases-index">demo apps</a> already emit, so they work out of the box, and they work for any application that follows the <a href="#p-cloud-native-implementation-guide">telemetry contract</a>.</p>
+<p>Source: <a href="https://github.com/akashtalole/ai-observability/tree/main/use-cases/omni-style"><code>use-cases/omni-style/</code></a> · generator: <a href="https://github.com/akashtalole/ai-observability/blob/main/scripts/gen_omni_dashboards.py"><code>scripts/gen_omni_dashboards.py</code></a> · background on Omni: <a href="#p-cloud-native-omni">CloudWatch Omni</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">What this is modelled on</p>
+<p>The Omni dashboard link that prompted this work is behind AWS sign-in and could not be opened, so the dashboards are modelled on Omni's <strong>publicly documented</strong> surfaces (Trace Explorer with compare mode, Session Explorer, Agent Topology, evaluators, Spaces with SLOs). They are a functional equivalent, <strong>not a pixel copy</strong>. If you share screenshots or an export of the specific Omni view you want, the layout can be matched more closely.</p>
+</div>
+<h2 id="mapping-omni-surface-grafana-dashboard">Mapping: Omni surface → Grafana dashboard</h2>
+<table>
+<thead>
+<tr>
+<th>Omni surface</th>
+<th>Grafana dashboard (<code>omni-style</code> folder)</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Space</strong>: team's applications, SLOs, alarms, investigations</td>
+<td><strong>Space health &amp; SLOs</strong> (<code>omni-space-health</code>)</td>
+<td>Per-application availability, latency, <strong>error budget left</strong> and burn rate; firing alerts and alert history; change events; discovered models/tools; links into the explorers</td>
+</tr>
+<tr>
+<td>Application / agent list, fleet view</td>
+<td><strong>Agent fleet overview</strong> (<code>omni-agent-overview</code>)</td>
+<td>KPIs vs previous period, applications table, per-agent table, traffic/latency/error by app, LLM calls and latency by model, tokens, spend, tool latency</td>
+</tr>
+<tr>
+<td><strong>Trace Explorer</strong> (+ compare mode)</td>
+<td><strong>Trace Explorer</strong> (<code>omni-trace-explorer</code>)</td>
+<td>TraceQL search with filters (service, min duration, status), click a <code>traceID</code> to open the hierarchical timeline (LLM calls, tool invocations), <strong>compare two traces side by side</strong>, slowest operations, logs for the selected trace</td>
+</tr>
+<tr>
+<td><strong>Session Explorer</strong> (multi-turn)</td>
+<td><strong>Session Explorer</strong> (<code>omni-session-explorer</code>)</td>
+<td>Conversation health (containment, escalation, abandonment, turns per conversation), browse sessions by <code>gen_ai.conversation.id</code>, turns of a selected session, trace timeline</td>
+</tr>
+<tr>
+<td><strong>Agent Topology</strong></td>
+<td><strong>Agent Topology</strong> (<code>omni-agent-topology</code>)</td>
+<td>Handoff matrix (from → to), tool-usage matrix (agent × tool), per-edge calls/error ratio, per-agent LLM calls, latency and spend, loops and terminations</td>
+</tr>
+<tr>
+<td><strong>Evaluators</strong>, regression detection</td>
+<td><strong>Evaluations</strong> (<code>omni-evaluations</code>)</td>
+<td>Evaluator scorecards with Δ vs previous period, score-distribution <strong>heatmaps</strong>, pass rates, scored-sample counts, now-vs-earlier regression check, flagged traces and judge-run spans</td>
+</tr>
+</tbody>
+</table>
+<p>All six share a <strong>dashboard navigation bar</strong> (tag <code>omni-style</code>) so they feel like one app, and carry the <code>service</code> variable where it applies.</p>
+<pre class="mermaid"><code>flowchart LR
+    SH[Space health &amp; SLOs] --&gt; FO[Fleet overview]
+    FO --&gt; TE[Trace Explorer]
+    FO --&gt; TP[Agent Topology]
+    FO --&gt; EV[Evaluations]
+    EV --&gt;|flagged trace| TE
+    TP --&gt;|looping trace| TE
+    SE[Session Explorer] --&gt;|turn trace| TE
+    TE --&gt;|trace_id| LOGS[(Loki)]</code></pre>
+<h2 id="how-the-data-flows">How the data flows</h2>
+<table>
+<thead>
+<tr>
+<th>Panels</th>
+<th>Data source</th>
+<th>Based on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fleet/Space RED (requests, errors, latency by app, model, tool)</td>
+<td>Prometheus</td>
+<td><strong>Span metrics</strong> from the Collector (<code>traces_span_metrics_calls_total</code>, <code>…duration_milliseconds_bucket</code>) with <code>gen_ai_*</code> dimensions, computed from 100 % of spans before sampling</td>
+</tr>
+<tr>
+<td>Per-agent, handoffs, tool usage, evaluator scores, sessions, cost</td>
+<td>Prometheus</td>
+<td>App metrics (<code>agent_*</code>, <code>rag_*</code>, <code>chat_*</code>) described on the <a href="#p-use-cases-index">use-case pages</a></td>
+</tr>
+<tr>
+<td>Trace search, timeline, compare, sessions, flagged traces</td>
+<td>Tempo</td>
+<td>TraceQL over <code>gen_ai.*</code>, <code>app.*</code>, <code>eval.flagged</code> attributes</td>
+</tr>
+<tr>
+<td>Logs for a trace, change events, warnings</td>
+<td>Loki</td>
+<td><code>trace_id</code> structured metadata; "scenario change" log lines (replace with your deploy events)</td>
+</tr>
+<tr>
+<td>Alerts</td>
+<td>Prometheus</td>
+<td><code>ALERTS</code> series from the rule files in <code>use-cases/*/alerts</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Shared helper fix made while building these</p>
+<p>The demo apps' histogram bucket views were also matching score/count histograms, emitting two bucket sets for one metric and corrupting <code>histogram_quantile()</code> (visible as a stray 64/16/4/1 axis on the evaluation heatmaps). <code>use-cases/common/telemetry.py</code> now applies the latency buckets only to histograms with unit <code>s</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Collector setting that matters</p>
+<p>These dashboards rely on <code>spanmetrics</code> with <strong><code>metrics_flush_interval: 15s</code></strong> (set in <code>stack/otel-collector.yaml</code>). With the 60 s default, a 1-minute <code>rate()</code> window contains at most one sample and the span-metric time series stay empty.</p>
+</div>
+<h2 id="run-it">Run it</h2>
+<pre class="highlight"><code class="language-bash">pip install -r use-cases/requirements.txt
+docker compose -f use-cases/stack/docker-compose.yml up -d        # Grafana http://localhost:3000, folder "omni-style"
+python use-cases/rag/app/rag_app.py --rps 3 --cycle 240 &amp;
+python use-cases/multi-agent/app/agent_app.py --rps 0.9 --cycle 240 &amp;
+python use-cases/chatbot/app/chatbot_app.py --rps 0.6 --cycle 240 &amp;</code></pre>
+<p>Suggested walkthrough (about five minutes):</p>
+<ol>
+<li>Open <strong>Space health</strong>: watch an application's error budget and burn rate react as scenarios rotate; open a firing alert.</li>
+<li>Jump to <strong>Fleet overview</strong>, find the application with rising p95 or spend.</li>
+<li>Open <strong>Trace Explorer</strong>, filter <code>errors</code> or <code>&gt; 5s</code>, click a <code>traceID</code>, read the timeline; paste a healthy trace ID into <em>compare with trace ID</em> to compare.</li>
+<li>In <strong>Agent Topology</strong>, look at the tool-usage matrix during <code>tool-flaky</code> or <code>runaway-loop</code>, then open a looping trace.</li>
+<li>In <strong>Evaluations</strong>, watch groundedness and its distribution heatmap shift during <code>bad-index</code>; open the flagged traces.</li>
+<li>In <strong>Session Explorer</strong>, copy a conversation ID from the table into the <em>session</em> variable.</li>
+</ol>
+<h2 id="verified-and-not-verified">Verified and not verified</h2>
+<ul>
+<li>The Collector, Prometheus, Tempo, Loki and Grafana 11 were run with these dashboards provisioned. <code>scripts/verify_dashboards.py</code> executed every panel query through Grafana's API (and TraceQL/trace-by-ID through the Tempo proxy) with <strong>0 errors</strong>. Panels that depend on history (Δ vs previous period, "now vs one hour earlier") need more than a few minutes of data, and some panels are empty until the matching fault scenario occurs (for example loop detections). The <code>docker compose</code> stack itself was not executed.</li>
+<li>The trace timeline and compare panels show an error icon until a trace ID is selected (they query a dashboard variable that starts empty).</li>
+<li>Table joins/matrices and heatmaps were checked for query success, not pixel-by-pixel appearance in every Grafana version.</li>
+</ul>
+<h2 id="what-is-deliberately-not-reproduced">What is deliberately not reproduced</h2>
+<table>
+<thead>
+<tr>
+<th>Omni capability</th>
+<th>Why / alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ask Assistant</strong>, AI investigations with DevOps Agent, natural-language queries</td>
+<td>Product-specific AI features. See <a href="#p-ai-and-observability-ai-for-observability">AI for observability</a> for building read-only, evidence-citing assistants over this data</td>
+</tr>
+<tr>
+<td><strong>Playground</strong>, <strong>Experiments</strong>, golden datasets from traces, prompt management</td>
+<td>Offline-evaluation workflow. Use the <a href="#p-scoring-offline-scoring">offline scoring gate</a> in CI; push results as a metric to chart variants</td>
+</tr>
+<tr>
+<td><strong>Agent Topology as a node-link graph</strong></td>
+<td>Grafana's node graph needs a node/edge data source; the matrices and edge tables carry the same information</td>
+</tr>
+<tr>
+<td><strong>Automatic service discovery from AWS Config, alarm auto-tuning</strong></td>
+<td>AWS-specific; here, services and models/tools are discovered from span attributes and alert rules are code</td>
+</tr>
+<tr>
+<td><strong>IDE extension</strong></td>
+<td>Out of scope; traces open in Grafana</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adapting-to-your-agents">Adapting to your agents</h2>
+<ol>
+<li>Emit the <a href="#p-cloud-native-implementation-guide">telemetry contract</a>: <code>invoke_agent</code> / <code>chat</code> / <code>execute_tool</code> spans with <code>gen_ai.agent.name</code>, <code>gen_ai.tool.name</code>, <code>gen_ai.request.model</code>, <code>gen_ai.conversation.id</code>.</li>
+<li>Keep the Collector's <code>spanmetrics</code> dimensions (<code>gen_ai.agent.name</code>, <code>gen_ai.tool.name</code>, <code>gen_ai.request.model</code>, <code>gen_ai.operation.name</code>) so the span-metric panels light up for your services automatically.</li>
+<li>For the Evaluations dashboard, publish scores as histograms <code>&lt;app&gt;_eval_score{metric}</code> (see the <a href="#p-scoring-online-scoring">online scoring</a> guide); copy the card list in <code>evaluations()</code> to add your evaluators.</li>
+<li>For the agent matrices, publish <code>agent_handoffs_total{from,to}</code> and <code>agent_tool_calls_total{agent,tool,status}</code> or derive equivalents from spans.</li>
+<li>Edit <code>scripts/gen_omni_dashboards.py</code> and regenerate; do not hand-edit the JSON.</li>
+</ol></section><section class="page" id="p-use-cases-adapting"><h1 id="adapting-the-use-cases-to-your-app">Adapting the use cases to your app</h1>
 <p>The demo apps simulate model and vector DB calls so they run anywhere; the <strong>telemetry contract</strong> (span names, attributes, metric names, labels) is what you carry over.</p>
 <h2 id="checklist">Checklist</h2>
 <ol>

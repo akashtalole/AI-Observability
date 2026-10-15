@@ -1,0 +1,1385 @@
+{
+ "uid": "omni-evaluations",
+ "title": "Omni-style \u00b7 Evaluations",
+ "tags": [
+  "ai-observability",
+  "omni-style"
+ ],
+ "description": "Evaluator scores over time: scorecards with change vs previous period, score distributions, pass rates, and low-scoring traces.",
+ "schemaVersion": 39,
+ "version": 1,
+ "editable": true,
+ "graphTooltip": 1,
+ "refresh": "30s",
+ "time": {
+  "from": "now-3h",
+  "to": "now"
+ },
+ "timezone": "browser",
+ "annotations": {
+  "list": [
+   {
+    "builtIn": 1,
+    "datasource": {
+     "type": "grafana",
+     "uid": "-- Grafana --"
+    },
+    "enable": true,
+    "hide": true,
+    "iconColor": "rgba(0, 211, 255, 1)",
+    "name": "Annotations & Alerts",
+    "type": "dashboard"
+   }
+  ]
+ },
+ "templating": {
+  "list": []
+ },
+ "panels": [
+  {
+   "type": "row",
+   "title": "Evaluator scorecards (mean over range \u00b7 \u0394 vs previous period)",
+   "id": 1,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 0
+   },
+   "panels": []
+  },
+  {
+   "type": "stat",
+   "title": "Groundedness",
+   "id": 2,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 0,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "(sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"groundedness\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"groundedness\"}[$__range])))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "decimals": 3,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 0.75
+       },
+       {
+        "color": "green",
+        "value": 0.85
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "\u0394 Groundedness",
+   "id": 3,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 3,
+    "w": 4,
+    "x": 0,
+    "y": 5
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"groundedness\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"groundedness\"}[$__range])))) / ((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"groundedness\"}[$__range] offset $__range))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"groundedness\"}[$__range] offset $__range)))) - 1",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "decimals": 1,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "green",
+        "value": -0.02
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "Answer relevance",
+   "id": 4,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 4,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "(sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range])))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "decimals": 3,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 0.75
+       },
+       {
+        "color": "green",
+        "value": 0.85
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "\u0394 Answer relevance",
+   "id": 5,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 3,
+    "w": 4,
+    "x": 4,
+    "y": 5
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range])))) / ((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range] offset $__range))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"answer_relevance\"}[$__range] offset $__range)))) - 1",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "decimals": 1,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "green",
+        "value": -0.02
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "Context precision",
+   "id": 6,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 8,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "(sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"context_precision\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"context_precision\"}[$__range])))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "decimals": 3,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 0.75
+       },
+       {
+        "color": "green",
+        "value": 0.85
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "\u0394 Context precision",
+   "id": 7,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 3,
+    "w": 4,
+    "x": 8,
+    "y": 5
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"context_precision\"}[$__range]))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"context_precision\"}[$__range])))) / ((sum(increase(rag_eval_score_sum{service_name=\"support-rag\",metric=\"context_precision\"}[$__range] offset $__range))) / (sum(increase(rag_eval_score_count{service_name=\"support-rag\",metric=\"context_precision\"}[$__range] offset $__range)))) - 1",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "decimals": 1,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "green",
+        "value": -0.02
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "Goal completion",
+   "id": 8,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 12,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "(sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range]))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range])))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "decimals": 3,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 0.75
+       },
+       {
+        "color": "green",
+        "value": 0.85
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "\u0394 Goal completion",
+   "id": 9,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 3,
+    "w": 4,
+    "x": 12,
+    "y": 5
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "((sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range]))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range])))) / ((sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range] offset $__range))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__range] offset $__range)))) - 1",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "decimals": 1,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "green",
+        "value": -0.02
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "Policy compliance",
+   "id": 10,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 16,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "(sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range]))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range])))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "decimals": 3,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 0.75
+       },
+       {
+        "color": "green",
+        "value": 0.85
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "\u0394 Policy compliance",
+   "id": 11,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 3,
+    "w": 4,
+    "x": 16,
+    "y": 5
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "((sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range]))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range])))) / ((sum(increase(chat_eval_score_sum{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range] offset $__range))) / (sum(increase(chat_eval_score_count{service_name=\"support-chatbot\",metric=\"policy_compliance\"}[$__range] offset $__range)))) - 1",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "decimals": 1,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "green",
+        "value": -0.02
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "stat",
+   "title": "Scored samples",
+   "id": 12,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 20,
+    "y": 1
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum(increase(rag_eval_score_count{service_name=\"support-rag\"}[$__range])) + sum(increase(chat_eval_score_count{service_name=\"support-chatbot\"}[$__range]))",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "short",
+     "decimals": null,
+     "noValue": "no data",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "colorMode": "value",
+    "graphMode": "none",
+    "textMode": "auto",
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    }
+   }
+  },
+  {
+   "type": "row",
+   "title": "Trends and distributions",
+   "id": 13,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 8
+   },
+   "panels": []
+  },
+  {
+   "type": "timeseries",
+   "title": "RAG evaluators (mean)",
+   "id": 14,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 7,
+    "w": 8,
+    "x": 0,
+    "y": 9
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (metric) (rate(rag_eval_score_sum{service_name=\"support-rag\"}[$__rate_interval])) / sum by (metric) (rate(rag_eval_score_count{service_name=\"support-rag\"}[$__rate_interval]))",
+     "legendFormat": "{{metric}}",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "min": 0,
+     "max": 1,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      },
+      "thresholdsStyle": {
+       "mode": "dashed"
+      }
+     },
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "transparent",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 0.8
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "timeseries",
+   "title": "Conversation evaluators (mean)",
+   "id": 15,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 7,
+    "w": 8,
+    "x": 8,
+    "y": 9
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (metric) (rate(chat_eval_score_sum{service_name=\"support-chatbot\"}[$__rate_interval])) / sum by (metric) (rate(chat_eval_score_count{service_name=\"support-chatbot\"}[$__rate_interval]))",
+     "legendFormat": "{{metric}}",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "min": 0,
+     "max": 1,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      },
+      "thresholdsStyle": {
+       "mode": "dashed"
+      }
+     },
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "transparent",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 0.75
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "timeseries",
+   "title": "Scored samples per minute",
+   "id": 16,
+   "description": "Quality charts are statistical: read every score with its sample size",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 7,
+    "w": 8,
+    "x": 16,
+    "y": 9
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (metric) (rate(rag_eval_score_count[$__rate_interval])) * 60",
+     "legendFormat": "rag {{metric}}",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (metric) (rate(chat_eval_score_count[$__rate_interval])) * 60",
+     "legendFormat": "chat {{metric}}",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "short",
+     "min": null,
+     "max": null,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      }
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "heatmap",
+   "title": "Groundedness distribution (RAG)",
+   "id": 17,
+   "description": "Each column is a time slice; colour = how many scored answers fell in the score bucket",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 16
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (le) (increase(rag_eval_score_bucket{service_name=\"support-rag\",metric=\"groundedness\"}[$__interval]))",
+     "format": "heatmap",
+     "legendFormat": "{{le}}",
+     "range": true
+    }
+   ],
+   "options": {
+    "calculate": false,
+    "cellGap": 1,
+    "color": {
+     "scheme": "Spectral",
+     "mode": "scheme",
+     "scale": "exponential",
+     "reverse": false
+    },
+    "yAxis": {
+     "axisPlacement": "left",
+     "min": 0,
+     "max": 1
+    },
+    "legend": {
+     "show": true
+    },
+    "tooltip": {
+     "mode": "single",
+     "yHistogram": false
+    },
+    "rowsFrame": {
+     "layout": "auto"
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "scaleDistribution": {
+       "type": "linear"
+      }
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "type": "heatmap",
+   "title": "Goal completion distribution (chatbot)",
+   "id": 18,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 16
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (le) (increase(chat_eval_score_bucket{service_name=\"support-chatbot\",metric=\"goal_completion\"}[$__interval]))",
+     "format": "heatmap",
+     "legendFormat": "{{le}}",
+     "range": true
+    }
+   ],
+   "options": {
+    "calculate": false,
+    "cellGap": 1,
+    "color": {
+     "scheme": "Spectral",
+     "mode": "scheme",
+     "scale": "exponential",
+     "reverse": false
+    },
+    "yAxis": {
+     "axisPlacement": "left",
+     "min": 0,
+     "max": 1
+    },
+    "legend": {
+     "show": true
+    },
+    "tooltip": {
+     "mode": "single",
+     "yHistogram": false
+    },
+    "rowsFrame": {
+     "layout": "auto"
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "scaleDistribution": {
+       "type": "linear"
+      }
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "type": "row",
+   "title": "Pass rates and regression detection",
+   "id": 19,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 24
+   },
+   "panels": []
+  },
+  {
+   "type": "timeseries",
+   "title": "Pass rate: share of scores \u2265 0.8",
+   "id": 20,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 7,
+    "w": 12,
+    "x": 0,
+    "y": 25
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "1 - sum by (metric) (rate(rag_eval_score_bucket{service_name=\"support-rag\",le=\"0.8\"}[$__rate_interval])) / sum by (metric) (rate(rag_eval_score_count{service_name=\"support-rag\"}[$__rate_interval]))",
+     "legendFormat": "rag {{metric}}",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "1 - sum by (metric) (rate(chat_eval_score_bucket{service_name=\"support-chatbot\",le=\"0.8\"}[$__rate_interval])) / sum by (metric) (rate(chat_eval_score_count{service_name=\"support-chatbot\"}[$__rate_interval]))",
+     "legendFormat": "chat {{metric}}",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percentunit",
+     "min": 0,
+     "max": 1,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      }
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "timeseries",
+   "title": "Groundedness: now vs one hour earlier (regression check)",
+   "id": 21,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 7,
+    "w": 12,
+    "x": 12,
+    "y": 25
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum(rate(rag_eval_score_sum{service_name=\"support-rag\",metric=\"groundedness\"}[10m])) / sum(rate(rag_eval_score_count{service_name=\"support-rag\",metric=\"groundedness\"}[10m]))",
+     "legendFormat": "now",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum(rate(rag_eval_score_sum{service_name=\"support-rag\",metric=\"groundedness\"}[10m] offset 1h)) / sum(rate(rag_eval_score_count{service_name=\"support-rag\",metric=\"groundedness\"}[10m] offset 1h))",
+     "legendFormat": "1 h earlier",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "min": 0,
+     "max": 1,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      }
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "row",
+   "title": "Low-scoring and flagged traces",
+   "id": 22,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 32
+   },
+   "panels": []
+  },
+  {
+   "type": "table",
+   "title": "Flagged traces (empty/low retrieval, failed/abandoned tasks)",
+   "id": 23,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 33
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "{ span.eval.flagged = true }",
+     "limit": 20,
+     "tableType": "traces"
+    }
+   ],
+   "options": {
+    "showHeader": true
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "traceID"
+      },
+      "properties": [
+       {
+        "id": "links",
+        "value": [
+         {
+          "title": "Open in Trace Explorer",
+          "url": "/d/omni-trace-explorer?var-traceId=${__value.raw}&${__url_time_range}",
+          "targetBlank": false
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "table",
+   "title": "Evaluation spans (judge runs linked to traces)",
+   "id": 24,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 33
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "{ name = \"rag.evaluate\" } | select(span.eval.groundedness, span.eval.answer_relevance, span.eval.context_precision)",
+     "limit": 20,
+     "tableType": "spans"
+    }
+   ],
+   "options": {
+    "showHeader": true
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "type": "text",
+   "title": "",
+   "id": 25,
+   "gridPos": {
+    "h": 3,
+    "w": 24,
+    "x": 0,
+    "y": 42
+   },
+   "options": {
+    "mode": "markdown",
+    "content": "**Experiments / offline evaluation.** Omni compares agent variants and builds golden datasets from traces. With this stack, run the offline gate ([`examples/scoring/offline_eval.py`](https://github.com/akashtalole/ai-observability/blob/main/examples/scoring/offline_eval.py)) in CI and push its results as a metric such as `eval_offline_score{dataset,config,metric}` (Pushgateway or OTLP) to chart variants here."
+   }
+  }
+ ],
+ "links": [
+  {
+   "title": "Omni-style views",
+   "type": "dashboards",
+   "tags": [
+    "omni-style"
+   ],
+   "asDropdown": false,
+   "includeVars": true,
+   "keepTime": true,
+   "icon": "external link",
+   "targetBlank": false
+  },
+  {
+   "title": "Handbook",
+   "type": "link",
+   "url": "https://akashtalole.github.io/ai-observability/",
+   "targetBlank": true
+  }
+ ]
+}

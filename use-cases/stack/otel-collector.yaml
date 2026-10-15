@@ -37,6 +37,7 @@ processors:
 connectors:
   forward/sampled: {}
   spanmetrics:
+    metrics_flush_interval: 15s      # default 60s is too coarse for rate() over 1-minute windows
     histogram:
       explicit:
         buckets: [100ms, 250ms, 500ms, 1s, 2s, 4s, 8s, 16s, 32s]

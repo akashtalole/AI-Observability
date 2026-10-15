@@ -1,0 +1,579 @@
+{
+ "uid": "omni-trace-explorer",
+ "title": "Omni-style \u00b7 Trace Explorer",
+ "tags": [
+  "ai-observability",
+  "omni-style"
+ ],
+ "description": "Search traces, open one as a hierarchical timeline (LLM calls, tool invocations, reasoning steps) and compare two traces side by side.",
+ "schemaVersion": 39,
+ "version": 1,
+ "editable": true,
+ "graphTooltip": 1,
+ "refresh": "30s",
+ "time": {
+  "from": "now-1h",
+  "to": "now"
+ },
+ "timezone": "browser",
+ "annotations": {
+  "list": [
+   {
+    "builtIn": 1,
+    "datasource": {
+     "type": "grafana",
+     "uid": "-- Grafana --"
+    },
+    "enable": true,
+    "hide": true,
+    "iconColor": "rgba(0, 211, 255, 1)",
+    "name": "Annotations & Alerts",
+    "type": "dashboard"
+   }
+  ]
+ },
+ "templating": {
+  "list": [
+   {
+    "name": "service",
+    "label": "service",
+    "type": "query",
+    "datasource": {
+     "type": "prometheus",
+     "uid": "prometheus"
+    },
+    "includeAll": true,
+    "multi": true,
+    "allValue": ".+",
+    "current": {
+     "selected": true,
+     "text": "All",
+     "value": "$__all"
+    },
+    "refresh": 2,
+    "sort": 1,
+    "query": {
+     "query": "label_values(traces_span_metrics_calls_total, service_name)",
+     "refId": "v"
+    }
+   },
+   {
+    "name": "min_dur",
+    "label": "min duration",
+    "type": "custom",
+    "query": "any : 0s,> 1s : 1s,> 2s : 2s,> 5s : 5s,> 10s : 10s,> 30s : 30s",
+    "options": [
+     {
+      "text": "any",
+      "value": "0s",
+      "selected": true
+     },
+     {
+      "text": "> 1s",
+      "value": "1s",
+      "selected": false
+     },
+     {
+      "text": "> 2s",
+      "value": "2s",
+      "selected": false
+     },
+     {
+      "text": "> 5s",
+      "value": "5s",
+      "selected": false
+     },
+     {
+      "text": "> 10s",
+      "value": "10s",
+      "selected": false
+     },
+     {
+      "text": "> 30s",
+      "value": "30s",
+      "selected": false
+     }
+    ],
+    "current": {
+     "text": "any",
+     "value": "0s",
+     "selected": true
+    }
+   },
+   {
+    "name": "outcome",
+    "label": "status",
+    "type": "custom",
+    "query": "any : && duration >= 0s,errors : && status = error,ok : && status = ok",
+    "options": [
+     {
+      "text": "any",
+      "value": "&& duration >= 0s",
+      "selected": true
+     },
+     {
+      "text": "errors",
+      "value": "&& status = error",
+      "selected": false
+     },
+     {
+      "text": "ok",
+      "value": "&& status = ok",
+      "selected": false
+     }
+    ],
+    "current": {
+     "text": "any",
+     "value": "&& duration >= 0s",
+     "selected": true
+    }
+   },
+   {
+    "name": "traceId",
+    "label": "trace ID",
+    "type": "textbox",
+    "query": "",
+    "current": {
+     "text": "",
+     "value": ""
+    }
+   },
+   {
+    "name": "traceB",
+    "label": "compare with trace ID",
+    "type": "textbox",
+    "query": "",
+    "current": {
+     "text": "",
+     "value": ""
+    }
+   }
+  ]
+ },
+ "panels": [
+  {
+   "type": "text",
+   "title": "",
+   "id": 1,
+   "gridPos": {
+    "h": 3,
+    "w": 24,
+    "x": 0,
+    "y": 0
+   },
+   "options": {
+    "mode": "markdown",
+    "content": "**How to use:** pick filters, then click a **traceID** in the results to load it below as a timeline. To compare, paste a second trace ID into *compare with trace ID* (top). Spans carry `gen_ai.*` attributes: model, tokens, tool, agent. Metrics \u2192 trace: click an exemplar on any latency panel."
+   }
+  },
+  {
+   "type": "row",
+   "title": "Search",
+   "id": 2,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 3
+   },
+   "panels": []
+  },
+  {
+   "type": "table",
+   "title": "Matching traces",
+   "id": 3,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "TraceQL search. The traceID column links into the timeline.",
+   "gridPos": {
+    "h": 9,
+    "w": 24,
+    "x": 0,
+    "y": 4
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "{ resource.service.name =~ \"$service\" && duration > $min_dur $outcome }",
+     "limit": 20,
+     "tableType": "traces"
+    }
+   ],
+   "options": {
+    "showHeader": true
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "traceID"
+      },
+      "properties": [
+       {
+        "id": "links",
+        "value": [
+         {
+          "title": "Open in Trace Explorer",
+          "url": "/d/omni-trace-explorer?var-traceId=${__value.raw}&${__url_time_range}",
+          "targetBlank": false
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "row",
+   "title": "Selected trace (timeline)",
+   "id": 4,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 13
+   },
+   "panels": []
+  },
+  {
+   "type": "traces",
+   "title": "Trace timeline",
+   "id": 5,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "Hierarchy of spans for $traceId; set the traceId variable at the top",
+   "gridPos": {
+    "h": 16,
+    "w": 24,
+    "x": 0,
+    "y": 14
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "$traceId"
+    }
+   ]
+  },
+  {
+   "type": "row",
+   "title": "Compare mode",
+   "id": 6,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 30
+   },
+   "panels": []
+  },
+  {
+   "type": "traces",
+   "title": "Trace A",
+   "id": 7,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "",
+   "gridPos": {
+    "h": 14,
+    "w": 12,
+    "x": 0,
+    "y": 31
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "$traceId"
+    }
+   ]
+  },
+  {
+   "type": "traces",
+   "title": "Trace B",
+   "id": 8,
+   "datasource": {
+    "type": "tempo",
+    "uid": "tempo"
+   },
+   "description": "",
+   "gridPos": {
+    "h": 14,
+    "w": 12,
+    "x": 12,
+    "y": 31
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "tempo",
+      "uid": "tempo"
+     },
+     "queryType": "traceql",
+     "query": "$traceB"
+    }
+   ]
+  },
+  {
+   "type": "row",
+   "title": "Operations (span metrics)",
+   "id": 9,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 45
+   },
+   "panels": []
+  },
+  {
+   "type": "table",
+   "title": "Slowest operations (p95)",
+   "id": 10,
+   "description": "Top operations by p95 latency across the selected services",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 46
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "topk(15, histogram_quantile(0.95, sum by (le, service_name, span_name) (increase(traces_span_metrics_duration_milliseconds_bucket{service_name=~\"$service\"}[$__range])))) / 1000",
+     "format": "table",
+     "instant": true,
+     "range": false
+    },
+    {
+     "refId": "B",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (service_name, span_name) (increase(traces_span_metrics_calls_total{service_name=~\"$service\"}[$__range]))",
+     "format": "table",
+     "instant": true,
+     "range": false
+    }
+   ],
+   "transformations": [
+    {
+     "id": "organize",
+     "options": {
+      "excludeByName": {
+       "Time": true,
+       "Time 1": true,
+       "Time 2": true,
+       "Time 3": true,
+       "Time 4": true,
+       "Time 5": true,
+       "Time 6": true
+      },
+      "renameByName": {
+       "Value #A": "p95 (s)",
+       "Value #B": "calls",
+       "span_name": "Operation",
+       "service_name": "Service"
+      }
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "decimals": 0,
+     "custom": {
+      "align": "auto",
+      "cellOptions": {
+       "type": "auto"
+      }
+     }
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "p95 (s)"
+      },
+      "properties": [
+       {
+        "id": "unit",
+        "value": "s"
+       },
+       {
+        "id": "decimals",
+        "value": 2
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "showHeader": true,
+    "cellHeight": "sm"
+   }
+  },
+  {
+   "type": "timeseries",
+   "title": "Span error rate by operation",
+   "id": 11,
+   "description": "",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 46
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prometheus"
+     },
+     "expr": "sum by (span_name) (rate(traces_span_metrics_calls_total{service_name=~\"$service\",status_code=\"STATUS_CODE_ERROR\"}[$__rate_interval]))",
+     "legendFormat": "{{span_name}}",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "ops",
+     "min": 0,
+     "max": null,
+     "custom": {
+      "drawStyle": "line",
+      "lineWidth": 1,
+      "fillOpacity": 10,
+      "showPoints": "never",
+      "spanNulls": true,
+      "stacking": {
+       "mode": "none",
+       "group": "A"
+      }
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "type": "row",
+   "title": "Logs for the selected trace",
+   "id": 12,
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 55
+   },
+   "panels": []
+  },
+  {
+   "type": "logs",
+   "title": "Logs (trace_id = $traceId)",
+   "id": 13,
+   "datasource": {
+    "type": "loki",
+    "uid": "loki"
+   },
+   "gridPos": {
+    "h": 8,
+    "w": 24,
+    "x": 0,
+    "y": 56
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "loki",
+      "uid": "loki"
+     },
+     "expr": "{service_name=~\"$service\"} | trace_id=\"$traceId\"",
+     "queryType": "range",
+     "maxLines": 200
+    }
+   ],
+   "options": {
+    "showTime": true,
+    "wrapLogMessage": true,
+    "enableLogDetails": true,
+    "sortOrder": "Descending",
+    "dedupStrategy": "none",
+    "prettifyLogMessage": false
+   }
+  }
+ ],
+ "links": [
+  {
+   "title": "Omni-style views",
+   "type": "dashboards",
+   "tags": [
+    "omni-style"
+   ],
+   "asDropdown": false,
+   "includeVars": true,
+   "keepTime": true,
+   "icon": "external link",
+   "targetBlank": false
+  },
+  {
+   "title": "Handbook",
+   "type": "link",
+   "url": "https://akashtalole.github.io/ai-observability/",
+   "targetBlank": true
+  }
+ ]
+}

@@ -11,6 +11,7 @@ use-cases/
   rag/                    app/ dashboards/ alerts/        service: support-rag
   multi-agent/            app/ dashboards/ alerts/        service: research-agents
   chatbot/                app/ dashboards/ alerts/        service: support-chatbot
+  omni-style/             dashboards/                     CloudWatch-Omni-style views on the same data
 ```
 
 ## Quick start
@@ -31,7 +32,7 @@ telemetry without a stack. Dashboards live in Grafana folders `rag`, `multi-agen
 
 | Task | Command |
 |---|---|
-| Regenerate dashboards after editing `scripts/gen_dashboards.py` | `python scripts/gen_dashboards.py` |
+| Regenerate dashboards after editing `scripts/gen_dashboards.py` / `gen_omni_dashboards.py` | `python scripts/gen_dashboards.py && python scripts/gen_omni_dashboards.py` |
 | Validate alert rules | `promtool check rules use-cases/*/alerts/*.yml use-cases/stack/prometheus/rules/*.yml` |
 | Validate Collector config | `otelcol-contrib validate --config use-cases/stack/otel-collector.yaml` |
 | Run every dashboard query against a live stack | `python scripts/verify_dashboards.py --grafana http://localhost:3000` |
