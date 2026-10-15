@@ -46,5 +46,17 @@ jobs:
           docker run --rm -v "$PWD/use-cases/stack/otel-collector.yaml:/etc/otelcol.yaml:ro" \
             otel/opentelemetry-collector-contrib:0.120.0 validate --config=/etc/otelcol.yaml
 
+      - name: Validate cloud Collector configs and telemetry contract
+        run: |
+          python examples/cloud/check_telemetry_contract.py
+          python examples/aiops/anomaly_baseline.py > /dev/null
+          for c in aws azure gcp; do
+            docker run --rm -e AWS_REGION=us-east-1 -e CW_LOG_GROUP=/ai/app -e CW_LOG_STREAM=otel \
+              -e APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://eastus-0.in.applicationinsights.azure.com/" \
+              -e GOOGLE_CLOUD_PROJECT=my-project \
+              -v "$PWD/examples/cloud/otel-collector-$c.yaml:/etc/otelcol.yaml:ro" \
+              otel/opentelemetry-collector-contrib:0.120.0 validate --config=/etc/otelcol.yaml
+          done
+
       - name: Validate docker compose
         run: docker compose -f use-cases/stack/docker-compose.yml config -q

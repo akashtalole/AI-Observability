@@ -72,7 +72,7 @@
   "license": "Apache-2.0",
   "description": "Proxy/gateway-based logging, cost tracking, caching.",
   "strengths": "Fast setup via proxy",
-  "caveat": "Reported maintenance mode after Mintlify deal (2026) \u2014 verify",
+  "caveat": "Reported maintenance mode after Mintlify deal (2026) — verify",
   "url": "https://helicone.ai",
   "otel": "Partial"
  },
@@ -171,7 +171,7 @@
   "license": "Proprietary (SDK Apache-2.0)",
   "description": "Tracing, evals, and experiment tracking for LLM apps.",
   "strengths": "Great for teams already on W&B",
-  "caveat": "Company ownership changed (CoreWeave) \u2014 verify roadmap",
+  "caveat": "Company ownership changed (CoreWeave) — verify roadmap",
   "url": "https://wandb.ai/site/weave",
   "otel": "Yes"
  },
@@ -301,7 +301,7 @@
   "category": "APM / observability incumbent",
   "model": "SaaS / self-managed",
   "license": "Elastic License / SSPL / AGPL",
-  "description": "LLM observability integrations (Bedrock, Azure OpenAI, OpenAI\u2026), OTel.",
+  "description": "LLM observability integrations (Bedrock, Azure OpenAI, OpenAI…), OTel.",
   "strengths": "Search + logs + vector in one",
   "caveat": "LLM eval depth modest",
   "url": "https://www.elastic.co/observability",
@@ -367,9 +367,9 @@
   "category": "Cloud-native",
   "model": "Cloud service",
   "license": "Proprietary",
-  "description": "OTel tracing, Foundry evaluators, monitoring dashboards, APIM AI gateway.",
+  "description": "OTel tracing in Application Insights, Foundry Observability (Traces, evaluators), native OTLP ingestion paths (Collector with Entra, Azure Monitor Agent, AKS), Microsoft OpenTelemetry distro, APIM AI gateway.",
   "strengths": "Native Azure OpenAI/Foundry integration",
-  "caveat": "Azure-centric",
+  "caveat": "Azure-centric; OTLP ingestion labelled preview on Learn but GA in a May 2026 announcement: verify",
   "url": "https://learn.microsoft.com/azure/ai-foundry/",
   "otel": "Yes"
  },
@@ -378,10 +378,21 @@
   "category": "Cloud-native",
   "model": "Cloud service",
   "license": "Proprietary",
-  "description": "Model invocation logs, GenAI dashboards, agent observability, Guardrails.",
-  "strengths": "Native Bedrock integration, ADOT/OTel",
-  "caveat": "AWS-centric",
-  "url": "https://aws.amazon.com/cloudwatch/",
+  "description": "Model invocation logs, GenAI/agent dashboards, AgentCore Observability, native OTLP endpoints (traces, logs, metrics), Guardrails.",
+  "strengths": "First-party OTLP for all signals (SigV4); deep Bedrock/AgentCore integration; ADOT",
+  "caveat": "HTTP-only OTLP with request/series limits; AWS-centric",
+  "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPEndpoint.html",
+  "otel": "Yes"
+ },
+ {
+  "name": "Amazon CloudWatch Omni",
+  "category": "Cloud-native",
+  "model": "Cloud service",
+  "license": "Proprietary",
+  "description": "AI-first, team/application-centric observability (GA Sep 2026): Spaces, AI investigations with DevOps Agent, agent tracing, 17 built-in evaluators, experiments, IDE extension; OpenTelemetry-based with connectors for other clouds.",
+  "strengths": "Agent evaluation and experimentation plus AI-assisted triage; existing CloudWatch telemetry appears without reconfiguration",
+  "caveat": "New; confirm regions, pricing and connector coverage; AI-aware features tied to CloudWatch storage",
+  "url": "https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/",
   "otel": "Yes"
  },
  {
@@ -389,9 +400,9 @@
   "category": "Cloud-native",
   "model": "Cloud service",
   "license": "Proprietary",
-  "description": "Gemini/Agent observability, evaluation service, Model Armor, Cloud Trace.",
-  "strengths": "OTel-native GCP telemetry; BigQuery export",
-  "caveat": "GCP-centric",
+  "description": "Telemetry (OTLP) API for Cloud Trace/Monitoring/Logging, Google-built Collector, Vertex AI evaluation, Model Armor, Agent Runtime.",
+  "strengths": "First-party OTLP endpoint (traces GA, metrics GA Aug 2026); BigQuery export",
+  "caveat": "Per-signal maturity differs (logs rolling out); GCP-centric",
   "url": "https://cloud.google.com/vertex-ai",
   "otel": "Yes"
  },
@@ -446,7 +457,7 @@
   "license": "MIT",
   "description": "RAG triad (context relevance, groundedness, answer relevance), OTel tracing.",
   "strengths": "RAG triad, Snowflake integration",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://www.trulens.org",
   "otel": "Yes"
  },
@@ -468,7 +479,7 @@
   "license": "Apache-2.0",
   "description": "Testing and red-teaming for LLM apps, RAG evaluation toolkit.",
   "strengths": "Vulnerability scanning",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://www.giskard.ai",
   "otel": "N/A"
  },
@@ -479,7 +490,7 @@
   "license": "Apache-2.0",
   "description": "Drift, data quality and LLM evaluation reports/monitoring.",
   "strengths": "Classical ML + LLM monitoring",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://www.evidentlyai.com",
   "otel": "N/A"
  },
@@ -489,8 +500,8 @@
   "model": "OSS",
   "license": "Apache-2.0",
   "description": "Evaluation checks and experiments.",
-  "strengths": "\u2014",
-  "caveat": "Lower activity \u2014 verify",
+  "strengths": "—",
+  "caveat": "Lower activity — verify",
   "url": "https://uptrain.ai",
   "otel": "N/A"
  },
@@ -512,7 +523,7 @@
   "license": "Apache-2.0",
   "description": "Validators and guard framework for structured/safe outputs.",
   "strengths": "Validator hub",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://www.guardrailsai.com",
   "otel": "Partial"
  },
@@ -534,7 +545,7 @@
   "license": "MIT",
   "description": "Input/output scanners: PII, injection, toxicity.",
   "strengths": "Scanner library",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://github.com/protectai/llm-guard",
   "otel": "Partial"
  },
@@ -545,7 +556,7 @@
   "license": "MIT",
   "description": "PII detection/anonymization for redaction pipelines.",
   "strengths": "Redaction before export",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://microsoft.github.io/presidio/",
   "otel": "N/A"
  },
@@ -556,7 +567,7 @@
   "license": "Apache-2.0",
   "description": "LLM vulnerability scanner / red-team probes.",
   "strengths": "Broad probe set",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://github.com/NVIDIA/garak",
   "otel": "N/A"
  },
@@ -589,7 +600,7 @@
   "license": "Apache-2.0 core",
   "description": "AI plugins: routing, semantic cache, token rate limiting, observability.",
   "strengths": "Reuses API gateway estate",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://konghq.com",
   "otel": "Yes"
  },
@@ -666,7 +677,7 @@
   "license": "Apache-2.0",
   "description": "OTel instrumentation for LLM providers, vector DBs, frameworks.",
   "strengths": "Broad auto-instrumentation",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://github.com/traceloop/openllmetry",
   "otel": "Yes"
  },
@@ -721,7 +732,7 @@
   "license": "AGPLv3 / Apache-2.0 / AGPLv3",
   "description": "Dashboards over metrics and SQL stores.",
   "strengths": "Time-range-aware dashboards",
-  "caveat": "\u2014",
+  "caveat": "—",
   "url": "https://grafana.com",
   "otel": "Yes"
  },
