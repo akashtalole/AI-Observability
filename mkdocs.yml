@@ -112,6 +112,12 @@ nav:
       - Tools, MCP & text-to-SQL: monitoring/tools-mcp-sql.md
       - Voice, multimodal & batch: monitoring/voice-multimodal-batch.md
       - Self-hosted & fine-tuned models: monitoring/self-hosted-models.md
+  - OpenTelemetry updates:
+      - Overview & what changed: otel-updates/index.md
+      - GenAI & agentic conventions: otel-updates/genai-semconv.md
+      - Weaver & conformance: otel-updates/weaver-conformance.md
+      - Other OTel changes: otel-updates/other-changes.md
+      - Adoption playbook: otel-updates/adoption-playbook.md
   - Use cases (OSS stack):
       - Overview & quick start: use-cases/index.md
       - The shared stack: use-cases/stack.md

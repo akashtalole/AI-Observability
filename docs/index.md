@@ -18,6 +18,7 @@ Guidance, architecture, design patterns and tooling choices for observing **ente
 - **I run on AWS / Azure / GCP** — [Cloud-native observability](cloud-native/index.md): OpenTelemetry support, **CloudWatch Omni**, Foundry, Cloud Trace, and an [enterprise implementation guide](cloud-native/implementation-guide.md).
 - **I need to measure quality** — [Online and offline scoring](scoring/index.md): datasets, scorers, judges, sampling, gates.
 - **I want runnable OSS implementations** — [Use cases on OTel + Prometheus + Grafana + Loki + Tempo](use-cases/index.md): RAG, multi-agent, chatbot.
+- **I want the latest OpenTelemetry GenAI / agent conventions, Weaver and conformance** — [OpenTelemetry updates](otel-updates/index.md).
 - **I want to build it** — [Reference architecture](architecture/reference-architecture.md) and [instrumentation guide](implementation/instrumentation.md).
 
 </div>
@@ -38,6 +39,7 @@ Guidance, architecture, design patterns and tooling choices for observing **ente
 | `docs/rag` | End-to-end RAG playbook with dashboards, SQL, PromQL |
 | `docs/implementation` | Instrumentation, collector pipeline, evals in CI |
 | `docs/operations` | Maturity model, runbooks, checklists |
+| `conformance/` | Weaver live-check registry, matchers and runner for the demo apps |
 | `use-cases/` | Runnable open-source implementations: docker-compose stack, instrumented RAG / multi-agent / chatbot apps, Grafana dashboards, alert rules |
 | `docs/artifacts` | Interactive **HTML artifacts** (decision tool, landscape explorer, RAG dashboard demo, single-file handbook) |
 | `examples/` | Runnable OpenTelemetry instrumentation, Collector config, ClickHouse schema, Prometheus alert rules, offline eval gate, online scorer, anomaly-baseline comparison |

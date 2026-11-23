@@ -49,6 +49,7 @@ export APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=...;IngestionEn
 
 ```bash
 # development only; leave unset in production
+# The spec names this OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT; some Python instrumentation still reads the *_CAPTURE_MESSAGE_CONTENT spelling. Set the one your version reads.
 export OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=SPAN_AND_EVENT
 export OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
 export AZURE_EXPERIMENTAL_ENABLE_GENAI_TRACING=true

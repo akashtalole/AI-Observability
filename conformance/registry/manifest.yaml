@@ -1,0 +1,9 @@
+name: ai-observability-demo
+description: >
+  Demo-app registry: imports the official OpenTelemetry GenAI conventions (semantic-conventions-genai v0.1.0)
+  and declares only what the demo apps add on top (app.*, rag.*, eval.*, cost.*, tool.*, guardrail.*).
+schema_url: https://example.com/schemas/ai-observability-demo/0.1.0
+stability: development
+dependencies:
+  - schema_url: https://opentelemetry.io/schemas/semconv-genai-dev/0.1.0
+    registry_path: https://github.com/open-telemetry/semantic-conventions-genai.git@v0.1.0[model]
