@@ -1,0 +1,46 @@
+# Live-check configuration for the demo apps. Span names are free-form, so spans are bound to GenAI
+# signals by a signature (the operation name) with matchers.
+[[live-check.matchers]]
+id = "match.inference"
+sample_type = "span"
+when = 'attributes["gen_ai.operation.name"] == "chat"'
+signal = "gen_ai.client.inference"
+attribute_groups = ["app.common"]
+
+[[live-check.matchers]]
+id = "match.embeddings"
+sample_type = "span"
+when = 'attributes["gen_ai.operation.name"] == "embeddings"'
+signal = "gen_ai.client.embeddings"
+attribute_groups = ["app.common"]
+
+[[live-check.matchers]]
+id = "match.execute_tool"
+sample_type = "span"
+when = 'attributes["gen_ai.operation.name"] == "execute_tool"'
+signal = "gen_ai.execute_tool"
+attribute_groups = ["app.common"]
+
+[[live-check.matchers]]
+id = "match.invoke_agent"
+sample_type = "span"
+when = 'attributes["gen_ai.operation.name"] == "invoke_agent"'
+signal = "gen_ai.invoke_agent.internal"
+attribute_groups = ["app.common"]
+
+# Spans with no GenAI operation (rag.request, chat.turn, ...) are compared with the demo's own attribute group only.
+[[live-check.matchers]]
+id = "match.app.span"
+sample_type = "span"
+when = '!("gen_ai.operation.name" in attributes)'
+attribute_groups = ["app.common"]
+
+[[live-check.matchers]]
+id = "match.app.log"
+sample_type = "log"
+attribute_groups = ["app.common"]
+
+# SDK resource attributes are outside what the demo apps control.
+[[live-check.finding_filters]]
+signal_type = "resource"
+exclude_samples = ["telemetry.sdk.language", "telemetry.sdk.name", "telemetry.sdk.version"]

@@ -1,0 +1,123 @@
+{
+  "ok": true,
+  "tool": "archify-aws",
+  "version": "0.1.0",
+  "iconRelease": "AWS Architecture Icons release 24-2026.07.31",
+  "input": {
+    "path": "../../../../../../home/user/AI-Observability/docs/diagrams/ai-observability-aws.json",
+    "sha256": "1383dc82881e28950203c20f1f362a0c981c64fa044210780edfc251d1b9f0bb"
+  },
+  "stages": [
+    {
+      "name": "validate",
+      "status": "pass",
+      "detail": {
+        "type": "architecture",
+        "nodes": 9,
+        "groups": 3,
+        "edges": 8
+      }
+    },
+    {
+      "name": "analyze",
+      "status": "pass",
+      "detail": {
+        "cost": true,
+        "review": true
+      }
+    },
+    {
+      "name": "render",
+      "status": "pass",
+      "detail": {}
+    },
+    {
+      "name": "check",
+      "status": "pass",
+      "detail": {
+        "warnings": 0,
+        "standalone": true
+      }
+    },
+    {
+      "name": "browser-check",
+      "status": "pass",
+      "detail": {
+        "viewport": "1440x900",
+        "minFontPx": 10.5,
+        "overflowX": 0,
+        "consoleErrors": 0,
+        "viewerNodes": 9,
+        "viewerEdges": 8
+      }
+    },
+    {
+      "name": "export-png",
+      "status": "pass",
+      "detail": {}
+    }
+  ],
+  "outputs": {
+    "html": {
+      "path": "docs/diagrams/ai-observability-aws.html",
+      "sha256": "6cddc30c86f156a0d504b51d68a0720c9508648280db96d68650eeac8f08a9e6",
+      "bytes": 311725
+    },
+    "svg": {
+      "path": "docs/diagrams/ai-observability-aws.svg",
+      "sha256": "48f130ac8e48cfc3fdc89f8b4080687d1dd8d6c6b8189626471742fee9fc9cbd"
+    },
+    "drawio": {
+      "path": "docs/diagrams/ai-observability-aws.drawio",
+      "sha256": "1a9075bf6092e6acffefbfc7543567f65a8e2d1443fdbf5b73a73e52e18b772f"
+    },
+    "png": {
+      "path": "docs/diagrams/ai-observability-aws.png",
+      "sha256": "5297a5f10b32edddc48b4c672075e2f02440ef56756975bbe6d0c63e5290c4ee"
+    }
+  },
+  "summary": {
+    "type": "architecture",
+    "nodes": 9,
+    "groups": 3,
+    "edges": 8,
+    "size": {
+      "width": 1323,
+      "height": 820
+    }
+  },
+  "cost": {
+    "region": "us-east-1",
+    "asOf": "2026-11-25",
+    "monthlyUsd": 15.5,
+    "confidence": "indicative",
+    "coverage": {
+      "nodes": 9,
+      "estimated": 3,
+      "override": 0,
+      "noCharge": 0,
+      "notBillable": 1,
+      "notItemized": 0,
+      "needsInput": 0,
+      "notEstimated": 5,
+      "error": 0
+    }
+  },
+  "review": {
+    "advisory": true,
+    "mode": "full",
+    "lens": "generative-ai",
+    "findings": {
+      "Critical": 0,
+      "High": 1,
+      "Medium": 0,
+      "Low": 0
+    },
+    "evidenced": 11,
+    "bps": 307,
+    "ids": [
+      "F-001"
+    ]
+  },
+  "visualReview": "not-performed"
+}

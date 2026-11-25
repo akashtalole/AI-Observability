@@ -3,7 +3,9 @@
 *Verify all links and facts — this space changes monthly. Collected October 2026.*
 
 ## Standards
-* [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — status: Development
+* [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — status: Development; source repo [semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai) (v0.1.0)
+* [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver) · [semantic-conventions-conformance](https://github.com/open-telemetry/semantic-conventions-conformance) · [opentelemetry-python-genai](https://github.com/open-telemetry/opentelemetry-python-genai)
+* [Declarative configuration is stable](https://opentelemetry.io/blog/2026/stable-declarative-config/) · [OBI v1.0.0](https://opentelemetry.io/blog/2026/obi-v1-release/) · [Profiles public alpha](https://opentelemetry.io/blog/2026/profiles-alpha/)
 * [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and [tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 * [OpenInference](https://github.com/Arize-ai/openinference), [OpenLLMetry](https://github.com/traceloop/openllmetry), [OpenLIT](https://openlit.io)
 * [W3C Trace Context](https://www.w3.org/TR/trace-context/)

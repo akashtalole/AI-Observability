@@ -14,7 +14,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 @media (max-width:900px){body{display:block}nav{position:static;height:auto;width:auto;border:0}}
 @media print{nav{display:none}body{display:block}main{max-width:none}section.page{break-before:page}}
 </style></head>
-<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a><a href="#p-ai-and-observability-meta-observability">Meta-observability: observing the AI that observes</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-omni-style-dashboards">Omni-style Grafana dashboards</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
+<body><nav><h2>Contents</h2><a href="#p-index">Enterprise AI Observability Handbook</a><a href="#p-fundamentals-why-ai-observability">Why AI observability</a><a href="#p-fundamentals-llm-vs-traditional">How AI observability differs from traditional APM</a><a href="#p-fundamentals-telemetry-model">Telemetry model &amp; OpenTelemetry</a><a href="#p-architecture-reference-architecture">Reference architecture</a><a href="#p-architecture-design-patterns">Design patterns for AI observability</a><a href="#p-architecture-storage-and-retention">Storage, retention &amp; long-range trends</a><a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a><a href="#p-build-vs-buy-decision-framework">Build vs Buy: decision framework</a><a href="#p-build-vs-buy-cloud-agnostic">Cloud-agnostic approach</a><a href="#p-build-vs-buy-cloud-specific">Cloud-specific approach</a><a href="#p-build-vs-buy-open-source">Open-source approach</a><a href="#p-build-vs-buy-tco">TCO model</a><a href="#p-landscape-overview">Landscape overview</a><a href="#p-landscape-catalog">Tool catalog</a><a href="#p-landscape-comparison">Comparison by need</a><a href="#p-metrics-metrics-catalog">Metrics catalog</a><a href="#p-metrics-data-to-collect">Data to collect</a><a href="#p-metrics-slos-alerting">SLOs &amp; alerting</a><a href="#p-metrics-evaluation">Evaluation &amp; quality measurement</a><a href="#p-ai-and-observability-index">AI for observability vs observability for AI</a><a href="#p-ai-and-observability-ai-for-observability">AI for observability</a><a href="#p-ai-and-observability-meta-observability">Meta-observability: observing the AI that observes</a><a href="#p-cloud-native-index">Cloud-native AI observability: Azure, AWS and GCP</a><a href="#p-cloud-native-aws">AWS: CloudWatch, AgentCore and OpenTelemetry</a><a href="#p-cloud-native-omni">Amazon CloudWatch Omni</a><a href="#p-cloud-native-azure">Azure: Foundry, Application Insights and OpenTelemetry</a><a href="#p-cloud-native-gcp">GCP: Cloud Observability, Vertex AI and OpenTelemetry</a><a href="#p-cloud-native-implementation-guide">Enterprise implementation guide: cloud-native AI observability</a><a href="#p-scoring-index">Online and offline scoring: overview</a><a href="#p-scoring-offline-scoring">Offline scoring</a><a href="#p-scoring-online-scoring">Online scoring</a><a href="#p-scoring-designing-scorers">Designing scorers</a><a href="#p-scoring-by-app-type">Scoring by application type</a><a href="#p-scoring-operating">Operating a scoring program</a><a href="#p-monitoring-overview">Monitoring by application type</a><a href="#p-monitoring-rag">Monitoring RAG applications</a><a href="#p-monitoring-agents">Monitoring agents &amp; multi-agent systems</a><a href="#p-monitoring-chatbots">Monitoring chatbots &amp; copilots</a><a href="#p-monitoring-tools-mcp-sql">Monitoring tools, MCP servers &amp; text-to-SQL</a><a href="#p-monitoring-voice-multimodal-batch">Voice, multimodal &amp; batch/pipeline workloads</a><a href="#p-monitoring-self-hosted-models">Monitoring self-hosted &amp; fine-tuned models</a><a href="#p-otel-updates-index">OpenTelemetry updates (GenAI, agents, Weaver)</a><a href="#p-otel-updates-genai-semconv">GenAI &amp; agentic semantic conventions</a><a href="#p-otel-updates-weaver-conformance">Weaver &amp; conformance</a><a href="#p-otel-updates-other-changes">Other OpenTelemetry changes to adopt</a><a href="#p-otel-updates-adoption-playbook">Adoption playbook</a><a href="#p-use-cases-index">Use cases: implementations on the open-source stack</a><a href="#p-use-cases-stack">The shared stack</a><a href="#p-use-cases-rag">Use case: RAG</a><a href="#p-use-cases-multi-agent">Use case: Multi-agent</a><a href="#p-use-cases-chatbot">Use case: Chatbot</a><a href="#p-use-cases-omni-style-dashboards">Omni-style Grafana dashboards</a><a href="#p-use-cases-adapting">Adapting the use cases to your app</a><a href="#p-rag-rag-observability-playbook">RAG playbook: latency, quality &amp; cost over any time range</a><a href="#p-rag-dashboards-and-queries">Dashboards &amp; queries</a><a href="#p-implementation-instrumentation">Instrumentation guide</a><a href="#p-implementation-collector-pipeline">Collector &amp; pipeline</a><a href="#p-implementation-evals-in-ci">Evals in CI/CD</a><a href="#p-operations-maturity-model">Observability maturity model</a><a href="#p-operations-runbooks">Runbooks</a><a href="#p-operations-checklists">Checklists</a><a href="#p-artifacts-index">HTML artifacts</a><a href="#p-glossary">Glossary</a><a href="#p-references">References</a></nav><main>
 <p><em>Single-file edition generated from the Markdown sources. Diagrams render when online (Mermaid loads from a CDN); offline you see their source.</em></p>
 <section class="page" id="p-index"><h1 id="enterprise-ai-observability-handbook">Enterprise AI Observability Handbook</h1>
 <p>Guidance, architecture, design patterns and tooling choices for observing <strong>enterprise AI applications</strong> — RAG systems, agents, chatbots, copilots and more.</p>
@@ -34,6 +34,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <li><strong>I run on AWS / Azure / GCP</strong> — <a href="#p-cloud-native-index">Cloud-native observability</a>: OpenTelemetry support, <strong>CloudWatch Omni</strong>, Foundry, Cloud Trace, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</li>
 <li><strong>I need to measure quality</strong> — <a href="#p-scoring-index">Online and offline scoring</a>: datasets, scorers, judges, sampling, gates.</li>
 <li><strong>I want runnable OSS implementations</strong> — <a href="#p-use-cases-index">Use cases on OTel + Prometheus + Grafana + Loki + Tempo</a>: RAG, multi-agent, chatbot.</li>
+<li><strong>I want the latest OpenTelemetry GenAI / agent conventions, Weaver and conformance</strong> — <a href="#p-otel-updates-index">OpenTelemetry updates</a>.</li>
 <li><strong>I want to build it</strong> — <a href="#p-architecture-reference-architecture">Reference architecture</a> and <a href="#p-implementation-instrumentation">instrumentation guide</a>.</li>
 </ul>
 </div>
@@ -93,6 +94,10 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 <tr>
 <td><code>docs/operations</code></td>
 <td>Maturity model, runbooks, checklists</td>
+</tr>
+<tr>
+<td><code>conformance/</code></td>
+<td>Weaver live-check registry, matchers and runner for the demo apps</td>
 </tr>
 <tr>
 <td><code>use-cases/</code></td>
@@ -347,7 +352,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
     T --&gt; S5["span: guardrail.output"]
     T --&gt; S6["event: evaluation / feedback"]</code></pre>
 <h2 id="opentelemetry-genai-semantic-conventions">OpenTelemetry GenAI semantic conventions</h2>
-<p>OpenTelemetry defines <code>gen_ai.*</code> attributes, spans and metrics for model calls, agents and tool execution. <strong>Status: Development (not stable) as of mid-2026</strong> — attribute and metric names may change between versions. Pin the semconv version you target and use <code>OTEL_SEMCONV_STABILITY_OPT_IN</code> as the conventions describe.</p>
+<p>OpenTelemetry defines <code>gen_ai.*</code> attributes, spans and metrics for model calls, agents and tool execution. <strong>Status: Development (not stable)</strong>. The GenAI conventions now live in their own repository (<code>semantic-conventions-genai</code>, first release v0.1.0 in Nov 2026) and names may change between versions. See <a href="#p-otel-updates-index">OpenTelemetry updates</a>. Pin the semconv version you target and use <code>OTEL_SEMCONV_STABILITY_OPT_IN</code> as the conventions describe.</p>
 <p>Commonly used attributes (verify against the version you target):</p>
 <table>
 <thead>
@@ -395,7 +400,7 @@ pre.mermaid{background:none;text-align:center}.admonition{border-left:4px solid 
 </tr>
 </tbody>
 </table>
-<p>Metrics: client operation duration, client token usage (histograms), plus server-side time-to-first-token / time-per-output-token for model servers.</p>
+<p>Metrics: per-operation client durations (<code>gen_ai.client.inference.duration</code>, <code>gen_ai.execute_tool.duration</code>, …), token usage counters and per-operation token histograms (the single <code>gen_ai.client.token.usage</code> histogram of earlier versions was replaced), agent-run metrics, plus server-side time-to-first-token / time-per-output-token for model servers.</p>
 <p><strong>Message content</strong> (prompts/completions) is opt-in by design — treat it as sensitive and capture it through a controlled path (see <a href="#p-architecture-security-privacy">Security &amp; privacy</a>).</p>
 <h2 id="interoperating-conventions">Interoperating conventions</h2>
 <table>
@@ -670,7 +675,7 @@ cost.usd.total         cost.usd.llm          cost.usd.retrieval</code></pre></se
 </tr>
 </tbody>
 </table></section><section class="page" id="p-architecture-storage-and-retention"><h1 id="storage-retention-long-range-trends">Storage, retention &amp; long-range trends</h1>
-<p>Requirement: <em>"see latency, quality and cost across </em><em>any time range</em><em> and track trends over </em><em>months</em><em>."</em> That drives a tiered design — no single store is good at both per-request debugging and 18-month trends.</p>
+<p>Requirement: <em>"see latency, quality and cost across <strong>any time range</strong> and track trends over <strong>months</strong>."</em> That drives a tiered design — no single store is good at both per-request debugging and 18-month trends.</p>
 <h2 id="tiers">Tiers</h2>
 <table>
 <thead>
@@ -4134,7 +4139,7 @@ seasonal baseline + CUSUM alerts= 3 detected=3/3  false alerts= 0  mean delay= 1
 </table>
 <p>These are the same building blocks as the <a href="#p-use-cases-multi-agent">use-case dashboards</a>; an investigation agent is a multi-agent system and can be instrumented with the same contract.</p></section><section class="page" id="p-cloud-native-index"><h1 id="cloud-native-ai-observability-azure-aws-and-gcp">Cloud-native AI observability: Azure, AWS and GCP</h1>
 <p>Each hyperscaler now ships an observability stack for generative AI and agents, and <strong>all three have converged on OpenTelemetry (OTLP)</strong> as the way in. This section covers what each offers, how its OpenTelemetry support really works, the new <strong>Amazon CloudWatch Omni</strong>, and an <a href="#p-cloud-native-implementation-guide">enterprise implementation guide</a>.</p>
-<p><em>Snapshot: October 2026. Cloud features move monthly and several are labelled preview in one place and GA in another; every status below says where it came from. </em><em>Verify against the linked vendor docs before committing.</em>**</p>
+<p><em>Snapshot: October 2026. Cloud features move monthly and several are labelled preview in one place and GA in another; every status below says where it came from. <strong>Verify against the linked vendor docs before committing.</strong></em></p>
 <table>
 <thead>
 <tr>
@@ -4749,6 +4754,7 @@ use_microsoft_opentelemetry(
 export APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=...;IngestionEndpoint=..."</code></pre>
 <p><strong>Content capture is a development switch.</strong> Prompts, tool arguments and outputs are captured only when you enable it:</p>
 <pre class="highlight"><code class="language-bash"># development only; leave unset in production
+# The spec names this OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT; some Python instrumentation still reads the *_CAPTURE_MESSAGE_CONTENT spelling. Set the one your version reads.
 export OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=SPAN_AND_EVENT
 export OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
 export AZURE_EXPERIMENTAL_ENABLE_GENAI_TRACING=true</code></pre>
@@ -7326,7 +7332,497 @@ offline run cost       = dataset_items x repeats x (system_cost + scorer_cost) x
 <li>Monitor <strong>adapter/version mix</strong> across replicas to detect partial rollouts.</li>
 </ul>
 <h2 id="capacity-planning">Capacity planning</h2>
-<p>Plot demand (tokens/s) vs capacity at SLO (max tokens/s while TTFT p95 within target). Alert on headroom &lt; 20 %; autoscale on queue depth or KV-cache pressure rather than CPU/GPU utilization alone.</p></section><section class="page" id="p-use-cases-index"><h1 id="use-cases-implementations-on-the-open-source-stack">Use cases: implementations on the open-source stack</h1>
+<p>Plot demand (tokens/s) vs capacity at SLO (max tokens/s while TTFT p95 within target). Alert on headroom &lt; 20 %; autoscale on queue depth or KV-cache pressure rather than CPU/GPU utilization alone.</p></section><section class="page" id="p-otel-updates-index"><h1 id="opentelemetry-updates-genai-agents-weaver">OpenTelemetry updates (GenAI, agents, Weaver)</h1>
+<p><em>Researched from primary sources (the repositories and release notes) in November 2026. Everything below is still <strong>Development</strong>
+stability: pin versions and re-check before you rely on a name.</em></p>
+<h2 id="what-changed-in-one-page">What changed, in one page</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Change</th>
+<th>Why it matters</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>GenAI conventions moved to their own repo</strong>: <a href="https://github.com/open-telemetry/semantic-conventions-genai"><code>semantic-conventions-genai</code></a> (first release <strong>v0.1.0</strong>, built on core semconv <strong>v1.45.0</strong>). They were removed from the main semconv repo in v1.42.0.</td>
+<td>Version, pin and diff GenAI conventions separately from HTTP/DB/etc.</td>
+<td>Pin both versions; update links (<a href="#p-otel-updates-genai-semconv">details</a>).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Metrics restructured.</strong> Per-operation duration histograms (<code>gen_ai.client.inference.duration</code>, <code>…embeddings.duration</code>, <code>gen_ai.execute_tool.duration</code>, <code>gen_ai.retrieval.duration</code>, …) and per-kind token metrics replace the single <code>gen_ai.client.token.usage</code>.</td>
+<td>Dashboards and cost queries keyed on the old name stop matching.</td>
+<td>Dual-emit during migration (<a href="#p-otel-updates-adoption-playbook">playbook</a>).</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Agentic conventions</strong>: <code>invoke_agent</code>, <code>plan</code>, <code>execute_tool</code>, retrieval and memory operations, <code>gen_ai.invoke_agent.*</code> metrics, MCP and A2A conventions, the <code>gen_ai.evaluation.result</code> event.</td>
+<td>A standard vocabulary for the agent loop, tools and evaluations.</td>
+<td>Map your spans; see <a href="#p-otel-updates-genai-semconv">agentic conventions</a>.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Content capture is opt-in</strong> via <code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT</code> (<code>NO_CONTENT</code> default, <code>SPAN_ONLY</code>, <code>EVENT_ONLY</code>, <code>SPAN_AND_EVENT</code>).</td>
+<td>Privacy default; but see the variable-name trap below.</td>
+<td>Set explicitly per environment.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Weaver</strong> (v0.28.x) is the tool to <em>define, check, document and live-validate</em> telemetry: <code>registry check</code>, <code>generate</code>, <code>diff</code>, <code>live-check</code>, <code>infer</code>.</td>
+<td>Turns "we follow semconv" into a CI gate.</td>
+<td><a href="#p-otel-updates-weaver-conformance">Weaver &amp; conformance</a>; runnable in <a href="https://github.com/akashtalole/ai-observability/tree/main/conformance"><code>conformance/</code></a>.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Conformance repo</strong> (<code>semantic-conventions-conformance</code>) runs scenario programs per language/library and validates their output with Weaver live-check.</td>
+<td>The way to see which instrumentations really emit the conventions.</td>
+<td>Use its results to choose libraries (<a href="#p-otel-updates-weaver-conformance">conformance</a>).</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Core changes: resource <code>deployment.environment</code> → <strong><code>deployment.environment.name</code></strong>, spec entities and env-var context propagation, profiles in public alpha, declarative configuration stable, OBI 1.0.</td>
+<td>Several touch every service, not just GenAI.</td>
+<td><a href="#p-otel-updates-other-changes">Other changes</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Trap: two content-capture variable names</p>
+<p>The specification defines <code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT</code>. At the time of research the Python
+<code>opentelemetry-util-genai</code> package still read <code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT</code>. Check the version of your instrumentation and
+set the variable it actually reads; verify with a test request that content is (or is not) captured.</p>
+</div>
+<h2 id="pages">Pages</h2>
+<ul>
+<li><a href="#p-otel-updates-genai-semconv">GenAI &amp; agentic semantic conventions</a>: signal inventory, status, what changed.</li>
+<li><a href="#p-otel-updates-weaver-conformance">Weaver &amp; conformance</a>: checking, live-check, matchers, policies, CI, and results against this repo's demo apps.</li>
+<li><a href="#p-otel-updates-other-changes">Other OpenTelemetry changes</a>: spec, Collector, SDK/instrumentation and non-GenAI semconv items.</li>
+<li><a href="#p-otel-updates-adoption-playbook">Adoption playbook</a>: sequenced migration steps and a checklist.</li>
+</ul></section><section class="page" id="p-otel-updates-genai-semconv"><h1 id="genai-agentic-semantic-conventions">GenAI &amp; agentic semantic conventions</h1>
+<p>Source: <a href="https://github.com/open-telemetry/semantic-conventions-genai"><code>open-telemetry/semantic-conventions-genai</code></a>, release
+<a href="https://github.com/open-telemetry/semantic-conventions-genai/releases/tag/v0.1.0">v0.1.0</a>. Stability: <strong>Development</strong>. The registry declares a
+dependency on core semconv v1.45.0 and uses Weaver's <code>definition/2</code> schema format.</p>
+<div class="admonition note">
+<p class="admonition-title">Why a separate repository</p>
+<p>GenAI conventions change faster than HTTP, database or messaging conventions. A standalone repository lets them release on their own
+cadence. The v0.1.0 release notes measure changes against core semconv v1.41.0, the last release that still contained them.</p>
+</div>
+<h2 id="signal-inventory-v010">Signal inventory (v0.1.0)</h2>
+<p><strong>Spans</strong> (17 definitions across GenAI, MCP and A2A):</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Span type</th>
+<th>Kind</th>
+<th>Name format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model call</td>
+<td><code>gen_ai.client.inference</code></td>
+<td>client</td>
+<td><code>{operation} {request.model}</code></td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td><code>gen_ai.client.embeddings</code></td>
+<td>client</td>
+<td><code>{operation} {request.model}</code></td>
+</tr>
+<tr>
+<td>Agent invocation</td>
+<td><code>gen_ai.client.invoke_agent</code> (remote) / <code>gen_ai.invoke_agent.internal</code> (in-process)</td>
+<td>client / internal</td>
+<td><code>invoke_agent {agent.name}</code></td>
+</tr>
+<tr>
+<td>Planning</td>
+<td><code>gen_ai.plan.internal</code></td>
+<td>internal</td>
+<td><code>plan {agent.name}</code></td>
+</tr>
+<tr>
+<td>Tool execution</td>
+<td><code>gen_ai.execute_tool</code></td>
+<td>internal</td>
+<td><code>execute_tool {tool.name}</code></td>
+</tr>
+<tr>
+<td>Retrieval</td>
+<td><code>gen_ai.retrieval</code> / <code>gen_ai.retrieval.client</code></td>
+<td>internal / client</td>
+<td><code>{operation}</code> or <code>{operation} {data_source.id}</code></td>
+</tr>
+<tr>
+<td>Memory, fetch response, create agent, realtime</td>
+<td><code>gen_ai.memory.client</code>, <code>gen_ai.fetch_response.client</code>, <code>gen_ai.create_agent.client</code>, <code>gen_ai.realtime_inference.client</code></td>
+<td>client</td>
+<td>operation-specific</td>
+</tr>
+<tr>
+<td>MCP / A2A</td>
+<td><code>mcp.client</code>, <code>mcp.server</code>, <code>a2a.client</code>, <code>a2a.server</code></td>
+<td>client / server</td>
+<td><code>{mcp.method.name} {target}</code> / <code>{a2a.method.name}</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Metrics</strong> (all Development):</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duration</td>
+<td><code>gen_ai.client.operation.duration</code>, <code>gen_ai.client.inference.duration</code>, <code>gen_ai.client.embeddings.duration</code>, <code>gen_ai.client.invoke_agent.duration</code>, <code>gen_ai.execute_tool.duration</code>, <code>gen_ai.retrieval.duration</code></td>
+</tr>
+<tr>
+<td>Streaming</td>
+<td><code>gen_ai.client.inference.time_to_first_chunk</code>, <code>gen_ai.client.inference.time_per_output_chunk</code></td>
+</tr>
+<tr>
+<td>Server side</td>
+<td><code>gen_ai.server.request.duration</code>, <code>gen_ai.server.time_to_first_token</code>, <code>gen_ai.server.time_per_output_token</code></td>
+</tr>
+<tr>
+<td>Agent</td>
+<td><code>gen_ai.invoke_agent.duration</code>, <code>gen_ai.invoke_agent.inference_calls</code>, <code>gen_ai.invoke_agent.tool_calls</code></td>
+</tr>
+<tr>
+<td>Tokens (counters)</td>
+<td><code>gen_ai.client.inference.usage.input_tokens</code>, <code>…usage.output_tokens</code>, <code>…usage.cache_read.input_tokens</code>, <code>…usage.cache_write.input_tokens</code>, <code>…usage.reasoning.output_tokens</code></td>
+</tr>
+<tr>
+<td>Tokens (per-operation histograms)</td>
+<td><code>gen_ai.client.inference.operation.input_tokens</code>, <code>…operation.output_tokens</code>, <code>gen_ai.client.embeddings.operation.input_tokens</code></td>
+</tr>
+<tr>
+<td>MCP</td>
+<td><code>mcp.client.operation.duration</code>, <code>mcp.server.operation.duration</code>, <code>mcp.client.session.duration</code>, <code>mcp.server.session.duration</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Events:</strong> <code>gen_ai.client.inference.operation.details</code> (content), <code>gen_ai.evaluation.result</code>, per-operation <code>*.exception</code> events, realtime session
+started/ended. <strong>Entity:</strong> <code>gen_ai.main_agent</code>.</p>
+<h2 id="agentic-conventions">Agentic conventions</h2>
+<ul>
+<li><strong>Agent loop.</strong> An agent run is an <code>invoke_agent</code> span. Planning is a <code>plan</code> span, each model call an inference span, each tool call an
+  <code>execute_tool</code> span, all as children, so trace shape mirrors the loop.</li>
+<li><strong>Agent metrics.</strong> <code>gen_ai.invoke_agent.inference_calls</code> and <code>gen_ai.invoke_agent.tool_calls</code> histograms give "model calls / tool calls per run"
+  without trace queries; the handbook's <a href="#p-monitoring-agents">loop-detection</a> guidance maps directly onto them.</li>
+<li><strong>MCP and A2A.</strong> Client and server spans plus operation and session durations let you see an agent-to-tool or agent-to-agent hop as a first-class span.</li>
+<li><strong>Evaluations.</strong> The <code>gen_ai.evaluation.result</code> event carries a score for a response, which is the standard shape for the
+  <a href="#p-scoring-online-scoring">online scoring</a> results this handbook describes.</li>
+<li><strong>Conversation continuity.</strong> <code>gen_ai.conversation.id</code> ties turns together; v0.1.0 also adds a conversation-compacted attribute for context compaction.</li>
+</ul>
+<h2 id="content-capture">Content capture</h2>
+<table>
+<thead>
+<tr>
+<th><code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT</code></th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NO_CONTENT</code> (default)</td>
+<td>No prompts or completions recorded</td>
+</tr>
+<tr>
+<td><code>SPAN_ONLY</code></td>
+<td>Content as span attributes</td>
+</tr>
+<tr>
+<td><code>EVENT_ONLY</code></td>
+<td>Content in the <code>operation.details</code> event</td>
+</tr>
+<tr>
+<td><code>SPAN_AND_EVENT</code></td>
+<td>Both</td>
+</tr>
+</tbody>
+</table>
+<p>Large or sensitive content can be stored externally and referenced with the <code>*_ref</code> attributes. See <a href="#p-architecture-security-privacy">Security, privacy &amp; governance</a>;
+redact in the Collector as a safety net (<a href="#p-implementation-collector-pipeline">pipeline</a>).</p>
+<h2 id="where-this-repos-demos-stand">Where this repo's demos stand</h2>
+<p>The demo apps already use the stable-looking core (<code>gen_ai.operation.name</code>, <code>gen_ai.provider.name</code>, <code>gen_ai.request.model</code>, <code>gen_ai.usage.*</code>, <code>gen_ai.agent.name</code>,
+<code>gen_ai.conversation.id</code>). Gaps are listed with measured live-check findings in <a href="#p-otel-updates-weaver-conformance">Weaver &amp; conformance</a>.</p></section><section class="page" id="p-otel-updates-weaver-conformance"><h1 id="weaver-conformance">Weaver &amp; conformance</h1>
+<p><a href="https://github.com/open-telemetry/weaver">OpenTelemetry Weaver</a> (tested here with <strong>v0.28.0</strong>) is the tool that makes semantic conventions
+<em>executable</em>: you describe telemetry in a registry, and Weaver checks, documents, diffs and validates real telemetry against it.</p>
+<h2 id="what-weaver-does">What Weaver does</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>weaver registry check -r &lt;registry&gt;</code></td>
+<td>Lint a registry and its policies; the CI gate for <strong>your</strong> conventions</td>
+</tr>
+<tr>
+<td><code>weaver registry generate</code></td>
+<td>Render docs, code, constants or dashboards from the registry with templates</td>
+</tr>
+<tr>
+<td><code>weaver registry diff</code></td>
+<td>Report breaking changes between two registry versions (schema evolution)</td>
+</tr>
+<tr>
+<td><code>weaver registry stats</code></td>
+<td>Counts by signal and stability</td>
+</tr>
+<tr>
+<td><code>weaver registry live-check</code></td>
+<td>Receive <strong>real telemetry</strong> (OTLP, file or stdin) and score it against the registry</td>
+</tr>
+<tr>
+<td><code>weaver registry infer</code></td>
+<td>Build a draft registry from observed telemetry (a starting point, not a result)</td>
+</tr>
+<tr>
+<td><code>weaver registry emit</code></td>
+<td>Emit sample telemetry from a registry, to test pipelines</td>
+</tr>
+<tr>
+<td><code>weaver registry package</code>, <code>weaver registry mcp</code></td>
+<td>Package a registry; expose it to AI tools over MCP</td>
+</tr>
+</tbody>
+</table>
+<p>Registries use the <code>definition/2</code> format (pass <code>--v2</code>); a registry can depend on others, so yours imports the official ones and declares only your own additions.</p>
+<h2 id="live-check-in-detail">Live-check in detail</h2>
+<p>Live-check ingests telemetry, resolves each sample to a signal in the registry and produces <strong>findings</strong> at three levels:
+<code>violation</code> (wrong or undeclared), <code>improvement</code> (should change, e.g. not stable, recommended attribute missing) and <code>information</code>.</p>
+<p>Things you must configure, learned the hard way:</p>
+<ol>
+<li><strong>Spans need matchers.</strong> A span name is free-form, so nothing says which span definition it follows. Without a <code>[[live-check.matchers]]</code> entry
+   every attribute is reported as "does not exist in the registry". Match on a signature, such as <code>gen_ai.operation.name</code>.</li>
+<li><strong>Include dependency signals</strong> with <code>--include-unreferenced</code>, or matchers cannot name <code>gen_ai.client.inference</code>.</li>
+<li><strong>Use <code>--config &lt;weaver.toml&gt;</code></strong> (the flag is <code>--config</code>, not <code>-c</code>) to load matchers and <code>finding_filters</code>.</li>
+<li><strong>Custom rules in Rego</strong> (<code>live_check_advice</code> package) add checks the registry cannot express: span-name formats, per-operation required attributes.
+   The conformance project ships a ready set for GenAI; reuse it rather than writing your own.</li>
+<li><strong>Stop the receiver</strong> with an inactivity timeout or <code>POST localhost:4320/stop</code>, then read <code>live_check.json</code>.</li>
+</ol>
+<h2 id="the-conformance-project">The conformance project</h2>
+<p><a href="https://github.com/open-telemetry/semantic-conventions-conformance"><code>semantic-conventions-conformance</code></a> runs <em>scenario programs</em> in many languages
+and libraries (GenAI, HTTP, database, browser) against a Weaver live-check and publishes the results. For GenAI it ships a mock LLM server, Rego policies
+(span-name format, required attributes per operation, content checks) and a <code>conformance.yaml</code> per tool. The <code>semantic-conventions-genai</code> repository itself carries
+Python reference implementations and a compliance matrix.</p>
+<p>Use it to <strong>choose and pin instrumentation libraries</strong>: look up the library and version, check which operations and attributes it actually emits, and only then
+standardise on it. Add a scenario if your internal wrapper is not covered.</p>
+<h2 id="results-for-the-demo-apps">Results for the demo apps</h2>
+<p><code>conformance/</code> in this repo contains a registry that imports <code>semantic-conventions-genai</code> v0.1.0 and adds the demo's own attributes, a
+<code>weaver.toml</code> with matchers, and <code>run.sh</code>, which starts live-check, runs the three apps for 20 seconds and prints a summary.</p>
+<pre class="highlight"><code class="language-bash"># needs the Weaver binary (v0.28.x) on PATH or passed as the first argument
+conformance/run.sh /path/to/weaver</code></pre>
+<table>
+<thead>
+<tr>
+<th>Finding class</th>
+<th>Before</th>
+<th>After fixing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Span <code>gen_ai.provider.name</code> required but missing (embeddings)</td>
+<td>present</td>
+<td><strong>fixed</strong> (attribute added)</td>
+</tr>
+<tr>
+<td><code>execute_tool</code> spans with kind <code>client</code> (convention: <code>internal</code>)</td>
+<td>present</td>
+<td><strong>fixed</strong> (<code>SpanKind.INTERNAL</code>)</td>
+</tr>
+<tr>
+<td>Unknown span attributes (<code>app.*</code>, <code>rag.*</code>, <code>tool.*</code>)</td>
+<td>many</td>
+<td><strong>declared</strong> in <code>conformance/registry</code> (<code>app.common</code>)</td>
+</tr>
+<tr>
+<td>Embedding step span kind <code>internal</code> (convention: <code>client</code>)</td>
+<td>present</td>
+<td>open (small change in <code>timed_stage</code>)</td>
+</tr>
+<tr>
+<td>Root spans with kind <code>server</code> carrying <code>gen_ai.operation.name=invoke_agent</code></td>
+<td>present</td>
+<td><strong>kept on purpose</strong>; the Omni-style dashboards key on server-side root spans</td>
+</tr>
+<tr>
+<td>Resource <code>deployment.environment</code></td>
+<td>present</td>
+<td>open; rename to <code>deployment.environment.name</code> together with the dashboards' <code>deployment_environment</code> label</td>
+</tr>
+<tr>
+<td><code>gen_ai.main_agent</code> entity required attribute <code>gen_ai.main_agent.id</code> missing</td>
+<td>present</td>
+<td>open; set when you adopt the entity</td>
+</tr>
+<tr>
+<td><strong>Metric attributes without a namespace</strong> (<code>model</code>, <code>agent</code>, <code>tenant</code>, <code>status</code>, …)</td>
+<td>thousands</td>
+<td><strong>open by design</strong>: renaming changes every Prometheus label, dashboard and alert</td>
+</tr>
+<tr>
+<td>App-specific metrics (<code>rag.*</code>, <code>agent.*</code>, <code>chat.*</code>) not in any registry</td>
+<td>present</td>
+<td>open; declare them in your own registry if you want them checked</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">How to read the numbers</p>
+<p>Finding counts scale with how many samples a run produces, so compare <em>classes</em> of finding across runs, not totals. The unmatched metric
+findings are the most valuable result: they show exactly what a move to namespaced attributes (<code>app.model</code>, <code>app.tenant.id</code>, …) and to the
+standard <code>gen_ai.*</code> metrics would change. The <a href="#p-otel-updates-adoption-playbook">adoption playbook</a> sequences that migration.</p>
+</div>
+<h2 id="put-it-in-ci">Put it in CI</h2>
+<pre class="highlight"><code class="language-yaml">- name: Weaver conformance
+  run: |
+    curl -sSL https://github.com/open-telemetry/weaver/releases/download/v0.28.0/weaver-x86_64-unknown-linux-gnu.tar.xz | tar -xJ
+    pip install -r use-cases/requirements.txt
+    conformance/run.sh ./weaver-x86_64-unknown-linux-gnu/weaver</code></pre>
+<p>Start by <em>reporting</em> findings; once the baseline is clean, fail the build on new <code>violation</code> findings (use <code>finding_filters</code> for accepted exceptions,
+and keep each exception documented).</p></section><section class="page" id="p-otel-updates-other-changes"><h1 id="other-opentelemetry-changes-to-adopt">Other OpenTelemetry changes to adopt</h1>
+<p><em>Taken from changelogs of the specification, Collector and semantic conventions. Release numbers move monthly: verify before pinning.</em></p>
+<h2 id="semantic-conventions-core">Semantic conventions (core)</h2>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Impact here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GenAI conventions removed from the core repo in <strong>v1.42.0</strong></td>
+<td>Cite and pin the GenAI repo separately (<a href="#p-otel-updates-genai-semconv">GenAI page</a>).</td>
+</tr>
+<tr>
+<td>Resource attribute <code>deployment.environment</code> → <strong><code>deployment.environment.name</code></strong></td>
+<td>The demo apps still emit the old name; Prometheus labels, Loki labels and docs use <code>deployment_environment</code>. Rename together.</td>
+</tr>
+<tr>
+<td><code>enduser.id</code> deprecation in favour of newer user attributes</td>
+<td>Do not put user identifiers on spans; hash or use a tenant-scoped surrogate.</td>
+</tr>
+<tr>
+<td>Cloud-related entity and attribute adjustments (1.43–1.45)</td>
+<td>Re-run <code>weaver registry diff</code> against your registry after upgrading.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="specification">Specification</h2>
+<ul>
+<li><strong>Entities</strong> are part of the resource data model: a resource is described by entities (service, host, <code>gen_ai.main_agent</code>, …) rather than loose attributes.</li>
+<li><strong>Profiles</strong> have a data model and are in <strong>public alpha</strong>; not for critical production workloads yet.</li>
+<li><strong>Environment-variable context propagation</strong> (carrying trace context to child processes), useful for CLI tools, batch jobs and agents that spawn subprocesses.</li>
+<li><strong>Prometheus compatibility</strong> work continues; keep the Collector's Prometheus exporter and remote-write settings under review after each upgrade.</li>
+<li><strong>Declarative configuration</strong> (<code>opentelemetry-configuration</code> 1.0.0) is stable: one YAML file configures SDK providers, processors and exporters. Support differs by
+  language; the Java agent's support is still experimental. Plan it for new services; do not rewrite working env-var setups yet.</li>
+</ul>
+<h2 id="collector">Collector</h2>
+<ul>
+<li>Exporter helper: <code>queue_batch</code> replaces the older batching settings (rename, beta). Check release notes before upgrading the pinned Collector in
+  <code>use-cases/stack/otel-collector.yaml</code> (currently 0.120.0) and re-run <code>otelcol validate</code>.</li>
+<li>gRPC keepalive defaults changed; review if you front the Collector with load balancers.</li>
+<li>Self-observability metric names have changed between releases (see the note in <a href="#p-use-cases-stack">The shared stack</a>).</li>
+</ul>
+<h2 id="sdks-and-instrumentation">SDKs and instrumentation</h2>
+<ul>
+<li>GenAI instrumentation for Python moved into <strong><code>opentelemetry-python-genai</code></strong> (<code>opentelemetry-util-genai</code>); other languages follow at different speeds. Check each library against the
+  <a href="#p-otel-updates-weaver-conformance">conformance results</a>.</li>
+<li><strong>OBI</strong> (OpenTelemetry eBPF Instrumentation) reached <strong>1.0</strong>: zero-code HTTP/gRPC/DB telemetry for services you cannot modify, such as model gateways and vector databases. Its
+  compatibility commitments cover configuration and deployment; telemetry names follow semconv stability.</li>
+<li>Keep <code>OTEL_SEMCONV_STABILITY_OPT_IN</code> explicit while GenAI is in Development.</li>
+</ul></section><section class="page" id="p-otel-updates-adoption-playbook"><h1 id="adoption-playbook">Adoption playbook</h1>
+<p>Sequenced so each step is safe on its own. Do not change names and dashboards in the same release.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Do</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. <strong>Pin and inventory</strong></td>
+<td>Record semconv core (v1.45.0), GenAI conventions (v0.1.0), Collector, SDK and Weaver versions.</td>
+<td>One page in the repo listing each pin.</td>
+</tr>
+<tr>
+<td>2. <strong>Measure</strong></td>
+<td>Run <code>conformance/run.sh</code>, or point Weaver live-check at a staging Collector's OTLP fan-out.</td>
+<td>A baseline <code>live_check.json</code> stored per release.</td>
+</tr>
+<tr>
+<td>3. <strong>Fix spans</strong></td>
+<td>Correct span kinds and required attributes (these do not change dashboards).</td>
+<td>Span-class <code>violation</code> findings reach zero.</td>
+</tr>
+<tr>
+<td>4. <strong>Content capture</strong></td>
+<td>Set the capture variable your instrumentation actually reads; default <code>NO_CONTENT</code>; keep the Collector redaction processor.</td>
+<td>Send a canary prompt; confirm it is absent or present as intended.</td>
+</tr>
+<tr>
+<td>5. <strong>Dual-emit metrics</strong></td>
+<td>Emit the standard <code>gen_ai.client.*</code> and <code>gen_ai.execute_tool.duration</code> metrics <strong>alongside</strong> your own for one release cycle.</td>
+<td>Both series agree on rates and percentiles.</td>
+</tr>
+<tr>
+<td>6. <strong>Migrate dashboards and alerts</strong></td>
+<td>Switch queries to the standard metrics (or recording rules that alias them); update SLO rules.</td>
+<td><code>scripts/verify_dashboards.py</code> passes against the stack.</td>
+</tr>
+<tr>
+<td>7. <strong>Namespace custom attributes</strong></td>
+<td>Move un-namespaced metric attributes (<code>model</code>, <code>agent</code>, <code>tenant</code>) to <code>app.*</code> or the GenAI names, one metric family at a time.</td>
+<td>Label cardinality unchanged; no panel goes empty.</td>
+</tr>
+<tr>
+<td>8. <strong>Resource rename</strong></td>
+<td><code>deployment.environment</code> → <code>deployment.environment.name</code>; update Prometheus/Loki label usage.</td>
+<td>Dashboards' environment variable still lists values.</td>
+</tr>
+<tr>
+<td>9. <strong>Gate in CI</strong></td>
+<td>Weaver <code>registry check</code> for your registry; live-check against a scenario run for new <code>violation</code> findings.</td>
+<td>CI fails on a deliberately wrong attribute.</td>
+</tr>
+<tr>
+<td>10. <strong>Re-check quarterly</strong></td>
+<td>Re-read GenAI release notes; run <code>weaver registry diff</code> between pinned and latest.</td>
+<td>Dated entry in the pins page.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checklist">Checklist</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Versions pinned and documented (semconv, GenAI conventions, Collector, SDK, Weaver)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>OTEL_INSTRUMENTATION_GENAI_CAPTURE_CONTENT</code> and its older spelling checked against the instrumentation version in use</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Span kinds and required attributes conform for every operation you emit</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Standard GenAI metrics emitted (dual-emit window planned)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Custom attributes namespaced and declared in your own registry</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>deployment.environment.name</code> rolled out with dashboard changes</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Weaver in CI (start report-only)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Library choices backed by conformance results</li>
+</ul></section><section class="page" id="p-use-cases-index"><h1 id="use-cases-implementations-on-the-open-source-stack">Use cases: implementations on the open-source stack</h1>
 <p>Runnable reference implementations of the handbook's guidance using <strong>OpenTelemetry, Prometheus, Grafana, Loki and Tempo</strong> — no vendor SDKs, no API keys. Each use case ships an instrumented demo app, dashboards, alert rules and a runbook-linked failure-scenario simulator.</p>
 <table>
 <thead>
@@ -9806,7 +10302,9 @@ jobs:
 <p><em>Verify all links and facts — this space changes monthly. Collected October 2026.</em></p>
 <h2 id="standards">Standards</h2>
 <ul>
-<li><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/">OpenTelemetry GenAI semantic conventions</a> — status: Development</li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/">OpenTelemetry GenAI semantic conventions</a> — status: Development; source repo <a href="https://github.com/open-telemetry/semantic-conventions-genai">semantic-conventions-genai</a> (v0.1.0)</li>
+<li><a href="https://github.com/open-telemetry/weaver">OpenTelemetry Weaver</a> · <a href="https://github.com/open-telemetry/semantic-conventions-conformance">semantic-conventions-conformance</a> · <a href="https://github.com/open-telemetry/opentelemetry-python-genai">opentelemetry-python-genai</a></li>
+<li><a href="https://opentelemetry.io/blog/2026/stable-declarative-config/">Declarative configuration is stable</a> · <a href="https://opentelemetry.io/blog/2026/obi-v1-release/">OBI v1.0.0</a> · <a href="https://opentelemetry.io/blog/2026/profiles-alpha/">Profiles public alpha</a></li>
 <li><a href="https://opentelemetry.io/docs/collector/">OpenTelemetry Collector</a> and <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor">tail sampling processor</a></li>
 <li><a href="https://github.com/Arize-ai/openinference">OpenInference</a>, <a href="https://github.com/traceloop/openllmetry">OpenLLMetry</a>, <a href="https://openlit.io">OpenLIT</a></li>
 <li><a href="https://www.w3.org/TR/trace-context/">W3C Trace Context</a></li>

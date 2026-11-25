@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "title": "AI observability on AWS (OpenTelemetry + CloudWatch)",
+    "subtitle": "AI app emits OTel; an ADOT Collector gateway redacts and routes to CloudWatch, with a long-range store and Grafana",
+    "lens": [
+      "framework",
+      "generative-ai"
+    ],
+    "output": "docs/diagrams/ai-observability-aws.html",
+    "cost": {
+      "note": "Illustrative: 1 TB telemetry per month; see handbook cloud-native pages for sizing."
+    }
+  },
+  "root": {
+    "layout": "row",
+    "gap": 80,
+    "children": [
+      {
+        "id": "users",
+        "icon": "users",
+        "label": "Users"
+      },
+      {
+        "id": "cloud",
+        "kind": "aws-cloud",
+        "layout": "row",
+        "gap": 80,
+        "children": [
+          {
+            "id": "region",
+            "kind": "region",
+            "layout": "row",
+            "gap": 90,
+            "children": [
+              {
+                "id": "app",
+                "icon": "elastic-kubernetes-service",
+                "label": "Amazon Elastic Kubernetes Service",
+                "sublabel": "AI app + OTel SDK"
+              },
+              {
+                "id": "adot",
+                "icon": "distro-for-opentelemetry",
+                "label": "AWS Distro for OpenTelemetry",
+                "sublabel": "gateway: redact, tail-sample, route"
+              },
+              {
+                "id": "bk",
+                "kind": "custom",
+                "icon": "cloudwatch",
+                "label": "Native backend",
+                "layout": "column",
+                "gap": 56,
+                "children": [
+                  {
+                    "id": "cw",
+                    "icon": "cloudwatch",
+                    "label": "Amazon CloudWatch",
+                    "sublabel": "OTLP traces, metrics, logs; Omni"
+                  },
+                  {
+                    "id": "fh",
+                    "icon": "data-firehose",
+                    "label": "Amazon Data Firehose",
+                    "sublabel": "batch export"
+                  },
+                  {
+                    "id": "s3",
+                    "icon": "simple-storage-service",
+                    "label": "Amazon S3",
+                    "sublabel": "long-range telemetry"
+                  }
+                ]
+              },
+              {
+                "id": "use",
+                "kind": "stack",
+                "layout": "column",
+                "gap": 56,
+                "children": [
+                  {
+                    "id": "graf",
+                    "icon": "managed-grafana",
+                    "label": "Amazon Managed Grafana",
+                    "sublabel": "dashboards, SLOs"
+                  },
+                  {
+                    "id": "sns",
+                    "icon": "simple-notification-service",
+                    "label": "Amazon SNS",
+                    "sublabel": "alert routing"
+                  },
+                  {
+                    "id": "ath",
+                    "icon": "athena",
+                    "label": "Amazon Athena",
+                    "sublabel": "FinOps and trend SQL"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "from": "users",
+      "to": "app",
+      "step": 1,
+      "label": "HTTPS"
+    },
+    {
+      "from": "app",
+      "to": "adot",
+      "step": 2,
+      "label": "OTLP"
+    },
+    {
+      "from": "adot",
+      "to": "cw",
+      "step": 3,
+      "label": "OTLP"
+    },
+    {
+      "from": "adot",
+      "to": "fh",
+      "step": 4,
+      "style": "dashed",
+      "label": "batch"
+    },
+    {
+      "from": "fh",
+      "to": "s3",
+      "style": "dashed"
+    },
+    {
+      "from": "cw",
+      "to": "graf",
+      "step": 5,
+      "label": "query"
+    },
+    {
+      "from": "s3",
+      "to": "ath",
+      "style": "dashed",
+      "label": "SQL"
+    },
+    {
+      "from": "cw",
+      "to": "sns",
+      "style": "dashed",
+      "label": "alarms"
+    }
+  ]
+}

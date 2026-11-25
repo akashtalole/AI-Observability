@@ -28,7 +28,7 @@ flowchart TB
 
 ## OpenTelemetry GenAI semantic conventions
 
-OpenTelemetry defines `gen_ai.*` attributes, spans and metrics for model calls, agents and tool execution. **Status: Development (not stable) as of mid-2026** — attribute and metric names may change between versions. Pin the semconv version you target and use `OTEL_SEMCONV_STABILITY_OPT_IN` as the conventions describe.
+OpenTelemetry defines `gen_ai.*` attributes, spans and metrics for model calls, agents and tool execution. **Status: Development (not stable)**. The GenAI conventions now live in their own repository (`semantic-conventions-genai`, first release v0.1.0 in Nov 2026) and names may change between versions. See [OpenTelemetry updates](../otel-updates/index.md). Pin the semconv version you target and use `OTEL_SEMCONV_STABILITY_OPT_IN` as the conventions describe.
 
 Commonly used attributes (verify against the version you target):
 
@@ -44,7 +44,7 @@ Commonly used attributes (verify against the version you target):
 | `gen_ai.tool.name`, `gen_ai.tool.call.id` | Tool execution |
 | `gen_ai.agent.name`, `gen_ai.agent.id` | Agent identity |
 
-Metrics: client operation duration, client token usage (histograms), plus server-side time-to-first-token / time-per-output-token for model servers.
+Metrics: per-operation client durations (`gen_ai.client.inference.duration`, `gen_ai.execute_tool.duration`, …), token usage counters and per-operation token histograms (the single `gen_ai.client.token.usage` histogram of earlier versions was replaced), agent-run metrics, plus server-side time-to-first-token / time-per-output-token for model servers.
 
 **Message content** (prompts/completions) is opt-in by design — treat it as sensitive and capture it through a controlled path (see [Security & privacy](../architecture/security-privacy.md)).
 

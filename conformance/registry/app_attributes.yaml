@@ -1,0 +1,428 @@
+file_format: definition/2
+attributes:
+- key: app.channel
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - web
+  - whatsapp
+  - mobile
+- key: app.environment
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - demo
+- key: app.fallback
+  type: boolean
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - true
+- key: app.feature
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - faq
+  - troubleshooting
+  - policy-search
+- key: app.intent
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - returns
+  - out-of-scope
+  - shipping
+  - tech-support
+- key: app.name
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - support-rag
+- key: app.parent_agent
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - supervisor
+- key: app.price_table.version
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 2026-10
+- key: app.prompt.id
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - faq-answer
+- key: app.prompt.version
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - v12
+- key: app.query.length
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 44
+  - 217
+  - 40
+  - 205
+  - 87
+- key: app.release.id
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - chat-2026.10.2
+- key: app.status
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - blocked
+  - ok
+- key: app.step.index
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 6
+  - 8
+- key: app.step.purpose
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - plan
+  - act
+  - replan
+- key: app.task.outcome
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - success
+- key: app.task.steps
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 12
+  - 10
+  - 17
+  - 15
+  - 20
+- key: app.task.termination_reason
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - n/a
+- key: app.task.tokens
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 12485
+  - 11427
+  - 13789
+  - 12504
+  - 11311
+- key: app.task.type
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - market-brief
+  - doc-summary
+  - data-analysis
+- key: app.tenant.id
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - globex
+  - initech
+  - acme
+- key: app.ttft_ms
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 498.2
+  - 300.5
+  - 357.4
+  - 411.4
+  - 619.3
+- key: app.turn.index
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 1
+  - 2
+  - 3
+  - 4
+- key: app.user.message.length
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 96
+  - 194
+  - 244
+  - 48
+  - 131
+- key: cost.usd.total
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 0.001017
+  - 0.0010554
+  - 0.0010098
+  - 0.0011568
+  - 0.0010362
+- key: eval.answer_relevance
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 0.8878759857256031
+  - 0.8388610878733582
+  - 0.8504200011982342
+  - 0.9669747256703934
+  - 0.918550990708025
+- key: eval.context_precision
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 0.6751673300580865
+  - 0.6985180441896833
+  - 0.5424999735700433
+  - 0.6092259622001673
+  - 0.7052728375528284
+- key: eval.groundedness
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 0.8788472899095742
+  - 0.985426361349657
+  - 0.9972040528440038
+  - 1.0
+  - 0.8860591633243444
+- key: eval.judge_model
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - small-model
+- key: eval.version
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - judge-v3
+- key: guardrail.blocked
+  type: boolean
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - true
+- key: rag.cache.hit
+  type: boolean
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - false
+  - true
+- key: rag.context.doc_ids
+  type: string[]
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - n/a
+- key: rag.context.tokens
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 1718
+  - 1948
+  - 1399
+  - 1275
+  - 1528
+- key: rag.embedding.model
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - embed-model
+- key: rag.index.id
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - kb-main
+- key: rag.index.version
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 2026-10-01
+- key: rag.rerank.model
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - reranker-v2
+- key: rag.retrieval.count
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 4
+  - 5
+  - 3
+  - 6
+- key: rag.retrieval.top1_score
+  type: double
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 0.7358079772315337
+  - 0.6668774322070234
+  - 0.7910954826617033
+  - 0.7644276292900059
+  - 0.6929623971511373
+- key: rag.retrieval.top_k
+  type: int
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - 20
+- key: tool.args_hash
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - web_fetch:ab490e
+  - web_fetch:7326b5
+  - web_fetch:4f2eaa
+  - web_fetch:1ca17e
+  - web_fetch:e1e198
+- key: tool.side_effect
+  type: string
+  brief: Demo application attribute (inferred from live telemetry; refine the brief).
+  stability: development
+  examples:
+  - read
+attribute_groups:
+- id: app.common
+  visibility: public
+  brief: Attributes the demo apps add to their spans on top of the GenAI conventions.
+  stability: development
+  attributes:
+  - ref: app.channel
+    requirement_level: recommended
+  - ref: app.environment
+    requirement_level: recommended
+  - ref: app.fallback
+    requirement_level: recommended
+  - ref: app.feature
+    requirement_level: recommended
+  - ref: app.intent
+    requirement_level: recommended
+  - ref: app.name
+    requirement_level: recommended
+  - ref: app.parent_agent
+    requirement_level: recommended
+  - ref: app.price_table.version
+    requirement_level: recommended
+  - ref: app.prompt.id
+    requirement_level: recommended
+  - ref: app.prompt.version
+    requirement_level: recommended
+  - ref: app.query.length
+    requirement_level: recommended
+  - ref: app.release.id
+    requirement_level: recommended
+  - ref: app.status
+    requirement_level: recommended
+  - ref: app.step.index
+    requirement_level: recommended
+  - ref: app.step.purpose
+    requirement_level: recommended
+  - ref: app.task.outcome
+    requirement_level: recommended
+  - ref: app.task.steps
+    requirement_level: recommended
+  - ref: app.task.termination_reason
+    requirement_level: recommended
+  - ref: app.task.tokens
+    requirement_level: recommended
+  - ref: app.task.type
+    requirement_level: recommended
+  - ref: app.tenant.id
+    requirement_level: recommended
+  - ref: app.ttft_ms
+    requirement_level: recommended
+  - ref: app.turn.index
+    requirement_level: recommended
+  - ref: app.user.message.length
+    requirement_level: recommended
+  - ref: cost.usd.total
+    requirement_level: recommended
+  - ref: eval.answer_relevance
+    requirement_level: recommended
+  - ref: eval.context_precision
+    requirement_level: recommended
+  - ref: eval.groundedness
+    requirement_level: recommended
+  - ref: eval.judge_model
+    requirement_level: recommended
+  - ref: eval.version
+    requirement_level: recommended
+  - ref: guardrail.blocked
+    requirement_level: recommended
+  - ref: rag.cache.hit
+    requirement_level: recommended
+  - ref: rag.context.doc_ids
+    requirement_level: recommended
+  - ref: rag.context.tokens
+    requirement_level: recommended
+  - ref: rag.embedding.model
+    requirement_level: recommended
+  - ref: rag.index.id
+    requirement_level: recommended
+  - ref: rag.index.version
+    requirement_level: recommended
+  - ref: rag.rerank.model
+    requirement_level: recommended
+  - ref: rag.retrieval.count
+    requirement_level: recommended
+  - ref: rag.retrieval.top1_score
+    requirement_level: recommended
+  - ref: rag.retrieval.top_k
+    requirement_level: recommended
+  - ref: tool.args_hash
+    requirement_level: recommended
+  - ref: tool.side_effect
+    requirement_level: recommended
+  - ref: gen_ai.agent.name
+    requirement_level: recommended
+  - ref: gen_ai.conversation.id
+    requirement_level: recommended
+  - ref: gen_ai.response.model
+    requirement_level: recommended

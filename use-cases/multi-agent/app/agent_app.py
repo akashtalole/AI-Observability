@@ -148,7 +148,7 @@ def tool(t, m, task: Task, agent: str, name: str, args_key: str) -> bool:
     key = f"{name}:{hashlib.md5(args_key.encode()).hexdigest()[:6]}"          # hash of args, never the args themselves
     task.seen[key] = task.seen.get(key, 0) + 1
     base, effect = TOOLS[name]
-    with t.tracer.start_as_current_span(f"execute_tool {name}", kind=SpanKind.CLIENT, attributes={
+    with t.tracer.start_as_current_span(f"execute_tool {name}", kind=SpanKind.INTERNAL, attributes={
             "gen_ai.operation.name": "execute_tool", "gen_ai.tool.name": name, "gen_ai.agent.name": agent,
             "tool.side_effect": effect, "tool.args_hash": key, "app.step.index": task.steps}) as sp:
         if effect == "write":                                                  # human-in-the-loop for side effects

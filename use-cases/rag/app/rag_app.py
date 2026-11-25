@@ -161,7 +161,7 @@ def handle_request(t, p, req_no: int) -> None:
             # --- retrieval: embed -> vector search -> rerank ----------------------------------
             with t.tracer.start_as_current_span("rag.retrieve") as rs:
                 r = sc.retr_mult
-                timed_stage(t, p, "rag.embed", 0.045 * r, {"gen_ai.operation.name": "embeddings", "gen_ai.request.model": "embed-model"})
+                timed_stage(t, p, "rag.embed", 0.045 * r, {"gen_ai.operation.name": "embeddings", "gen_ai.provider.name": "demo-provider", "gen_ai.request.model": "embed-model"})
                 timed_stage(t, p, "rag.vector_search", 0.09 * r, {"rag.retrieval.top_k": 20})
                 timed_stage(t, p, "rag.rerank", 0.12 * r, {"rag.rerank.model": "reranker-v2"})
                 empty = random.random() < sc.empty_rate
