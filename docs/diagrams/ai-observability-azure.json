@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "title": "AI observability on Azure (OpenTelemetry + Azure Monitor)",
+    "subtitle": "AI app emits OTel; a Collector gateway redacts and routes to Application Insights and Log Analytics, with Fabric for long-range analysis and Grafana",
+    "lens": [
+      "framework",
+      "generative-ai"
+    ],
+    "output": "docs/diagrams/ai-observability-azure.html",
+    "cost": {
+      "note": "Illustrative: 60 GB telemetry per month."
+    }
+  },
+  "root": {
+    "layout": "row",
+    "gap": 80,
+    "children": [
+      {
+        "id": "users",
+        "icon": "users",
+        "label": "Users"
+      },
+      {
+        "id": "cloud",
+        "kind": "azure-cloud",
+        "layout": "row",
+        "gap": 80,
+        "children": [
+          {
+            "id": "region",
+            "kind": "region",
+            "layout": "row",
+            "gap": 90,
+            "children": [
+              {
+                "id": "app",
+                "icon": "container-apps-environments",
+                "label": "Container Apps",
+                "sublabel": "AI app + OTel SDK"
+              },
+              {
+                "id": "otel",
+                "icon": "monitor-pipeline",
+                "label": "OpenTelemetry Collector",
+                "sublabel": "gateway: redact, tail-sample, route"
+              },
+              {
+                "id": "bk",
+                "kind": "custom",
+                "icon": "monitor",
+                "label": "Native backend",
+                "layout": "column",
+                "gap": 56,
+                "children": [
+                  {
+                    "id": "ai",
+                    "icon": "application-insights",
+                    "label": "Application Insights",
+                    "sublabel": "OTLP traces, metrics"
+                  },
+                  {
+                    "id": "la",
+                    "icon": "log-analytics-workspaces",
+                    "label": "Log Analytics",
+                    "sublabel": "logs, token usage"
+                  },
+                  {
+                    "id": "eh",
+                    "icon": "event-hubs",
+                    "label": "Event Hubs",
+                    "sublabel": "batch export"
+                  }
+                ]
+              },
+              {
+                "id": "use",
+                "kind": "stack",
+                "layout": "column",
+                "gap": 56,
+                "children": [
+                  {
+                    "id": "graf",
+                    "icon": "managed-grafana",
+                    "label": "Azure Managed Grafana",
+                    "sublabel": "dashboards, SLOs"
+                  },
+                  {
+                    "id": "alr",
+                    "icon": "alerts",
+                    "label": "Azure Monitor Alerts",
+                    "sublabel": "action groups"
+                  },
+                  {
+                    "id": "fab",
+                    "icon": "fabric",
+                    "label": "Microsoft Fabric",
+                    "sublabel": "long-range, FinOps"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "from": "users",
+      "to": "app",
+      "step": 1,
+      "label": "HTTPS"
+    },
+    {
+      "from": "app",
+      "to": "otel",
+      "step": 2,
+      "label": "OTLP"
+    },
+    {
+      "from": "otel",
+      "to": "ai",
+      "step": 3,
+      "label": "export"
+    },
+    {
+      "from": "ai",
+      "to": "la",
+      "style": "dashed",
+      "label": "workspace-based"
+    },
+    {
+      "from": "otel",
+      "to": "eh",
+      "step": 4,
+      "style": "dashed",
+      "label": "batch"
+    },
+    {
+      "from": "eh",
+      "to": "fab",
+      "style": "dashed"
+    },
+    {
+      "from": "la",
+      "to": "graf",
+      "step": 5,
+      "label": "query"
+    },
+    {
+      "from": "la",
+      "to": "alr",
+      "style": "dashed",
+      "label": "rules"
+    }
+  ]
+}

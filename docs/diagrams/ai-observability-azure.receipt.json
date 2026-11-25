@@ -1,0 +1,123 @@
+{
+  "ok": true,
+  "tool": "archify-azure",
+  "version": "0.1.0",
+  "iconRelease": "Azure Architecture Icons V24 + Power Platform + Microsoft Fabric + Dynamics 365 icons",
+  "input": {
+    "path": "../../../../../../home/user/AI-Observability/docs/diagrams/ai-observability-azure.json",
+    "sha256": "d16e818fc52e06db1b2b059d1048f6e3e20e3286645a15f789eeda53a3cdb015"
+  },
+  "stages": [
+    {
+      "name": "validate",
+      "status": "pass",
+      "detail": {
+        "type": "architecture",
+        "nodes": 9,
+        "groups": 3,
+        "edges": 8
+      }
+    },
+    {
+      "name": "analyze",
+      "status": "pass",
+      "detail": {
+        "cost": true,
+        "review": true
+      }
+    },
+    {
+      "name": "render",
+      "status": "pass",
+      "detail": {}
+    },
+    {
+      "name": "check",
+      "status": "pass",
+      "detail": {
+        "warnings": 0,
+        "standalone": true
+      }
+    },
+    {
+      "name": "browser-check",
+      "status": "pass",
+      "detail": {
+        "viewport": "1440x900",
+        "minFontPx": 10.5,
+        "overflowX": 0,
+        "consoleErrors": 0,
+        "viewerNodes": 9,
+        "viewerEdges": 8
+      }
+    },
+    {
+      "name": "export-png",
+      "status": "pass",
+      "detail": {}
+    }
+  ],
+  "outputs": {
+    "html": {
+      "path": "docs/diagrams/ai-observability-azure.html",
+      "sha256": "54af5e04cae27151cb09ddcf3a5dd8a86f4eacab7906b58f96ce82cbe7315786",
+      "bytes": 135914
+    },
+    "svg": {
+      "path": "docs/diagrams/ai-observability-azure.svg",
+      "sha256": "997f0823f8616caf7cf726f4e564f43c67da8198fd233e6fb929083e0d922437"
+    },
+    "drawio": {
+      "path": "docs/diagrams/ai-observability-azure.drawio",
+      "sha256": "24aee038d8ec0c01c54ddb739f2128ba26e78d2e4e8fb78ee83728f7c951c444"
+    },
+    "png": {
+      "path": "docs/diagrams/ai-observability-azure.png",
+      "sha256": "bb9a1790579035ea2885a88830238c6084ca090af1a980e8ef59adc02a1f7e5f"
+    }
+  },
+  "summary": {
+    "type": "architecture",
+    "nodes": 9,
+    "groups": 3,
+    "edges": 8,
+    "size": {
+      "width": 1225,
+      "height": 820
+    }
+  },
+  "cost": {
+    "region": "eastus",
+    "asOf": "2026-11-25",
+    "monthlyUsd": 45.18,
+    "confidence": "indicative",
+    "coverage": {
+      "nodes": 9,
+      "estimated": 3,
+      "override": 0,
+      "noCharge": 1,
+      "notBillable": 1,
+      "notItemized": 0,
+      "needsInput": 0,
+      "notEstimated": 4,
+      "error": 0
+    }
+  },
+  "review": {
+    "advisory": true,
+    "mode": "full",
+    "lens": "generative-ai",
+    "findings": {
+      "Critical": 0,
+      "High": 1,
+      "Medium": 0,
+      "Low": 0
+    },
+    "evidenced": 12,
+    "bps": 59,
+    "ids": [
+      "F-001"
+    ]
+  },
+  "visualReview": "not-performed"
+}
